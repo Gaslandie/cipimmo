@@ -87,6 +87,14 @@ const fs = require('fs');
   const destinations=await linksPage.locator('a[href]').evaluateAll(links=>[...new Set(links.map(a=>a.href))]);
   for (const href of destinations) {
     const url=new URL(href);
+    if (url.protocol==='tel:') {
+      if (!/^tel:\+[1-9][0-9]{7,14}$/.test(href)) throw Error('Téléphone invalide');
+      continue;
+    }
+    if (url.protocol==='https:' && url.hostname==='wa.me') {
+      if (!/^\/[1-9][0-9]{7,14}$/.test(url.pathname)) throw Error('WhatsApp invalide');
+      continue;
+    }
     if (url.hash) {
       const r=await probe.request.get(url.origin+url.pathname+url.search);
       const html=await r.text();

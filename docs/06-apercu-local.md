@@ -2,6 +2,8 @@
 
 Travail et vérifications du 6 octobre 2026, fuseau Africa/Conakry.
 
+Dernière mise à jour : [galeries et contacts directs](07-galeries-logements.md). Les cartes et fiches partagent jusqu’à cinq photos. Un numéro réservé aux exemples est activé uniquement dans l’aperçu local, à la demande de Gassama. Les états décrits dans les mises à jour précédentes restent l’historique du travail.
+
 ## Voir le site
 
 Depuis la racine du projet :

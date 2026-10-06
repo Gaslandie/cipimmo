@@ -11,7 +11,14 @@ class DemoCatalog
 
     public function all(): array
     {
-        return $this->enabled() ? require resource_path('data/demo-listings.php') : [];
+        if (! $this->enabled()) {
+            return [];
+        }
+
+        return array_map(fn ($listing) => [
+            ...$listing,
+            'images' => ListingPhotos::forListing($listing),
+        ], require resource_path('data/demo-listings.php'));
     }
 
     public function cities(): array

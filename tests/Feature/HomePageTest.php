@@ -9,7 +9,7 @@ class HomePageTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        config(['cipimmo.demo' => true, 'cipimmo.phone' => null, 'cipimmo.whatsapp' => null]);
+        config(['cipimmo.demo' => true, 'cipimmo.phone' => null, 'cipimmo.whatsapp' => null, 'cipimmo.placeholder_contact' => false]);
     }
 
     public function test_home_renders_approved_copy_and_four_fictional_listings(): void
@@ -85,5 +85,28 @@ class HomePageTest extends TestCase
         config(['cipimmo.phone' => '+12025550123', 'cipimmo.whatsapp' => '+12025550124']);
         $this->get('/')->assertOk()->assertSee('href="tel:+12025550123"', false)
             ->assertSee('href="https://wa.me/12025550124"', false);
+    }
+
+    public function test_detail_reuses_catalog_photos_and_has_direct_contact_actions(): void
+    {
+        config(['cipimmo.placeholder_contact' => true]);
+        $this->get('/demo/logements/appartement-lumineux')->assertOk()
+            ->assertViewHas('listing', fn ($listing) => count($listing['images']) === 2)
+            ->assertSee('aria-label="Appeler CIP IMMO"', false)
+            ->assertSee('aria-label="Écrire à CIP IMMO sur WhatsApp"', false)
+            ->assertSee('href="tel:+12025550123"', false)
+            ->assertSee('https://wa.me/12025550123?text=')
+            ->assertDontSee('href="#detail-contact"', false);
+    }
+
+    public function test_placeholder_contacts_never_expose_links_in_production_or_replace_hostile_numbers(): void
+    {
+        config(['cipimmo.placeholder_contact' => true, 'cipimmo.phone' => 'javascript:alert(1)', 'cipimmo.whatsapp' => '<script>']);
+        $this->get('/')->assertOk()->assertDontSee('href="tel:', false)->assertDontSee('href="https://wa.me/', false);
+
+        config(['cipimmo.phone' => null, 'cipimmo.whatsapp' => null]);
+        $this->app['env'] = 'production';
+        $this->get('/')->assertOk()->assertDontSee('href="tel:', false)->assertDontSee('href="https://wa.me/', false);
+        $this->get('/demo/logements/appartement-lumineux')->assertNotFound();
     }
 }
