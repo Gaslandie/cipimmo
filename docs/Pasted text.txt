@@ -1,0 +1,62 @@
+Prompt de démarrage — Page d’accueil CIP IMMO
+Copier le texte ci-dessous dans Codex depuis le dossier du projet ouvert dans VS Code. Fournir les documents de contexte, le logo final et les captures mobiles de référence si disponibles. Codex doit lire en premier le fichier de bonnes pratiques présent sur le Bureau, puis ranger les documents dans docs/.
+Tu travailles sur CIP IMMO, un site Laravel de location de logements en Guinée. Je veux que tu implémentes maintenant la première version complète de sa page d’accueil. Agis sur le code du projet, ne t’arrête pas à un plan ou à des explications. Communique en français, simplement.
+1. Prérequis obligatoire : lire les bonnes pratiques sur le Bureau
+Avant de commencer le travail sur la page, de déplacer les documents ou de modifier le projet, trouve et lis intégralement BONNES-PRATIQUES-SITES-WEB.md sur mon Bureau. Ne te contente pas du nom ou d'un extrait. Respecte également les instructions AGENTS.md applicables à ton environnement.
+Localise le véritable dossier Bureau de mon système (il peut s'appeler Bureau ou Desktop) sans supposer que le répertoire personnel de Bluehost est celui de mon ordinateur. Si tu n'as pas accès à mon Bureau, si le fichier est introuvable ou si plusieurs copies rendent le choix incertain, demande-moi son chemin ou de le joindre et attends de pouvoir le lire avant de commencer l'implémentation. Ne prétends jamais l'avoir lu sans y avoir accédé.
+Applique ses consignes au travail. Si elles contredisent un choix explicite du projet, explique le conflit avant de modifier ce choix. N'invente pas le contenu de ce fichier : il n'est pas reproduit dans ce prompt.
+2. Ranger les documents puis lire le contexte
+Après cette lecture, crée docs/ à la racine du projet si nécessaire et ranges-y les fichiers de documentation que je te fournis, notamment les fichiers 01 à 05 de ce dossier de transmission. Copie aussi BONNES-PRATIQUES-SITES-WEB.md dans docs/ pour garder les consignes avec le projet, tout en conservant l'original sur le Bureau.
+Préserve les noms et le contenu des documents. Si un fichier du même nom existe déjà, compare les versions : évite les doublons identiques et n'écrase pas une version différente sans résoudre le conflit. Pour les documents joints ou provenant du Bureau, préfère la copie afin de préserver les originaux. Range les captures de référence dans docs/references/ et le logo destiné au site dans le dossier d'assets adapté au projet. Indique à la fin où les fichiers ont été rangés.
+Lis ensuite ces fichiers dans docs/ :
+1. 01-objectifs-cibles-decisions.md
+2. 02-benchmark-direction-design.md
+3. 03-technique-hebergement-etat.md
+4. 04-textes-accueil-valides.md
+Le quatrième fichier contient les textes approuvés les plus récents : utilise-les fidèlement. Les informations techniques du troisième sont datées ; vérifie leur correspondance avec le projet réel avant d’agir.
+Inspecte les routes, vues, dépendances Composer/npm, configuration Vite/Tailwind et assets disponibles. Préserve les changements locaux existants. Ne lis ni n’affiche de secrets pour faire cet inventaire.
+Le serveur utilise Laravel 13.34.0, PHP 8.4 et MySQL. Le dossier de production est /home2/fnksrwmy/cipimmo, servi par son sous-dossier public. Cela ne signifie pas que ce chemin existe sur mon poste local. Si le dossier ouvert ne contient que la documentation, indique précisément qu’il faut récupérer le code Laravel existant ; ne recrée pas silencieusement un projet différent.
+3. Livrable attendu
+Remplace la page d’accueil Laravel par une page CIP IMMO soignée, responsive et réellement intégrée au projet. Utilise Blade et Tailwind selon la configuration existante. Réutilise les composants ou outils présents. N’ajoute pas de framework JavaScript lourd ni de dépendances inutiles. Compile les styles avec le pipeline du projet plutôt qu’un CDN Tailwind de production.
+Construis ces sections dans cet ordre :
+1. En-tête avec logo, navigation et contact.
+2. Hero avec recherche.
+3. Sélection de logements.
+4. Logements par ville.
+5. Comment louer en trois étapes.
+6. Présentation de CIP IMMO.
+7. FAQ.
+8. Contact WhatsApp et appel.
+9. Pied de page.
+Pas de témoignages, de paiement en ligne, de panier ou de réservation instantanée. Ne construis pas tout le back-office dans cette tâche.
+4. Direction visuelle
+Conçois d’abord pour le téléphone, puis adapte tablette et desktop. La priorité est une interface claire, élégante et accueillante, dans un style semi-flat : surfaces sobres, photos de qualité, arrondis modérés, ombres discrètes et hiérarchie typographique nette.
+Vrbo est la référence principale pour le hero et la recherche ; Blueground est la seconde référence visuelle. Consulte les captures fournies si elles sont disponibles. Inspire-toi des principes sans copier les marques, textes ou images de ces sites. Ne prétends pas avoir vu des captures absentes.
+Utilise le logo final simplifié CIP IMMO sans sa phrase du bas. Prélève ses couleurs si le fichier est présent. Sinon, poursuis avec un logotype texte provisoire et une palette bleu/doré explicitement provisoire, centralisée dans des variables faciles à remplacer. Signale cet asset manquant dans ton bilan, sans bloquer tout le travail.
+Pour le hero, prévois une composition photographique avec un titre lisible et un bloc de recherche très visible. Sur mobile, les champs et boutons doivent rester confortables, sans barre desktop comprimée. Évite les grands espaces vides, les carrousels automatiques et les effets décoratifs qui gênent l’usage.
+5. Texte et interactions
+Intègre les formulations validées du fichier 04 ; les repères éditoriaux (« titre », « bouton », numéros de section) ne doivent pas apparaître dans la page.
+Recherche du hero : ville, court séjour/longue durée, meublé/non meublé/peu importe. Pas de calendrier promettant une disponibilité en temps réel.
+La navigation par ancres, le menu mobile et la FAQ doivent fonctionner. La FAQ peut utiliser details/summary si cela convient au design.
+Si le catalogue et ses routes existent, connecte la recherche, les cartes et les villes à ces fonctionnalités. Sinon, fournis une démonstration locale cohérente : recherche filtrant un petit jeu de données de démonstration et affichage d’un état vide utile. Isole ces données des vues et de la base de production. Les logements fictifs et photos illustratives doivent être identifiables comme tels dans le mode démonstration. Une fiche de démonstration ou un panneau de détails peut rendre les cartes consultables sans développer le catalogue complet. Ne livre pas de faux boutons ni de liens href="#" qui semblent actifs mais ne font rien.
+Le client a accepté une section par ville large pendant la préparation ; aucune liste précise n’est validée. Les villes de démonstration ne doivent pas être présentées comme une couverture commerciale confirmée.
+Les coordonnées WhatsApp/téléphone doivent provenir d’une configuration unique. N’invente pas de numéro et n’utilise pas mes coordonnées personnelles comme celles du client. Si elles manquent, rends l’absence compréhensible dans l’aperçu, sans créer de lien de contact invalide, et signale ce point à compléter avant publication.
+Les prix doivent préciser leur période. Ne mélange pas les prix à la nuit et au mois dans une comparaison ambiguë. N’invente ni garanties, ni avis, ni années d’expérience, ni statistiques.
+Pour les mentions légales et la confidentialité, réutilise les pages existantes. Sinon, signale qu’elles restent à rédiger ; ne fabrique pas de contenu juridique ni de lien cassé.
+6. Qualité et préservation de l’existant
+- HTML sémantique, un seul H1, libellés de champs explicites, focus visibles et navigation clavier.
+- Menu mobile accessible et éléments tactiles suffisamment grands.
+- Images avec dimensions et textes alternatifs pertinents ; images hors écran chargées paresseusement. Ne pas charger paresseusement l’image principale du hero.
+- Utilise des images locales autorisées ou des assets dont l’usage est permis. Prévois un remplacement facile par les vraies photos CIP IMMO.
+- Composants Blade pour les éléments répétés et données séparées de la présentation.
+- Pas de débordement horizontal, ni textes tronqués sur petits écrans.
+- Respect du paramètre de réduction des animations si tu en ajoutes.
+- Ne touche pas à APP_KEY, aux identifiants MySQL, au DNS, au SSL ou à la facturation.
+- Ne lance pas migrate:fresh, db:wipe ni d’opération destructive.
+- Préserve la redirection de production HTTPS sans www ; si elle gêne le local, adapte uniquement la configuration locale de façon explicite.
+- Ne commite pas de .env ni de secret.
+- Travaille en local et fournis un aperçu. Ne déploie pas sur Bluehost dans cette tâche.
+7. Validation et livraison
+Lance les vérifications utiles disponibles : compilation des assets, rendu de la route d’accueil et tests ciblés des interactions ajoutées. Inspecte l’affichage mobile et desktop si un outil navigateur est disponible, notamment vers 375 px, 768 px et 1440 px. Vérifie la recherche, le menu, la FAQ, les liens et les états sans résultat. Ne prétends pas avoir testé un élément inaccessible dans ton environnement.
+Corrige les erreurs rencontrées et termine avec un bilan court : fichiers modifiés, comment lancer l’aperçu, vérifications effectuées et informations/assets manquants avant publication.
+Commence impérativement par lire BONNES-PRATIQUES-SITES-WEB.md sur le Bureau. Ensuite, range les documents, lis le contexte et inspecte le projet, puis implémente la page. Prends les décisions réversibles nécessaires sans multiplier les demandes de confirmation. Pose une question uniquement si un blocage réel empêche de poursuivre.

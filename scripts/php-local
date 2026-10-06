@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+project_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if /usr/bin/php -r 'exit(extension_loaded("mbstring") && extension_loaded("dom") && extension_loaded("pdo_sqlite") ? 0 : 1);'; then
+    exec /usr/bin/php "$@"
+fi
+module_dir="$project_dir/.local-tools/php/usr/lib/php/20250925"
+if [ ! -f "$module_dir/mbstring.so" ]; then
+    echo "Modules PHP manquants : mbstring, xml/dom, sqlite3. Voir docs/06-apercu-local.md." >&2
+    exit 1
+fi
+export LD_LIBRARY_PATH="$project_dir/.local-tools/php/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export PHP_INI_SCAN_DIR="/etc/php/8.5/cli/conf.d:$project_dir/.local-tools/php/conf.d"
+exec /usr/bin/php "$@"

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+project_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$project_dir"
+exec ./scripts/php-local -S 127.0.0.1:8000 -t public scripts/router-local.php
