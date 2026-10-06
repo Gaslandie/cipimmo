@@ -34,7 +34,7 @@ const fs = require('fs');
       if (await page.locator('.mobile-menu').evaluate(e=>e.open)) throw Error('Échap menu');
       if (!await page.locator('.mobile-menu summary').evaluate(e=>e===document.activeElement)) throw Error('Focus menu');
       await page.locator('.mobile-menu summary').click();
-      await page.locator('.mobile-menu a').filter({hasText:'Nos villes'}).click();
+      await page.locator('.mobile-menu a').filter({hasText:'À propos'}).click();
       if (await page.locator('.mobile-menu').evaluate(e=>e.open)) throw Error('Menu après ancre');
     }
     const faq = page.locator('.faq-list details').first();
@@ -49,7 +49,7 @@ const fs = require('fs');
     if (await page.locator('.listing-card').count() !== 2) throw Error('Filtres');
     await page.locator('.card-link').first().click();
     await page.waitForURL('**/demo/logements/*');
-    if (!await page.getByText('FICHE DE DÉMONSTRATION').isVisible()) throw Error('Fiche');
+    if (!await page.getByRole('heading', {name:'Les informations du logement',exact:true}).isVisible()) throw Error('Fiche');
     await page.goto(origin+'/?city=kindia&duration=court-sejour#logements');
     if (!await page.getByText('Aucun logement pour ces critères').isVisible()) throw Error('Vide');
     await page.locator('.empty-state .button').click();

@@ -15,21 +15,20 @@
 </head>
 <body>
 <a class="skip-link" href="#contenu">Aller au contenu</a>
-@if($demo)<div class="demo-banner">Aperçu de démonstration <span>· Logements, villes et tarifs fictifs</span></div>@endif
 <header class="site-header">
     <div class="site-container header-content">
         <x-brand />
-        <nav class="desktop-nav" aria-label="Navigation principale"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#villes">Nos villes</a><a href="{{ route('home') }}#comment-louer">Comment louer</a><a href="{{ route('home') }}#a-propos">À propos</a></nav>
+        <nav class="desktop-nav" aria-label="Navigation principale"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#comment-louer">Comment louer</a><a href="{{ route('home') }}#a-propos">À propos</a></nav>
         <a class="button button-primary header-contact" href="{{ route('home') }}#contact">Nous contacter<x-icon name="arrow" :size="18" /></a>
         <details class="mobile-menu">
             <summary aria-label="Menu de navigation"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></summary>
-            <nav aria-label="Navigation mobile"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#villes">Nos villes</a><a href="{{ route('home') }}#comment-louer">Comment louer</a><a href="{{ route('home') }}#a-propos">À propos</a><a href="{{ route('home') }}#contact">Nous contacter</a></nav>
+            <nav aria-label="Navigation mobile"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#comment-louer">Comment louer</a><a href="{{ route('home') }}#a-propos">À propos</a><a href="{{ route('home') }}#contact">Nous contacter</a></nav>
         </details>
     </div>
 </header>
 <main id="contenu">{{ $slot }}</main>
 <footer class="site-footer">
-    <div class="site-container footer-main"><div><x-brand /><p>Logements meublés et non meublés en Guinée, pour vos courts séjours et vos locations longue durée.</p></div><nav aria-label="Navigation du pied de page"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#villes">Nos villes</a><a href="{{ route('home') }}#a-propos">À propos</a><a href="{{ route('home') }}#contact">Contact</a></nav></div>
+    <div class="site-container footer-main"><div><x-brand /><p>Logements meublés et non meublés en Guinée, pour vos courts séjours et vos locations longue durée.</p></div><nav aria-label="Navigation du pied de page"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#a-propos">À propos</a><a href="{{ route('home') }}#contact">Contact</a></nav></div>
     <div class="site-container footer-bottom"><p>© {{ date('Y') }} CIP IMMO. Tous droits réservés.</p></div>
 </footer>
 </body>

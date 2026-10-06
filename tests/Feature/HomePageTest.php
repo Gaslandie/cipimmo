@@ -16,7 +16,7 @@ class HomePageTest extends TestCase
     {
         $this->get('/')->assertOk()
             ->assertSee('De passage ou pour longtemps, trouvez votre chez-vous.')
-            ->assertSee('Aperçu de démonstration')
+            ->assertSee('<meta name="robots" content="noindex, nofollow">', false)
             ->assertDontSee('Coordonnées CIP IMMO à compléter.')
             ->assertViewHas('listings', fn ($listings) => count($listings) === 4)
             ->assertDontSee('href="#"', false);
@@ -51,7 +51,7 @@ class HomePageTest extends TestCase
 
     public function test_demo_detail_is_public_locally_and_unknown_identifiers_are_denied(): void
     {
-        $this->get('/demo/logements/appartement-lumineux')->assertOk()->assertSee('FICHE DE DÉMONSTRATION');
+        $this->get('/demo/logements/appartement-lumineux')->assertOk()->assertSee('Un appartement lumineux');
         $this->get('/demo/logements/inconnu')->assertNotFound();
         $this->get('/demo/logements/'.str_repeat('a', 81))->assertNotFound();
     }
@@ -60,7 +60,7 @@ class HomePageTest extends TestCase
     {
         $this->app['env'] = 'production';
         $this->get('/')->assertOk()->assertViewHas('listings', [])
-            ->assertDontSee('Un appartement lumineux')->assertDontSee('Aperçu de démonstration');
+            ->assertDontSee('Un appartement lumineux')->assertDontSee('<meta name="robots" content="noindex, nofollow">', false);
         $this->get('/demo/logements/appartement-lumineux')->assertNotFound();
     }
 

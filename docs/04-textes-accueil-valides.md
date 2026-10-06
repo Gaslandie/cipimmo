@@ -4,7 +4,7 @@ Validés par Gassama le 6 octobre 2026. Utiliser ces formulations pour la premi�
 
 ## 1. Navigation
 
-Nos logements · Nos villes · Comment louer · À propos
+Nos logements · Comment louer · À propos
 
 Bouton : **Nous contacter**
 
@@ -118,7 +118,7 @@ Mentions légales · Politique de confidentialité
 
 - Prix avec unité explicite : GNF / nuit ou GNF / mois, selon les informations réelles du logement.
 - Ne pas inventer les coordonnées, les conditions, des avis, des chiffres ou des logements disponibles.
-- Les villes et les données de démonstration doivent être distinguées des données réelles ; leur validation précède la publication commerciale.
+- Les villes et les données d’essai restent réservées à l’environnement local ; leur validation précède la publication commerciale. Gassama a demandé de retirer leurs mentions visibles du site le 6 octobre 2026.
 - Les liens légaux correspondent à des pages à rédiger, pas à des contenus déjà disponibles.
 - L’année du pied de page peut être calculée dynamiquement.
 - Aucun paiement en ligne ni réservation instantanée.
