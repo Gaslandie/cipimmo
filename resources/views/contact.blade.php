@@ -1,10 +1,31 @@
 <x-layout :demo="$demo" :contact="$contact" title="Contact — CIP IMMO">
 <section class="section site-container page-content">
     <div class="page-heading"><p class="eyebrow">PARLONS DE VOTRE PROJET</p><h1>Contactez CIP IMMO</h1><p>Une question sur un logement ou besoin d’aide pour votre recherche ? Échangeons sur les possibilités.</p></div>
-    <div class="contact-panel"><h2>Parlons de votre recherche</h2><p class="contact-description">Dites-nous où vous cherchez, pour combien de temps et avec quel budget. Si un logement vous plaît, précisez son titre pour que notre équipe puisse vous renseigner.</p><x-contact-buttons :contact="$contact" />
-        @unless($contact['whatsapp'] || $contact['phone'])<p class="contact-description">En attendant de pouvoir joindre notre équipe, vous pouvez consulter les logements et leurs informations.</p><a class="button button-outline" href="{{ route('listings.index') }}">Consulter les logements</a>@endunless
+    <div class="contact-grid">
+        <div class="contact-form-panel">
+            <h2>Parlez-nous de votre projet</h2>
+            <p class="contact-form-intro">Remplissez ce formulaire. Votre message sera préparé dans WhatsApp, où vous pourrez le relire et l’envoyer à notre équipe.</p>
+            <p class="contact-form-required">Les champs marqués d’un * sont obligatoires.</p>
+            <form method="post" action="{{ route('contact') }}" data-contact-form data-whatsapp="{{ $contact['whatsapp'] ?? '' }}" aria-label="Votre demande de contact">
+                <div class="contact-fields">
+                    <div class="contact-field"><label for="contact-name">Votre nom *</label><input id="contact-name" name="name" autocomplete="name" required maxlength="100" placeholder="Prénom et nom"></div>
+                    <div class="contact-field"><label for="contact-phone">Votre téléphone *</label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" required minlength="8" maxlength="30" pattern="[+0-9\(\) .\-]{8,30}" placeholder="Ex. : +224 600 00 00 00"></div>
+                    <div class="contact-field"><label for="contact-email">Votre e-mail <span>(facultatif)</span></label><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="150" placeholder="vous@exemple.com"></div>
+                    <div class="contact-field"><label for="contact-subject">Votre demande *</label><select id="contact-subject" name="subject" required><option value="">Choisissez un sujet</option><option>Rechercher un logement</option><option>Question sur un logement</option><option>Informations sur la location</option><option>Autre demande</option></select></div>
+                    <div class="contact-field contact-field-wide"><label for="contact-message">Votre message *</label><textarea id="contact-message" name="message" rows="5" required minlength="10" maxlength="2000" placeholder="Précisez la ville, vos dates, votre budget ou le logement qui vous intéresse."></textarea></div>
+                </div>
+                <p class="contact-form-note">Ces informations servent à préparer votre demande. Aucun paiement ni document personnel n’est nécessaire.</p>
+                <p data-contact-error class="contact-form-error" role="alert" hidden></p>
+                <button class="button button-primary contact-submit" type="button" data-contact-submit disabled><x-icon name="chat" :size="20" />Continuer sur WhatsApp</button>
+                <noscript><p class="contact-form-note">Activez JavaScript pour préparer votre message, ou utilisez les coordonnées ci-dessous.</p></noscript>
+                @unless($contact['whatsapp'])<p class="contact-form-note">Le formulaire sera disponible dès que notre numéro WhatsApp sera renseigné.</p>@endunless
+            </form>
+        </div>
+        <aside class="contact-panel contact-aside"><p class="eyebrow">À VOTRE ÉCOUTE</p><h2>Échangeons directement</h2><p class="contact-description">Vous préférez nous appeler ou commencer une discussion ? Notre équipe vous accompagne dans votre recherche.</p><x-contact-buttons :contact="$contact" />
+            @unless($contact['whatsapp'] || $contact['phone'])<a class="button button-outline" href="{{ route('listings.index') }}">Consulter les logements</a>@endunless
+            <div class="contact-help"><h3>Pour vous aider plus vite</h3><p>Indiquez la ville souhaitée, la durée de votre séjour et votre budget. Si un logement vous plaît, ajoutez son titre.</p></div>
+        </aside>
     </div>
-    <div class="page-copy"><h2>Les informations utiles à nous transmettre</h2><ul><li>La ville souhaitée et le logement qui vous intéresse.</li><li>Vos dates ou la durée prévue de votre location.</li><li>Le nombre de personnes et votre préférence pour un logement meublé ou non meublé.</li><li>Votre budget, en précisant s’il est par nuit ou par mois.</li></ul><p>Notre équipe vous confirmera la disponibilité, le prix applicable et les conditions. Aucun paiement ne se fait sur le site.</p></div>
     <div class="section-action"><a class="button button-outline" href="{{ route('renting') }}">Comprendre les étapes de location<x-icon name="arrow" :size="18" /></a></div>
 </section>
 </x-layout>

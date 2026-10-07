@@ -72,3 +72,39 @@ document.querySelectorAll('[data-gallery]').forEach((gallery) => {
     new ResizeObserver(() => { target = null; track.scrollTo({left: active * track.clientWidth, behavior: 'instant'}); }).observe(track);
     update(0);
 });
+
+// Prepare a message only on an explicit click. No form data is stored or sent
+// to our server; the visitor reviews and sends it themselves in WhatsApp.
+document.querySelectorAll('[data-contact-form]').forEach((form) => {
+    const destination = form.dataset.whatsapp;
+    const button = form.querySelector('[data-contact-submit]');
+    if (!/^https:\/\/wa\.me\/[1-9][0-9]{7,14}$/.test(destination)) return;
+    button.disabled = false;
+    form.addEventListener('submit', (event) => { event.preventDefault(); button.click(); });
+    button.addEventListener('click', () => {
+        const error = form.querySelector('[data-contact-error]');
+        error.hidden = true;
+        if (!form.reportValidity()) return;
+        const values = Object.fromEntries(new FormData(form));
+        if (!values.name.trim() || values.message.trim().length < 10) {
+            error.textContent = 'Indiquez votre nom et un message d’au moins 10 caractères.';
+            error.hidden = false;
+            return;
+        }
+        if (!/^[+0-9() .-]+$/.test(values.phone) || !/^[0-9]{8,15}$/.test(values.phone.replace(/\D/g, ''))) {
+            error.textContent = 'Indiquez un numéro de téléphone valide, avec 8 à 15 chiffres.';
+            error.hidden = false;
+            form.querySelector('[name=phone]').focus();
+            return;
+        }
+        const text = [
+            'Bonjour CIP IMMO,',
+            `Nom : ${values.name.trim()}`,
+            `Téléphone : ${values.phone.trim()}`,
+            ...(values.email.trim() ? [`E-mail : ${values.email.trim()}`] : []),
+            `Demande : ${values.subject}`,
+            '', values.message.trim(),
+        ].join('\n');
+        window.location.assign(`${destination}?text=${encodeURIComponent(text)}`);
+    });
+});
