@@ -443,3 +443,11 @@
         .listing-card:hover, .city-card:hover { transform: translateY(-3px); }
     }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+    .brand-logo, .brand-name { transition: transform .2s ease-out; transform-origin: center; }
+    .brand:focus-visible .brand-logo, .brand:focus-visible .brand-name { transform: scale(1.04); }
+    @media (hover: hover) and (pointer: fine) {
+        .brand:hover .brand-logo, .brand:hover .brand-name { transform: scale(1.04); }
+    }
+}
