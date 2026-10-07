@@ -1,0 +1,7 @@
+@props(['cities', 'filters' => []])
+<form class="search-form" method="get" action="{{ route('listings.index') }}#logements" aria-label="Rechercher un logement">
+            <div class="search-field"><x-icon name="pin" /><div><label for="city">Où cherchez-vous ?</label><select id="city" name="city"><option value="">Choisir une ville</option>@foreach($cities as $city)<option value="{{ $city['slug'] }}" @selected(($filters['city'] ?? '') === $city['slug'])>{{ $city['name'] }}</option>@endforeach</select></div></div>
+            <div class="search-field"><x-icon name="calendar" /><div><label for="duration">Pour quelle durée ?</label><select id="duration" name="duration"><option value="">Toutes les durées</option><option value="court-sejour" @selected(($filters['duration'] ?? '') === 'court-sejour')>Court séjour</option><option value="longue-duree" @selected(($filters['duration'] ?? '') === 'longue-duree')>Longue durée</option></select></div></div>
+            <div class="search-field"><x-icon name="home" /><div><label for="furnished">Quel logement ?</label><select id="furnished" name="furnished"><option value="">Peu importe</option><option value="meuble" @selected(($filters['furnished'] ?? '') === 'meuble')>Meublé</option><option value="non-meuble" @selected(($filters['furnished'] ?? '') === 'non-meuble')>Non meublé</option></select></div></div>
+            <button class="button button-primary" type="submit"><x-icon name="search" />Voir les logements</button>
+        </form>

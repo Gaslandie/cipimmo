@@ -10,10 +10,12 @@
         </div>
         @if($badge)<span class="listing-badge">{{ $badge }}</span>@endif
         @if(count($photos) > 1)
+            @if($detail)
             <div class="gallery-controls" data-gallery-controls hidden>
                 <button class="gallery-arrow gallery-previous" type="button" data-gallery-prev aria-label="Photo précédente : {{ $title }}"><x-icon name="chevron-left" :size="20" /></button>
                 <button class="gallery-arrow gallery-next" type="button" data-gallery-next aria-label="Photo suivante : {{ $title }}"><x-icon name="chevron-right" :size="20" /></button>
             </div>
+            @endif
             <div class="gallery-caption">
                 <span class="gallery-counter" data-gallery-status role="status" aria-live="polite" aria-atomic="true">{{ count($photos) }} photos</span>
                 <div class="gallery-dots" data-gallery-controls hidden>

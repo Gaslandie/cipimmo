@@ -18,17 +18,17 @@
 <header class="site-header">
     <div class="site-container header-content">
         <x-brand />
-        <nav class="desktop-nav" aria-label="Navigation principale"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#comment-louer">Comment louer</a><a href="{{ route('home') }}#a-propos">À propos</a></nav>
-        <a class="button button-primary header-contact" href="{{ route('home') }}#contact">Nous contacter<x-icon name="arrow" :size="18" /></a>
+        <nav class="desktop-nav" aria-label="Navigation principale"><a href="{{ route('listings.index') }}" @if(request()->routeIs('listings.*', 'demo.listing')) aria-current="page" @endif>Nos logements</a><a href="{{ route('renting') }}" @if(request()->routeIs('renting')) aria-current="page" @endif>Comment louer</a><a href="{{ route('about') }}" @if(request()->routeIs('about')) aria-current="page" @endif>À propos</a></nav>
+        <a class="button button-primary header-contact" href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Nous contacter<x-icon name="arrow" :size="18" /></a>
         <details class="mobile-menu">
             <summary aria-label="Menu de navigation"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></summary>
-            <nav aria-label="Navigation mobile"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#comment-louer">Comment louer</a><a href="{{ route('home') }}#a-propos">À propos</a><a href="{{ route('home') }}#contact">Nous contacter</a></nav>
+            <nav aria-label="Navigation mobile"><a href="{{ route('listings.index') }}" @if(request()->routeIs('listings.*', 'demo.listing')) aria-current="page" @endif>Nos logements</a><a href="{{ route('renting') }}" @if(request()->routeIs('renting')) aria-current="page" @endif>Comment louer</a><a href="{{ route('about') }}" @if(request()->routeIs('about')) aria-current="page" @endif>À propos</a><a href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Nous contacter</a></nav>
         </details>
     </div>
 </header>
 <main id="contenu">{{ $slot }}</main>
 <footer class="site-footer">
-    <div class="site-container footer-main"><div><x-brand /><p>Logements meublés et non meublés en Guinée, pour vos courts séjours et vos locations longue durée.</p></div><nav aria-label="Navigation du pied de page"><a href="{{ route('home') }}#logements">Nos logements</a><a href="{{ route('home') }}#a-propos">À propos</a><a href="{{ route('home') }}#contact">Contact</a></nav></div>
+    <div class="site-container footer-main"><div><x-brand /><p>Logements meublés et non meublés en Guinée, pour vos courts séjours et vos locations longue durée.</p></div><nav aria-label="Navigation du pied de page"><a href="{{ route('listings.index') }}" @if(request()->routeIs('listings.*', 'demo.listing')) aria-current="page" @endif>Nos logements</a><a href="{{ route('about') }}" @if(request()->routeIs('about')) aria-current="page" @endif>À propos</a><a href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Contact</a></nav></div>
     <div class="site-container footer-bottom"><p>© {{ date('Y') }} CIP IMMO. Tous droits réservés.</p></div>
 </footer>
 </body>

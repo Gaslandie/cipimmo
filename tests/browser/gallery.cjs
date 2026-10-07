@@ -1,6 +1,6 @@
 const { chromium } = require(process.env.CIPIMMO_PLAYWRIGHT_PATH || 'playwright-core');
 const assert = require('node:assert/strict');
-const origin = 'http://127.0.0.1:8000';
+const origin = process.env.CIPIMMO_BASE_URL || 'http://127.0.0.1:8000';
 
 async function selected(gallery, index) {
   const track = gallery.locator('[data-gallery-track]');
@@ -31,12 +31,13 @@ async function selected(gallery, index) {
     const gallery = page.locator('.listing-card [data-gallery]').first();
     const other = page.locator('.listing-card [data-gallery]').nth(1);
     const photos = await gallery.locator('[data-gallery-slide] img').evaluateAll(images => images.map(i=>i.src));
-    await gallery.locator('[data-gallery-next]').click();
+    await gallery.locator('[data-gallery-select="1"]').click();
     await selected(gallery, 1);
     await selected(other, 0);
-    await gallery.locator('[data-gallery-next]').click();
+    await gallery.locator('[data-gallery-select="0"]').click();
     await selected(gallery, 0);
-    await gallery.locator('[data-gallery-prev]').click();
+    assert.equal(await gallery.locator('.gallery-arrow').count(), 0);
+    await gallery.locator('[data-gallery-track]').press('ArrowLeft');
     await selected(gallery, 1);
     await gallery.locator('[data-gallery-select="0"]').click();
     await selected(gallery, 0);
@@ -46,18 +47,28 @@ async function selected(gallery, index) {
       await selected(gallery,index);
     }
     await page.locator('.listing-card .card-link').first().click();
-    await page.waitForURL('**/demo/logements/*');
+    await page.waitForURL('**/logements/*');
     const detail = page.locator('[data-gallery]');
     assert.deepEqual(await detail.locator('[data-gallery-slide] img').evaluateAll(images=>images.map(i=>i.src)), photos);
     await detail.locator('.gallery-thumbnails [data-gallery-select="1"]').click();
     await selected(detail,1);
+    await detail.locator('[data-gallery-next]').click();
+    await selected(detail,0);
+    await detail.locator('[data-gallery-prev]').click();
+    await selected(detail,1);
     await page.setViewportSize({width:width===1440 ? 1024 : width + 20,height:900});
     await page.waitForTimeout(150); // Let the browser settle its resize and scroll-snap events.
     await selected(detail,1);
-    assert.equal(await page.getByRole('link',{name:'Appeler CIP IMMO',exact:true}).getAttribute('href'),'tel:+12025550123');
+    const contactPage = await context.newPage();
+    await contactPage.goto(origin+'/contact');
+    const phone = await contactPage.getByRole('link',{name:'Appeler CIP IMMO',exact:true}).getAttribute('href');
+    const publicWhatsapp = new URL(await contactPage.getByRole('link',{name:'Écrire sur WhatsApp',exact:true}).getAttribute('href'));
+    await contactPage.close();
+    assert.match(phone, /^tel:\+[1-9][0-9]{7,14}$/);
+    assert.equal(await page.getByRole('link',{name:'Appeler CIP IMMO',exact:true}).getAttribute('href'),phone);
     const whatsapp = new URL(await page.getByRole('link',{name:'Écrire à CIP IMMO sur WhatsApp',exact:true}).getAttribute('href'));
     assert.equal(whatsapp.origin,'https://wa.me');
-    assert.equal(whatsapp.pathname,'/12025550123');
+    assert.equal(whatsapp.pathname,publicWhatsapp.pathname);
     assert.ok(whatsapp.searchParams.get('text').includes('Un appartement lumineux'));
     // Inspect contact URLs only: never place a call or send a message in tests.
     await page.setViewportSize({width,height:900});

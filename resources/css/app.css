@@ -132,6 +132,7 @@
     .gallery-counter { font-size: .7rem; font-weight: 600; }
     .gallery-dots:not([hidden]) { display: flex; pointer-events: auto; }
     .gallery-dots button { display: flex; align-items: center; justify-content: center; width: 32px; height: 44px; border: 0; background: transparent; }
+    .listing-gallery:not(.gallery-detail) .gallery-dots button { width: 26px; }
     .gallery-dots span { width: 7px; height: 7px; border-radius: 50%; background: white; box-shadow: 0 0 0 1px #0005; }
     .gallery-dots button[aria-pressed="true"] span { width: 11px; height: 11px; }
     .gallery-dots button:focus-visible { outline-color: white; outline-offset: -3px; }
@@ -158,6 +159,20 @@
     .card-link:hover { color: var(--gold-ink); }
     .section-action { margin-top: 28px; text-align: center; }
     .results-heading { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; font-size: .85rem; }
+    .page-content { padding-top: 36px; }
+    .page-heading { max-width: 800px; margin: 0 auto 32px; text-align: center; }
+    .page-heading > p:last-child { margin-top: 18px; color: var(--muted); }
+    .catalog-results { margin-top: 36px; }
+    .page-copy { max-width: 780px; margin: 40px auto 0; }
+    .page-copy h2 { margin: 30px 0 16px; }
+    .page-copy p, .page-copy ul { color: var(--muted); }
+    .page-copy ul { padding-left: 24px; list-style: disc; margin-bottom: 22px; }
+    .page-copy li + li { margin-top: 10px; }
+    .page-content > .section-action { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .page-content > .search-form { grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 10px; }
+    .page-content .search-field, .page-content .search-field:nth-child(3) { border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; }
+    .desktop-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+    .mobile-menu a[aria-current="page"] { background: var(--blue-surface); font-weight: 700; }
     .notice { padding: 18px 22px; background: var(--blue-surface); border-radius: 10px; font-size: .85rem; }
     .notice.error { background: #fff0e9; margin-bottom: 30px; color: #832f13; }
     .notice.error a { display: inline-block; padding-top: 8px; text-decoration: underline; }

@@ -17,6 +17,13 @@ if (menu) {
     });
 }
 
+// The "another city" link lands on the real select, ready for keyboard input.
+const focusCity = () => {
+    if (window.location.hash === '#city') document.getElementById('city')?.focus();
+};
+focusCity();
+window.addEventListener('hashchange', focusCity);
+
 // Scroll-snap galleries work by touch and native scrolling without JavaScript.
 // Enhance them with named controls, keyboard navigation and selected thumbnails.
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');

@@ -1,6 +1,6 @@
 <x-layout :demo="$demo" :contact="$contact" :title="$listing['title'].' — CIP IMMO'">
 <div class="site-container section detail-page">
-    <a class="text-link back-link" href="{{ route('home') }}#logements">← Retour aux logements</a>
+    <a class="text-link back-link" href="{{ route('listings.index') }}">← Retour aux logements</a>
     <h1>{{ $listing['title'] }}</h1>
     <p class="detail-location">{{ $listing['city_name'] }}</p>
     <div class="detail-grid">

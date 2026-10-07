@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Support\DemoCatalog;
+use App\Support\ListingCatalog;
 use App\Support\PublicContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,7 +10,27 @@ use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
 {
-    public function __invoke(Request $request, DemoCatalog $catalog, PublicContact $contact)
+    public function __invoke(Request $request, ListingCatalog $catalog, PublicContact $contact)
+    {
+        // Preserve searches saved before the catalogue got its own page.
+        if ($request->hasAny(['city', 'duration', 'furnished'])) {
+            return redirect()->route('listings.index', $request->only('city', 'duration', 'furnished'));
+        }
+
+        $cities = $catalog->cities();
+
+        return view('home', [
+            'demo' => $catalog->enabled(),
+            'cities' => $cities,
+            // Until demand statistics exist, rank by published catalogue size.
+            'popularCities' => collect($cities)->sortBy([['count', 'desc'], ['name', 'asc']])
+                ->take(3)->values()->all(),
+            'listings' => $catalog->search([], 6),
+            'contact' => $contact->links(),
+        ]);
+    }
+
+    public function index(Request $request, ListingCatalog $catalog, PublicContact $contact)
     {
         $validator = Validator::make($request->only('city', 'duration', 'furnished'), [
             'city' => ['nullable', 'string', 'max:40', Rule::in(array_column($catalog->cities(), 'slug'))],
@@ -24,10 +44,10 @@ class HomeController extends Controller
         $invalid = $validator->fails();
         $filters = $invalid ? [] : $validator->validated();
 
-        return response()->view('home', [
+        return response()->view('listings', [
             'demo' => $catalog->enabled(),
             'cities' => $catalog->cities(),
-            'listings' => $catalog->search($filters),
+            'listings' => $invalid ? [] : $catalog->search($filters),
             'filters' => $filters,
             'filtered' => collect($filters)->filter()->isNotEmpty(),
             'filterErrors' => $validator->errors(),
@@ -35,14 +55,25 @@ class HomeController extends Controller
         ], $invalid ? 422 : 200);
     }
 
-    public function show(string $slug, DemoCatalog $catalog, PublicContact $contact)
+    public function page(Request $request, ListingCatalog $catalog, PublicContact $contact)
+    {
+        $view = match ($request->route()->getName()) {
+            'renting' => 'renting',
+            'about' => 'about',
+            'contact' => 'contact',
+        };
+
+        return view($view, ['demo' => $catalog->enabled(), 'contact' => $contact->links()]);
+    }
+
+    public function show(string $slug, ListingCatalog $catalog, PublicContact $contact)
     {
         $listing = $catalog->find($slug);
         abort_unless($listing, 404);
 
         return view('demo-listing', [
             'listing' => $listing,
-            'demo' => true,
+            'demo' => $catalog->enabled(),
             'contact' => $contact->links(),
         ]);
     }
