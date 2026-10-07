@@ -108,3 +108,30 @@ document.querySelectorAll('[data-contact-form]').forEach((form) => {
         window.location.assign(`${destination}?text=${encodeURIComponent(text)}`);
     });
 });
+
+// Content stays visible by default, even without JS. Reveal once, with no
+// dependency, no looping, and cancel immediately if reduced motion is enabled.
+if ('IntersectionObserver' in window && typeof Element.prototype.animate === 'function' && !reducedMotion.matches) {
+    const runningEntrances = new Set();
+    const entranceObserver = new IntersectionObserver((entries) => {
+        entries.forEach(({target, isIntersecting}) => {
+            if (!isIntersecting) return;
+            entranceObserver.unobserve(target);
+            if (reducedMotion.matches) return;
+            const animation = target.animate([
+                {opacity: .75, translate: '0 8px'},
+                {opacity: 1, translate: '0 0'},
+            ], {duration: 360, easing: 'cubic-bezier(.2,.7,.3,1)'});
+            runningEntrances.add(animation);
+            animation.finished.then(() => runningEntrances.delete(animation), () => runningEntrances.delete(animation));
+        });
+    }, {threshold: .08});
+    document.querySelectorAll('.hero-content, .page-heading, .section-heading, .listing-card, .city-card, .step, .about-photo, .contact-panel, .location-card').forEach((element) => entranceObserver.observe(element));
+    reducedMotion.addEventListener('change', (event) => {
+        if (event.matches) {
+            entranceObserver.disconnect();
+            runningEntrances.forEach((animation) => animation.cancel());
+            runningEntrances.clear();
+        }
+    });
+}

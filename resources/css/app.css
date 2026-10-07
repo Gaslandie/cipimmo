@@ -426,3 +426,20 @@
 @media (max-width: 359px) {
     .site-header .brand { grid-template-columns: 78px minmax(0, 1fr); }
 }
+
+/* Small, one-shot entrances and feedback only on interactive cards. */
+.listing-card:focus-within { border-color: var(--line-strong); box-shadow: 0 8px 20px color-mix(in srgb, var(--ink) 16%, transparent); }
+.city-card:focus-within { box-shadow: 0 8px 20px color-mix(in srgb, var(--ink) 18%, transparent); }
+@media (hover: hover) and (pointer: fine) {
+    .listing-card:hover { border-color: var(--line-strong); box-shadow: 0 8px 20px color-mix(in srgb, var(--ink) 16%, transparent); }
+    .city-card:hover { box-shadow: 0 8px 20px color-mix(in srgb, var(--ink) 18%, transparent); }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .listing-card, .city-card { transition: transform .2s ease-out, box-shadow .2s ease-out, border-color .2s ease-out; }
+    .listing-card:focus-within, .city-card:focus-within { transform: translateY(-3px); }
+    .contact-field input, .contact-field select, .contact-field textarea, .search-field { transition: border-color .18s ease-out, background-color .18s ease-out; }
+    .rental-contact-form > summary svg { transition: transform .18s ease-out; }
+    @media (hover: hover) and (pointer: fine) {
+        .listing-card:hover, .city-card:hover { transform: translateY(-3px); }
+    }
+}
