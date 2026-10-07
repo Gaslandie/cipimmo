@@ -402,3 +402,19 @@
     .location-map { border-top: 0; border-left: 1px solid var(--line); }
     .location-map iframe { min-height: 480px; }
 }
+
+.button-gold { background: var(--gold); color: var(--ink); }
+.button-gold:hover { background: var(--gold-soft); }
+.rental-contact { margin-top: 40px; }
+.rental-contact .eyebrow { margin-bottom: 14px; }
+.rental-contact-form { margin: 20px auto 0; max-width: 780px; }
+.rental-contact-form > summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: white; font-size: .9rem; list-style: none; }
+.rental-contact-form > summary::-webkit-details-marker { display: none; }
+.rental-contact-form > summary strong { display: block; margin-top: 4px; text-decoration: underline; text-underline-offset: 4px; }
+.rental-contact-form[open] > summary svg { transform: rotate(90deg); }
+.rental-contact-form > .contact-form-panel { margin-top: 16px; }
+.rental-contact .contact-buttons { flex-wrap: wrap; }
+@media (max-width: 639px) {
+    .rental-contact .contact-buttons { flex-direction: column; }
+    .rental-contact .contact-buttons .button { width: 100%; }
+}
