@@ -21,7 +21,7 @@
         <nav class="desktop-nav" aria-label="Navigation principale"><a href="{{ route('listings.index') }}" @if(request()->routeIs('listings.*', 'demo.listing')) aria-current="page" @endif>Nos logements</a><a href="{{ route('renting') }}" @if(request()->routeIs('renting')) aria-current="page" @endif>Comment louer</a><a href="{{ route('about') }}" @if(request()->routeIs('about')) aria-current="page" @endif>À propos</a></nav>
         <a class="button button-primary header-contact" href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Nous contacter<x-icon name="arrow" :size="18" /></a>
         <details class="mobile-menu">
-            <summary aria-label="Menu de navigation"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></summary>
+            <summary aria-label="Menu de navigation"><span class="menu-lines" aria-hidden="true"></span></summary>
             <nav aria-label="Navigation mobile"><a href="{{ route('listings.index') }}" @if(request()->routeIs('listings.*', 'demo.listing')) aria-current="page" @endif>Nos logements</a><a href="{{ route('renting') }}" @if(request()->routeIs('renting')) aria-current="page" @endif>Comment louer</a><a href="{{ route('about') }}" @if(request()->routeIs('about')) aria-current="page" @endif>À propos</a><a href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Nous contacter</a></nav>
         </details>
     </div>

@@ -83,10 +83,10 @@
     .site-footer .brand-logo { width: 94px; }
     .desktop-nav,.header-contact { display: none; }
     .mobile-menu { position: relative; margin-left: auto; }
-    .mobile-menu > summary { display: flex; gap: 10px; align-items: center; justify-content: center; list-style: none; font-size: .85rem; font-weight: 600; min-width: 85px; min-height: 48px; border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; }
+    .mobile-menu > summary { display: flex; gap: 10px; align-items: center; justify-content: center; list-style: none; font-size: .85rem; font-weight: 600; width: 48px; min-height: 48px; border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; }
     summary::-webkit-details-marker { display: none; }
-    .menu-lines { width: 17px; height: 12px; border-top: 1.5px solid; border-bottom: 1.5px solid; position: relative; }
-    .menu-lines::after { content: ''; position: absolute; top: 4px; left: 0; width: 17px; border-top: 1.5px solid; }
+    .menu-lines { width: 20px; height: 14px; border-top: 1.5px solid; border-bottom: 1.5px solid; position: relative; }
+    .menu-lines::after { content: ''; position: absolute; top: 5px; left: 0; width: 20px; border-top: 1.5px solid; }
     .mobile-menu nav { position: absolute; right: 0; top: calc(100% + 12px); width: min(290px, calc(100vw - 40px)); background: white; border: 1px solid var(--line); border-radius: 12px; padding: 8px; box-shadow: 0 12px 30px color-mix(in srgb, var(--ink) 13%, transparent); }
     .mobile-menu nav a { display: block; padding: 13px 16px; border-radius: 6px; }
     .mobile-menu nav a:hover { background: var(--blue-surface); }
