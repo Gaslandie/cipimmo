@@ -108,26 +108,3 @@ document.querySelectorAll('[data-contact-form]').forEach((form) => {
         window.location.assign(`${destination}?text=${encodeURIComponent(text)}`);
     });
 });
-
-// City maps show a general area, never an invented office/property address.
-document.querySelectorAll('[data-location-card]').forEach((card) => {
-    const cities = {conakry: 'Conakry', coyah: 'Coyah', kankan: 'Kankan'};
-    const catalogue = new URL(card.querySelector('[data-map-listings]').href);
-    card.querySelectorAll('[data-map-city]').forEach((link) => {
-        link.addEventListener('click', (event) => {
-            const slug = link.dataset.mapCity;
-            if (!Object.hasOwn(cities, slug) || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-            event.preventDefault();
-            const location = `${cities[slug]}, Guinée`;
-            const frame = card.querySelector('[data-map-frame]');
-            frame.src = `https://maps.google.com/maps?q=${encodeURIComponent(location)}&z=12&output=embed`;
-            frame.title = `Carte de ${location} — vue générale de la ville`;
-            card.querySelector('[data-map-label]').textContent = location;
-            card.querySelector('[data-map-link]').href = link.href;
-            catalogue.searchParams.set('city', slug);
-            card.querySelector('[data-map-listings]').href = catalogue.href;
-            card.querySelectorAll('[data-map-city]').forEach((cityLink) => cityLink.removeAttribute('aria-current'));
-            link.setAttribute('aria-current', 'true');
-        });
-    });
-});

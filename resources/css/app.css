@@ -387,11 +387,7 @@
 .location-icon { display: inline-flex; padding: 12px; margin-bottom: 18px; background: var(--gold-soft); border-radius: 12px; }
 .location-copy h2 { margin-top: 10px; font-size: 1.8rem; }
 .location-copy > p:not(.eyebrow):not(.location-city) { color: var(--muted); font-size: .9rem; margin-top: 16px; }
-.location-cities { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0; }
-.location-cities a { padding: 9px 16px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: .85rem; font-weight: 700; }
-.location-cities a[aria-current] { background: var(--gold-soft); border-color: var(--gold); }
-.location-cities a:hover { border-color: var(--ink); }
-.location-city { font-family: var(--font-heading); font-size: 1.2rem; }
+.location-city { margin-top: 22px; font-family: var(--font-heading); font-size: 1.2rem; }
 .location-copy .location-note { margin-top: 7px !important; font-size: .8rem !important; }
 .location-copy .button { margin-top: 22px; }
 .location-map-link { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: .85rem; text-decoration: underline; text-underline-offset: 4px; }
