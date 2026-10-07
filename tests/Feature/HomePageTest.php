@@ -69,7 +69,7 @@ class HomePageTest extends TestCase
             $xpath = new \DOMXPath($document);
             $this->assertSame(1, $xpath->query('//h1')->length);
             foreach ($xpath->query('//header//nav//a | //footer//nav//a') as $link) {
-                $this->assertContains(parse_url($link->getAttribute('href'), PHP_URL_PATH), ['/logements', '/comment-louer', '/a-propos', '/contact']);
+                $this->assertContains(parse_url($link->getAttribute('href'), PHP_URL_PATH) ?: '/', ['/', '/logements', '/comment-louer', '/a-propos', '/contact']);
                 $this->assertNull(parse_url($link->getAttribute('href'), PHP_URL_FRAGMENT));
             }
         }

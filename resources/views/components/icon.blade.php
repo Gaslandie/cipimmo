@@ -14,5 +14,6 @@
 @case('chat')<path d="M20 11a8 8 0 0 1-12 7l-5 2 1-5a8 8 0 1 1 16-4Z"/><path d="M8 10h8m-8 4h5"/>@break
 @case('calendar')<rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M8 3v4m8-4v4"/>@break
 @case('check')<path d="m5 12 4 4 10-10"/>@break
+@case('close')<path d="m6 6 12 12M18 6 6 18"/>@break
 @endswitch
 </svg>

@@ -1,20 +1,63 @@
-// Native details/summary keeps navigation and FAQ usable without JavaScript.
+// Native details is the no-JS fallback. Enhance with a native modal so focus
+// stays inside the full-screen menu and the rest of the page becomes inert.
 const menu = document.querySelector('.mobile-menu');
 if (menu) {
     const toggle = menu.querySelector('summary');
-    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { menu.open = false; }));
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && menu.open) {
+    const panel = menu.querySelector('.mobile-menu-panel');
+    let dialog = null;
+    if (typeof HTMLDialogElement !== 'undefined' && typeof HTMLDialogElement.prototype.showModal === 'function') {
+        dialog = document.createElement('dialog');
+        dialog.className = panel.className;
+        dialog.setAttribute('aria-label', 'Menu de navigation');
+        dialog.append(...panel.childNodes);
+        panel.replaceWith(dialog);
+        menu.classList.add('menu-enhanced');
+        const closeButton = dialog.querySelector('[data-menu-close]');
+        closeButton.hidden = false;
+        closeButton.addEventListener('click', () => dialog.close());
+        dialog.addEventListener('keydown', (event) => {
+            if (event.key !== 'Tab') return;
+            const links = [...dialog.querySelectorAll('a[href], button:not([disabled])')].filter((element) => element.getClientRects().length);
+            const first = links[0];
+            const last = links.at(-1);
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault(); last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault(); first.focus();
+            }
+        });
+        dialog.addEventListener('close', () => {
             menu.open = false;
+            document.documentElement.classList.remove('menu-open');
+            toggle.setAttribute('aria-label', 'Menu de navigation');
+            if (!window.matchMedia('(min-width: 1024px)').matches) toggle.focus();
+        });
+    }
+    const closeMenu = () => {
+        menu.open = false;
+        if (dialog?.open) dialog.close();
+        document.documentElement.classList.remove('menu-open');
+    };
+    menu.addEventListener('toggle', () => {
+        document.documentElement.classList.toggle('menu-open', menu.open);
+        toggle.setAttribute('aria-label', menu.open ? 'Fermer le menu' : 'Menu de navigation');
+        if (menu.open && dialog && !dialog.open) {
+            dialog.showModal();
+            dialog.scrollTop = 0;
+            dialog.querySelector('[data-menu-close]').focus();
+        } else if (!menu.open && dialog?.open) dialog.close();
+    });
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menu.open && !dialog) {
+            closeMenu();
             toggle.focus();
         }
     });
-    document.addEventListener('click', (event) => {
-        if (menu.open && !menu.contains(event.target)) menu.open = false;
-    });
     window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
-        if (event.matches) menu.open = false;
+        if (event.matches) closeMenu();
     });
+    window.addEventListener('pageshow', closeMenu);
 }
 
 // The "another city" link lands on the real select, ready for keyboard input.
