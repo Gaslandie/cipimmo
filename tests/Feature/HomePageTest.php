@@ -25,13 +25,13 @@ class HomePageTest extends TestCase
             ->assertSee('<meta name="robots" content="noindex, nofollow">', false)
             ->assertDontSee('Coordonnées CIP IMMO à compléter.')
             ->assertViewHas('listings', fn ($listings) => count($listings) === 6)
-            ->assertDontSee('24 logements trouvés.')
-            ->assertViewHas('cities', fn ($cities) => count($cities) === 6 && array_sum(array_column($cities, 'count')) === 24)
+            ->assertDontSee('33 logements trouvés.')
+            ->assertViewHas('cities', fn ($cities) => count($cities) === 7 && array_sum(array_column($cities, 'count')) === 33)
             ->assertDontSee('href="#"', false);
 
         $this->get('/logements')->assertOk()
-            ->assertViewHas('listings', fn ($listings) => count($listings) === 24)
-            ->assertSee('24 logements trouvés.');
+            ->assertViewHas('listings', fn ($listings) => count($listings) === 33)
+            ->assertSee('33 logements trouvés.');
     }
 
     public function test_filters_are_combined_and_price_period_is_explicit(): void
@@ -40,20 +40,20 @@ class HomePageTest extends TestCase
             ->assertOk()->assertViewHas('listings', fn ($listings) => count($listings) === 4)
             ->assertSee('GNF / nuit')->assertDontSee('Une maison pour s’installer');
         $this->get('/logements?duration=longue-duree&furnished=non-meuble')->assertOk()
-            ->assertViewHas('listings', fn ($listings) => count($listings) === 8)
+            ->assertViewHas('listings', fn ($listings) => count($listings) === 11)
             ->assertSee('GNF / mois');
     }
 
     public function test_home_highlights_the_three_cities_with_most_published_listings(): void
     {
         $this->get('/')->assertOk()
-            ->assertViewHas('popularCities', fn ($cities) => array_column($cities, 'slug') === ['conakry', 'kindia', 'labe'])
+            ->assertViewHas('popularCities', fn ($cities) => array_column($cities, 'slug') === ['conakry', 'coyah', 'kankan'] && array_column($cities, 'count') === [8, 6, 6])
             ->assertSee('Vous cherchez une autre ville ?')
             ->assertSee('href="'.route('listings.index').'#city"', false);
 
-        Listing::where('city', 'kindia')->update(['is_published' => false]);
+        Listing::where('city', 'coyah')->update(['is_published' => false]);
         $this->get('/')->assertOk()
-            ->assertViewHas('popularCities', fn ($cities) => array_column($cities, 'slug') === ['conakry', 'labe', 'kankan']);
+            ->assertViewHas('popularCities', fn ($cities) => array_column($cities, 'slug') === ['conakry', 'kankan', 'kindia']);
 
         $this->app['env'] = 'production';
         $this->get('/')->assertOk()->assertViewHas('popularCities', []);
@@ -98,7 +98,7 @@ class HomePageTest extends TestCase
     public function test_every_combination_returns_only_matching_listings_and_preserves_selected_filters(): void
     {
         $data = require resource_path('data/demo-listings.php');
-        foreach (['', 'conakry', 'kindia', 'labe', 'mamou', 'kankan', 'nzerekore'] as $city) {
+        foreach (['', 'conakry', 'coyah', 'kindia', 'labe', 'mamou', 'kankan', 'nzerekore'] as $city) {
             foreach (['', 'court-sejour', 'longue-duree'] as $duration) {
                 foreach (['', 'meuble', 'non-meuble'] as $furnished) {
                     $filters = compact('city', 'duration', 'furnished');
@@ -124,7 +124,7 @@ class HomePageTest extends TestCase
     {
         Listing::where('city', 'mamou')->update(['is_published' => false]);
         $this->get('/logements')->assertOk()
-            ->assertViewHas('listings', fn ($listings) => count($listings) === 22)
+            ->assertViewHas('listings', fn ($listings) => count($listings) === 31)
             ->assertViewHas('cities', fn ($cities) => ! in_array('mamou', array_column($cities, 'slug'), true));
         $this->get('/logements/appartement-mamou')->assertNotFound();
 
@@ -137,7 +137,7 @@ class HomePageTest extends TestCase
     {
         Listing::where('slug', 'appartement-lumineux')->update(['title' => 'Titre conservé', 'is_published' => false]);
         $this->seed(DemoListingSeeder::class);
-        $this->assertDatabaseCount('listings', 24);
+        $this->assertDatabaseCount('listings', 33);
         $this->assertDatabaseHas('listings', ['slug' => 'appartement-lumineux', 'title' => 'Titre conservé', 'is_published' => false]);
         $this->assertDatabaseCount('users', 0);
     }

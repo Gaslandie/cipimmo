@@ -33,6 +33,15 @@ $additional = [
     ['maison-nzerekore', 'Une maison spacieuse à Nzérékoré', 'nzerekore', 'Nzérékoré', 'longue-duree', 'non-meuble', 1800000, 3, 110],
     ['appartement-mamou', 'Un appartement prêt à vivre à Mamou', 'mamou', 'Mamou', 'longue-duree', 'meuble', 1400000, 2, 65],
     ['maison-mamou', 'Une maison pour s’installer à Mamou', 'mamou', 'Mamou', 'longue-duree', 'non-meuble', 1700000, 3, 100],
+    ['studio-coyah', 'Un studio pour votre séjour à Coyah', 'coyah', 'Coyah', 'court-sejour', 'meuble', 180000, 1, 36],
+    ['appartement-coyah', 'Un appartement lumineux à Coyah', 'coyah', 'Coyah', 'court-sejour', 'meuble', 280000, 2, 75],
+    ['appartement-familial-coyah', 'Un séjour en famille à Coyah', 'coyah', 'Coyah', 'court-sejour', 'meuble', 350000, 3, 95],
+    ['appartement-meuble-coyah', 'Un appartement prêt à vivre à Coyah', 'coyah', 'Coyah', 'longue-duree', 'meuble', 2400000, 2, 80],
+    ['maison-coyah', 'Une maison pour s’installer à Coyah', 'coyah', 'Coyah', 'longue-duree', 'non-meuble', 2800000, 3, 120],
+    ['villa-coyah', 'Une villa familiale à Coyah', 'coyah', 'Coyah', 'longue-duree', 'non-meuble', 3800000, 4, 160],
+    ['appartement-sejour-kankan', 'Un appartement pour votre séjour à Kankan', 'kankan', 'Kankan', 'court-sejour', 'meuble', 240000, 2, 70],
+    ['appartement-familial-kankan', 'Un appartement familial meublé à Kankan', 'kankan', 'Kankan', 'longue-duree', 'meuble', 2300000, 3, 95],
+    ['maison-familiale-kankan', 'Une maison à aménager à Kankan', 'kankan', 'Kankan', 'longue-duree', 'non-meuble', 2600000, 3, 125],
 ];
 
 foreach ($additional as $index => [$slug, $title, $city, $cityName, $duration, $furnished, $price, $rooms, $area]) {
