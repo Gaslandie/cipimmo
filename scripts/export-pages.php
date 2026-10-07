@@ -125,6 +125,9 @@ foreach (array_unique($assets) as $asset) {
     }
 }
 copy(__DIR__.'/preview-search.js', $output.'/preview-search.js');
+foreach (['Manrope-OFL.txt', 'Outfit-OFL.txt'] as $license) {
+    copy(resource_path('fonts/'.$license), $output.'/build/assets/'.$license);
+}
 file_put_contents($output.'/.nojekyll', '');
 file_put_contents($output.'/robots.txt', "User-agent: *\nDisallow: /\n");
 file_put_contents($output.'/404.html', '<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>Page introuvable — CIP IMMO</title><h1>Page introuvable</h1><a href="'.htmlspecialchars($basePath.'/', ENT_QUOTES).'">Retour à l’accueil</a></html>');
