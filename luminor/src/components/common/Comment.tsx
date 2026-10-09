@@ -19,7 +19,7 @@ export default function Comment() {
                 <div className="reply-comment-item">
                     <div className="avatar">
                         <Image
-                            src="/assets/images/avatar/avatar-1.jpg"
+                            src="/assets/images/avatar/avatar-1.jpg?v=cip-photos-1"
                             width={60}
                             height={60}
                             alt="avatar"
@@ -62,7 +62,7 @@ export default function Comment() {
                 <div className="reply-comment-item">
                     <div className="avatar">
                         <Image
-                            src="/assets/images/avatar/avatar-2.jpg"
+                            src="/assets/images/avatar/avatar-2.jpg?v=cip-photos-1"
                             width={60}
                             height={60}
                             alt="avatar"
@@ -107,7 +107,7 @@ export default function Comment() {
                 <div className="reply-comment-item">
                     <div className="avatar">
                         <Image
-                            src="/assets/images/avatar/avatar-3.jpg"
+                            src="/assets/images/avatar/avatar-3.jpg?v=cip-photos-1"
                             width={60}
                             height={60}
                             alt="avatar"

@@ -24,7 +24,7 @@ export default function Location() {
                                     <Image
                                         width={300}
                                         height={300}
-                                        src="/assets/images/section/location-1.jpg"
+                                        src="/assets/images/section/location-1.jpg?v=cip-photos-1"
                                         alt="location"
                                     />
                                 </a>
@@ -46,7 +46,7 @@ export default function Location() {
                                     <Image
                                         width={300}
                                         height={300}
-                                        src="/assets/images/section/location-2.jpg"
+                                        src="/assets/images/section/location-2.jpg?v=cip-photos-1"
                                         alt="location"
                                     />
                                 </a>
@@ -69,7 +69,7 @@ export default function Location() {
                                 <Image
                                     width={630}
                                     height={300}
-                                    src="/assets/images/section/location-3.jpg"
+                                    src="/assets/images/section/location-3.jpg?v=cip-photos-1"
                                     alt="location"
                                 />
                             </a>
@@ -93,7 +93,7 @@ export default function Location() {
                                 <Image
                                     width={630}
                                     height={300}
-                                    src="/assets/images/section/location-4.jpg"
+                                    src="/assets/images/section/location-4.jpg?v=cip-photos-1"
                                     alt="location"
                                 />
                             </a>
@@ -116,7 +116,7 @@ export default function Location() {
                                     <Image
                                         width={300}
                                         height={300}
-                                        src="/assets/images/section/location-5.jpg"
+                                        src="/assets/images/section/location-5.jpg?v=cip-photos-1"
                                         alt="location"
                                     />
                                 </a>
@@ -138,7 +138,7 @@ export default function Location() {
                                     <Image
                                         width={300}
                                         height={300}
-                                        src="/assets/images/section/location-6.jpg"
+                                        src="/assets/images/section/location-6.jpg?v=cip-photos-1"
                                         alt="location"
                                     />
                                 </a>

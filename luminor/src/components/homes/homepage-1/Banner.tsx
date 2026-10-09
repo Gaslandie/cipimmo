@@ -6,7 +6,7 @@ export default function Banner() {
             <div
                 className="parallaxie"
                 style={{
-                    background: 'url("/assets/images/section/banner-2.jpg")',
+                    background: 'url("/assets/images/section/banner-2.jpg?v=cip-photos-1") center / cover no-repeat',
                 }}
             >
                 <div className="content">

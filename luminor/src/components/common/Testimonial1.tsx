@@ -11,7 +11,7 @@ export default function Testimonial1() {
             id: 1,
             rating: 5,
             text: "“This platform made property investing so much easier. I found two great rentals in just a few months and both are already performing better than expected.”",
-            avatar: "/assets/images/avatar/avatar-4.jpg",
+            avatar: "/assets/images/avatar/avatar-4.jpg?v=cip-photos-1",
             name: "Liam Anderson",
             position: "CEO Digital Avitex",
         },
@@ -19,7 +19,7 @@ export default function Testimonial1() {
             id: 2,
             rating: 5,
             text: "“As a first-time buyer, I felt guided every step of the way. Found my dream home fast and the support team was always there to answer my questions.”",
-            avatar: "/assets/images/avatar/avatar-5.jpg",
+            avatar: "/assets/images/avatar/avatar-5.jpg?v=cip-photos-1",
             name: "Adam Will",
             position: "CEO Agency Avitex",
         },
@@ -27,7 +27,7 @@ export default function Testimonial1() {
             id: 3,
             rating: 5,
             text: "“My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation.”",
-            avatar: "/assets/images/avatar/avatar-6.jpg",
+            avatar: "/assets/images/avatar/avatar-6.jpg?v=cip-photos-1",
             name: "Liam Anderson",
             position: "CEO Digital Avitex",
         },
@@ -35,19 +35,19 @@ export default function Testimonial1() {
             id: 4,
             rating: 5,
             text: "“Professional, reliable, and efficient. They guided me through every step and made the entire process stress-free.”",
-            avatar: "/assets/images/avatar/avatar-7.jpg",
+            avatar: "/assets/images/avatar/avatar-7.jpg?v=cip-photos-1",
             name: "Liam Anderson",
             position: "CEO Digital Avitex",
         },
     ];
 
     const brands = [
-        { src: "/assets/images/logo/brand-1.png", alt: "brand 1" },
-        { src: "/assets/images/logo/brand-2.png", alt: "brand 2" },
-        { src: "/assets/images/logo/brand-3.png", alt: "brand 3" },
-        { src: "/assets/images/logo/brand-4.png", alt: "brand 4" },
-        { src: "/assets/images/logo/brand-5.png", alt: "brand 5" },
-        { src: "/assets/images/logo/brand-6.png", alt: "brand 6" }, 
+        { src: "/assets/images/logo/brand-1.png?v=cip-photos-1", alt: "brand 1" },
+        { src: "/assets/images/logo/brand-2.png?v=cip-photos-1", alt: "brand 2" },
+        { src: "/assets/images/logo/brand-3.png?v=cip-photos-1", alt: "brand 3" },
+        { src: "/assets/images/logo/brand-4.png?v=cip-photos-1", alt: "brand 4" },
+        { src: "/assets/images/logo/brand-5.png?v=cip-photos-1", alt: "brand 5" },
+        { src: "/assets/images/logo/brand-6.png?v=cip-photos-1", alt: "brand 6" },
     ];
 
     return (

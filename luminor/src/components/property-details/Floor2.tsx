@@ -38,7 +38,7 @@ export default function Floor2() {
                         <div className="contnet">
                             <div className="box-img">
                                 <Image
-                                    src="/assets/images/section/floor-2.png"
+                                    src="/assets/images/section/floor-2.png?v=cip-photos-1"
                                     alt="img-floor"
                                     width={850}
                                     height={652}
@@ -79,7 +79,7 @@ export default function Floor2() {
                         <div className="contnet">
                             <div className="box-img">
                                 <Image
-                                    src="/assets/images/section/floor-2.png"
+                                    src="/assets/images/section/floor-2.png?v=cip-photos-1"
                                     alt="img-floor"
                                     width={850}
                                     height={652}

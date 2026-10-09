@@ -8,31 +8,31 @@ const propertiesData = [
         id: "tab1",
         title: "Casa Lomas de Machali",
         address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-1.jpg",
+        img: "/assets/images/section/features-properties-1.jpg?v=cip-photos-1",
     },
     {
         id: "tab2",
         title: "Villa Del Mar Retreat",
         address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-2.jpg",
+        img: "/assets/images/section/features-properties-2.jpg?v=cip-photos-1",
     },
     {
         id: "tab3",
         title: "Rancho Vista Verde",
         address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-3.jpg",
+        img: "/assets/images/section/features-properties-3.jpg?v=cip-photos-1",
     },
     {
         id: "tab4",
         title: "Sunset Heights Estate",
         address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-4.jpg",
+        img: "/assets/images/section/features-properties-4.jpg?v=cip-photos-1",
     },
     {
         id: "tab5",
         title: "Coastal Serenity Cottage",
         address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-5.jpg",
+        img: "/assets/images/section/features-properties-5.jpg?v=cip-photos-1",
     },
 ];
 

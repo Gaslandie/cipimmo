@@ -24,7 +24,7 @@ export default function RentingPage() {
         <Layout>
             <div className="page-title style-default">
                 <div className="thumbs">
-                    <Image src="/assets/images/page-title/page-title-12.jpg" width={1920} height={300} alt="" priority />
+                    <Image src="/assets/images/page-title/page-title-12.jpg?v=cip-photos-1" width={1920} height={300} alt="" priority />
                 </div>
                 <div className="content text-center">
                     <div className="tf-container">

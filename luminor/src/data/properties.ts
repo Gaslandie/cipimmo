@@ -31,8 +31,8 @@ export type Property = {
 export const properties: Property[] = [
     {
       id: 1,
-      imgSrc: "/assets/images/home/home-1.jpg",
-      imgSrc2: "/assets/images/home/home-3.1.jpg",
+      imgSrc: "/assets/images/home/home-1.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-3.1.jpg?v=cip-photos-1",
       alt: "house",
       address: "145 Brooklyn Ave, California, New York",
       title: "Casa Lomas de Machalí Machas",
@@ -56,8 +56,8 @@ export const properties: Property[] = [
     },
     {
       id: 2,
-      imgSrc: "/assets/images/home/home-2.jpg",
-      imgSrc2: "/assets/images/home/home-4.jpg",
+      imgSrc: "/assets/images/home/home-2.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-4.jpg?v=cip-photos-1",
       alt: "house",
       address: "245 Elm Street, San Francisco, CA 94102",
       title: "Sunset Heights Estate",
@@ -80,8 +80,8 @@ export const properties: Property[] = [
     },
     {
       id: 3,
-      imgSrc: "/assets/images/home/home-3.jpg",
-      imgSrc2: "/assets/images/home/home-5.jpg",
+      imgSrc: "/assets/images/home/home-3.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-5.jpg?v=cip-photos-1",
       alt: "house",
       address: "918 Maple Avenue, Brooklyn, NY 11215",
       title: "Coastal Serenity Cottage",
@@ -104,8 +104,8 @@ export const properties: Property[] = [
     },
     {
       id: 4,
-      imgSrc: "/assets/images/home/home-4.jpg",
-      imgSrc2: "/assets/images/home/home-6.jpg",
+      imgSrc: "/assets/images/home/home-4.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-6.jpg?v=cip-photos-1",
       alt: "house",
       address: "77 Lakeview Court, Orlando, FL 32801",
       title: "Rancho Vista Verde",
@@ -127,8 +127,8 @@ export const properties: Property[] = [
     },
     {
       id: 5,
-      imgSrc: "/assets/images/home/home-5.jpg",
-      imgSrc2: "/assets/images/home/home-7.jpg",
+      imgSrc: "/assets/images/home/home-5.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-7.jpg?v=cip-photos-1",
       alt: "house",
       address: "1325 Oakwood Drive, Austin, TX 78703",
       title: "Villa del Mar Retreat",
@@ -151,8 +151,8 @@ export const properties: Property[] = [
     },
     {
       id: 6,
-      imgSrc: "/assets/images/home/home-6.jpg",
-      imgSrc2: "/assets/images/home/home-8.jpg",
+      imgSrc: "/assets/images/home/home-6.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-8.jpg?v=cip-photos-1",
       alt: "house",
       address: "4600 Sunset Blvd, Los Angeles, CA 90027",
       title: "Casa Lomas de Machali",
@@ -176,8 +176,8 @@ export const properties: Property[] = [
     },
     {
       id: 7,
-      imgSrc: "/assets/images/home/home-9.jpg",
-      imgSrc2: "/assets/images/home/home-10.jpg",
+      imgSrc: "/assets/images/home/home-9.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-10.jpg?v=cip-photos-1",
       alt: "house",
       address: "1422 Sunset Avenue, Los Angeles, CA 90026",
       title: "Palmcrest Residences",
@@ -200,8 +200,8 @@ export const properties: Property[] = [
     },
     {
       id: 8,
-      imgSrc: "/assets/images/home/home-10.jpg",
-      imgSrc2: "/assets/images/home/home-9.jpg",
+      imgSrc: "/assets/images/home/home-10.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-9.jpg?v=cip-photos-1",
       alt: "house",
       address: "145 Brooklyn Ave, California, New York",
       title: "Casa Lomas de Machalí Machas",
@@ -225,8 +225,8 @@ export const properties: Property[] = [
     },
     {
       id: 9,
-      imgSrc: "/assets/images/home/home-8.jpg",
-      imgSrc2: "/assets/images/home/home-10.jpg",
+      imgSrc: "/assets/images/home/home-8.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-10.jpg?v=cip-photos-1",
       alt: "house",
       address: "91 Coastal Breeze Drive, San Diego, CA 92101",
       title: "Oceanview Heights",
@@ -249,8 +249,8 @@ export const properties: Property[] = [
     },
     {
       id: 10,
-      imgSrc: "/assets/images/home/home-7.jpg",
-      imgSrc2: "/assets/images/home/home-3.jpg",
+      imgSrc: "/assets/images/home/home-7.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-3.jpg?v=cip-photos-1",
       alt: "house",
       address: "91 Coastal Breeze Drive, San Diego, CA 92101",
       title: "Sierra Ridge Cottage",
@@ -273,8 +273,8 @@ export const properties: Property[] = [
     },
     {
       id: 11,
-      imgSrc: "/assets/images/home/home-1.jpg",
-      imgSrc2: "/assets/images/home/home-2.jpg",
+      imgSrc: "/assets/images/home/home-1.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-2.jpg?v=cip-photos-1",
       alt: "house",
       address: "1422 Sunset Avenue, Los Angeles, CA 90026",
       title: "Palmcrest Residences",
@@ -297,8 +297,8 @@ export const properties: Property[] = [
     },
     {
       id: 12,
-      imgSrc: "/assets/images/home/home-4.jpg",
-      imgSrc2: "/assets/images/home/home-3.jpg",
+      imgSrc: "/assets/images/home/home-4.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-3.jpg?v=cip-photos-1",
       alt: "house",
       address: "9301 Forest Hill Dr, Austin, TX 78759",
       title: "The Grand Oak Retreat",
@@ -324,7 +324,7 @@ export const properties: Property[] = [
 export const populor: Property[] = [
     {
         id: 13,
-        imgSrc: "/assets/images/home/home-lage-1.jpg",
+        imgSrc: "/assets/images/home/home-lage-1.jpg?v=cip-photos-1",
         imgHeight: 410,
         imgWidth: 850,
         alt: "house",
@@ -359,8 +359,8 @@ export const populor: Property[] = [
     },
     {
         id: 3,
-        imgSrc: "/assets/images/home/home-3.1.jpg",
-        imgSrc2: "/assets/images/home/home-5.jpg",
+        imgSrc: "/assets/images/home/home-3.1.jpg?v=cip-photos-1",
+        imgSrc2: "/assets/images/home/home-5.jpg?v=cip-photos-1",
         imgHeight: 410,
         imgWidth: 410,
         alt: "house",
@@ -399,8 +399,8 @@ export const populor: Property[] = [
     },
     {
         id: 4,
-        imgSrc: "/assets/images/home/home-4.1.jpg",
-        imgSrc2: "/assets/images/home/home-6.jpg",
+        imgSrc: "/assets/images/home/home-4.1.jpg?v=cip-photos-1",
+        imgSrc2: "/assets/images/home/home-6.jpg?v=cip-photos-1",
         imgHeight: 410,
         imgWidth: 410,
         alt: "house",
@@ -432,8 +432,8 @@ export const populor: Property[] = [
     },
     {
         id: 5,
-        imgSrc: "/assets/images/home/home-5.1.jpg",
-        imgSrc2: "/assets/images/home/home-7.jpg",
+        imgSrc: "/assets/images/home/home-5.1.jpg?v=cip-photos-1",
+        imgSrc2: "/assets/images/home/home-7.jpg?v=cip-photos-1",
         alt: "house",
         imgHeight: 410,
         imgWidth: 410,
@@ -468,8 +468,8 @@ export const populor: Property[] = [
     },
     {
         id: 6,
-        imgSrc: "/assets/images/home/home-6.1.jpg",
-        imgSrc2: "/assets/images/home/home-8.jpg",
+        imgSrc: "/assets/images/home/home-6.1.jpg?v=cip-photos-1",
+        imgSrc2: "/assets/images/home/home-8.jpg?v=cip-photos-1",
         alt: "house",
         imgHeight: 410,
         imgWidth: 410,
@@ -511,7 +511,7 @@ export const populor: Property[] = [
 export const topProperties: Property[] = [
     {
         id: 14,
-        imgSrc: "/assets/images/home/home-7.jpg",
+        imgSrc: "/assets/images/home/home-7.jpg?v=cip-photos-1",
         alt: "house",
         address: "72 Sunset Avenue, Los Angeles, California",
         title: "Villa del Mar Retreat, Malibu",
@@ -544,7 +544,7 @@ export const topProperties: Property[] = [
     },
     {
         id: 3,
-        imgSrc: "/assets/images/home/home-4.jpg",
+        imgSrc: "/assets/images/home/home-4.jpg?v=cip-photos-1",
         alt: "house",
         address: "918 Maple Avenue, Brooklyn, NY 11215",
         title: "Sunset Heights Estate",
@@ -581,7 +581,7 @@ export const topProperties: Property[] = [
     },
     {
         id: 4,
-        imgSrc: "/assets/images/home/home-8.jpg",
+        imgSrc: "/assets/images/home/home-8.jpg?v=cip-photos-1",
         imgHeight: 410,
         imgWidth: 410,
         alt: "house",
@@ -613,7 +613,7 @@ export const topProperties: Property[] = [
     },
     {
         id: 5,
-        imgSrc: "/assets/images/home/home-2.jpg",
+        imgSrc: "/assets/images/home/home-2.jpg?v=cip-photos-1",
         alt: "house",
         address: "1325 Oakwood Drive, Austin, TX 78703",
         title: "Villa del Mar Retreat",
@@ -646,7 +646,7 @@ export const topProperties: Property[] = [
     },
     {
         id: 6,
-        imgSrc: "/assets/images/home/home-5.jpg",
+        imgSrc: "/assets/images/home/home-5.jpg?v=cip-photos-1",
         alt: "house",
         address: "4600 Sunset Blvd, Los Angeles, CA 90027",
         title: "Casa Lomas de Machali",
@@ -686,7 +686,7 @@ export const topProperties: Property[] = [
 export const recommendedProperties: Property[] = [
     {
         id: 15,
-        imgSrc: "/assets/images/section/features-properties-1.jpg",
+        imgSrc: "/assets/images/section/features-properties-1.jpg?v=cip-photos-1",
         alt: "house",
         address: "72 Sunset Avenue, Los Angeles, California",
         title: "Villa del Mar Retreat",
@@ -718,13 +718,13 @@ export const recommendedProperties: Property[] = [
         city: "Phoenix",
         description:
             "Located around an hour away from Paris, between the Perche and the Iton valley, in a beautiful wooded park bordered by a charming stream.",
-        authorAvatar: "/assets/images/avatar/avatar-6.jpg",
+        authorAvatar: "/assets/images/avatar/avatar-6.jpg?v=cip-photos-1",
         authorName: "John Smith",
         authorPosition: "Agent",
     },
     {
         id: 16,
-        imgSrc: "/assets/images/section/features-properties-1.jpg",
+        imgSrc: "/assets/images/section/features-properties-1.jpg?v=cip-photos-1",
         alt: "house",
         address: "72 Sunset Avenue, Los Angeles, California",
         title: "Villa del Mar Retreat",
@@ -756,13 +756,13 @@ export const recommendedProperties: Property[] = [
         city: "Phoenix",
         description:
             "Located around an hour away from Paris, between the Perche and the Iton valley, in a beautiful wooded park bordered by a charming stream.",
-        authorAvatar: "/assets/images/avatar/avatar-1.jpg",
+        authorAvatar: "/assets/images/avatar/avatar-1.jpg?v=cip-photos-1",
         authorName: "John Smith",
         authorPosition: "Agent",
     },
     {
         id: 17,
-        imgSrc: "/assets/images/section/features-properties-1.jpg",
+        imgSrc: "/assets/images/section/features-properties-1.jpg?v=cip-photos-1",
         alt: "house",
         address: "72 Sunset Avenue, Los Angeles, California",
         title: "Villa del Mar Retreat",
@@ -794,7 +794,7 @@ export const recommendedProperties: Property[] = [
         city: "Phoenix",
         description:
             "Located around an hour away from Paris, between the Perche and the Iton valley, in a beautiful wooded park bordered by a charming stream.",
-        authorAvatar: "/assets/images/avatar/avatar-7.jpg",
+        authorAvatar: "/assets/images/avatar/avatar-7.jpg?v=cip-photos-1",
         authorName: "John Smith",
         authorPosition: "Agent",
     },
@@ -803,9 +803,9 @@ export const recommendedProperties: Property[] = [
 export const propertieslist: Property[] = [
     {
       id: 1,
-      imgSrc: "/assets/images/home/home-list-1.jpg",
-      imgSrc2: "/assets/images/home/home-list-1.1.jpg",
-      imgSrc3: "/assets/images/home/home-list-1.2.jpg",
+      imgSrc: "/assets/images/home/home-list-1.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-list-1.1.jpg?v=cip-photos-1",
+      imgSrc3: "/assets/images/home/home-list-1.2.jpg?v=cip-photos-1",
       alt: "house",
       address: "4600 Sunset Blvd, Los Angeles, CA 90027",
       title: "Casa Lomas de Machali",
@@ -829,9 +829,9 @@ export const propertieslist: Property[] = [
     },
     {
       id: 2,
-      imgSrc: "/assets/images/home/home-list-2.jpg",
-      imgSrc2: "/assets/images/home/home-list-2.1.jpg",
-      imgSrc3: "/assets/images/home/home-list-2.2.jpg",
+      imgSrc: "/assets/images/home/home-list-2.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-list-2.1.jpg?v=cip-photos-1",
+      imgSrc3: "/assets/images/home/home-list-2.2.jpg?v=cip-photos-1",
       alt: "house",
       address: "9301 Forest Hill Dr, Austin, TX 78759",
       title: "Sunset Heights Estate",
@@ -854,9 +854,9 @@ export const propertieslist: Property[] = [
     },
     {
       id: 3,
-      imgSrc: "/assets/images/home/home-list-3.jpg",
-      imgSrc2: "/assets/images/home/home-list-3.1.jpg",
-      imgSrc3: "/assets/images/home/home-list-3.2.jpg",
+      imgSrc: "/assets/images/home/home-list-3.jpg?v=cip-photos-1",
+      imgSrc2: "/assets/images/home/home-list-3.1.jpg?v=cip-photos-1",
+      imgSrc3: "/assets/images/home/home-list-3.2.jpg?v=cip-photos-1",
       alt: "house",
       address: "1745 Mountain View Rd, Lake Tahoe, CA 96150",
       title: "Sierra Ridge Cottage",

@@ -11,8 +11,8 @@ export default function GallerySection() {
             <PhotoSwipeGallery>
                 <div className="tf-grid-layout md-col-2 gap_20">
                     <Item
-                        original="/assets/images/section/properties-gallery-1.jpg"
-                        thumbnail="/assets/images/section/properties-gallery-1.jpg"
+                        original="/assets/images/section/properties-gallery-1.jpg?v=cip-photos-1"
+                        thumbnail="/assets/images/section/properties-gallery-1.jpg?v=cip-photos-1"
                         width={635}
                         height={635}
                     >
@@ -20,7 +20,7 @@ export default function GallerySection() {
                             <div className="img-style position-relative">
                                 <a onClick={open} data-fancybox="gallery">
                                     <Image
-                                        src="/assets/images/section/properties-gallery-1.jpg"
+                                        src="/assets/images/section/properties-gallery-1.jpg?v=cip-photos-1"
                                         width={635}
                                         ref={ref}
                                         height={635}
@@ -60,8 +60,8 @@ export default function GallerySection() {
                     <div>
                         <div className="wrap-img d-flex gap_20 mb_20">
                             <Item
-                                original="/assets/images/section/properties-gallery-2.jpg"
-                                thumbnail="/assets/images/section/properties-gallery-2.jpg"
+                                original="/assets/images/section/properties-gallery-2.jpg?v=cip-photos-1"
+                                thumbnail="/assets/images/section/properties-gallery-2.jpg?v=cip-photos-1"
                                 width={308}
                                 height={308}
                             >
@@ -72,7 +72,7 @@ export default function GallerySection() {
                                             data-fancybox="gallery"
                                         >
                                             <Image
-                                                src="/assets/images/section/properties-gallery-2.jpg"
+                                                src="/assets/images/section/properties-gallery-2.jpg?v=cip-photos-1"
                                                 width={308}
                                                 ref={ref}
                                                 height={308}
@@ -84,8 +84,8 @@ export default function GallerySection() {
                             </Item>
 
                             <Item
-                                original="/assets/images/section/properties-gallery-3.jpg"
-                                thumbnail="/assets/images/section/properties-gallery-3.jpg"
+                                original="/assets/images/section/properties-gallery-3.jpg?v=cip-photos-1"
+                                thumbnail="/assets/images/section/properties-gallery-3.jpg?v=cip-photos-1"
                                 width={308}
                                 height={308}
                             >
@@ -96,7 +96,7 @@ export default function GallerySection() {
                                             data-fancybox="gallery"
                                         >
                                             <Image
-                                                src="/assets/images/section/properties-gallery-3.jpg"
+                                                src="/assets/images/section/properties-gallery-3.jpg?v=cip-photos-1"
                                                 width={308}
                                                 ref={ref}
                                                 height={308}
@@ -109,8 +109,8 @@ export default function GallerySection() {
                         </div>
                         <div className="wrap-img d-flex gap_20">
                         <Item
-                                original="/assets/images/section/properties-gallery-4.jpg"
-                                thumbnail="/assets/images/section/properties-gallery-4.jpg"
+                                original="/assets/images/section/properties-gallery-4.jpg?v=cip-photos-1"
+                                thumbnail="/assets/images/section/properties-gallery-4.jpg?v=cip-photos-1"
                                 width={308}
                                 height={308}
                             >
@@ -121,7 +121,7 @@ export default function GallerySection() {
                                             data-fancybox="gallery"
                                         >
                                             <Image
-                                                src="/assets/images/section/properties-gallery-4.jpg"
+                                                src="/assets/images/section/properties-gallery-4.jpg?v=cip-photos-1"
                                                 width={308}
                                                 ref={ref}
                                                 height={308}
@@ -132,8 +132,8 @@ export default function GallerySection() {
                                 )}
                             </Item>
                             <Item
-                                original="/assets/images/section/properties-gallery-5.jpg"
-                                thumbnail="/assets/images/section/properties-gallery-5.jpg"
+                                original="/assets/images/section/properties-gallery-5.jpg?v=cip-photos-1"
+                                thumbnail="/assets/images/section/properties-gallery-5.jpg?v=cip-photos-1"
                                 width={308}
                                 height={308}
                             >
@@ -144,7 +144,7 @@ export default function GallerySection() {
                                             data-fancybox="gallery"
                                         >
                                             <Image
-                                                src="/assets/images/section/properties-gallery-5.jpg"
+                                                src="/assets/images/section/properties-gallery-5.jpg?v=cip-photos-1"
                                                 width={308}
                                                 ref={ref}
                                                 height={308}

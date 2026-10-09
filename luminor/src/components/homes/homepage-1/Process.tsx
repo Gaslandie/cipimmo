@@ -6,7 +6,7 @@ export default function Process() {
             <div
                 className="parallaxie"
                 style={{
-                    background: 'url("/assets/images/section/banner-3.jpg")',
+                    background: 'url("/assets/images/section/banner-3.jpg?v=cip-photos-1") center / cover no-repeat',
                 }}
             >
                 <div className="tf-container">

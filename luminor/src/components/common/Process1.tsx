@@ -16,21 +16,21 @@ const tabs: Tab[] = [
         title: "Step 1: Discover Your Dream Home",
         content:
             "Browse through a curated selection of properties tailored to your lifestyle and budget.",
-        image: "/assets/images/section/process-1.jpg",
+        image: "/assets/images/section/process-1.jpg?v=cip-photos-1",
     },
     {
         id: "tab2",
         title: "Step 2: Schedule A Viewing",
         content:
             "Book a tour at your convenience and explore the space in person or virtually.",
-        image: "/assets/images/section/process-2.jpg",
+        image: "/assets/images/section/process-2.jpg?v=cip-photos-1",
     },
     {
         id: "tab3",
         title: "Step 3: Seal The Deal",
         content:
             "Get expert guidance to finalize paperwork and move into your new home with confidence.",
-        image: "/assets/images/section/process-3.jpg",
+        image: "/assets/images/section/process-3.jpg?v=cip-photos-1",
     },
 ];
 

@@ -17,37 +17,37 @@ type PropertyImage = {
 
 const propertyImages: PropertyImage[] = [
     {
-        src: "/assets/images/section/properties-details-1.jpg",
+        src: "/assets/images/section/properties-details-1.jpg?v=cip-photos-1",
         alt: "img-property",
         width: 930,
         height: 620,
     },
     {
-        src: "/assets/images/section/properties-details-2.jpg",
+        src: "/assets/images/section/properties-details-2.jpg?v=cip-photos-1",
         alt: "img-property",
         width: 930,
         height: 620,
     },
     {
-        src: "/assets/images/section/properties-details-3.jpg",
+        src: "/assets/images/section/properties-details-3.jpg?v=cip-photos-1",
         alt: "img-property",
         width: 930,
         height: 620,
     },
     {
-        src: "/assets/images/section/properties-details-1.jpg",
+        src: "/assets/images/section/properties-details-1.jpg?v=cip-photos-1",
         alt: "img-property",
         width: 930,
         height: 620,
     },
     {
-        src: "/assets/images/section/properties-details-2.jpg",
+        src: "/assets/images/section/properties-details-2.jpg?v=cip-photos-1",
         alt: "img-property",
         width: 930,
         height: 620,
     },
     {
-        src: "/assets/images/section/properties-details-3.jpg",
+        src: "/assets/images/section/properties-details-3.jpg?v=cip-photos-1",
         alt: "img-property",
         width: 930,
         height: 620,

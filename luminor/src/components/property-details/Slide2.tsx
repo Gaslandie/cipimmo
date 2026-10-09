@@ -11,31 +11,31 @@ export default function Slide2() {
     const [isOpen, setIsOpen] = useState(false);
     const images = [
         {
-            src: "/assets/images/section/properties-details-11.jpg",
+            src: "/assets/images/section/properties-details-11.jpg?v=cip-photos-1",
             alt: "images",
             width: 1200,
             height: 675,
         },
         {
-            src: "/assets/images/section/properties-details-12.jpg",
+            src: "/assets/images/section/properties-details-12.jpg?v=cip-photos-1",
             alt: "images",
             width: 1200,
             height: 675,
         },
         {
-            src: "/assets/images/section/properties-details-13.jpg",
+            src: "/assets/images/section/properties-details-13.jpg?v=cip-photos-1",
             alt: "images",
             width: 1200,
             height: 675,
         },
         {
-            src: "/assets/images/section/properties-details-14.jpg",
+            src: "/assets/images/section/properties-details-14.jpg?v=cip-photos-1",
             alt: "images",
             width: 1200,
             height: 675,
         },
         {
-            src: "/assets/images/section/properties-details-15.jpg",
+            src: "/assets/images/section/properties-details-15.jpg?v=cip-photos-1",
             alt: "images",
             width: 1200,
             height: 675,
@@ -43,31 +43,31 @@ export default function Slide2() {
     ];
     const thumbnails = [
         {
-            src: "/assets/images/section/tbumb-pagi-1.jpg",
+            src: "/assets/images/section/tbumb-pagi-1.jpg?v=cip-photos-1",
             alt: "images",
             width: 100,
             height: 100,
         },
         {
-            src: "/assets/images/section/tbumb-pagi-2.jpg",
+            src: "/assets/images/section/tbumb-pagi-2.jpg?v=cip-photos-1",
             alt: "images",
             width: 100,
             height: 100,
         },
         {
-            src: "/assets/images/section/tbumb-pagi-3.jpg",
+            src: "/assets/images/section/tbumb-pagi-3.jpg?v=cip-photos-1",
             alt: "images",
             width: 100,
             height: 100,
         },
         {
-            src: "/assets/images/section/tbumb-pagi-4.jpg",
+            src: "/assets/images/section/tbumb-pagi-4.jpg?v=cip-photos-1",
             alt: "images",
             width: 100,
             height: 100,
         },
         {
-            src: "/assets/images/section/tbumb-pagi-5.jpg",
+            src: "/assets/images/section/tbumb-pagi-5.jpg?v=cip-photos-1",
             alt: "images",
             width: 100,
             height: 100,

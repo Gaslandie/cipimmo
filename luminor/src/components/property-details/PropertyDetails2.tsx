@@ -47,7 +47,7 @@ export default function PropertyDetails2({ property }: { property: Property }) {
                             <Image
                                 width={1290}
                                 height={680}
-                                src="/assets/images/section/properties-details-4.jpg"
+                                src="/assets/images/section/properties-details-4.jpg?v=cip-photos-1"
                                 alt="properties"
                                 priority
                             />

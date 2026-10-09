@@ -116,13 +116,13 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                         </p>
                                         <div className="wrap-image tf-grid-layout sm-col-2">
                                             <Image
-                                                src="/assets/images/blog/thumbs-1.jpg"
+                                                src="/assets/images/blog/thumbs-1.jpg?v=cip-photos-1"
                                                 width={410}
                                                 height={308}
                                                 alt="thumbs"
                                             />
                                             <Image
-                                                src="/assets/images/blog/thumbs-2.jpg"
+                                                src="/assets/images/blog/thumbs-2.jpg?v=cip-photos-1"
                                                 width={410}
                                                 height={308}
                                                 alt="thumbs"

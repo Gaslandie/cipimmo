@@ -46,7 +46,7 @@ export default function FAQs1() {
         <div className="box-faqs tf-animate-1">
           <div className="thumbs">
             <Image
-              src="/assets/images/section/section-faq.jpg"
+              src="/assets/images/section/section-faq.jpg?v=cip-photos-1"
               width={600}
               height={660}
               alt="section-faq"

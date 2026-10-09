@@ -60,37 +60,37 @@ export default function Gallery2() {
 
     const images = [
         {
-            src: "/assets/images/section/properties-details-5.jpg",
+            src: "/assets/images/section/properties-details-5.jpg?v=cip-photos-1",
             alt: "images",
             width: 620,
             height: 465,
         },
         {
-            src: "/assets/images/section/properties-details-6.jpg",
+            src: "/assets/images/section/properties-details-6.jpg?v=cip-photos-1",
             alt: "images",
             width: 620,
             height: 465,
         },
         {
-            src: "/assets/images/section/properties-details-7.jpg",
+            src: "/assets/images/section/properties-details-7.jpg?v=cip-photos-1",
             alt: "images",
             width: 620,
             height: 465,
         },
         {
-            src: "/assets/images/section/properties-details-8.jpg",
+            src: "/assets/images/section/properties-details-8.jpg?v=cip-photos-1",
             alt: "images",
             width: 620,
             height: 465,
         },
         {
-            src: "/assets/images/section/properties-details-9.jpg",
+            src: "/assets/images/section/properties-details-9.jpg?v=cip-photos-1",
             alt: "images",
             width: 620,
             height: 465,
         },
         {
-            src: "/assets/images/section/properties-details-10.jpg",
+            src: "/assets/images/section/properties-details-10.jpg?v=cip-photos-1",
             alt: "images",
             width: 620,
             height: 465,
