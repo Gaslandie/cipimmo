@@ -94,7 +94,7 @@ export default function MenuTab({ property }: { property: Property }) {
                             className="h5 tab-link active"
                             data-bs-toggle="tab"
                         >
-                            Gallery
+                            Galerie
                         </a>
                     </li>
                     <li className="nav-tab-item" role="presentation">
@@ -103,7 +103,7 @@ export default function MenuTab({ property }: { property: Property }) {
                             className="h5 tab-link "
                             data-bs-toggle="tab"
                         >
-                            Floor Plans
+                            Les espaces du logement
                         </a>
                     </li>
                     <li className="nav-tab-item active" role="presentation">
@@ -112,7 +112,7 @@ export default function MenuTab({ property }: { property: Property }) {
                             className="h5 tab-link "
                             data-bs-toggle="tab"
                         >
-                            Location
+                            Localisation
                         </a>
                     </li>
                 </ul>

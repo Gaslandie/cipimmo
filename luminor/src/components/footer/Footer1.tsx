@@ -141,30 +141,29 @@ export default function Footer1() {
                                 </Link>
                                 <div className="mb_16">
                                     <p className="mb_4 text_color-1">
-                                        Our Address:
+                                        Notre adresse :
                                     </p>
                                     <p className="text_white">
-                                        101 E 129th St, East Chicago, 2nd Floor
-                                        New York, NY 10017
+                                        Coyah, Guinée
                                     </p>
                                 </div>
                                 <div className="text-body-default text_secondary-color mb_16">
                                     <span className="text_color-1">
-                                        Support 24/7:{" "}
+                                        Téléphone :{" "}
                                     </span>
                                     <span className="text_white ms_4">
-                                        1-555-678-8888
+                                        +224 613 58 51 98
                                     </span>
                                 </div>
                                 <div className="text-body-default text_secondary-color">
                                     <span className="text_color-1">
-                                        Email Address:{" "}
+                                        WhatsApp :{" "}
                                     </span>
                                     <Link
-                                        href="mailto:themesflat@gmail.com"
+                                        href="https://wa.me/224623417510"
                                         className="text_white link ms_4"
                                     >
-                                        themesflat@gmail.com
+                                        +224 623 41 75 10
                                     </Link>
                                 </div>
                             </div>
@@ -189,12 +188,11 @@ export default function Footer1() {
                                                         }
                                                         className="text-body-default text_color-1"
                                                     >
-                                                        <Link
-                                                            href={link.href}
-                                                            className="link"
-                                                        >
-                                                            {link.label}
-                                                        </Link>
+                                                        {link.href.includes("?") ? (
+                                                            <a href={link.href} className="link">{link.label}</a>
+                                                        ) : (
+                                                            <Link href={link.href} className="link">{link.label}</Link>
+                                                        )}
                                                     </li>
                                                 ))}
                                             </ul>
@@ -206,15 +204,15 @@ export default function Footer1() {
                         <div className="col-lg-4">
                             <div className="footer-newsletter footer-item">
                                 <div className="footer-heading text-title fw-6 text_white mb_16">
-                                    Join Our Newsletter
+                                    Recevoir nos offres
                                 </div>
                                 <p className="text_color-1 mb_20">
-                                    Sign up for updates on our latest news.
+                                    Indiquez votre adresse pour demander à notre équipe les offres adaptées à votre recherche.
                                 </p>
                                 <form
                                     id="subscribe-form"
                                     acceptCharset="utf-8"
-                                    data-mailchimp="true"
+
                                     className="form-newsletter style-1 mb_20"
                                     onSubmit={handleNewsletterSubmit}
                                 >
@@ -227,13 +225,14 @@ export default function Footer1() {
                                                 type="email"
                                                 placeholder="E-mail"
                                                 id="subscribe-email"
-                                                name="email"
+                                                name="email" maxLength={254}
                                                 aria-required="true"
                                                 required
                                             />
                                         </fieldset>
                                         <button
                                             id="subscribe-button"
+                                            aria-label="Préparer ma demande d’offres"
                                             type="submit"
                                             className="button-submit animate-hover-btn "
                                         >
@@ -243,21 +242,21 @@ export default function Footer1() {
                                     <div id="subscribe-msg"></div>
                                 </form>
                                 <p className="text_color-1">
-                                    By clicking subscribe, you agree to the
+                                    Votre demande se poursuit sur WhatsApp. Consultez nos
                                     <Link
-                                        href="#"
+                                        href="/privacy-policy#terms"
                                         className="hover-underline-link link"
                                     >
-                                        Terms of Service
+                                        conditions d’utilisation
                                     </Link>{" "}
                                     {"  "}
-                                    and
+                                    et notre
                                     {"  "}
                                     <Link
                                         href={"/privacy-policy"}
                                         className="hover-underline-link link"
                                     >
-                                        Privacy Policy.
+                                        politique de confidentialité.
                                     </Link>
                                 </p>
                             </div>
@@ -266,15 +265,15 @@ export default function Footer1() {
                 </div>
                 <div className="footer-bottom d-flex align-items-center justify-content-between">
                     <p className="text_muted-color">
-                        ©2025 {"  "}
+                        ©2026 {"  "}
                         <Link
-                            href="#"
+                            href="/"
                             className="text_white hover-underline-link"
                         >
-                            Luminor.
+                            CIP IMMO.
                         </Link>{" "}
                         {"  "}
-                        All Rights Reserved.
+                        Tous droits réservés.
                     </p>
                     <ul className="social d-flex gap_24">
                         <li>

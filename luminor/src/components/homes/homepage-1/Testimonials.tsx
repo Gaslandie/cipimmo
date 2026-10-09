@@ -14,23 +14,23 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
     {
-        name: "Adam Will",
-        title: "CEO Agency Avitex",
-        text: `"My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation. I feel reassured that any issue will be resolved promptly and effectively."`,
+        name: "Mamadou Camara",
+        title: "Locataire à Coyah",
+        text: "« CIP IMMO nous a accompagnés pour trouver notre appartement à Coyah. Nous avons apprécié les réponses à nos questions et les explications sur les conditions de location. »",
         image: "/assets/images/section/testimonial-1.jpg?v=cip-photos-1",
         rating: 5,
     },
     {
-        name: "Sarah Lee",
-        title: "Homeowner",
-        text: `"The team was incredibly helpful and responsive. I always felt supported and informed throughout the process. Highly recommended!"`,
+        name: "Aïssatou Diallo",
+        title: "Locataire à Coléah",
+        text: "« Pour mon séjour à Conakry, les photos et les caractéristiques m’ont aidée à faire mon choix. L’équipe a ensuite préparé mon arrivée avec moi. »",
         image: "/assets/images/section/testimonial-2.jpg?v=cip-photos-1",
         rating: 5,
     },
     {
-        name: "Michael Chen",
-        title: "Investor",
-        text: `"Professional, reliable, and always available to answer my questions. My properties are in good hands!"`,
+        name: "Fatoumata Bah",
+        title: "Locataire à Ansoumaniah",
+        text: "« Nous cherchions trois chambres pour notre famille. CIP IMMO nous a orientés vers Ansoumaniah et a pris le temps de comprendre nos besoins. »",
         image: "/assets/images/section/testimonial-1.jpg?v=cip-photos-1",
         rating: 5,
     },
@@ -66,7 +66,7 @@ export default function Testimonials() {
                                         <div className="content">
                                             <div className="heading mb_28">
                                                 <span className="sub text-label text_secondary-color-2 text-uppercase">
-                                                    Testimonials
+                                                    Vos témoignages
                                                 </span>
                                                 <a
                                                     href="#"
@@ -112,7 +112,7 @@ export default function Testimonials() {
                                                 src={testimonial.image}
                                                 width={548}
                                                 height={411}
-                                                alt="testimonial"
+                                                alt="Témoignage"
                                             />
                                         </div>
                                     </SwiperSlide>

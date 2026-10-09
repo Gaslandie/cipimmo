@@ -1,79 +1,79 @@
 import React from "react";
 
-export default function Overview() {
+export default function Overview({ property }: { property: { id: number; beds?: number; baths?: number; sqft?: number; categories: string; type: string; garages: number; city: string } }) {
     return (
         <div>
-            <h5 className="properties-title mb_20">Overview</h5>
+            <h5 className="properties-title mb_20">Le logement en bref</h5>
             <div className="tf-grid-layout tf-col-2 xl-col-4 md-col-3">
                 <div className="item d-flex gap_16">
                     <i className="icon icon-HouseSimple"></i>
                     <div className="d-flex flex-column gap">
-                        <span className="text-body-default">ID:</span>
+                        <span className="text-body-default">Référence :</span>
                         <span className="text-title fw-6 text_primary-color">
-                            423146
+                            CIP-00{property.id}
                         </span>
                     </div>
                 </div>
                 <div className="item d-flex gap_16">
                     <i className="icon icon-SlidersHorizontal"></i>
                     <div className="d-flex flex-column gap">
-                        <span className="text-body-default">Type:</span>
+                        <span className="text-body-default">Type :</span>
                         <span className="text-title fw-6 text_primary-color">
-                            Villa
+                            {property.categories}
                         </span>
                     </div>
                 </div>
                 <div className="item d-flex gap_16">
                     <i className="icon icon-Bed"></i>
                     <div className="d-flex flex-column gap">
-                        <span className="text-body-default">Bedrooms:</span>
+                        <span className="text-body-default">Chambres :</span>
                         <span className="text-title fw-6 text_primary-color">
-                            3 Rooms
+                            {property.beds} ch.
                         </span>
                     </div>
                 </div>
                 <div className="item d-flex gap_16">
                     <i className="icon icon-Shower"></i>
                     <div className="d-flex flex-column gap">
-                        <span className="text-body-default">Bathrooms:</span>
+                        <span className="text-body-default">Salles de bain :</span>
                         <span className="text-title fw-6 text_primary-color">
-                            3 Rooms
+                            {property.baths} sdb.
                         </span>
                     </div>
                 </div>
                 <div className="item d-flex gap_16">
                     <i className="icon icon-Warehouse"></i>
                     <div className="d-flex flex-column gap">
-                        <span className="text-body-default">Garages:</span>
+                        <span className="text-body-default">Stationnement :</span>
                         <span className="text-title fw-6 text_primary-color">
-                            Yes
+                            {property.garages ? "Oui" : "Non"}
                         </span>
                     </div>
                 </div>
                 <div className="item d-flex gap_16">
                     <i className="icon icon-Ruler"></i>
                     <div className="d-flex flex-column gap">
-                        <span className="text-body-default">Size:</span>
+                        <span className="text-body-default">Surface :</span>
                         <span className="text-title fw-6 text_primary-color">
-                            3,200 SqFt
+                            {property.sqft} m²
                         </span>
                     </div>
                 </div>
                 <div className="item d-flex gap_16">
                     <i className="icon icon-Crop"></i>
                     <div className="d-flex flex-column gap">
-                        <span className="text-body-default">Land area:</span>
+                        <span className="text-body-default">Pièces de vie :</span>
                         <span className="text-title fw-6 text_primary-color">
-                            4,200 SqFt
+                            {property.city === "Coyah Km54" ? "Salon" : "Salon et cuisine"}
                         </span>
                     </div>
                 </div>
                 <div className="item d-flex gap_16">
                     <i className="icon icon-CalendarBlank"></i>
                     <div className="d-flex flex-column gap">
-                        <span className="text-body-default">Year Built:</span>
+                        <span className="text-body-default">Durée :</span>
                         <span className="text-title fw-6 text_primary-color">
-                            2024
+                            {property.type}
                         </span>
                     </div>
                 </div>

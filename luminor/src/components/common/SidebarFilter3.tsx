@@ -64,12 +64,12 @@ export default function SidebarFilter3({
                                         htmlFor="lookingFor"
                                         className="text-button text_primary-color mb_8"
                                     >
-                                        Looking For
+                                        Votre recherche
                                     </label>
                                     <fieldset>
                                         <input
                                             type="text"
-                                            placeholder="Search keyword"
+                                            placeholder="Quartier, logement…"
                                             id="lookingFor"
                                             value={searchKeyword}
                                             onChange={(e) =>
@@ -80,17 +80,17 @@ export default function SidebarFilter3({
                                 </form>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Type Property
+                                        Type de logement
                                     </div>
                                     <DropdownSelect
-                                        options={["Any Type", "Rent", "Sale"]}
+                                        options={["Tous les types", "Court séjour", "Longue durée"]}
                                         selected={type}
                                         setSelected={allProps.setType}
                                     />
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Location
+                                        Localisation
                                     </div>
                                     <DropdownSelect
                                         options={cityOptions}
@@ -100,7 +100,7 @@ export default function SidebarFilter3({
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Bedrooms
+                                        Chambres
                                     </div>
                                     <DropdownSelect
                                         options={bedroomOptions}
@@ -110,7 +110,7 @@ export default function SidebarFilter3({
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Your Budget
+                                        Budget maximal
                                     </div>
                                     <DropdownSelect
                                         options={budgetOptions}
@@ -134,7 +134,7 @@ export default function SidebarFilter3({
                                     className="tf-btn btn-px-28 btn-bg-1"
                                     onClick={handleSearch}
                                 >
-                                    <span>Search </span>
+                                    <span>Rechercher </span>
                                     <span className="bg-effect"></span>
                                 </button>
                             </div>

@@ -40,7 +40,7 @@ export default function AdvanceSearch({
                 <div className="tf-grid-layout sm-col-2">
                     <div className="box-select">
                         <div className="text-button text_primary-color mb_8">
-                            Bathrooms
+                            Salles de bain
                         </div>
                         <DropdownSelect
                             options={bathroomOptions}
@@ -50,7 +50,7 @@ export default function AdvanceSearch({
                     </div>
                     <div className="box-select">
                         <div className="text-button text_primary-color mb_8">
-                            Garages
+                            Stationnement
                         </div>
                         <DropdownSelect
                             options={garageOptions}
@@ -62,7 +62,7 @@ export default function AdvanceSearch({
                 <div className="tf-grid-layout sm-col-2">
                     <div className="box-select">
                         <div className="text-button text_primary-color mb_8">
-                            Min size
+                            Surface min.
                         </div>
                         <DropdownSelect
                             options={minSizeOptions}
@@ -72,7 +72,7 @@ export default function AdvanceSearch({
                     </div>
                     <div className="box-select">
                         <div className="text-button text_primary-color mb_8">
-                            Max size
+                            Surface max.
                         </div>
                         <DropdownSelect
                             options={maxSizeOptions}
@@ -84,7 +84,7 @@ export default function AdvanceSearch({
             </div>
             <div className="group-checkbox">
                 <div className="text-title text_primary-color mb_12 fw-6">
-                    Amenities:
+                    Équipements :
                 </div>
                 <div className="group-amenities">
                     {amenitiesList.map((amenity) => (

@@ -50,10 +50,10 @@ export default function PropertyDetails1({ property }: { property: Property }) {
                                 <PropertiesTitle property={property} />
                             </div>
                             <div className="properties-overview tf-spacing-8">
-                                <Overview />
+                                <Overview property={property} />
                             </div>
                             <div className="properties-description">
-                                <Description />
+                                <Description property={property} />
                             </div>
                             <div className="properties-utility tf-spacing-8">
                                 <PropertiesUtility />
@@ -62,7 +62,7 @@ export default function PropertyDetails1({ property }: { property: Property }) {
                                 <Video property={property} />
                             </div>
                             <div className="properties-calculator tf-spacing-8">
-                                <Caculator />
+                                <Caculator price={property.price} period={property.type === "Court séjour" ? "nuit" : "mois"} />
                             </div>
                             <div className="properties-floor">
                                 <Floor />

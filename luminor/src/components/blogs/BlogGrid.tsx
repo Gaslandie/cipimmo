@@ -1,23 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { blogPostsGrid } from "@/data/blog";
 
 export default function BlogGrid() {
     const [displayedItems, setDisplayedItems] = useState(9); 
+    const [search, setSearch] = useState("");
+    useEffect(() => { setSearch((new URLSearchParams(window.location.search).get("search") || "").slice(0, 200)); }, []);
+    const normalize = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
+    const results = blogPostsGrid.filter((item) => normalize(`${item.title} ${item.description} ${item.category}`).includes(normalize(search)));
     const itemsPerLoad = 3; 
 
     const handleLoadMore = () => {
         setDisplayedItems((prev) => prev + itemsPerLoad);
     };
 
-    const currentItems = blogPostsGrid.slice(0, displayedItems);
-    const hasMoreItems = displayedItems < blogPostsGrid.length;
+    const currentItems = results.slice(0, displayedItems);
+    const hasMoreItems = displayedItems < results.length;
 
     return (
         <div className="tf-container tf-spacing-1 blog-grid">
+            {search && <p className="mb_24">{results.length} conseil{results.length > 1 ? "s" : ""} pour « {search} ». <button type="button" onClick={() => setSearch("")}>Voir tous les conseils</button></p>}
             <div className="tf-grid-layout lg-col-3 md-col-2" id="gridLayout">
                 {currentItems.map((item) => (
                     <div
@@ -46,7 +51,7 @@ export default function BlogGrid() {
                         <div className="article-content">
                             <div className="meta-post d-flex align-items-center mb_12">
                                 <div className="item text_secondary-color text-caption-1">
-                                    Post By{" "}
+                                    Par{" "}
                                     <Link
                                         href="#"
                                         className="link text_primary-color"
@@ -76,7 +81,7 @@ export default function BlogGrid() {
                     id="loadMoreGridBtn"
                     onClick={handleLoadMore}
                 >
-                    <span>Load More</span>
+                    <span>Voir plus</span>
                     <span className="bg-effect"></span>
                 </button>
             )}

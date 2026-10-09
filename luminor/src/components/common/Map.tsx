@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import MapFallback from "./MapFallback";
 
 interface Property {
     id: number | string;
@@ -53,13 +54,13 @@ export default function MapComponent({ sorted }: MapComponentProps) {
                     <ul class="info d-flex">
                         <li><i class="icon-Bed"></i> ${
                             property.beds ?? 0
-                        } Bed</li>
+                        } ch.</li>
                         <li><i class="icon-Bathtub"></i> ${
                             property.baths ?? 0
-                        } Bath</li>
+                        } sdb.</li>
                         <li><i class="icon-Ruler"></i> ${
                             property.sqft ?? 0
-                        } sqft</li>
+                        } m²</li>
                     </ul>
                 </div>
             </div>
@@ -129,7 +130,7 @@ export default function MapComponent({ sorted }: MapComponentProps) {
     useEffect(() => {
         const accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
         if (!accessToken) {
-            setError("Missing Mapbox access token.");
+            setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
             return;
         }
 
@@ -141,7 +142,7 @@ export default function MapComponent({ sorted }: MapComponentProps) {
             map.current = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: "mapbox://styles/mapbox/light-v10",
-                center: [-122.4194, 37.7749],
+                center: [-13.4, 9.7],
                 zoom: 13,
                 cooperativeGestures: true,
             });
@@ -210,11 +211,11 @@ export default function MapComponent({ sorted }: MapComponentProps) {
 
             map.current.on("error", (e: mapboxgl.ErrorEvent) => {
                 console.error("Mapbox error:", e);
-                setError("Map load error.");
+                setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
             });
         } catch (err) {
             console.error("Init error:", err);
-            setError("Map init failed.");
+            setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
         }
 
         return () => {
@@ -296,7 +297,7 @@ export default function MapComponent({ sorted }: MapComponentProps) {
     }, [sorted]);
 
     if (error) {
-        return <div className="mapbox-3 text-red-600">{error}</div>;
+        return <MapFallback />;
     }
 
     return <div ref={mapContainer} style={{ width: "100%", height: "100%" }} />;

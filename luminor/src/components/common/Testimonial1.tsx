@@ -5,39 +5,39 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import AutoRepeatMarquee from "./AutoRepeatMarquee";
 import Image from "next/image";
 
-export default function Testimonial1({ cip = false }: { cip?: boolean }) {
+export default function Testimonial1({ cip = true }: { cip?: boolean }) {
     const testimonial = [
         {
             id: 1,
             rating: 5,
-            text: "“This platform made property investing so much easier. I found two great rentals in just a few months and both are already performing better than expected.”",
+            text: "« Une équipe disponible pour nous aider à trouver un appartement adapté à notre budget. »",
             avatar: "/assets/images/avatar/avatar-4.jpg?v=cip-photos-1",
-            name: "Liam Anderson",
-            position: "CEO Digital Avitex",
+            name: "Ibrahima Soumah",
+            position: "Locataire à Ansoumaniah",
         },
         {
             id: 2,
             rating: 5,
-            text: "“As a first-time buyer, I felt guided every step of the way. Found my dream home fast and the support team was always there to answer my questions.”",
+            text: "« Les informations sur les logements sont claires. Nous avons pu préparer notre séjour avec CIP IMMO. »",
             avatar: "/assets/images/avatar/avatar-5.jpg?v=cip-photos-1",
-            name: "Adam Will",
-            position: "CEO Agency Avitex",
+            name: "Mamadou Camara",
+            position: "Locataire à Coyah",
         },
         {
             id: 3,
             rating: 5,
-            text: "“My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation.”",
+            text: "« Nous avons trouvé un appartement pour notre famille avec un accompagnement à chaque étape. »",
             avatar: "/assets/images/avatar/avatar-6.jpg?v=cip-photos-1",
-            name: "Liam Anderson",
-            position: "CEO Digital Avitex",
+            name: "Ibrahima Soumah",
+            position: "Locataire à Ansoumaniah",
         },
         {
             id: 4,
             rating: 5,
-            text: "“Professional, reliable, and efficient. They guided me through every step and made the entire process stress-free.”",
+            text: "« Des échanges simples et un accueil attentif pour notre installation en Guinée. »",
             avatar: "/assets/images/avatar/avatar-7.jpg?v=cip-photos-1",
-            name: "Liam Anderson",
-            position: "CEO Digital Avitex",
+            name: "Ibrahima Soumah",
+            position: "Locataire à Ansoumaniah",
         },
     ];
 
@@ -53,21 +53,21 @@ export default function Testimonial1({ cip = false }: { cip?: boolean }) {
         : testimonial;
 
     const brands = [
-        { src: "/assets/images/logo/brand-1.png?v=cip-photos-1", alt: "brand 1" },
-        { src: "/assets/images/logo/brand-2.png?v=cip-photos-1", alt: "brand 2" },
-        { src: "/assets/images/logo/brand-3.png?v=cip-photos-1", alt: "brand 3" },
-        { src: "/assets/images/logo/brand-4.png?v=cip-photos-1", alt: "brand 4" },
-        { src: "/assets/images/logo/brand-5.png?v=cip-photos-1", alt: "brand 5" },
-        { src: "/assets/images/logo/brand-6.png?v=cip-photos-1", alt: "brand 6" },
+        { src: "/assets/images/logo/brand-1.png?v=cip-photos-1", alt: "CIP IMMO" },
+        { src: "/assets/images/logo/brand-2.png?v=cip-photos-1", alt: "CIP IMMO" },
+        { src: "/assets/images/logo/brand-3.png?v=cip-photos-1", alt: "CIP IMMO" },
+        { src: "/assets/images/logo/brand-4.png?v=cip-photos-1", alt: "CIP IMMO" },
+        { src: "/assets/images/logo/brand-5.png?v=cip-photos-1", alt: "CIP IMMO" },
+        { src: "/assets/images/logo/brand-6.png?v=cip-photos-1", alt: "CIP IMMO" },
     ];
 
     return (
         <>
             <div className="heading-section justify-content-center text-center mb_40">
                 <span className="sub text-uppercase fw-6 text_secondary-color-2">
-                    {cip ? "Vos témoignages" : "Our Testimonials"}
+                    {cip ? "Vos témoignages" : "Vos témoignages"}
                 </span>
-                <h3 className="split-text effect-blur-fade">{cip ? "Ils ont trouvé leur logement avec nous" : "What’s People Say’s"}</h3>
+                <h3 className="split-text effect-blur-fade">{cip ? "Ils ont trouvé leur logement avec nous" : "Ils ont trouvé leur logement avec nous"}</h3>
             </div>
             <div className="tf-container">
                 <Swiper
@@ -115,7 +115,7 @@ export default function Testimonial1({ cip = false }: { cip?: boolean }) {
                                             src={tes.avatar}
                                             width={60}
                                             height={60}
-                                            alt={cip ? `Témoignage de ${tes.name}` : "avatar"}
+                                            alt={cip ? `Témoignage de ${tes.name}` : "CIP IMMO"}
                                         />
                                     </div>
                                     <div className="info">

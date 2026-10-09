@@ -5,8 +5,8 @@ export default function FormComments() {
     return (
         <div className="leave-comment">
             <div className="heading-title mb_20">
-                <h5 className="mb_8">Add A Review</h5>
-                <p>Your email address will not be published</p>
+                <h5 className="mb_8">Partager votre avis</h5>
+                <p>Votre message sera préparé pour notre équipe sur WhatsApp.</p>
             </div>
             <form
                 id="leaveComment"
@@ -20,13 +20,13 @@ export default function FormComments() {
                                 htmlFor="name"
                                 className="text-button text_primary-color fw-7 mb_8"
                             >
-                                Name
+                                Nom
                             </label>
                             <input
                                 id="name"
                                 type="text"
-                                placeholder="Your Name*"
-                                name="name"
+                                placeholder="Votre nom*"
+                                name="name" maxLength={100}
                                 required
                             />
                         </fieldset>
@@ -35,13 +35,13 @@ export default function FormComments() {
                                 htmlFor="email"
                                 className="text-button text_primary-color fw-7 mb_8"
                             >
-                                Email
+                                Adresse e-mail
                             </label>
                             <input
                                 id="email"
                                 type="email"
-                                placeholder="Your Email*"
-                                name="email"
+                                placeholder="Votre adresse e-mail*"
+                                name="email" maxLength={254}
                                 required
                             />
                         </fieldset>
@@ -51,13 +51,13 @@ export default function FormComments() {
                             htmlFor="comment"
                             className="text-button text_primary-color fw-7 mb_8"
                         >
-                            Review
+                            Votre avis
                         </label>
                         <textarea
                             id="comment"
                             rows={4}
-                            placeholder="Write comment"
-                            name="comment"
+                            placeholder="Votre message"
+                            name="comment" maxLength={2000} minLength={10}
                             required
                         ></textarea>
                     </fieldset>
@@ -67,11 +67,11 @@ export default function FormComments() {
                         <input type="checkbox" className="tf-check" id="note" />
                     </fieldset>
                     <p className="text-body-default">
-                        Save your name, email for the next time review
+                        Je souhaite être recontacté au sujet de mon message
                     </p>
                 </div>
                 <button className="tf-btn btn-bg-1 btn-px-28" type="submit">
-                    <span>Submit Review</span>
+                    <span>Préparer mon message</span>
                     <span className="bg-effect"></span>
                 </button>
             </form>

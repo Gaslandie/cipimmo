@@ -57,7 +57,7 @@ export default function BlogStandard() {
                                 <div className="article-content ">
                                     <div className="meta-post d-flex align-items-center mb_16">
                                         <div className="item text_secondary-color text-body-default ">
-                                            Post By{" "}
+                                            Par{" "}
                                             <Link
                                                 href="#"
                                                 className="link text_primary-color"
@@ -84,7 +84,7 @@ export default function BlogStandard() {
                                         href={`/blog-post-1/${post.id}`}
                                         className="btn-readmore hover-underline-link text-button text_primary-color"
                                     >
-                                        Read More
+                                        Lire la suite
                                     </Link>
                                 </div>
                             </div>

@@ -5,23 +5,16 @@ export default function Description2() {
         <div>
             <h5 className="properties-title mb_20">Description</h5>
             <p className="mb_8 text-body-2">
-                Casa Lomas de Machalí offers a perfect blend of comfort,
-                privacy, and nature. Nestled in one of Machalí’s most secure and
-                peaceful residential areas, this beautiful property features
-                modern architecture, open interiors, and large windows that fill
-                the home with natural light and warmth throughout the day.
+                CIP IMMO vous propose des appartements pour un court séjour ou une location longue durée. Explorez les photos et les caractéristiques pour choisir un logement adapté à votre rythme.
             </p>
             <p className="mb_20 text-body-2">
-                Its tranquil surroundings and convenient access to local
-                amenities, including schools, shops, and parks, make it ideal
-                for families or anyone seeking a serene and connected lifestyle
-                just minutes from Rancagua.
+                Notre équipe vous accompagne dans votre recherche à Coléah, Coyah Km54 et Ansoumaniah. Contactez-nous pour préparer votre arrivée et préciser les conditions de location.
             </p>
             <a
                 href="#"
                 className="hover-underline-link text_primary-color text-button"
             >
-                View More
+                En savoir plus
             </a>
         </div>
     );

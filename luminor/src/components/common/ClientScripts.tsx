@@ -66,10 +66,10 @@ const wishList = () => {
 
             if (this.classList.contains("addwishlist")) {
                 icon?.classList.replace("icon-Heart", "icon-trash-alt-solid");
-                if (tooltip) tooltip.textContent = "Remove Wishlist";
+                if (tooltip) tooltip.textContent = "Retirer des favoris";
             } else {
                 icon?.classList.replace("icon-trash-alt-solid", "icon-Heart");
-                if (tooltip) tooltip.textContent = "Add to Wishlist";
+                if (tooltip) tooltip.textContent = "Ajouter aux favoris";
             }
         });
     });

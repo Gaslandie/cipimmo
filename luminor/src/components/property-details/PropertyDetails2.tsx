@@ -48,18 +48,18 @@ export default function PropertyDetails2({ property }: { property: Property }) {
                                 width={1290}
                                 height={680}
                                 src="/assets/images/section/properties-details-4.jpg?v=cip-photos-1"
-                                alt="properties"
+                                alt="Logements"
                                 priority
                             />
                         </div>
                     </div>
                     <div className="row wrap-properties">
                         <div className="col-lg-6">
-                            <Description />
+                            <Description property={property} />
                         </div>
                         <div className="col-lg-5 offset-xl-1">
                             <div className="properties-overview v2">
-                                <Overview2 />
+                                <Overview2 property={property} />
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ export default function PropertyDetails2({ property }: { property: Property }) {
                         <MenuTab property={property} />
                     </div>
                     <div className="properties-calculator tf-spacing-8">
-                        <Caculator2 />
+                        <Caculator2 price={property.price} period={property.type === "Court séjour" ? "nuit" : "mois"} />
                     </div>
                     <div className="properties-nearby tf-spacing-8 pt-0">
                         <Nearby />

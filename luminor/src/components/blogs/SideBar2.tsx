@@ -27,23 +27,23 @@ export default function SideBar2({
         name: string;
     };
     const categories: Category[] = [
-        { id: 1, name: "Market Trends", count: 22 },
-        { id: 2, name: "Property Investment", count: 15 },
-        { id: 3, name: "Home Buying Tips", count: 16 },
-        { id: 4, name: "Rental & Leasing", count: 8 },
-        { id: 5, name: "Commercial Real Estate", count: 19 },
-        { id: 6, name: "Smart Living & Design", count: 21 },
+        { id: 1, name: "Vie en Guinée", count: 22 },
+        { id: 2, name: "Préparer son installation", count: 15 },
+        { id: 3, name: "Choisir son logement", count: 16 },
+        { id: 4, name: "Louer simplement", count: 8 },
+        { id: 5, name: "Séjour professionnel", count: 19 },
+        { id: 6, name: "Bien chez soi", count: 21 },
     ];
     const tags: Tag[] = [
-        { id: 1, name: "Housing" },
-        { id: 2, name: "Mortgage" },
-        { id: 3, name: "Rental" },
-        { id: 4, name: "Urban" },
-        { id: 5, name: "Investment" },
-        { id: 6, name: "Commercial" },
-        { id: 7, name: "Property" },
-        { id: 8, name: "Luxury" },
-        { id: 9, name: "Market" },
+        { id: 1, name: "Logement" },
+        { id: 2, name: "Budget location" },
+        { id: 3, name: "Court séjour" },
+        { id: 4, name: "Quartiers" },
+        { id: 5, name: "Installation" },
+        { id: 6, name: "Séjour professionnel" },
+        { id: 7, name: "Location" },
+        { id: 8, name: "Confort" },
+        { id: 9, name: "Conseils" },
     ];
     return (
         <div className="tf-sidebar">
@@ -54,16 +54,16 @@ export default function SideBar2({
                             src={authorAvatar}
                             width={100}
                             height={100}
-                            alt="avatar"
+                            alt="CIP IMMO"
                         />
                     </div>
                     <div className="content">
                         <h6 className="mb_4">{authorName}</h6>
                         <p className="text-caption-1 mb_12">
-                            {authorFlow} Follower
+                            {authorFlow} Lecteurs
                         </p>
                         <Link href="#" className="tf-btn btn-bg-1 btn-px-12">
-                            <span className="text-button-small">Follow</span>
+                            <span className="text-button-small">Nous contacter</span>
                             <span className="bg-effect"></span>
                         </Link>
                     </div>
@@ -82,7 +82,7 @@ export default function SideBar2({
                 </ul>
             </div>
             <div className="sidebar-item sidebar-categories ">
-                <h5 className="sidebar-title mb_17">Categories</h5>
+                <h5 className="sidebar-title mb_17">Catégories</h5>
                 <ul className="list-categories d-grid gap_8">
                     {categories.map((category) => (
                         <li
@@ -98,7 +98,7 @@ export default function SideBar2({
                 </ul>
             </div>
             <div className="sidebar-item sidebar-recent-post">
-                <h5 className="sidebar-title mb_17">Recent Posts</h5>
+                <h5 className="sidebar-title mb_17">À lire aussi</h5>
                 <ul>
                     {recentPost.map((post) => (
                         <li
@@ -144,13 +144,13 @@ export default function SideBar2({
                 </ul>
             </div>
             <div className="sidebar-item">
-                <h5 className="sidebar-title mb_15">Subscribe Newsletter</h5>
+                <h5 className="sidebar-title mb_15">Recevoir nos offres</h5>
                 <form action={subscribeNewsletter} className="form-newsletter">
                     <fieldset>
                         <input
                             className=""
                             type="text"
-                            placeholder="Email address"
+                            placeholder="Votre adresse e-mail"
                             name="text"
                             tabIndex={2}
                             defaultValue=""
@@ -166,7 +166,7 @@ export default function SideBar2({
                 </form>
             </div>
             <div className="sidebar-item sidebar-tags ">
-                <h5 className="sidebar-title mb_15">Tags</h5>
+                <h5 className="sidebar-title mb_15">Thèmes</h5>
                 <ul className="tags-list">
                     {tags.map((tag) => (
                         <li key={tag.id}>

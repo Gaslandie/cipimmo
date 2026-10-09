@@ -1,26 +1,20 @@
 import React from "react";
 
-export default function Description() {
+export default function Description({ property }: { property: { title: string; city: string; beds?: number; sqft?: number } }) {
     return (
         <div>
             <h5 className="properties-title mb_20">Description</h5>
             <p className="mb_8 text-body-2">
-                Casa Lomas de Machalí offers a perfect blend of comfort,
-                privacy, and nature. Nestled in one of Machalí’s most secure and
-                peaceful residential areas, this beautiful property features
-                modern architecture, open interiors, and large windows that fill
-                the home with natural light.
+                {property.title} : un appartement de {property.sqft} m², avec {property.beds} chambres et un salon. CIP IMMO vous accompagne pour préparer votre location à {property.city}.
             </p>
             <p className="mb_20 text-body-2">
-                Its tranquil surroundings and convenient access to local
-                amenities make it ideal for families or anyone seeking a serene
-                lifestyle just minutes from Rancagua.
+                Consultez les caractéristiques et échangez avec notre équipe pour connaître les disponibilités, les conditions et les services du quartier.
             </p>
             <a
-                href="#"
+                href="/contacts"
                 className="hover-underline-link text_primary-color text-button"
             >
-                View More
+                En savoir plus
             </a>
         </div>
     );

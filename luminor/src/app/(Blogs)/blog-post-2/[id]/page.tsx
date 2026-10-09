@@ -1,5 +1,6 @@
 import Layout from "@/components/layouts/Layout-defaul";
 import React from "react";
+import { notFound } from "next/navigation";
 import { allBlogs } from "@/data/blog";
 import BlogPost2 from "@/components/blogs/BlogPost2";
 
@@ -12,7 +13,8 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
     const { id } = await params;
-    const foundBlog = allBlogs.find((elm) => String(elm.id) === id) || allBlogs[0];
+    const foundBlog = allBlogs.find((elm) => String(elm.id) === id);
+    if (!foundBlog) notFound();
     
     const blogItem = {
       ...foundBlog,

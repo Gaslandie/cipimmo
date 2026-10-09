@@ -88,7 +88,7 @@ const ModalVideo: React.FC<ModalVideoProps> = ({
                                         ? `https://www.youtube.com/embed/${videoId}?autoplay=1`
                                         : undefined
                                 }
-                                title="YouTube video player"
+                                title="Lecteur vidéo"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                                 style={iframeStyle}

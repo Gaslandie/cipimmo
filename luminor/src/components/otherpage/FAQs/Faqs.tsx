@@ -10,7 +10,7 @@ export default function Faqs() {
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="faq-item">
-                                <h4 className="mb_18">Buying Property</h4>
+                                <h4 className="mb_18">Trouver son logement</h4>
                                 <ul
                                     className="accordion-wrap"
                                     id="accordion-faq"
@@ -25,9 +25,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    What is the process of
-                                                    buying a home from start to
-                                                    finish?
+                                                    Comment trouver un logement avec CIP IMMO ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -39,33 +37,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    The home-buying process
-                                                    usually starts with
-                                                    evaluating your finances and
-                                                    obtaining pre-approval for a
-                                                    mortgage. Once you know your
-                                                    budget, you can begin
-                                                    searching for properties
-                                                    that fit your needs and
-                                                    preferences. After finding
-                                                    the right home, you’ll make
-                                                    an offer, and if it’s
-                                                    accepted, you will enter
-                                                    into a purchase agreement.
+                                                    Consultez nos appartements et utilisez les filtres pour préciser votre recherche. Vous pouvez choisir la durée, le quartier, le budget et le nombre de chambres.
                                                 </p>
                                                 <p>
-                                                    Next comes the home
-                                                    inspection, appraisal, and
-                                                    final mortgage approval.
-                                                    Once all contingencies are
-                                                    cleared and the paperwork is
-                                                    completed, you’ll attend the
-                                                    closing meeting to sign
-                                                    documents and transfer
-                                                    ownership. After closing,
-                                                    the keys are yours and the
-                                                    home officially becomes
-                                                    yours.
+                                                    Quand un logement vous plaît, contactez CIP IMMO par téléphone ou sur WhatsApp. Notre équipe vous renseigne sur la disponibilité et vous explique les étapes suivantes.
                                                 </p>
                                             </div>
                                         </div>
@@ -80,8 +55,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    How much should I budget for
-                                                    closing costs?
+                                                    Quel budget prévoir pour ma location ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -93,28 +67,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Closing costs typically
-                                                    range from 2% to 5% of the
-                                                    home&apos;s purchase price.
-                                                    These costs can include loan
-                                                    origination fees, appraisal
-                                                    fees, title insurance,
-                                                    taxes, and other related
-                                                    expenses. It&apos;s
-                                                    important to review the loan
-                                                    estimate provided by your
-                                                    lender to understand the
-                                                    specific costs you&apos;ll
-                                                    be responsible for at
-                                                    closing.
+                                                    Le tarif dépend du logement et de la durée. Les prix sont indiqués en francs guinéens, à la nuit pour un court séjour ou au mois pour une longue durée.
                                                 </p>
                                                 <p>
-                                                    Planning ahead for these
-                                                    expenses ensures you’re
-                                                    financially prepared and
-                                                    helps avoid surprises during
-                                                    the final stages of your
-                                                    home purchase.
+                                                    Précisez vos dates et demandez à notre équipe les charges éventuelles, la caution et les autres conditions avant de confirmer votre location.
                                                 </p>
                                             </div>
                                         </div>
@@ -129,9 +85,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    Do I need to get
-                                                    pre-approved before starting
-                                                    my home search?
+                                                    Faut-il créer un compte pour consulter les logements ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -143,24 +97,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    While it’s not required,
-                                                    getting pre-approved before
-                                                    starting your home search is
-                                                    highly recommended.
-                                                    Pre-approval gives you a
-                                                    clear understanding of your
-                                                    budget, strengthens your
-                                                    offer in the eyes of
-                                                    sellers, and can speed up
-                                                    the closing process.
+                                                    Vous pouvez parcourir les annonces, les photos et les caractéristiques librement, sans créer de compte.
                                                 </p>
                                                 <p>
-                                                    It also helps you identify
-                                                    and resolve any potential
-                                                    credit or financial issues
-                                                    early, making your
-                                                    home-buying journey smoother
-                                                    and more efficient.
+                                                    Pour avancer sur votre recherche, échangez directement avec notre équipe en indiquant le logement et les dates souhaités.
                                                 </p>
                                             </div>
                                         </div>
@@ -175,9 +115,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    What’s the difference
-                                                    between a fixed-rate and an
-                                                    adjustable-rate mortgage?
+                                                    Quelle différence entre court séjour et longue durée ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -189,28 +127,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    A fixed-rate mortgage has an
-                                                    interest rate that remains
-                                                    the same for the entire term
-                                                    of the loan, providing
-                                                    predictable monthly
-                                                    payments. An adjustable-rate
-                                                    mortgage (ARM), on the other
-                                                    hand, has an interest rate
-                                                    that may change periodically
-                                                    based on market conditions,
-                                                    which can result in lower
-                                                    initial payments but
-                                                    potential increases in the
-                                                    future.
+                                                    Le court séjour convient à un passage de quelques jours ou à un déplacement. La longue durée permet de préparer une installation et se présente avec un loyer mensuel.
                                                 </p>
                                                 <p>
-                                                    The best choice depends on
-                                                    your financial situation,
-                                                    how long you plan to stay in
-                                                    the home, and your risk
-                                                    tolerance for potential rate
-                                                    changes.
+                                                    Les possibilités varient selon le logement. CIP IMMO vous aide à choisir la formule adaptée à votre situation.
                                                 </p>
                                             </div>
                                         </div>
@@ -225,8 +145,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    How long does it typically
-                                                    take to close on a property?
+                                                    Comment vérifier la disponibilité d’un appartement ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -238,25 +157,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    The closing process for a
-                                                    property typically takes 30
-                                                    to 45 days from the time
-                                                    your offer is accepted. This
-                                                    period allows for
-                                                    inspections, appraisals,
-                                                    finalizing your mortgage,
-                                                    and completing all necessary
-                                                    paperwork.
+                                                    Contactez notre équipe avec le nom du logement, vos dates et le nombre de personnes. Nous vous répondrons sur les possibilités pour cette période.
                                                 </p>
                                                 <p>
-                                                    Delays can occur due to
-                                                    issues with financing, title
-                                                    searches, or repairs, so
-                                                    staying in close
-                                                    communication with your
-                                                    lender and real estate agent
-                                                    can help ensure a smooth
-                                                    closing.
+                                                    La consultation d’une annonce ne confirme pas une location. Les modalités se précisent directement avec CIP IMMO.
                                                 </p>
                                             </div>
                                         </div>
@@ -265,7 +169,7 @@ export default function Faqs() {
                             </div>
                             <div className="faq-item">
                                 <h4 className="mb_18">
-                                    Investing in Real Estate
+                                    Préparer son séjour
                                 </h4>
                                 <ul
                                     className="accordion-wrap"
@@ -281,9 +185,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    What are the best types of
-                                                    properties for first-time
-                                                    investors?
+                                                    Quels logements conviennent à une famille ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -295,23 +197,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Many first-time investors
-                                                    start with single-family
-                                                    homes, duplexes, or small
-                                                    multi-family properties.
-                                                    These types of properties
-                                                    are generally easier to
-                                                    manage and finance, and they
-                                                    tend to attract stable
-                                                    tenants.
+                                                    Comparez le nombre de chambres, la surface et les pièces de vie. À Ansoumaniah, nos appartements de trois chambres disposent d’un salon et d’une cuisine.
                                                 </p>
                                                 <p>
-                                                    Consider your investment
-                                                    goals, local market
-                                                    conditions, and your ability
-                                                    to manage the property when
-                                                    choosing the best type for
-                                                    you.
+                                                    Indiquez le nombre de personnes et vos besoins à notre équipe pour être orienté vers un logement adapté.
                                                 </p>
                                             </div>
                                         </div>
@@ -326,8 +215,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    How do I calculate potential
-                                                    ROI on a rental property?
+                                                    Comment comparer les prix des appartements ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -339,24 +227,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    To calculate ROI (Return on
-                                                    Investment) for a rental
-                                                    property, subtract your
-                                                    annual operating expenses
-                                                    and mortgage payments from
-                                                    your annual rental income,
-                                                    then divide that number by
-                                                    your total investment (down
-                                                    payment, closing costs, and
-                                                    any renovations).
+                                                    Vérifiez que vous comparez la même durée : un prix à la nuit et un prix au mois correspondent à deux formules différentes.
                                                 </p>
                                                 <p>
-                                                    ROI = (Annual Net Income /
-                                                    Total Investment) x 100%.
-                                                    This helps you compare
-                                                    different investment
-                                                    opportunities and make
-                                                    informed decisions.
+                                                    Tenez aussi compte de la surface, du quartier, du mobilier et de ce qui est compris dans la location.
                                                 </p>
                                             </div>
                                         </div>
@@ -371,9 +245,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    Should I invest in
-                                                    residential or commercial
-                                                    real estate?
+                                                    Proposez-vous des logements meublés et non meublés ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -385,22 +257,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Residential real estate is
-                                                    often easier for beginners
-                                                    due to lower entry costs and
-                                                    simpler management.
-                                                    Commercial real estate can
-                                                    offer higher returns but
-                                                    usually requires more
-                                                    capital, experience, and
-                                                    risk tolerance.
+                                                    CIP IMMO propose des solutions pour différents besoins. Les caractéristiques disponibles figurent sur les fiches des logements.
                                                 </p>
                                                 <p>
-                                                    Evaluate your investment
-                                                    goals, resources, and risk
-                                                    appetite before deciding
-                                                    which type of real estate is
-                                                    right for you.
+                                                    Les appartements d’Ansoumaniah sont non meublés. Pour les autres logements, notre équipe vous renseigne sur le mobilier disponible.
                                                 </p>
                                             </div>
                                         </div>
@@ -415,9 +275,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    What are the tax benefits of
-                                                    owning investment
-                                                    properties?
+                                                    Que demander avant de confirmer une location ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -429,23 +287,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Investment property owners
-                                                    may benefit from tax
-                                                    deductions on mortgage
-                                                    interest, property taxes,
-                                                    operating expenses,
-                                                    depreciation, and repairs.
-                                                    These deductions can help
-                                                    reduce your taxable income
-                                                    and increase your overall
-                                                    return.
+                                                    Demandez le tarif pour vos dates, les charges éventuelles, la caution et les modalités d’arrivée et de départ.
                                                 </p>
                                                 <p>
-                                                    Consult a tax professional
-                                                    to understand which
-                                                    deductions apply to your
-                                                    situation and to maximize
-                                                    your tax benefits.
+                                                    Vous pouvez aussi préciser vos besoins concernant l’équipement, l’accès au logement et les services du quartier.
                                                 </p>
                                             </div>
                                         </div>
@@ -460,8 +305,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    Is it better to flip houses
-                                                    or hold them long-term?
+                                                    Puis-je organiser un séjour professionnel ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -473,21 +317,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Flipping houses can provide
-                                                    quick profits but comes with
-                                                    higher risk, more work, and
-                                                    potential tax implications.
-                                                    Holding properties long-term
-                                                    can generate steady rental
-                                                    income and benefit from
-                                                    property appreciation and
-                                                    tax advantages.
+                                                    Oui, vous pouvez nous présenter vos dates, votre budget et le secteur souhaité pour votre déplacement.
                                                 </p>
                                                 <p>
-                                                    The best strategy depends on
-                                                    your financial goals, risk
-                                                    tolerance, and the local
-                                                    real estate market.
+                                                    Notre équipe vous orientera selon les logements et les disponibilités de la période.
                                                 </p>
                                             </div>
                                         </div>
@@ -496,7 +329,7 @@ export default function Faqs() {
                             </div>
                             <div className="faq-item">
                                 <h4 className="mb_15">
-                                    Renting &amp; Property Management
+                                    Pendant votre location
                                 </h4>
                                 <ul
                                     className="accordion-wrap"
@@ -512,8 +345,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    What should I include in a
-                                                    rental agreement?
+                                                    Comment se passe l’arrivée dans le logement ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -525,21 +357,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    A rental agreement should
-                                                    clearly outline the terms of
-                                                    the lease, including rent
-                                                    amount, due date, security
-                                                    deposit, lease duration,
-                                                    maintenance
-                                                    responsibilities, pet
-                                                    policies, and rules for
-                                                    termination or renewal.
+                                                    Avant votre arrivée, convenez avec CIP IMMO de l’horaire, du lieu de rendez-vous et des modalités de remise des clés.
                                                 </p>
                                                 <p>
-                                                    Make sure both landlord and
-                                                    tenant understand and agree
-                                                    to all terms to avoid future
-                                                    disputes.
+                                                    Gardez les coordonnées de notre équipe pour pouvoir la joindre en cas de besoin.
                                                 </p>
                                             </div>
                                         </div>
@@ -554,8 +375,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    How do I screen potential
-                                                    tenants effectively?
+                                                    Quelles informations transmettre pour ma recherche ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -567,23 +387,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Effective tenant screening
-                                                    includes checking credit
-                                                    history, verifying
-                                                    employment and income,
-                                                    contacting previous
-                                                    landlords, and conducting
-                                                    background checks. This
-                                                    helps ensure you select
-                                                    reliable tenants who are
-                                                    likely to pay rent on time
-                                                    and care for your property.
+                                                    Indiquez vos dates ou votre durée de location, le nombre de personnes, le quartier souhaité et votre budget.
                                                 </p>
                                                 <p>
-                                                    Always follow fair housing
-                                                    laws and obtain written
-                                                    consent before running
-                                                    background or credit checks.
+                                                    Évitez d’envoyer des documents personnels dans un premier message. Notre équipe vous précisera les éléments utiles à la suite de votre démarche.
                                                 </p>
                                             </div>
                                         </div>
@@ -598,8 +405,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    What are my responsibilities
-                                                    as a landlord?
+                                                    Qui contacter si j’ai une question pendant mon séjour ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -611,22 +417,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Landlords are responsible
-                                                    for maintaining a safe and
-                                                    habitable property, making
-                                                    necessary repairs, complying
-                                                    with local housing laws, and
-                                                    respecting tenants’ rights
-                                                    to privacy and quiet
-                                                    enjoyment.
+                                                    Vous pouvez joindre CIP IMMO par téléphone ou sur WhatsApp. Décrivez votre demande et précisez le logement concerné.
                                                 </p>
                                                 <p>
-                                                    Clear communication and
-                                                    prompt attention to
-                                                    maintenance requests help
-                                                    foster a positive
-                                                    landlord-tenant
-                                                    relationship.
+                                                    Notre équipe vous orientera vers la suite adaptée à votre situation.
                                                 </p>
                                             </div>
                                         </div>
@@ -641,8 +435,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    How often should I inspect a
-                                                    rental property?
+                                                    Puis-je prolonger ma location ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -654,22 +447,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    It’s common to inspect
-                                                    rental properties at least
-                                                    once or twice a year, in
-                                                    addition to move-in and
-                                                    move-out inspections.
-                                                    Regular inspections help
-                                                    identify maintenance issues
-                                                    early and ensure the
-                                                    property is being cared for
-                                                    properly.
+                                                    Contactez-nous avant la fin de la période prévue. Une prolongation dépend des disponibilités du logement et des conditions convenues.
                                                 </p>
                                                 <p>
-                                                    Always provide proper notice
-                                                    to tenants before entering
-                                                    the property, as required by
-                                                    law.
+                                                    Notre équipe vérifiera les possibilités avec vous avant toute confirmation.
                                                 </p>
                                             </div>
                                         </div>
@@ -684,8 +465,7 @@ export default function Faqs() {
                                         >
                                             <div className="heading">
                                                 <div className="title text-capitalize text-title text_primary-color fw-6">
-                                                    What steps should I take if
-                                                    a tenant fails to pay rent?
+                                                    Comment préparer mon départ ?
                                                 </div>
                                                 <span className="icon icon-CaretDown"></span>
                                             </div>
@@ -697,23 +477,10 @@ export default function Faqs() {
                                         >
                                             <div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    If a tenant fails to pay
-                                                    rent, communicate promptly
-                                                    to understand the situation.
-                                                    Provide written notice as
-                                                    required by your lease and
-                                                    local laws. If payment is
-                                                    not received, you may need
-                                                    to begin the formal eviction
-                                                    process.
+                                                    Échangez avec CIP IMMO pour convenir de l’horaire, de la remise des clés et des démarches prévues dans vos conditions de location.
                                                 </p>
                                                 <p>
-                                                    Always follow legal
-                                                    procedures and consult with
-                                                    a local attorney or property
-                                                    management professional to
-                                                    ensure compliance with
-                                                    landlord-tenant laws.
+                                                    Signalez à notre équipe les questions ou difficultés rencontrées pour organiser votre départ dans de bonnes conditions.
                                                 </p>
                                             </div>
                                         </div>
@@ -729,11 +496,10 @@ export default function Faqs() {
                                 >
                                     <div className="heading">
                                         <h5 className="mb_8">
-                                            Ask Your Question
+                                            Posez votre question
                                         </h5>
                                         <p>
-                                            Ask Anything, We&apos;re Here to
-                                            Help
+                                            Notre équipe est à votre écoute
                                         </p>
                                     </div>
                                     <fieldset>
@@ -741,14 +507,14 @@ export default function Faqs() {
                                             htmlFor="name"
                                             className="text-button text_primary-color fw-7 mb_8"
                                         >
-                                            First Name
+                                            Prénom
                                         </label>
                                         <input
                                             className=""
                                             id="name"
                                             type="text"
-                                            placeholder="First Name"
-                                            name="text"
+                                            placeholder="Prénom"
+                                            name="name"
                                             tabIndex={2}
                                             aria-required="true"
                                             required
@@ -756,17 +522,17 @@ export default function Faqs() {
                                     </fieldset>
                                     <div>
                                         <div className="text-button text_primary-color mb_8">
-                                            How Can We Help You?
+                                            Votre demande concerne
                                         </div>
                                         {/* Removed the static nice-select dropdown, only use DropdownSelect2 */}
                                         <DropdownSelect2
-                                            defaultOption="Investing in Real Estate"
+                                            defaultOption="Préparer son séjour"
                                             options={[
-                                                "Investing in Real Estate",
-                                                "Buying a Home",
-                                                "Selling a Property",
-                                                "Financing Options",
-                                                "Other",
+                                                "Préparer son séjour",
+                                                "Choisir un logement",
+                                                "Location longue durée",
+                                                "Budget et conditions",
+                                                "Autre demande",
                                             ]}
                                         />
                                     </div>
@@ -779,9 +545,10 @@ export default function Faqs() {
                                         </label>
                                         <textarea
                                             id="comment"
+                                            name="message" minLength={10} maxLength={2000}
                                             className=""
                                             rows={4}
-                                            placeholder="Your Message"
+                                            placeholder="Votre message"
                                             tabIndex={2}
                                             aria-required="true"
                                             required
@@ -791,7 +558,7 @@ export default function Faqs() {
                                         className="tf-btn btn-bg-1 btn-px-28 w-full"
                                         type="submit"
                                     >
-                                        <span>Send Request</span>
+                                        <span>Préparer ma demande</span>
                                         <span className="bg-effect"></span>
                                     </button>
                                 </form>

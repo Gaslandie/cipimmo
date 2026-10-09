@@ -12,10 +12,10 @@ export default function LatestNews() {
             <div className="tf-container">
                 <div className="heading-section justify-content-center text-center mb_48">
                     <span className="sub text-uppercase fw-6 text_secondary-color-2 split-text effect-rotate">
-                        Latest New
+                        Nos conseils
                     </span>
                     <h3 className="split-text effect-blur-fade">
-                        Helpful Luminor Guides
+                        Bien louer avec CIP IMMO
                     </h3>
                 </div>
                 <Swiper
@@ -67,7 +67,7 @@ export default function LatestNews() {
                                 <div className="article-content">
                                     <div className="meta-post d-flex align-items-center mb_12">
                                         <div className="item text_secondary-color text-caption-1">
-                                            Post By{" "}
+                                            Par{" "}
                                             <Link
                                                 href="#"
                                                 className="link text_primary-color"

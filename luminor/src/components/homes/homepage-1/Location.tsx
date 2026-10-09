@@ -7,10 +7,10 @@ export default function Location() {
             <div className="tf-container">
                 <div className="heading-section justify-content-center text-center mb_48">
                     <span className="sub text-uppercase fw-6 text_secondary-color-2 split-text effect-rotate">
-                        Explore Cities
+                        Nos destinations
                     </span>
                     <h3 className="split-text effect-blur-fade">
-                        Our Location For You
+                        Trouvez votre quartier
                     </h3>
                 </div>
                 <div className="wrap-location">
@@ -20,44 +20,44 @@ export default function Location() {
                                 className="location-item hover-image scrolling-effect effectFade"
                                 data-delay="0.2"
                             >
-                                <a href="#" className="img-style mb_18">
+                                <a href="/listing-left-sidebar" className="img-style mb_18">
                                     <Image
                                         width={300}
                                         height={300}
                                         src="/assets/images/section/location-1.jpg?v=cip-photos-1"
-                                        alt="location"
+                                        alt="Quartier"
                                     />
                                 </a>
                                 <div className="content">
                                     <a
-                                        href="#"
+                                        href="/listing-left-sidebar"
                                         className="mb_4 link h5 text_primary-color"
                                     >
-                                        Los Angeles, CA
+                                        Coléah, Conakry
                                     </a>
-                                    <p>221 Property</p>
+                                    <p>Court séjour</p>
                                 </div>
                             </div>
                             <div
                                 className="location-item hover-image scrolling-effect effectFade"
                                 data-delay="0.3"
                             >
-                                <a href="#" className="img-style mb_18">
+                                <a href="/listing-left-sidebar" className="img-style mb_18">
                                     <Image
                                         width={300}
                                         height={300}
                                         src="/assets/images/section/location-2.jpg?v=cip-photos-1"
-                                        alt="location"
+                                        alt="Quartier"
                                     />
                                 </a>
                                 <div className="content">
                                     <a
-                                        href="#"
+                                        href="/listing-left-sidebar"
                                         className="mb_4 link h5 text_primary-color"
                                     >
-                                        New York City, NY
+                                        Coyah Km54
                                     </a>
-                                    <p>128 Property</p>
+                                    <p>Longue durée</p>
                                 </div>
                             </div>
                         </div>
@@ -65,22 +65,22 @@ export default function Location() {
                             className="location-item hover-image scrolling-effect effectFade"
                             data-delay="0.4"
                         >
-                            <a href="#" className="img-style mb_18">
+                            <a href="/listing-left-sidebar" className="img-style mb_18">
                                 <Image
                                     width={630}
                                     height={300}
                                     src="/assets/images/section/location-3.jpg?v=cip-photos-1"
-                                    alt="location"
+                                    alt="Quartier"
                                 />
                             </a>
                             <div className="content">
                                 <a
-                                    href="#"
+                                    href="/listing-left-sidebar"
                                     className="mb_4 link h5 text_primary-color"
                                 >
-                                    Miami, FL
+                                    Ansoumaniah
                                 </a>
-                                <p>234 Property</p>
+                                <p>Appartements non meublés</p>
                             </div>
                         </div>
                     </div>
@@ -89,22 +89,22 @@ export default function Location() {
                             className="location-item hover-image scrolling-effect effectFade"
                             data-delay="0.4"
                         >
-                            <a href="#" className="img-style mb_18">
+                            <a href="/listing-left-sidebar" className="img-style mb_18">
                                 <Image
                                     width={630}
                                     height={300}
                                     src="/assets/images/section/location-4.jpg?v=cip-photos-1"
-                                    alt="location"
+                                    alt="Quartier"
                                 />
                             </a>
                             <div className="content">
                                 <a
-                                    href="#"
+                                    href="/listing-left-sidebar"
                                     className="mb_4 link h5 text_primary-color"
                                 >
-                                    Chicago, IL
+                                    Conakry
                                 </a>
-                                <p>231 Property</p>
+                                <p>Séjour et installation</p>
                             </div>
                         </div>
                         <div className="d-flex gap_30">
@@ -112,44 +112,44 @@ export default function Location() {
                                 className="location-item hover-image scrolling-effect effectFade"
                                 data-delay="0.3"
                             >
-                                <a href="#" className="img-style mb_18">
+                                <a href="/listing-left-sidebar" className="img-style mb_18">
                                     <Image
                                         width={300}
                                         height={300}
                                         src="/assets/images/section/location-5.jpg?v=cip-photos-1"
-                                        alt="location"
+                                        alt="Quartier"
                                     />
                                 </a>
                                 <div className="content">
                                     <a
-                                        href="#"
+                                        href="/listing-left-sidebar"
                                         className="mb_4 link h5 text_primary-color"
                                     >
-                                        San Francisco, CA
+                                        Coyah
                                     </a>
-                                    <p>221 Property</p>
+                                    <p>Court séjour</p>
                                 </div>
                             </div>
                             <div
                                 className="location-item hover-image scrolling-effect effectFade"
                                 data-delay="0.2"
                             >
-                                <a href="#" className="img-style mb_18">
+                                <a href="/listing-left-sidebar" className="img-style mb_18">
                                     <Image
                                         width={300}
                                         height={300}
                                         src="/assets/images/section/location-6.jpg?v=cip-photos-1"
-                                        alt="location"
+                                        alt="Quartier"
                                     />
                                 </a>
                                 <div className="content">
                                     <a
-                                        href="#"
+                                        href="/listing-left-sidebar"
                                         className="mb_4 link h5 text_primary-color"
                                     >
-                                        Boston, MA
+                                        La Guinée
                                     </a>
-                                    <p>128 Property</p>
+                                    <p>Longue durée</p>
                                 </div>
                             </div>
                         </div>

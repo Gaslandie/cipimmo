@@ -19,14 +19,14 @@ export default function PropertiesTitle2({ property }: { property: Property }) {
                     <div className="wrap-tag d-flex gap_8 mb_12">
                         <div
                             className={`tag ${
-                                property.type === "Sale"
+                                property.type === "Longue durée"
                                     ? "sale"
-                                    : property.type === "Rent"
+                                    : property.type === "Court séjour"
                                     ? "rent"
                                     : property.type
                             }  text-button-small fw-6 text_primary-color`}
                         >
-                            For {property.type}
+                             {property.type}
                         </div>
                         <div className="tag categoreis text-button-small fw-6 text_primary-color">
                             {property.categories}
@@ -35,33 +35,33 @@ export default function PropertiesTitle2({ property }: { property: Property }) {
                     <h4>{property.title}</h4>
                 </div>
                 <h3 className="price">
-                    ${property.price}
+                    {property.price.toLocaleString("fr-FR")} GNF
                     <span className="text_secondary-color text-body-1">
-                        {property.type === "Sale" ? "/Sqft" : "/month"}
+                        {property.type === "Longue durée" ? "/ mois" : "/ nuit"}
                     </span>
                 </h3>
             </div>
             <div className="wrap-info d-flex justify-content-between align-items-end">
                 <div>
-                    <div className="text-body-default mb_12">Features:</div>
+                    <div className="text-body-default mb_12">Équipements :</div>
                     <ul className="info d-flex">
                         <li className="d-flex align-items-center gap_8 h6 text_primary-color fw-6">
                             <i className="icon-Bed"></i>
                             {property.beds}
-                            Beds
+                            ch.
                         </li>
                         <li className="d-flex align-items-center gap_8 h6 text_primary-color fw-6">
                             <i className="icon-Bathstub"></i>
-                            {property.baths} Baths
+                            {property.baths} sdb.
                         </li>
                         <li className="d-flex align-items-center gap_8 h6 text_primary-color fw-6">
                             <i className="icon-Ruler"></i>
-                            {property.sqft} sqft
+                            {property.sqft} m²
                         </li>
                     </ul>
                 </div>
                 <div className="location">
-                    <div className="text-body-default mb_12">Location:</div>
+                    <div className="text-body-default mb_12">Localisation :</div>
                     <h6 className="d-flex align-items-center gap_8">
                         <i className="icon-MapPin"></i>{property.address}
                     </h6>

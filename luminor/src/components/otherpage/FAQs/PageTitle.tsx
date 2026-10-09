@@ -16,14 +16,14 @@ export default function PageTitle() {
             <div className="content text-center">
                 <div className="tf-container">
                     <h2 className="title text_white mb_12">
-                        Frequently Asked Questions
+                        Questions fréquentes
                     </h2>
                     <ul className="breadcrumb justify-content-center text-button fw-4">
                         <li>
-                            <Link href="/">Home</Link>
+                            <Link href="/">Accueil</Link>
                         </li>
-                        <li>Pages</li>
-                        <li>Frequently Asked Questions</li>
+                        <li>CIP IMMO</li>
+                        <li>Questions fréquentes</li>
                     </ul>
                 </div>
             </div>

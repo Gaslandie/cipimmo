@@ -13,7 +13,7 @@ import Link from "next/link";
 // --- Helper functions for mapping dropdown values to filter values ---
 
 function parseSizeValue(val: string) {
-    if (val === "Min (SqFt)" || val === "Max (SqFt)") return val;
+    if (val === "Surface min. (m²)" || val === "Surface max. (m²)") return val;
     return val.replace(/[^0-9]/g, "");
 }
 
@@ -64,14 +64,14 @@ export default function Properties1() {
         let filteredList: Property[] = allProperties;
 
         // City filter
-        if (city && city !== "All Cities") {
+        if (city && city !== "Tous les quartiers") {
             filteredList = filteredList.filter(
                 (p) => p.city && p.city === city
             );
         }
 
         // Bedrooms filter - FIXED
-        if (bedrooms && bedrooms !== "Any Bedrooms") {
+        if (bedrooms && bedrooms !== "Toutes les chambres") {
             if (bedrooms === "4+") {
                 filteredList = filteredList.filter((p) => Number(p.beds) >= 4);
             } else {
@@ -83,7 +83,7 @@ export default function Properties1() {
         }
 
         // Bathrooms filter - FIXED
-        if (bathrooms && bathrooms !== "Any Bathrooms") {
+        if (bathrooms && bathrooms !== "Toutes les salles de bain") {
             if (bathrooms === "4+") {
                 filteredList = filteredList.filter((p) => Number(p.baths) >= 4);
             } else {
@@ -95,7 +95,7 @@ export default function Properties1() {
         }
 
         // Garages filter - FIXED
-        if (garages && garages !== "Any Garages") {
+        if (garages && garages !== "Tout stationnement") {
             if (garages === "3+") {
                 filteredList = filteredList.filter(
                     (p) => Number(p.garages) >= 3
@@ -109,27 +109,27 @@ export default function Properties1() {
         }
 
         // Budget filter
-        if (budget && budget !== "Max. Price") {
+        if (budget && budget !== "Budget maximal") {
             let maxBudget = 0;
-            if (budget.startsWith("Under $")) {
+            if (budget.startsWith("Moins de ")) {
                 maxBudget = parseInt(
-                    budget.replace("Under $", "").replace(/,/g, ""),
+                    budget.replace("Moins de ", "").replace(/[^0-9]/g, ""),
                     10
                 );
                 filteredList = filteredList.filter(
                     (p) => Number(p.price) <= maxBudget
                 );
-            } else if (budget.startsWith("$")) {
+            } else if (budget.startsWith("GNF ")) {
                 maxBudget = parseInt(
-                    budget.replace("$", "").replace(/,/g, ""),
+                    budget.replace("GNF ", "").replace(/[^0-9]/g, ""),
                     10
                 );
                 filteredList = filteredList.filter(
                     (p) => Number(p.price) <= maxBudget
                 );
-            } else if (budget.startsWith("Above $")) {
+            } else if (budget.startsWith("Plus de ")) {
                 maxBudget = parseInt(
-                    budget.replace("Above $", "").replace(/,/g, ""),
+                    budget.replace("Plus de ", "").replace(/[^0-9]/g, ""),
                     10
                 );
                 filteredList = filteredList.filter(
@@ -139,7 +139,7 @@ export default function Properties1() {
         }
 
         // Min size filter
-        if (minSize && minSize !== "Min (SqFt)") {
+        if (minSize && minSize !== "Surface min. (m²)") {
             const min = parseInt(parseSizeValue(minSize), 10);
             if (!isNaN(min)) {
                 filteredList = filteredList.filter(
@@ -149,7 +149,7 @@ export default function Properties1() {
         }
 
         // Max size filter
-        if (maxSize && maxSize !== "Max (SqFt)") {
+        if (maxSize && maxSize !== "Surface max. (m²)") {
             const max = parseInt(parseSizeValue(maxSize), 10);
             if (!isNaN(max)) {
                 filteredList = filteredList.filter(
@@ -194,9 +194,9 @@ export default function Properties1() {
     // Sorting logic
     useEffect(() => {
         const sortedList = [...filtered];
-        if (sortingOption === "Price Ascending") {
+        if (sortingOption === "Prix croissant") {
             sortedList.sort((a, b) => a.price - b.price);
-        } else if (sortingOption === "Price Descending") {
+        } else if (sortingOption === "Prix décroissant") {
             sortedList.sort((a, b) => b.price - a.price);
         }
         dispatch({ type: "SET_SORTED", payload: sortedList });
@@ -283,12 +283,12 @@ export default function Properties1() {
                             <ul className="breadcrumb style-1 text-button fw-4 mb_4">
                                 <li>
                                     <a className="" href="index.html">
-                                        Home
+                                        Accueil
                                     </a>
                                 </li>
-                                <li>With Top Map</li>
+                                <li>Nos logements sur la carte</li>
                             </ul>
-                            <h4>With Top Map</h4>
+                            <h4>Nos logements sur la carte</h4>
                         </div>
                         <div className="right d-flex gap_12">
                             <ul
@@ -329,9 +329,9 @@ export default function Properties1() {
                                 }
                                 addtionalParentClass="list-sort"
                                 options={[
-                                    "Sort by (Default)",
-                                    "Price Ascending",
-                                    "Price Descending",
+                                    "Tri par défaut",
+                                    "Prix croissant",
+                                    "Prix décroissant",
                                 ]}
                             />
                         </div>
@@ -360,21 +360,21 @@ export default function Properties1() {
                                                         src={property.imgSrc}
                                                         width={410}
                                                         height={308}
-                                                        alt="home"
+                                                        alt="Logement"
                                                     />
                                                     <div className="wrap-tag d-flex gap_8 mb_12">
                                                         <div
                                                             className={`tag ${
                                                                 property.type ===
-                                                                "Sale"
+                                                                "Longue durée"
                                                                     ? "sale"
                                                                     : property.type ===
-                                                                      "Rent"
+                                                                      "Court séjour"
                                                                     ? "rent"
                                                                     : property.type
                                                             }  text-button-small fw-6 text_primary-color`}
                                                         >
-                                                            For {property.type}
+                                                             {property.type}
                                                         </div>
                                                         <div className="tag categoreis text-button-small fw-6 text_primary-color">
                                                             {
@@ -390,7 +390,7 @@ export default function Properties1() {
                                                         <div className="hover-tooltip tooltip-left box-icon">
                                                             <span className="icon icon-Heart"></span>
                                                             <span className="tooltip">
-                                                                Add to Wishlist
+                                                                Ajouter aux favoris
                                                             </span>
                                                         </div>
                                                     </div>
@@ -400,13 +400,12 @@ export default function Properties1() {
                                                         className="price mb_12"
                                                         suppressHydrationWarning
                                                     >
-                                                        $
-                                                        {property.price.toLocaleString()}
+                                                        {property.price.toLocaleString("fr-FR")} GNF
                                                         <span className="text_secondary-color text-body-default">
                                                             {property.type ===
-                                                            "Sale"
-                                                                ? "/Sqft"
-                                                                : "/month"}
+                                                            "Longue durée"
+                                                                ? "/ mois"
+                                                                : "/ nuit"}
                                                         </span>
                                                     </h4>
                                                     <Link
@@ -419,12 +418,12 @@ export default function Properties1() {
                                                     <ul className="info d-flex">
                                                         <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                             <i className="icon-Bed"></i>
-                                                            {property.beds} Bed
+                                                            {property.beds} ch.
                                                         </li>
                                                         <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                             <i className="icon-Bathtub"></i>
                                                             {property.baths}{" "}
-                                                            Bath
+                                                            sdb.
                                                         </li>
                                                         <li
                                                             className="d-flex align-items-center gap_8 text-title text_primary-color fw-6 "
@@ -432,9 +431,9 @@ export default function Properties1() {
                                                         >
                                                             <i className="icon-Ruler"></i>
                                                             {property.sqft
-                                                                ? property.sqft.toLocaleString()
+                                                                ? property.sqft.toLocaleString("fr-FR")
                                                                 : "0"}{" "}
-                                                            Sqft
+                                                            m²
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -472,7 +471,7 @@ export default function Properties1() {
                                                             height={260}
                                                             alt={
                                                                 property.alt ||
-                                                                "home"
+                                                                "Logement"
                                                             }
                                                         />
                                                     </Link>
@@ -489,7 +488,7 @@ export default function Properties1() {
                                                                 height={260}
                                                                 alt={
                                                                     property.alt ||
-                                                                    "home"
+                                                                    "Logement"
                                                                 }
                                                             />
                                                         </Link>
@@ -498,28 +497,27 @@ export default function Properties1() {
                                                 <div className="content">
                                                     <div className="d-flex align-items-center gap_6 top mb_16 flex-wrap justify-content-between">
                                                         <h4 className="price " suppressHydrationWarning>
-                                                            $
-                                                            {property.price.toLocaleString()}
+                                                            {property.price.toLocaleString("fr-FR")} GNF
                                                             <span className="text_secondary-color text-body-default">
                                                                 {property.type ===
-                                                                "Sale"
-                                                                    ? "/Sqft"
-                                                                    : "/month"}
+                                                                "Longue durée"
+                                                                    ? "/ mois"
+                                                                    : "/ nuit"}
                                                             </span>
                                                         </h4>
                                                         <div className="wrap-tag d-flex gap_8">
                                                             <div
                                                                 className={`tag ${
                                                                     property.type ===
-                                                                    "Sale"
+                                                                    "Longue durée"
                                                                         ? "sale"
                                                                         : "rent"
                                                                 } text-button-small fw-6 text_primary-color`}
                                                             >
                                                                 {property.type ===
-                                                                "Sale"
-                                                                    ? "For Sale"
-                                                                    : "For Rent"}
+                                                                "Longue durée"
+                                                                    ? "Longue durée"
+                                                                    : "Court séjour"}
                                                             </div>
                                                             <div className="tag categoreis text-button-small fw-6 text_primary-color">
                                                                 {
@@ -538,19 +536,19 @@ export default function Properties1() {
                                                     <ul className="info d-flex">
                                                         <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                             <i className="icon-Bed"></i>
-                                                            {property.beds} Bed
+                                                            {property.beds} ch.
                                                         </li>
                                                         <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                             <i className="icon-Bathtub"></i>
                                                             {property.baths}{" "}
-                                                            Bath
+                                                            sdb.
                                                         </li>
                                                         <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6"suppressHydrationWarning>
                                                             <i className="icon-Ruler"></i>
                                                             {property.sqft
-                                                                ? property.sqft.toLocaleString()
+                                                                ? property.sqft.toLocaleString("fr-FR")
                                                                 : "0"}{" "}
-                                                            Sqft
+                                                            m²
                                                         </li>
                                                     </ul>
                                                 </div>

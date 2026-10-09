@@ -112,7 +112,7 @@ export default function PropertyDetails3({ property }: { property: Property }) {
                         <ul className="tab-slide overflow-x-auto" id="navbar">
                             <li className="text-button nav-tab-item text_primary-color active">
                                 <a href="#overview" className="nav_link">
-                                    Overview
+                                    Le logement en bref
                                 </a>
                             </li>
                             <li className="text-button nav-tab-item text_primary-color">
@@ -120,33 +120,33 @@ export default function PropertyDetails3({ property }: { property: Property }) {
                                     href="#property-utility"
                                     className="nav_link"
                                 >
-                                    Property Utility
+                                    Les équipements
                                 </a>
                             </li>
                             <li className="text-button nav-tab-item text_primary-color">
                                 <a href="#video" className="nav_link">
-                                    Video
+                                    Découvrir le logement
                                 </a>
                             </li>
 
                             <li className="text-button nav-tab-item text_primary-color">
                                 <a href="#loan-calculator" className="nav_link">
-                                    Loan Calculator
+                                    Préparer votre budget location
                                 </a>
                             </li>
                             <li className="text-button nav-tab-item text_primary-color">
                                 <a href="#floor-plans" className="nav_link">
-                                    Floor Plans
+                                    Les espaces du logement
                                 </a>
                             </li>
                             <li className="text-button nav-tab-item text_primary-color">
                                 <a href="#location" className="nav_link">
-                                    Location
+                                    Localisation
                                 </a>
                             </li>
                             <li className="text-button nav-tab-item text_primary-color">
                                 <a href="#nearby" className="nav_link">
-                                    What’s Nearby?
+                                    Dans le quartier
                                 </a>
                             </li>
                             <li className="text-button nav-tab-item text_primary-color">
@@ -154,12 +154,12 @@ export default function PropertyDetails3({ property }: { property: Property }) {
                                     href="#customer-reviews"
                                     className="nav_link"
                                 >
-                                    Customer Reviews
+                                    Vos avis
                                 </a>
                             </li>
                             <li className="text-button nav-tab-item text_primary-color">
                                 <a href="#reviews" className="nav_link">
-                                    Reviews
+                                    Avis
                                 </a>
                             </li>
                         </ul>
@@ -170,11 +170,11 @@ export default function PropertyDetails3({ property }: { property: Property }) {
                         <div className="col-lg-8">
                             <div id="overview" className="section tf-spacing-9">
                                 <div className="properties-overview v3 properties-2  tf-spacing-8">
-                                    <Overview />
+                                    <Overview property={property} />
                                 </div>
                                 <div className="tf-spacing-9">
                                     <div className="properties-description properties-2">
-                                        <Description />
+                                        <Description property={property} />
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +198,7 @@ export default function PropertyDetails3({ property }: { property: Property }) {
                                 className="properties-calculator v2 section tf-spacing-9"
                             >
                                 <div className="properties-calculator">
-                                    <Caculator />
+                                    <Caculator price={property.price} period={property.type === "Court séjour" ? "nuit" : "mois"} />
                                 </div>
                             </div>
 

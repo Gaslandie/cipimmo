@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import MapFallback from "./MapFallback";
 
 export default function Map3() {
     const mapContainer = useRef<HTMLDivElement>(null);
@@ -11,7 +12,7 @@ export default function Map3() {
     useEffect(() => {
         const accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
         if (!accessToken) {
-            setError("Missing Mapbox access token.");
+            setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
             return;
         }
 
@@ -20,7 +21,7 @@ export default function Map3() {
         let map: mapboxgl.Map | undefined;
         try {
             mapboxgl.accessToken = accessToken;
-            const officeCoordinates: [number, number] = [-87.4548, 41.6389];
+            const officeCoordinates: [number, number] = [-13.4, 9.7];
 
             map = new mapboxgl.Map({
                 container: mapContainer.current,
@@ -38,8 +39,8 @@ export default function Map3() {
                 markerElement.innerHTML = `<i class="icon-HouseLine"></i>`;
                 const popupContent = `
                     <div class="office-popup">
-                        <div class="text-title text_primary-color fw-6 mb_4">My Office</div>
-                        <p>101 E 129th St, East Chicago, 2nd Floor, NY</p>
+                        <div class="text-title text_primary-color fw-6 mb_4">CIP IMMO · Secteur de Coyah</div>
+                        <p>Coyah, Guinée</p>
                     </div>
                 `;
 
@@ -65,11 +66,11 @@ export default function Map3() {
 
             map.on("error", (e) => {
                 console.error("Mapbox error:", e);
-                setError("Map load error.");
+                setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
             });
         } catch (err) {
             console.error("Map init error:", err);
-            setError("Map init failed.");
+            setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
         }
 
         return () => {
@@ -79,6 +80,6 @@ export default function Map3() {
         };
     }, []);
 
-    if (error) return <div className="text-red-600">{error}</div>;
+    if (error) return <MapFallback />;
     return <div ref={mapContainer} className="map-container" />;
 }

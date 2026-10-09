@@ -11,7 +11,7 @@ interface DropdownSelectProps {
     addtionalParentClass?: string;
 }
 
-const optionsDefault = ["Newest", "Oldest", "3 days"];
+const optionsDefault = ["Les plus récents", "Les plus anciens", "3 jours"];
 
 export default function DropdownSelect({
     onChange = () => {},

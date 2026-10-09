@@ -99,7 +99,7 @@ export default function Gallery2() {
 
     return (
         <>
-            <PhotoSwipeGallery>
+            <PhotoSwipeGallery options={{ closeTitle: "Fermer", zoomTitle: "Agrandir ou réduire", arrowPrevTitle: "Photo précédente", arrowNextTitle: "Photo suivante", errorMsg: "Cette photo ne peut pas être affichée.", indexIndicatorSep: " sur " }}>
                 <div className="wrap-thumbs">
                     {isMobile ? (
                         <div>
@@ -169,7 +169,7 @@ const GalleryItem = ({
     <Item original={image.src} thumbnail={image.src} width={620} height={465}>
         {({ ref, open }) => (
             <div>
-                <a onClick={open} data-fancybox="gallery" className="img-style">
+                <a onClick={open} data-fancybox="Galerie du logement" className="img-style">
                     <Image
                         alt={image.alt}
                         src={image.src}
@@ -188,19 +188,19 @@ const GalleryItem = ({
                         >
                             <span className="d-flex align-items-center gap_8">
                                 <i className="icon-PlayCircle"></i>
-                                Play Video
+                                Découvrir le logement
                             </span>
                             <span className="bg-effect"></span>
                         </a>
                     </div>
                     <a
                         onClick={open}
-                        data-fancybox="gallery"
+                        data-fancybox="Galerie du logement"
                         className="tf-btn btn-bg-1"
                     >
                         <span className="d-flex align-items-center gap_8">
                             <i className="icon-Image"></i>
-                            View All Photo
+                            Voir toutes les photos
                         </span>
                         <span className="bg-effect"></span>
                     </a>

@@ -12,24 +12,24 @@ export type FooterSection = {
 export const footerSections: FooterSection[] = [
     {
         className: "company",
-        heading: "Our Company",
+        heading: "Nos locations",
         links: [
-            { href: "/listing-topmap-grid", label: "Property For Sale" },
-            { href: "/listing-topmap-grid", label: "Property For Rent" },
-            { href: "/listing-topmap-grid", label: "Property For Buy" },
-            { href: "/listing-topmap-grid", label: "All Properties" },
-            { href: "#", label: "Our Agents" },
+            { href: "/listing-left-sidebar?duration=longue", label: "Longue durée" },
+            { href: "/listing-left-sidebar?duration=courte", label: "Court séjour" },
+            { href: "/listing-left-sidebar?furnished=non-meuble", label: "Appartements non meublés" },
+            { href: "/listing-left-sidebar", label: "Tous les logements" },
+            { href: "/comment-louer", label: "Comment louer" },
         ],
     },
     {
         className: "quick-link",
-        heading: "Quick Links",
+        heading: "Liens utiles",
         links: [
-            { href: "/about-us", label: "About Us" },
-            { href: "/contacts", label: "Contact Us" },
-            { href: "#", label: "Our Team" },
-            { href: "/blog-standard", label: "Latest News" },
-            { href: "/our-pricing", label: "Our Pricing" },
+            { href: "/about-us", label: "À propos" },
+            { href: "/contacts", label: "Nous contacter" },
+            { href: "/FAQs", label: "Questions fréquentes" },
+            { href: "/blog-standard", label: "Conseils et actualités" },
+            { href: "/our-pricing", label: "Nos formules" },
         ],
     },
 ];

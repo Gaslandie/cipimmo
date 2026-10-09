@@ -1,111 +1,32 @@
-import React from "react";
-import DropdownSelect2 from "../common/DropdownSelect2";
-import { calculateLoan } from "@/actions/calculatorAction";
+"use client";
+import { useState } from "react";
 
-export default function Caculator() {
-    return (
-        <div>
-            <h5 className="properties-title mb_20">Loan Calculator</h5>
-            <div className="wrap-form">
-                <form className="form-calculator" action={calculateLoan}>
-                    <div className=" tf-grid-layout xl-col-4 md-col-2">
-                        <fieldset className="">
-                            <label
-                                htmlFor="total"
-                                className="text-body-default text_primary-color mb_8"
-                            >
-                                Total Amount:
-                            </label>
-                            <input
-                                className=""
-                                id="total"
-                                type="text"
-                                name="text"
-                                tabIndex={2}
-                                defaultValue="$480.300|"
-                                aria-required="true"
-                                required
-                            />
-                        </fieldset>
-                        <fieldset className="">
-                            <label
-                                htmlFor="interest"
-                                className="text-body-default text_primary-color mb_8"
-                            >
-                                Interest Rate
-                            </label>
-                            <input
-                                className=""
-                                id="interest"
-                                type="text"
-                                name="text"
-                                tabIndex={2}
-                                defaultValue="1.2%"
-                                aria-required="true"
-                                required
-                            />
-                        </fieldset>
-                        <div>
-                            <div className="text-body-default text_primary-color mb_8">
-                                Loan Term (months)
-                            </div>
-                            <DropdownSelect2
-                                defaultOption="60 months"
-                                options={[
-                                    "60 months",
-                                    "40 months",
-                                    "30 months",
-                                ]}
-                            />
-                        </div>
-                        <fieldset className="">
-                            <label
-                                htmlFor="payment"
-                                className="text-body-default text_primary-color mb_8"
-                            >
-                                Down Payment
-                            </label>
-                            <input
-                                className=""
-                                id="payment"
-                                type="text"
-                                name="text"
-                                tabIndex={2}
-                                defaultValue="$400"
-                                aria-required="true"
-                                required
-                            />
-                        </fieldset>
-                    </div>
-                    <button
-                        className="tf-btn btn-bg-1 btn-px-28 w-full"
-                        type="submit"
-                    >
-                        <span>Calculate</span>
-                        <span className="bg-effect"></span>
-                    </button>
-                </form>
-                <ul className="info tf-grid-layout sm-col-3 gap_8">
-                    <li>
-                        <p className="mb_4">Monthly Payment:</p>
-                        <div className="text-button text_primary-color fw-7">
-                            $788.56/month
-                        </div>
-                    </li>
-                    <li>
-                        <p className="mb_4">Total Interest Payment:</p>
-                        <div className="text-button text_primary-color fw-7">
-                            $1413.60
-                        </div>
-                    </li>
-                    <li>
-                        <p className="mb_4">Est. Total Loan:</p>
-                        <div className="text-button text_primary-color fw-7">
-                            $47713.60
-                        </div>
-                    </li>
-                </ul>
-            </div>
+export default function Caculator({ price = 2800000, period = "mois", compact = false }: { price?: number; period?: string; compact?: boolean }) {
+    const [result, setResult] = useState({ monthly: price, deposit: price, total: price * 2 });
+    const format = (value: number) => `${value.toLocaleString("fr-FR")} GNF`;
+    return <div>
+        <h5 className="properties-title mb_20">Préparer votre budget location</h5>
+        <div className="wrap-form">
+            <form className={`form-calculator${compact ? " style-1" : ""}`} onSubmit={event => {
+                event.preventDefault();
+                const values = new FormData(event.currentTarget);
+                const [rent, charges, duration, deposit] = ["rent", "charges", "duration", "deposit"].map(key => Number(values.get(key)));
+                if (![rent, charges, duration, deposit].every(Number.isFinite) || rent < 0 || charges < 0 || deposit < 0 || duration < 1 || duration > 365 || rent > 1e9 || charges > 1e9 || deposit > 1e9) return;
+                setResult({ monthly: rent + charges, deposit, total: (rent + charges) * duration + deposit });
+            }}>
+                <div className="tf-grid-layout xl-col-4 md-col-2">
+                    <fieldset><label htmlFor="rental-amount" className="text-body-default text_primary-color mb_8">Prix par {period} (GNF)</label><input id="rental-amount" name="rent" type="number" min="0" max="1000000000" step="1" defaultValue={price} required /></fieldset>
+                    <fieldset><label htmlFor="rental-charges" className="text-body-default text_primary-color mb_8">Charges par {period} (GNF)</label><input id="rental-charges" name="charges" type="number" min="0" max="1000000000" step="1" defaultValue={0} required /></fieldset>
+                    <fieldset><label htmlFor="rental-duration" className="text-body-default text_primary-color mb_8">Durée ({period === "nuit" ? "nuits" : "mois"})</label><input id="rental-duration" name="duration" type="number" min="1" max="365" step="1" defaultValue={1} required /></fieldset>
+                    <fieldset><label htmlFor="rental-deposit" className="text-body-default text_primary-color mb_8">Caution (GNF)</label><input id="rental-deposit" name="deposit" type="number" min="0" max="1000000000" step="1" defaultValue={price} required /></fieldset>
+                </div>
+                <button className="tf-btn btn-bg-1 btn-px-28 w-full" type="submit"><span>Calculer mon budget</span><span className="bg-effect" /></button>
+            </form>
+            <ul className="info tf-grid-layout sm-col-3 gap_8" aria-live="polite">
+                <li><p className="mb_4">Budget par {period} :</p><div className="text-button text_primary-color fw-7">{format(result.monthly)}</div></li>
+                <li><p className="mb_4">Caution :</p><div className="text-button text_primary-color fw-7">{format(result.deposit)}</div></li>
+                <li><p className="mb_4">Budget total :</p><div className="text-button text_primary-color fw-7">{format(result.total)}</div></li>
+            </ul>
         </div>
-    );
+    </div>;
 }

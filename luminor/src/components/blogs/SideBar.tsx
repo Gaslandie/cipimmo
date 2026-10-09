@@ -18,32 +18,32 @@ export default function SideBar() {
     const categories: Category[] = [
         {
             id: 1,
-            name: "Market Trends",
+            name: "Vie en Guinée",
             count: 22,
         },
         {
             id: 2,
-            name: "Property Investment",
+            name: "Préparer son installation",
             count: 15,
         },
         {
             id: 3,
-            name: "Home Buying Tips",
+            name: "Choisir son logement",
             count: 16,
         },
         {
             id: 4,
-            name: "Rental & Leasing",
+            name: "Louer simplement",
             count: 8,
         },
         {
             id: 5,
-            name: "Commercial Real Estate",
+            name: "Séjour professionnel",
             count: 19,
         },
         {
             id: 6,
-            name: "Smart Living & Design",
+            name: "Bien chez soi",
             count: 21,
         },
     ];
@@ -51,52 +51,52 @@ export default function SideBar() {
     const tags: Tag[] = [
         {
             id: 1,
-            name: "Housing",
+            name: "Logement",
         },
         {
             id: 2,
-            name: "Mortgage",
+            name: "Budget location",
         },
         {
             id: 3,
-            name: "Rental",
+            name: "Court séjour",
         },
         {
             id: 4,
-            name: "Urban",
+            name: "Quartiers",
         },
         {
             id: 5,
-            name: "Investment",
+            name: "Installation",
         },
         {
             id: 6,
-            name: "Commercial",
+            name: "Séjour professionnel",
         },
         {
             id: 7,
-            name: "Property",
+            name: "Location",
         },
         {
             id: 8,
-            name: "Luxury",
+            name: "Confort",
         },
         {
             id: 9,
-            name: "Market",
+            name: "Conseils",
         },
     ];
 
     return (
         <div className="tf-sidebar">
             <div className="sidebar-item sidebar-search ">
-                <h5 className="sidebar-title mb_14">Search</h5>
+                <h5 className="sidebar-title mb_14">Rechercher</h5>
                 <form  className="form-search">
                     <fieldset>
                         <input
                             className=""
                             type="text"
-                            placeholder="Search..."
+                            placeholder="Rechercher…"
                             name="text"
                             tabIndex={2}
                             defaultValue=""
@@ -112,7 +112,7 @@ export default function SideBar() {
                 </form>
             </div>
             <div className="sidebar-item sidebar-categories ">
-                <h5 className="sidebar-title mb_17">Categories</h5>
+                <h5 className="sidebar-title mb_17">Catégories</h5>
                 <ul className="list-categories d-grid gap_8">
                     {categories.map((category) => (
                         <li
@@ -128,7 +128,7 @@ export default function SideBar() {
                 </ul>
             </div>
             <div className="sidebar-item sidebar-recent-post">
-                <h5 className="sidebar-title mb_17">Recent Posts</h5>
+                <h5 className="sidebar-title mb_17">À lire aussi</h5>
                 <ul>
                     {recentPost.map((post) => (
                         <li
@@ -174,13 +174,13 @@ export default function SideBar() {
                 </ul>
             </div>
             <div className="sidebar-item">
-                <h5 className="sidebar-title mb_15">Subscribe Newsletter</h5>
+                <h5 className="sidebar-title mb_15">Recevoir nos offres</h5>
                 <form action={subscribeNewsletter} className="form-newsletter">
                     <fieldset>
                         <input
                             className=""
                             type="text"
-                            placeholder="Email address"
+                            placeholder="Votre adresse e-mail"
                             name="text"
                             tabIndex={2}
                             defaultValue=""
@@ -196,7 +196,7 @@ export default function SideBar() {
                 </form>
             </div>
             <div className="sidebar-item sidebar-tags ">
-                <h5 className="sidebar-title mb_15">Tags</h5>
+                <h5 className="sidebar-title mb_15">Thèmes</h5>
                 <ul className="tags-list">
                     {tags.map((tag) => (
                         <li key={tag.id}>

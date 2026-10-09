@@ -2,53 +2,53 @@ import React from "react";
 
 const pricingData = [
     {
-        name: "Basic Plan",
-        subtitle: "Ideal for first-time sellers.",
-        price: "$55",
+        name: "Court séjour",
+        subtitle: "Pour un passage de quelques jours.",
+        price: "450 000 GNF / nuit",
         buttonClass: "tf-btn btn-border w-full",
-        description: "Perfect for individuals exploring the market.",
+        description: "Choisissez un appartement pour votre séjour à Conakry.",
         features: [
-            "5 property listings/month",
-            "Email support",
-            "Basic analytics dashboard",
-            "Profile customization",
+            "Un tarif à la nuit",
+            "Contact direct avec CIP IMMO",
+            "Photos et détails du logement",
+            "Dates à convenir avec notre équipe",
         ],
         featureGap: "gap_6",
         center: false,
         tag: null,
     },
     {
-        name: "Standard Plan",
-        subtitle: "Balanced service for serious sellers.",
-        price: "$95",
+        name: "Longue durée",
+        subtitle: "Pour vous installer en Guinée.",
+        price: "3 500 000 GNF / mois",
         buttonClass: "tf-btn btn-bg-1 w-full",
-        description: "Ideal for active buyers or small investors.",
+        description: "Un logement adapté à votre quotidien et à votre budget.",
         features: [
-            "15 property listings/month",
-            "Priority email support",
-            "Advanced market insights",
-            "Save & compare properties",
+            "Un loyer mensuel",
+            "Accompagnement de proximité",
+            "Quartier selon vos besoins",
+            "Surface et chambres à comparer",
         ],
         featureGap: "gap_8",
         center: true,
         tag: {
             icon: "icon-FacebookLogo",
-            text: "Most popular",
+            text: "Pour votre installation",
             className:
                 "tag d-flex gap_4 text_primary-color text-button-small align-items-center",
         },
     },
     {
-        name: "Enterprise Plan",
-        subtitle: "Maximum visibility and full support.",
-        price: "$129",
+        name: "Installation en famille",
+        subtitle: "De la place pour toute la famille.",
+        price: "2 800 000 GNF / mois",
         buttonClass: "tf-btn btn-border w-full",
-        description: "Tailored for agencies and large-scale investors.",
+        description: "Découvrez nos appartements de trois chambres à Ansoumaniah.",
         features: [
-            "Unlimited listings with premium",
-            "Dedicated account manager",
-            "API access & integrations",
-            "White-label branding options",
+            "3 chambres, salon et cuisine",
+            "Une équipe à votre écoute",
+            "Appartements de 92 m²",
+            "Logements non meublés",
         ],
         featureGap: "gap_6",
         center: false,
@@ -61,11 +61,11 @@ export default function OurPricing() {
         <div className="tf-container tf-spacing-1">
             <div className="heading-section justify-content-center text-center mb_48">
                 <span className="sub text-label text-uppercase fw-6 text_secondary-color-2">
-                    Pricing
+                    Nos formules
                 </span>
                 <h3>
-                    Guaranteed Press Coverage <br />
-                    Or Your Money Back
+                    Une location adaptée <br />
+                    à votre rythme
                 </h3>
             </div>
             <div className="tf-grid-layout lg-col-3">
@@ -87,8 +87,8 @@ export default function OurPricing() {
                             <p>{plan.subtitle}</p>
                             <h3>{plan.price}</h3>
                         </div>
-                        <a href="#" className={plan.buttonClass}>
-                            <span>Choose The Package</span>
+                        <a href="/listing-left-sidebar" className={plan.buttonClass}>
+                            <span>Découvrir cette formule</span>
                             <span className="bg-effect"></span>
                         </a>
                         <div className="content">

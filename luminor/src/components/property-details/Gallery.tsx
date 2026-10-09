@@ -8,7 +8,7 @@ export default function GallerySection() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            <PhotoSwipeGallery>
+            <PhotoSwipeGallery options={{ closeTitle: "Fermer", zoomTitle: "Agrandir ou réduire", arrowPrevTitle: "Photo précédente", arrowNextTitle: "Photo suivante", errorMsg: "Cette photo ne peut pas être affichée.", indexIndicatorSep: " sur " }}>
                 <div className="tf-grid-layout md-col-2 gap_20">
                     <Item
                         original="/assets/images/section/properties-gallery-1.jpg?v=cip-photos-1"
@@ -18,13 +18,13 @@ export default function GallerySection() {
                     >
                         {({ ref, open }) => (
                             <div className="img-style position-relative">
-                                <a onClick={open} data-fancybox="gallery">
+                                <a onClick={open} data-fancybox="Galerie du logement">
                                     <Image
                                         src="/assets/images/section/properties-gallery-1.jpg?v=cip-photos-1"
                                         width={635}
                                         ref={ref}
                                         height={635}
-                                        alt="gallery"
+                                        alt="Galerie du logement"
                                     />
                                 </a>
                                 <div className="wrap-btn d-flex gap_10">
@@ -36,19 +36,19 @@ export default function GallerySection() {
                                         >
                                             <span className="d-flex align-items-center gap_8">
                                                 <i className="icon-PlayCircle"></i>
-                                                Play Video
+                                                Découvrir le logement
                                             </span>
                                             <span className="bg-effect"></span>
                                         </a>
                                     </div>
                                     <a
                                         onClick={open}
-                                        data-fancybox="gallery"
+                                        data-fancybox="Galerie du logement"
                                         className="tf-btn btn-bg-1"
                                     >
                                         <span className="d-flex align-items-center gap_8">
                                             <i className="icon-Image"></i>
-                                            View All Photo
+                                            Voir toutes les photos
                                         </span>
                                         <span className="bg-effect"></span>
                                     </a>
@@ -69,14 +69,14 @@ export default function GallerySection() {
                                     <div className="img-style position-relative">
                                         <a
                                             onClick={open}
-                                            data-fancybox="gallery"
+                                            data-fancybox="Galerie du logement"
                                         >
                                             <Image
                                                 src="/assets/images/section/properties-gallery-2.jpg?v=cip-photos-1"
                                                 width={308}
                                                 ref={ref}
                                                 height={308}
-                                                alt="gallery"
+                                                alt="Galerie du logement"
                                             />
                                         </a>
                                     </div>
@@ -93,14 +93,14 @@ export default function GallerySection() {
                                     <div className="img-style position-relative">
                                         <a
                                             onClick={open}
-                                            data-fancybox="gallery"
+                                            data-fancybox="Galerie du logement"
                                         >
                                             <Image
                                                 src="/assets/images/section/properties-gallery-3.jpg?v=cip-photos-1"
                                                 width={308}
                                                 ref={ref}
                                                 height={308}
-                                                alt="gallery"
+                                                alt="Galerie du logement"
                                             />
                                         </a>
                                     </div>
@@ -118,14 +118,14 @@ export default function GallerySection() {
                                     <div className="img-style position-relative">
                                         <a
                                             onClick={open}
-                                            data-fancybox="gallery"
+                                            data-fancybox="Galerie du logement"
                                         >
                                             <Image
                                                 src="/assets/images/section/properties-gallery-4.jpg?v=cip-photos-1"
                                                 width={308}
                                                 ref={ref}
                                                 height={308}
-                                                alt="gallery"
+                                                alt="Galerie du logement"
                                             />
                                         </a>
                                     </div>
@@ -141,14 +141,14 @@ export default function GallerySection() {
                                     <div className="img-style position-relative">
                                         <a
                                             onClick={open}
-                                            data-fancybox="gallery"
+                                            data-fancybox="Galerie du logement"
                                         >
                                             <Image
                                                 src="/assets/images/section/properties-gallery-5.jpg?v=cip-photos-1"
                                                 width={308}
                                                 ref={ref}
                                                 height={308}
-                                                alt="gallery"
+                                                alt="Galerie du logement"
                                             />
                                         </a>
                                     </div>

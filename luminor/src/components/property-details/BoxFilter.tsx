@@ -89,7 +89,7 @@ export default function BoxFilter() {
                             className="text-title tab-link fw-6 active"
                             data-bs-toggle="tab"
                         >
-                            For Rent
+                            Court séjour
                         </a>
                     </li>
                     <li className="nav-tab-item" role="presentation">
@@ -98,7 +98,7 @@ export default function BoxFilter() {
                             className="text-title tab-link fw-6"
                             data-bs-toggle="tab"
                         >
-                            For Sale
+                            Longue durée
                         </a>
                     </li>
                 </ul>
@@ -113,31 +113,31 @@ export default function BoxFilter() {
                                         htmlFor="lookingFor"
                                         className="text-button text_primary-color mb_8"
                                     >
-                                        Looking For
+                                        Votre recherche
                                     </label>
                                     <fieldset>
                                         <input
                                             type="text"
-                                            placeholder="Search keyword"
+                                            placeholder="Quartier, logement…"
                                             id="lookingFor"
                                         />
                                     </fieldset>
                                 </form>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Location
+                                        Localisation
                                     </div>
                                     <DropdownSelect2 options={cityOptions} />
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Bedrooms
+                                        Chambres
                                     </div>
                                     <DropdownSelect2 options={bedroomOptions} />
                                 </div>
                                 <div className="box-select">
                                     <div className="text-button text_primary-color mb_8">
-                                        Bathrooms
+                                        Salles de bain
                                     </div>
                                     <DropdownSelect2
                                         options={bathroomOptions}
@@ -145,14 +145,14 @@ export default function BoxFilter() {
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Your Budget
+                                        Budget maximal
                                     </div>
                                     <DropdownSelect2 options={budgetOptions} />
                                 </div>
                                 <div className="tf-grid-layout sm-col-2 gap_20">
                                     <div className="box-select">
                                         <div className="text-button text_primary-color mb_8">
-                                            Min Size
+                                            Surface min.
                                         </div>
                                         <DropdownSelect2
                                             options={minSizeOptions}
@@ -160,7 +160,7 @@ export default function BoxFilter() {
                                     </div>
                                     <div className="box-select">
                                         <div className="text-button text_primary-color mb_8">
-                                            Max Size
+                                            Surface max.
                                         </div>
                                         <DropdownSelect2
                                             options={maxSizeOptions}
@@ -169,7 +169,7 @@ export default function BoxFilter() {
                                 </div>
                                 <div className="box-select">
                                     <div className="text-button text_primary-color mb_8">
-                                        Garages
+                                        Stationnement
                                     </div>
                                     <DropdownSelect2 options={garageOptions} />
                                 </div>
@@ -178,14 +178,14 @@ export default function BoxFilter() {
                                     onClick={handleShowAdvanced}
                                 >
                                     <i className="icon-Faders"></i>
-                                    Show Advanced
+                                    Plus de critères
                                 </div>
                                 <div className="form-style">
                                     <button
                                         type="submit"
                                         className="tf-btn w-full"
                                     >
-                                        <span>Search</span>
+                                        <span>Rechercher</span>
                                         <span className="bg-effect"></span>
                                     </button>
                                 </div>

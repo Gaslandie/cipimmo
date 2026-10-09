@@ -8,7 +8,7 @@ const minSizeOptions = ["Sans minimum", "20 m²", "50 m²", "100 m²", "150 m²"
 const maxSizeOptions = ["Sans maximum", "50 m²", "100 m²", "150 m²", "200 m²", "300 m²"];
 const amenitiesList = [
     "Climatisation", "Accès adapté", "Télévision", "Ascenseur", "Interphone",
-    "Sécurité", "Clôture", "Garage", "Parking", "Piscine", "Jardin",
+    "Sécurité", "Clôture", "Garage", "Stationnement", "Piscine", "Jardin",
     "Animaux acceptés", "Wi-Fi",
 ];
 

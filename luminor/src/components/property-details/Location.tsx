@@ -23,17 +23,16 @@ type Property = {
 export default function Location({ property }: { property: Property }) {
     return (
         <>
-            <h5 className="properties-title mb_20">Location</h5>
+            <h5 className="properties-title mb_20">Localisation</h5>
             <div className="heading d-flex align-items-center justify-content-between flex-wrap gap_12 mb_16">
                 <div className=" d-flex align-items-center gap_4 text-button fw-7 text_primary-color flex-wrap">
-                    <i className="icon-MapPin"></i>4600 Sunset Blvd, Los
-                    Angeles, CA 90027
+                    <i className="icon-MapPin"></i>{property.address}
                 </div>
                 <a
-                    href="#"
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(property.city + ", Guinée")}`}
                     className="hover-underline-link text-button fw-7 text_primary-color"
                 >
-                    Get Directions
+                    Nous trouver
                 </a>
             </div>
             <div className="wrap-map">

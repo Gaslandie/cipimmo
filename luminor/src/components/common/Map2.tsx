@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import MapFallback from "./MapFallback";
 
 export interface Property {
     id: number | string;
@@ -34,9 +35,9 @@ export default function MapComponent({ property }: { property: Property }) {
                 <p class="text-caption-1 mb_4">${p.address}</p>
                 <h6 class="mb_12 line-clamp-1">${p.title}</h6>
                 <ul class="info d-flex">
-                    <li><i class="icon-Bed"></i> ${p.beds ?? 0} Bed</li>
-                    <li><i class="icon-Bathtub"></i> ${p.baths ?? 0} Bath</li>
-                    <li><i class="icon-Ruler"></i> ${p.sqft ?? 0} sqft</li>
+                    <li><i class="icon-Bed"></i> ${p.beds ?? 0} ch.</li>
+                    <li><i class="icon-Bathtub"></i> ${p.baths ?? 0} sdb.</li>
+                    <li><i class="icon-Ruler"></i> ${p.sqft ?? 0} m²</li>
                 </ul>
             </div>
         </div>
@@ -69,7 +70,7 @@ export default function MapComponent({ property }: { property: Property }) {
     useEffect(() => {
         const accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
         if (!accessToken) {
-            setError("Missing Mapbox access token.");
+            setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
             return;
         }
 
@@ -80,7 +81,7 @@ export default function MapComponent({ property }: { property: Property }) {
             map.current = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: "mapbox://styles/mapbox/light-v10",
-                center: [-122.4194, 37.7749],
+                center: [-13.4, 9.7],
                 zoom: 13,
                 cooperativeGestures: true,
             });
@@ -137,11 +138,11 @@ export default function MapComponent({ property }: { property: Property }) {
 
             map.current.on("error", (e) => {
                 console.error("Mapbox error:", e);
-                setError("Map load error.");
+                setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
             });
         } catch (err) {
             console.error("Map init error:", err);
-            setError("Map init failed.");
+            setError("Découvrez nos logements à Coléah, Coyah Km54 et Ansoumaniah.");
         }
 
         return () => {
@@ -150,6 +151,6 @@ export default function MapComponent({ property }: { property: Property }) {
         };
     }, [property]);
 
-    if (error) return <div className="text-red-600">{error}</div>;
+    if (error) return <MapFallback city={property.address.replace(/, Guinée$/, "")} />;
     return <div ref={mapContainer} className="map-container" />;
 }

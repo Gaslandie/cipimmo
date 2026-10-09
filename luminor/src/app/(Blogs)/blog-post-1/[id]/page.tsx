@@ -1,5 +1,6 @@
 import Layout from "@/components/layouts/Layout-defaul";
 import React from "react";
+import { notFound } from "next/navigation";
 import { allBlogs } from "@/data/blog";
 import BlogPost1 from "@/components/blogs/BlogPost1";
 
@@ -12,9 +13,11 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const { id } = await params;
-  const foundBlog = allBlogs.find((elm) => String(elm.id) === id) || allBlogs[0];
+  const foundBlog = allBlogs.find((elm) => String(elm.id) === id);
   
-  // Đảm bảo authorDesc luôn có giá trị
+  if (!foundBlog) notFound();
+
+  // Valeurs de présentation de l’auteur
   const blogItem = {
     ...foundBlog,
     authorDesc: foundBlog.authorDesc || ""

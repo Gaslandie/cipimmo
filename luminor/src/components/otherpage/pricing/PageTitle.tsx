@@ -15,13 +15,13 @@ export default function PageTitle() {
             </div>
             <div className="content text-center">
                 <div className="tf-container">
-                    <h2 className="title text_white mb_12">Pricing Plans</h2>
+                    <h2 className="title text_white mb_12">Nos formules de location</h2>
                     <ul className="breadcrumb justify-content-center text-button fw-4">
                         <li>
-                            <Link href="/">Home</Link>
+                            <Link href="/">Accueil</Link>
                         </li>
-                        <li>Pages</li>
-                        <li>Our Pricing</li>
+                        <li>CIP IMMO</li>
+                        <li>Nos formules</li>
                     </ul>
                 </div>
             </div>

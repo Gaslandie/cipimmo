@@ -115,33 +115,33 @@ export default function Privacy() {
                                     className="nav_link text-title fw-6 "
                                     data-target="terms"
                                 >
-                                    <a href="#">1. Terms</a>
+                                    <a href="#">1. Utiliser le site</a>
                                 </li>
                                 <li
                                     className="nav_link text-title fw-6"
                                     data-target="limitations"
                                 >
-                                    <a href="#">2. Limitations</a>
+                                    <a href="#">2. Votre recherche</a>
                                 </li>
                                 <li
                                     className="nav_link text-title fw-6"
                                     data-target="revisions"
                                 >
-                                    <a href="#">3. Revisions And Errata</a>
+                                    <a href="#">3. Vos échanges</a>
                                 </li>
                                 <li
                                     className="nav_link text-title fw-6"
                                     data-target="modifications"
                                 >
                                     <a href="#">
-                                        4. Site Terms Of Use Modifications
+                                        4. Services externes
                                     </a>
                                 </li>
                                 <li
                                     className="nav_link text-title fw-6"
                                     data-target="risks"
                                 >
-                                    <a href="#">5. Risks</a>
+                                    <a href="#">5. Nous contacter</a>
                                 </li>
                                 <li className="highlight-bar"></li>
                             </ul>
@@ -149,184 +149,86 @@ export default function Privacy() {
                         <div className="col-lg-8">
                             <div className="content">
                                 <h4 className="mb_32 heading-title">
-                                    Terms Of Use
+                                    Utilisation du site
                                 </h4>
                                 <div id="terms">
                                     <h5 className="title mb_12 text-capitalize">
-                                        1. Terms{" "}
+                                        1. Utiliser le site{" "}
                                     </h5>
                                     <p className="mb_12">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Integer sed euismod
-                                        justo, sit amet efficitur dui. Aliquam
-                                        sodales vestibulum velit, eget
-                                        sollicitudin quam. Donec non aliquam
-                                        eros. Etiam sit amet lectus vel justo
-                                        dignissim condimentum.
+                                        Le site CIP IMMO vous permet de consulter des appartements à louer en Guinée. Les annonces présentent les photos, les surfaces, les chambres et les tarifs pour vous aider à préparer votre recherche.
                                     </p>
                                     <p className="mb_12">
-                                        In malesuada neque quis libero laoreet
-                                        posuere. In consequat vitae ligula quis
-                                        rutrum. Morbi dolor orci, maximus a
-                                        pulvinar sed, bibendum ac lacus.
-                                        Suspendisse in consectetur lorem.
-                                        Pellentesque habitant morbi tristique
-                                        senectus et netus et malesuada fames ac
-                                        turpis egestas. Aliquam elementum, est
-                                        sed interdum cursus, felis ex pharetra
-                                        nisi, ut elementum tortor urna eu nulla.
-                                        Donec rhoncus in purus quis blandit.
+                                        Vous pouvez parcourir les logements sans créer de compte. Pour connaître les disponibilités et les conditions applicables à vos dates, contactez directement notre équipe.
                                     </p>
                                     <p>
-                                        Etiam eleifend metus at nunc ultricies
-                                        facilisis. Morbi finibus tristique
-                                        interdum. Nullam vel eleifend est, eu
-                                        posuere risus. Vestibulum ligula ex,
-                                        ullamcorper sit amet molestie
+                                        La confirmation de location se fait avec CIP IMMO. Aucun paiement n’est demandé sur ce site.
                                     </p>
                                 </div>
                                 <div id="limitations" className="pt_32">
                                     <h5 className="title mb_12 text-capitalize">
-                                        2. Limitations
+                                        2. Votre recherche
                                     </h5>
                                     <p className="mb_12">
-                                        Etiam eleifend metus at nunc ultricies
-                                        facilisis. Morbi finibus tristique
-                                        interdum. Nullam vel eleifend est, eu
-                                        posuere risus. Vestibulum ligula ex,
-                                        ullamcorper sit amet molestie a, finibus
-                                        nec ex.
+                                        Les filtres vous aident à choisir un quartier, une durée, un nombre de chambres et un budget. Les montants à la nuit et au mois correspondent à des durées différentes.
                                     </p>
                                     <ul className="mb_12">
                                         <li className="text-body-default">
-                                            Aliquam elementum, est sed interdum
-                                            cursus, felis ex pharetra nisi, ut
-                                            elementum tortor urna eu nulla.
-                                            Donec rhoncus in purus quis blandit.
+                                            Précisez le logement, les dates et les besoins liés à votre recherche.
                                         </li>
                                         <li className="text-body-default">
-                                            Etiam eleifend metus at nunc
-                                            ultricies facilisis.
+                                            Transmettez uniquement les informations utiles à votre demande.
                                         </li>
                                         <li className="text-body-default">
-                                            Nullam vel eleifend est, eu posuere
-                                            risus. Vestibulum ligula ex,
-                                            ullamcorper sit amet molestie a,
-                                            finibus nec ex.
+                                            Ne communiquez pas de coordonnées bancaires ou de documents personnels dans un premier message.
                                         </li>
                                     </ul>
                                     <p>
-                                        Etiam eleifend metus at nunc ultricies
-                                        facilisis. Morbi finibus tristique
-                                        interdum. Nullam vel eleifend est, eu
-                                        posuere risus. Vestibulum ligula ex,
-                                        ullamcorper sit amet molestie
+                                        Échangez avec notre équipe sur les dates, les charges et les modalités de votre location avant de vous engager.
                                     </p>
                                 </div>
                                 <div id="revisions" className="pt_32">
                                     <h5 className="title mb_12 text-capitalize">
-                                        3. Revisions and errata
+                                        3. Vos échanges
                                     </h5>
                                     <p className="mb_12">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Integer sed euismod
-                                        justo, sit amet efficitur dui. Aliquam
-                                        sodales vestibulum velit, eget
-                                        sollicitudin quam. Donec non aliquam
-                                        eros. Etiam sit amet lectus vel justo
-                                        dignissim condimentum.
+                                        Les coordonnées et le message saisis servent à préparer votre demande de logement. Vous choisissez les informations que vous souhaitez partager avec CIP IMMO.
                                     </p>
                                     <p className="mb_12">
-                                        In malesuada neque quis libero laoreet
-                                        posuere. In consequat vitae ligula quis
-                                        rutrum. Morbi dolor orci, maximus a
-                                        pulvinar sed, bibendum ac lacus.
-                                        Suspendisse in consectetur lorem.
-                                        Pellentesque habitant morbi tristique
-                                        senectus et netus et malesuada fames ac
-                                        turpis egestas. Aliquam elementum, est
-                                        sed interdum cursus, felis ex pharetra
-                                        nisi, ut elementum tortor urna eu nulla.
-                                        Donec rhoncus in purus quis
+                                        Les formulaires préparent un message que vous pouvez poursuivre sur WhatsApp. L’ouverture de ce service vous permet de relire votre demande avant de l’envoyer.
                                     </p>
                                     <p>
-                                        Etiam eleifend metus at nunc ultricies
-                                        facilisis. Morbi finibus tristique
-                                        interdum. Nullam vel eleifend est, eu
-                                        posuere risus. Vestibulum ligula ex,
-                                        ullamcorper sit amet molestie a, finibus
-                                        nec ex.
+                                        Si vous souhaitez corriger une information transmise, indiquez-le à notre équipe dans votre échange.
                                     </p>
                                 </div>
                                 <div id="modifications" className="pt_32">
                                     <h5 className="title mb_12 text-capitalize">
-                                        4. Site terms of use modifications
+                                        4. Services externes
                                     </h5>
                                     <p className="mb_12">
-                                        Etiam eleifend metus at nunc ultricies
-                                        facilisis. Morbi finibus tristique
-                                        interdum. Nullam vel eleifend est, eu
-                                        posuere risus. Vestibulum ligula ex,
-                                        ullamcorper sit amet molestie{" "}
+                                        Certains liens ouvrent un service extérieur au site CIP IMMO, comme WhatsApp pour nous écrire ou Google Maps pour consulter un secteur.
                                     </p>
                                     <ul className="mb_12">
-                                        <li className="text-body-default">
-                                            Aliquam elementum, est sed interdum
-                                            cursus, felis ex pharetra nisi, ut
-                                            elementum tortor urna eu nulla.
-                                            Donec rhoncus in purus quis blandit.
-                                        </li>
-                                        <li className="text-body-default">
-                                            Etiam eleifend metus at nunc
-                                            ultricies facilisis.
-                                        </li>
-                                        <li className="text-body-default">
-                                            Nullam vel eleifend est, eu posuere
-                                            risus. Vestibulum ligula ex,
-                                            ullamcorper sit amet molestie a,
-                                            finibus nec ex.
-                                        </li>
+                                        <li className="text-body-default">WhatsApp vous permet de relire et d’envoyer votre demande à notre équipe.</li>
+                                        <li className="text-body-default">Les liens cartographiques vous aident à situer les quartiers proposés.</li>
+                                        <li className="text-body-default">L’utilisation de ces services relève également de leurs propres règles de confidentialité.</li>
                                     </ul>
                                     <p>
-                                        Etiam eleifend metus at nunc ultricies
-                                        facilisis. Morbi finibus tristique
-                                        interdum. Nullam vel eleifend est, eu
-                                        posuere risus. Vestibulum ligula ex,
-                                        ullamcorper sit amet molestie{" "}
+                                        Vous pouvez aussi nous joindre directement par téléphone au +224 613 58 51 98.
                                     </p>
                                 </div>
                                 <div id="risks" className="pt_32">
                                     <h5 className="title mb_12 text-capitalize">
-                                        5. Risks
+                                        5. Nous contacter
                                     </h5>
                                     <p className="mb_12">
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Integer sed euismod
-                                        justo, sit amet efficitur dui. Aliquam
-                                        sodales vestibulum velit, eget
-                                        sollicitudin quam. Donec non aliquam
-                                        eros. Etiam sit amet lectus vel justo
-                                        dignissim condimentum.
+                                        CIP IMMO vous accompagne dans votre recherche de location en Guinée, depuis Coyah.
                                     </p>
                                     <p className="mb_12">
-                                        In malesuada neque quis libero laoreet
-                                        posuere. In consequat vitae ligula quis
-                                        rutrum. Morbi dolor orci, maximus a
-                                        pulvinar sed, bibendum ac lacus.
-                                        Suspendisse in consectetur lorem.
-                                        Pellentesque habitant morbi tristique
-                                        senectus et netus et malesuada fames ac
-                                        turpis egestas. Aliquam elementum, est
-                                        sed interdum cursus, felis ex pharetra
-                                        nisi, ut elementum tortor urna eu nulla.
-                                        Donec rhoncus in purus quis blandit.
+                                        Appelez-nous au +224 613 58 51 98 ou écrivez-nous sur WhatsApp au +224 623 41 75 10. Précisez le quartier ou le logement qui vous intéresse pour faciliter notre échange.
                                     </p>
                                     <p>
-                                        Etiam eleifend metus at nunc ultricies
-                                        facilisis. Morbi finibus tristique
-                                        interdum. Nullam vel eleifend est, eu
-                                        posuere risus. Vestibulum ligula ex,
-                                        ullamcorper sit amet molestie{" "}
+                                        Notre équipe peut vous renseigner sur les courts séjours, les locations longue durée et les modalités de votre arrivée.
                                     </p>
                                 </div>
                             </div>

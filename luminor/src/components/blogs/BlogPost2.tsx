@@ -53,7 +53,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                             }
                                                             width={40}
                                                             height={40}
-                                                            alt="avatar"
+                                                            alt="CIP IMMO"
                                                         />
                                                     </div>
                                                     <Link
@@ -70,119 +70,67 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                             </div>
                                         </div>
                                         <p className="passive text-body-2">
-                                            When evaluating the best states for
-                                            rental property investments, there
-                                            are several key factors to consider.
-                                            Understanding the differences
-                                            between each state&apos;s rental
-                                            market can significantly impact your
-                                            decision-making process, helping you
-                                            choose the location that best aligns
-                                            with your financial goals,
-                                            investment strategy, and property
-                                            management preferences.
+                                            Trouver un logement en Guinée commence par quelques choix simples : le quartier, la durée du séjour, le nombre de chambres et le budget. Prenez le temps de comparer ces critères pour retenir les appartements qui correspondent à votre quotidien.
                                         </p>
                                         <div className="quote">
                                             <p className="h5 mb_11">
-                                                &quot;Choosing the right
-                                                property isn&apos;t just about
-                                                location—it&apos;s about finding
-                                                a space that fits your
-                                                lifestyle, goals, and future
-                                                plans.&quot;
+                                                « Le bon logement est celui qui répond à vos besoins, à votre rythme et à votre budget. »
                                             </p>
                                             <Link
                                                 href="#"
                                                 className="text-title fw-6 text_primary-color link name"
                                             >
-                                                John Smith
+                                                L’équipe CIP IMMO
                                             </Link>
                                             <div className="icon">
                                                 <i className="icon-quote-line"></i>
                                             </div>
                                         </div>
                                         <p className="passive text-body-2">
-                                            From rental demand and vacancy rates
-                                            to property taxes, landlord-friendly
-                                            laws, and long-term appreciation
-                                            potential, each state offers a
-                                            unique set of benefits and
-                                            trade-offs. By carefully weighing
-                                            these aspects, you can make a more
-                                            informed choice that not only meets
-                                            your short-term cash flow goals but
-                                            also supports your long-term
-                                            wealth-building strategy.
+                                            Les photos et les caractéristiques vous donnent un premier aperçu. Échangez ensuite avec CIP IMMO pour connaître les disponibilités, le tarif applicable à vos dates et les conditions de location. Vous pourrez ainsi préparer votre arrivée avec les bonnes informations.
                                         </p>
                                         <div className="wrap-image tf-grid-layout sm-col-2">
                                             <Image
                                                 src="/assets/images/blog/thumbs-1.jpg?v=cip-photos-1"
                                                 width={410}
                                                 height={308}
-                                                alt="thumbs"
+                                                alt="Appartement"
                                             />
                                             <Image
                                                 src="/assets/images/blog/thumbs-2.jpg?v=cip-photos-1"
                                                 width={410}
                                                 height={308}
-                                                alt="thumbs"
+                                                alt="Appartement"
                                             />
                                         </div>
                                         <div className="passive mb_27">
                                             <h5 className="mb_12">
-                                                1. Rental Demand And Vacancy
-                                                Rates
+                                                1. Choisissez votre quartier et votre durée
                                             </h5>
                                             <p className="text-body-2">
-                                                States with growing populations
-                                                and strong job markets typically
-                                                show higher rental demand,
-                                                reducing the likelihood of long
-                                                vacancy periods. Locations like
-                                                Texas and Florida, for example,
-                                                have become increasingly
-                                                attractive due to consistent
-                                                population growth and diverse
-                                                economic activity.
+                                                Pour un déplacement ou une installation, pensez à la distance avec vos activités, aux transports et aux services du quartier. Coléah, Coyah Km54 et Ansoumaniah offrent différents points de départ pour votre recherche.
                                             </p>
                                         </div>
                                         <div className="passive mb_40">
                                             <h5 className="mb_12">
-                                                2. Cost And ROI Potential
+                                                2. Préparez votre budget et vos questions
                                             </h5>
                                             <p className="text-body-2">
-                                                Some states, particularly in the
-                                                Midwest and Southeast, offer
-                                                lower property prices and higher
-                                                rental yields. States like Ohio
-                                                or Georgia may allow you to
-                                                enter the market at a lower cost
-                                                while enjoying solid monthly
-                                                returns and manageable expenses.
+                                                Distinguez bien un tarif à la nuit d’un loyer mensuel. Demandez ce que le prix comprend, les charges éventuelles et les modalités à prévoir pour votre entrée dans le logement.
                                             </p>
                                         </div>
                                         <div className="passive">
                                             <h5 className="mb_12">
-                                                Conclusion
+                                                À retenir
                                             </h5>
                                             <p className="text-body-2">
-                                                Choosing the best state for
-                                                rental property investment
-                                                depends on your specific
-                                                goals—whether that&apos;s
-                                                maximizing cash flow, minimizing
-                                                taxes, or capitalizing on market
-                                                growth. Understanding these key
-                                                differences across states can
-                                                help you make a smarter, more
-                                                strategic investment aligned
-                                                with your financial objectives.
+                                                Votre recherche sera plus simple avec des critères précis : quartier, budget, durée et nombre de chambres. Notre équipe vous aide ensuite à vérifier les disponibilités et à préparer la suite.
                                             </p>
                                         </div>
                                         <div className="tag-share d-flex justify-content-between">
                                             <div className="tag d-flex align-items-center gap_12">
                                                 <span className="text-button fw-7 text_primary-color">
-                                                    Tag:
+                                                    Thèmes :
                                                 </span>
                                                 <ul className="tags-list">
                                                     <li>
@@ -190,7 +138,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                             href="#"
                                                             className="tags-item text-caption-1"
                                                         >
-                                                            Housing
+                                                            Logement
                                                         </Link>
                                                     </li>
                                                     <li>
@@ -198,7 +146,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                             href="#"
                                                             className="tags-item text-caption-1"
                                                         >
-                                                            Investment
+                                                            Installation
                                                         </Link>
                                                     </li>
                                                     <li>
@@ -206,14 +154,14 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                             href="#"
                                                             className="tags-item text-caption-1"
                                                         >
-                                                            Property
+                                                            Location
                                                         </Link>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div className="share d-flex align-items-center gap_16">
                                                 <span className="text-button fw-7 text_primary-color">
-                                                    Share This Post:
+                                                    Partager ce conseil :
                                                 </span>
                                                 <ul className="tf-social d-flex gap_24">
                                                     <li>
@@ -243,16 +191,14 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                     href="single-post-1.html"
                                                     className="hover-underline-link text-button text_primary-color fw-7 mb_8"
                                                 >
-                                                    Previous
+                                                    Précédent
                                                 </Link>
                                                 <h5>
                                                     <Link
                                                         href="#"
                                                         className="link line-clamp-2"
                                                     >
-                                                        How To Identify
-                                                        High-Growth
-                                                        Neighborhoods In 2025
+                                                        Bien choisir son quartier en Guinée
                                                     </Link>
                                                 </h5>
                                             </div>
@@ -261,16 +207,14 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                     href="single-post-1.html"
                                                     className="hover-underline-link text-button text_primary-color fw-7 mb_8"
                                                 >
-                                                    Next
+                                                    Suivant
                                                 </Link>
                                                 <h5>
                                                     <Link
                                                         href="#"
                                                         className="link line-clamp-2"
                                                     >
-                                                        The Future Of Office
-                                                        Spaces In A Hybrid Work
-                                                        Era
+                                                        Préparer son installation en famille
                                                     </Link>
                                                 </h5>
                                             </div>
@@ -283,7 +227,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                     src={blogItem.authorAvatar}
                                                     width={120}
                                                     height={120}
-                                                    alt="avatar"
+                                                    alt="CIP IMMO"
                                                 />
                                             </div>
                                             <div className="content">
@@ -298,7 +242,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                             {
                                                                 blogItem.authorFlow
                                                             }{" "}
-                                                            Follower
+                                                            Lecteurs
                                                         </p>
                                                     </div>
                                                     <Link
@@ -306,7 +250,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                         className="tf-btn btn-bg-1 btn-px-12"
                                                     >
                                                         <span className="text-button-small">
-                                                            Follow
+                                                            Nous contacter
                                                         </span>
                                                         <span className="bg-effect"></span>
                                                     </Link>

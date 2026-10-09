@@ -12,10 +12,9 @@ export default function FormContact() {
             <div className="col-md-6">
                 <div className="box-contact">
                     <div className="heading mb_23">
-                        <h4 className="mb_8">Reach Out To Us</h4>
+                        <h4 className="mb_8">Parlons de votre recherche</h4>
                         <p>
-                            We’re here to assist with any questions, concerns,
-                            or inquiries—contact us today!
+                            Une question sur un logement, un quartier ou votre arrivée ? Contactez notre équipe pour préparer votre location en Guinée.
                         </p>
                     </div>
                     <ul className="info d-grid gap_20 mb_36">
@@ -23,10 +22,10 @@ export default function FormContact() {
                             <i className="icon icon-MapPin"></i>
                             <div className="content">
                                 <div className="text-title fw-6 text_primary-color mb_4">
-                                    Our Address:
+                                    Notre adresse :
                                 </div>
                                 <p>
-                                    101 E 129th St, East Chicago, 2nd Floor, NY
+                                    Coyah, Guinée
                                 </p>
                             </div>
                         </li>
@@ -34,28 +33,28 @@ export default function FormContact() {
                             <i className="icon icon-PhoneCall"></i>
                             <div className="content">
                                 <div className="text-title fw-6 text_primary-color mb_4">
-                                    Contact Us
+                                    Nous contacter
                                 </div>
-                                <p>1-555-678-8888</p>
+                                <p>+224 613 58 51 98</p>
                             </div>
                         </li>
                         <li>
                             <i className="icon icon-Alarm"></i>
                             <div className="content">
                                 <div className="text-title fw-6 text_primary-color mb_4">
-                                    Email Address:
+                                    WhatsApp :
                                 </div>
                                 <a
-                                    href="mailto:themesflat@gmail.com"
+                                    href="https://wa.me/224623417510"
                                     className="link text_secondary-color text-body-default"
                                 >
-                                    themesflat@gmail.com
+                                    +224 623 41 75 10
                                 </a>
                             </div>
                         </li>
                     </ul>
                     <div>
-                        <h5 className="mb_12">Follow Us:</h5>
+                        <h5 className="mb_12">Suivez-nous :</h5>
                         <ul className="tf-social d-flex gap_24">
                             <li>
                                 <a href="#" className="icon-FacebookLogo"></a>
@@ -80,10 +79,9 @@ export default function FormContact() {
             <div className="col-md-6">
                 <form className="form-contact" action={sendContact}>
                     <div className="heading mb_24">
-                        <h4 className="mb_8">Get In Touch</h4>
+                        <h4 className="mb_8">Préparez votre message</h4>
                         <p>
-                            We&apos;d love to hear from you! If you have any
-                            questions
+                            Indiquez vos dates, votre budget et le logement qui vous intéresse.
                         </p>
                     </div>
 
@@ -94,13 +92,13 @@ export default function FormContact() {
                                     htmlFor="firstName"
                                     className="text-button text_primary-color fw-7 mb_8"
                                 >
-                                    First Name
+                                    Prénom
                                 </label>
                                 <input
                                     id="firstName"
                                     type="text"
-                                    placeholder="First Name"
-                                    name="firstName"
+                                    placeholder="Prénom"
+                                    name="firstName" maxLength={80}
                                     required
                                 />
                             </fieldset>
@@ -109,13 +107,13 @@ export default function FormContact() {
                                     htmlFor="lastName"
                                     className="text-button text_primary-color fw-7 mb_8"
                                 >
-                                    Last Name
+                                    Nom
                                 </label>
                                 <input
                                     id="lastName"
                                     type="text"
-                                    placeholder="Last Name"
-                                    name="lastName"
+                                    placeholder="Nom"
+                                    name="lastName" maxLength={80}
                                     required
                                 />
                             </fieldset>
@@ -127,13 +125,13 @@ export default function FormContact() {
                                     htmlFor="email"
                                     className="text-button text_primary-color fw-7 mb_8"
                                 >
-                                    Email
+                                    Adresse e-mail
                                 </label>
                                 <input
                                     id="email"
                                     type="email"
-                                    placeholder="Enter your email address"
-                                    name="email"
+                                    placeholder="Votre adresse e-mail"
+                                    name="email" maxLength={254}
                                     required
                                 />
                             </fieldset>
@@ -142,13 +140,13 @@ export default function FormContact() {
                                     htmlFor="phone"
                                     className="text-button text_primary-color fw-7 mb_8"
                                 >
-                                    Phone Number
+                                    Téléphone
                                 </label>
                                 <input
                                     id="phone"
                                     type="tel"
-                                    placeholder="Enter your phone number"
-                                    name="phone"
+                                    placeholder="Votre numéro de téléphone"
+                                    name="phone" maxLength={30}
                                 />
                             </fieldset>
                         </div>
@@ -163,8 +161,8 @@ export default function FormContact() {
                             <textarea
                                 id="message"
                                 rows={4}
-                                placeholder="Your Message"
-                                name="message"
+                                placeholder="Votre message"
+                                name="message" maxLength={2000} minLength={10}
                                 required
                             ></textarea>
                         </fieldset>
@@ -175,7 +173,7 @@ export default function FormContact() {
                         type="submit"
                         disabled={pending}
                     >
-                        <span>{pending ? "Sending..." : "Send Message"}</span>
+                        <span>{pending ? "Préparation…" : "Continuer sur WhatsApp"}</span>
                         <span className="bg-effect"></span>
                     </button>
                 </form>

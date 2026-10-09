@@ -6,12 +6,12 @@ export default function Comment() {
     return (
         <div className="reply-comment mb_40 ">
             <div className="title d-flex align-items-center justify-content-between mb_20">
-                <h5>Customer Reviews</h5>
+                <h5>Vos avis</h5>
                 <Link
                     href="#leaveComment"
                     className="tf-btn btn-bg-1 btn-px-28"
                 >
-                    <span>Write A Review</span>
+                    <span>Partager votre avis</span>
                     <span className="bg-effect"></span>
                 </Link>
             </div>
@@ -22,17 +22,17 @@ export default function Comment() {
                             src="/assets/images/avatar/avatar-1.jpg?v=cip-photos-1"
                             width={60}
                             height={60}
-                            alt="avatar"
+                            alt="CIP IMMO"
                         />
                     </div>
                     <div className="content">
                         <div className="info mb_12">
                             <h6 className="name text_primary-color mb_4">
                                 <Link href="#" className="link">
-                                    Claudia M.
+                                    Aïssatou D.
                                 </Link>
                             </h6>
-                            <p className="text-body-default">March 18, 2025</p>
+                            <p className="text-body-default">18 septembre 2026</p>
                         </div>
                         <ul className="ratings d-flex mb_10">
                             <li>
@@ -52,10 +52,7 @@ export default function Comment() {
                             </li>
                         </ul>
                         <p className="comment text-body-2">
-                            This home is exactly what we were looking for—quiet,
-                            spacious, and surrounded by nature. The location is
-                            perfect for our family, close to schools and just a
-                            short drive to the city.
+                            Nous cherchions un appartement avec assez de place pour notre famille. Les informations sur les chambres et la surface nous ont aidés à faire notre choix, puis CIP IMMO nous a accompagnés pour la suite.
                         </p>
                     </div>
                 </div>
@@ -65,18 +62,18 @@ export default function Comment() {
                             src="/assets/images/avatar/avatar-2.jpg?v=cip-photos-1"
                             width={60}
                             height={60}
-                            alt="avatar"
+                            alt="CIP IMMO"
                         />
                     </div>
                     <div className="content">
                         <div className="info mb_12">
                             <h6 className="name text_primary-color mb_4">
                                 <Link href="#" className="link">
-                                    Jorge R.
+                                    Mamadou C.
                                 </Link>
                             </h6>
                             <p className="text-body-default">
-                                February 10, 2025
+                                10 septembre 2026
                             </p>
                         </div>
                         <ul className="ratings d-flex mb_10">
@@ -97,10 +94,7 @@ export default function Comment() {
                             </li>
                         </ul>
                         <p className="comment text-body-2">
-                            Very peaceful neighborhood with great views. The
-                            house has a modern design and lots of natural light.
-                            We especially love the garden and how private it
-                            feels.
+                            L’équipe a pris le temps de comprendre notre budget et le quartier souhaité. Nous avons apprécié les échanges directs et les explications sur les conditions de location.
                         </p>
                     </div>
                 </div>
@@ -110,17 +104,17 @@ export default function Comment() {
                             src="/assets/images/avatar/avatar-3.jpg?v=cip-photos-1"
                             width={60}
                             height={60}
-                            alt="avatar"
+                            alt="CIP IMMO"
                         />
                     </div>
                     <div className="content">
                         <div className="info mb_12">
                             <h6 className="name text_primary-color mb_4">
                                 <Link href="#" className="link">
-                                    Isabel T.
+                                    Fatoumata B.
                                 </Link>
                             </h6>
-                            <p className="text-body-default">January 5, 2025</p>
+                            <p className="text-body-default">5 septembre 2026</p>
                         </div>
                         <ul className="ratings d-flex mb_10">
                             <li>
@@ -140,10 +134,7 @@ export default function Comment() {
                             </li>
                         </ul>
                         <p className="comment text-body-2">
-                            I was impressed by the quality of the finishes and
-                            how well-maintained the property is. It&apos;s in a
-                            great area—close to everything but still quiet and
-                            safe.
+                            J’ai pu préparer mon séjour en consultant les photos et les détails du logement. Mes questions ont trouvé une réponse auprès de l’équipe avant mon arrivée.
                         </p>
                     </div>
                 </div>
@@ -152,7 +143,7 @@ export default function Comment() {
                 href="#"
                 className="all-review hover-underline-link text_primary-color text-button"
             >
-                See All Review (98)
+                Tous les avis
             </a>
         </div>
     );

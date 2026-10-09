@@ -5,24 +5,24 @@ import React from "react";
 export default function BoxSeller1() {
     return (
         <>
-            <h5 className="mb_24">Contact Sellers</h5>
+            <h5 className="mb_24">Contacter CIP IMMO</h5>
             <div className="author d-flex mb_24">
                 <div className="avatar">
                     <Image
                         src="/assets/images/avatar/avatar-10.jpg?v=cip-photos-1"
                         width={100}
                         height={100}
-                        alt="avatar"
+                        alt="CIP IMMO"
                     />
                 </div>
                 <div className="author-info d-flex flex-column">
-                    <h6 className="mb_8">Jorge R.</h6>
-                    <span className="text-body-default">1-555-678-8888</span>
+                    <h6 className="mb_8">Mamadou C.</h6>
+                    <span className="text-body-default">+224 613 58 51 98</span>
                     <Link
-                        href="#"
+                        href="https://wa.me/224623417510"
                         className="text_secondary-color text-body-default link"
                     >
-                        themesflat@gmail.com
+                        +224 623 41 75 10
                     </Link>
                 </div>
             </div>
@@ -31,36 +31,36 @@ export default function BoxSeller1() {
                     <i className="icon icon-MapPin"></i>
                     <div>
                         <p className="text_primary-color mb_4">
-                            6205 Peachtree Dunwoody Rd, <br />
-                            Atlanta, GA 30328
+                            CIP IMMO, <br />
+                            Coyah, Guinée
                         </p>
                         <a
-                            href="#"
+                            href="/contacts"
                             className="hover-underline-link text-button fw-7 text_primary-color"
                         >
-                            Get Directions
+                            Nous trouver
                         </a>
                     </div>
                 </li>
                 <li className="item d-flex gap_12 align-items-center">
                     <i className="icon icon-PhoneCall"></i>
                     <div>
-                        <p className="text_primary-color">1-555-678-8888</p>
-                        <p className="text_primary-color ">1-555-678-8888</p>
+                        <p className="text_primary-color">+224 613 58 51 98</p>
+                        <p className="text_primary-color ">+224 613 58 51 98</p>
                     </div>
                 </li>
             </ul>
-            <a href="#" className="tf-btn btn-bg-1 w-full mb_12">
+            <a href="tel:+224613585198" className="tf-btn btn-bg-1 w-full mb_12">
                 <span className="d-flex align-items-center gap_8">
                     <i className="icon-PhoneCall"></i>
-                    Call To Dealer
+                    Appeler notre équipe
                 </span>
                 <span className="bg-effect"></span>
             </a>
-            <a href="#" className="tf-btn w-full">
+            <a href="https://wa.me/224623417510" className="tf-btn w-full">
                 <span className="d-flex align-items-center gap_8">
                     <i className="icon-ChatCircleDots"></i>
-                    Chat via WhatsApp
+                    Écrire sur WhatsApp
                 </span>
                 <span className="bg-effect"></span>
             </a>

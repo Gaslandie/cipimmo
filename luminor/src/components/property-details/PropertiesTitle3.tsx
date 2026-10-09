@@ -20,14 +20,14 @@ export default function PropertiesTitle3({ property }: { property: Property }) {
                 <div className="wrap-tag d-flex gap_12 mb_16">
                     <div
                         className={`tag ${
-                            property.type === "Sale"
+                            property.type === "Longue durée"
                                 ? "sale"
-                                : property.type === "Rent"
+                                : property.type === "Court séjour"
                                 ? "rent"
                                 : property.type
                         }  text-title fw-6 text_primary-color`}
                     >
-                        For {property.type}
+                         {property.type}
                     </div>
                     <div className="tag categoreis text-title fw-6 text_primary-color">
                         {property.categories}
@@ -38,7 +38,7 @@ export default function PropertiesTitle3({ property }: { property: Property }) {
                     <li className="compare">
                         <a href="#" className="gap_8">
                             <i className="icon-ArrowsLeftRight"></i>
-                            <span className="text-button">Compare</span>
+                            <span className="text-button">Comparer</span>
                         </a>
                     </li>
                     <li>
@@ -55,11 +55,11 @@ export default function PropertiesTitle3({ property }: { property: Property }) {
                 </ul>
             </div>
             <div>
-                <h5 className="mb_16">Price:</h5>
+                <h5 className="mb_16">Prix :</h5>
                 <h2 className="price">
-                    {property.price}
+                    {property.price.toLocaleString("fr-FR")} GNF
                     <span className="text_secondary-color text-body-1">
-                        {property.type === "Sale" ? "/Sqft" : "/month"}
+                        {property.type === "Longue durée" ? "/ mois" : "/ nuit"}
                     </span>
                 </h2>
             </div>

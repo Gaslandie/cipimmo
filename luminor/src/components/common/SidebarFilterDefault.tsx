@@ -1,18 +1,32 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import DropdownSelect2 from "./DropdownSelect2";
 import AdvanceSearchDefault from "./AdvanceSearchDefault";
 
 // Villes reprises de la maquette CIP IMMO ; aucun catalogue de vente dans ce bloc.
-const cityOptions = ["Toutes les villes", "Conakry", "Coyah", "Kankan", "Kindia", "Labé", "Mamou", "Nzérékoré"];
+const cityOptions = ["Tous les quartiers", "Coléah", "Coyah Km54", "Ansoumaniah"];
 const bedroomOptions = ["Peu importe", "1", "2", "3", "4 et plus"];
 const rentalBudgets = {
-    "court-sejour": ["Sans maximum", "250 000 GNF", "500 000 GNF", "750 000 GNF", "1 000 000 GNF", "2 000 000 GNF"],
-    "longue-duree": ["Sans maximum", "1 000 000 GNF", "2 000 000 GNF", "3 000 000 GNF", "5 000 000 GNF", "10 000 000 GNF"],
+    "court-sejour": ["Sans maximum", "300 000 GNF", "500 000 GNF", "1 000 000 GNF"],
+    "longue-duree": ["Sans maximum", "2 000 000 GNF", "3 000 000 GNF", "4 000 000 GNF", "5 000 000 GNF"],
 };
 
 export default function SidebarFilterDefault() {
     const [duration, setDuration] = useState<keyof typeof rentalBudgets>("court-sejour");
+    const router = useRouter();
+    const [keyword, setKeyword] = useState("");
+    const [city, setCity] = useState("");
+    const [bedrooms, setBedrooms] = useState("");
+    const [budget, setBudget] = useState("");
+    const search = () => {
+        const params = new URLSearchParams({ duration: duration === "court-sejour" ? "courte" : "longue" });
+        if (keyword.trim()) params.set("keyword", keyword.trim());
+        if (city && city !== cityOptions[0]) params.set("city", city);
+        if (bedrooms && bedrooms !== bedroomOptions[0]) params.set("bedrooms", bedrooms === "4 et plus" ? "4+" : bedrooms);
+        if (budget && budget !== "Sans maximum") params.set("budget", `${budget.replace(/[^0-9]/g, "")}:${duration === "court-sejour" ? "nuit" : "mois"}`);
+        router.push(`/listing-left-sidebar?${params.toString()}`);
+    };
     const ddContainer = useRef<HTMLDivElement>(null);
     const advanceBtnRef = useRef<HTMLDivElement>(null);
 
@@ -58,6 +72,7 @@ export default function SidebarFilterDefault() {
                                 onClick={(event) => {
                                     event.preventDefault();
                                     setDuration(value);
+                                    setBudget("");
                                 }}
                             >
                                 {label}
@@ -70,7 +85,7 @@ export default function SidebarFilterDefault() {
                     <div className="widget-content-inner active" id="rental-search" role="tabpanel" aria-labelledby={`rental-tab-${duration}`}>
                         <div className="form-title">
                             <div className="wrap-fill tf-grid-layout lg-col-4 md-col-2">
-                                <form className="w-full">
+                                <form className="w-full" onSubmit={(event) => { event.preventDefault(); search(); }}>
                                     <label
                                         htmlFor="lookingFor"
                                         className="text-button text_primary-color mb_8"
@@ -82,26 +97,29 @@ export default function SidebarFilterDefault() {
                                             type="text"
                                             placeholder="Quartier, type de logement…"
                                             id="lookingFor"
+                                            maxLength={200}
+                                            value={keyword}
+                                            onChange={(event) => setKeyword(event.target.value)}
                                         />
                                     </fieldset>
                                 </form>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Ville
+                                        Localisation
                                     </div>
-                                    <DropdownSelect2 options={cityOptions} />
+                                    <DropdownSelect2 options={cityOptions} onChange={setCity} />
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
                                         Chambres
                                     </div>
-                                    <DropdownSelect2 options={bedroomOptions} />
+                                    <DropdownSelect2 options={bedroomOptions} onChange={setBedrooms} />
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
                                         Budget / {duration === "court-sejour" ? "nuit" : "mois"} (GNF)
                                     </div>
-                                    <DropdownSelect2 key={duration} options={rentalBudgets[duration]} />
+                                    <DropdownSelect2 key={duration} options={rentalBudgets[duration]} onChange={setBudget} />
                                 </div>
                             </div>
                             <div className="wrap-btn">
@@ -120,7 +138,8 @@ export default function SidebarFilterDefault() {
                                     </div>
                                 </div>
                                 <button
-                                    type="submit"
+                                    type="button"
+                                    onClick={search}
                                     className="tf-btn btn-px-28 btn-bg-1"
                                 >
                                     <span>Rechercher</span>

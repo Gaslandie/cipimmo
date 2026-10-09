@@ -7,20 +7,20 @@ type UtilityItem = {
 };
 
 const utility: UtilityItem[] = [
-    { icon: "icon-Thermometer", title: "Heating", sttt: "Natural Gas" },
-    { icon: "icon-Snowflake", title: "Air Conditioning", sttt: "Yes" },
-    { icon: "icon-WifiHigh", title: "Wifi", sttt: "Yes" },
+    { icon: "icon-Thermometer", title: "Ventilation", sttt: "Naturelle" },
+    { icon: "icon-Snowflake", title: "Climatisation", sttt: "Oui" },
+    { icon: "icon-WifiHigh", title: "Wifi", sttt: "Oui" },
     {
         icon: "icon-FingerprintSimple",
-        title: "Self check-in with lockbox",
-        sttt: "Yes",
+        title: "Modalités de remise des clés",
+        sttt: "Oui",
     },
-    { icon: "icon-SecurityCamera", title: "Security cameras", sttt: "Yes" },
-    { icon: "icon-Television", title: "Cable TV", sttt: "Yes" },
-    { icon: "icon-CloudWarning", title: "Carbon monoxide alarm", sttt: "Yes" },
-    { icon: "icon-SolarPanel", title: "Solar power", sttt: "Yes" },
-    { icon: "icon-Fire", title: "Fireplace", sttt: "Yes" },
-    { icon: "icon-Fan", title: "Ventilation", sttt: "Yes" },
+    { icon: "icon-SecurityCamera", title: "Caméras de sécurité", sttt: "Oui" },
+    { icon: "icon-Television", title: "Télévision", sttt: "Oui" },
+    { icon: "icon-CloudWarning", title: "Détecteur de fumée", sttt: "Oui" },
+    { icon: "icon-SolarPanel", title: "Énergie solaire", sttt: "Oui" },
+    { icon: "icon-Fire", title: "Espace de vie", sttt: "Oui" },
+    { icon: "icon-Fan", title: "Ventilation", sttt: "Oui" },
 ];
 
 export default function PropertyUtility() {
@@ -49,7 +49,7 @@ export default function PropertyUtility() {
 
     return (
         <>
-            <h5 className="properties-title mb_20">Property Utility</h5>
+            <h5 className="properties-title mb_20">Les équipements</h5>
             <div className="tf-grid-layout md-col-2">
                 {renderColumn(firstColumn)}
                 {renderColumn(secondColumn)}

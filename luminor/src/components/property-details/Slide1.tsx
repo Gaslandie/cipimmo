@@ -18,37 +18,37 @@ type PropertyImage = {
 const propertyImages: PropertyImage[] = [
     {
         src: "/assets/images/section/properties-details-1.jpg?v=cip-photos-1",
-        alt: "img-property",
+        alt: "Intérieur du logement",
         width: 930,
         height: 620,
     },
     {
         src: "/assets/images/section/properties-details-2.jpg?v=cip-photos-1",
-        alt: "img-property",
+        alt: "Intérieur du logement",
         width: 930,
         height: 620,
     },
     {
         src: "/assets/images/section/properties-details-3.jpg?v=cip-photos-1",
-        alt: "img-property",
+        alt: "Intérieur du logement",
         width: 930,
         height: 620,
     },
     {
         src: "/assets/images/section/properties-details-1.jpg?v=cip-photos-1",
-        alt: "img-property",
+        alt: "Intérieur du logement",
         width: 930,
         height: 620,
     },
     {
         src: "/assets/images/section/properties-details-2.jpg?v=cip-photos-1",
-        alt: "img-property",
+        alt: "Intérieur du logement",
         width: 930,
         height: 620,
     },
     {
         src: "/assets/images/section/properties-details-3.jpg?v=cip-photos-1",
-        alt: "img-property",
+        alt: "Intérieur du logement",
         width: 930,
         height: 620,
     },
@@ -58,7 +58,7 @@ export default function Slide1() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            <Gallery>
+            <Gallery options={{ closeTitle: "Fermer", zoomTitle: "Agrandir ou réduire", arrowPrevTitle: "Photo précédente", arrowNextTitle: "Photo suivante", errorMsg: "Cette photo ne peut pas être affichée.", indexIndicatorSep: " sur " }}>
                 <div className="properties-thumbs-main position-relative">
                     <Swiper
                         className="swiper tf-sw-location"
@@ -103,13 +103,13 @@ export default function Slide1() {
                                         <>
                                             <a
                                                 onClick={open}
-                                                data-fancybox="gallery"
+                                                data-fancybox="Galerie du logement"
                                                 className="box-img-detail d-block"
                                                 tabIndex={0}
                                                 role="button"
-                                                aria-label={`Open image ${
+                                                aria-label={`Ouvrir la photo ${
                                                     index + 1
-                                                } in gallery`}
+                                                } dans la galerie`}
                                             >
                                                 <div ref={ref}>
                                                     <Image
@@ -135,19 +135,19 @@ export default function Slide1() {
                                                     >
                                                         <span className="d-flex align-items-center gap_8">
                                                             <i className="icon-PlayCircle"></i>
-                                                            Play Video
+                                                            Découvrir le logement
                                                         </span>
                                                         <span className="bg-effect"></span>
                                                     </a>
                                                 </div>
                                                 <a
                                                     onClick={open}
-                                                    data-fancybox="gallery"
+                                                    data-fancybox="Galerie du logement"
                                                     className="tf-btn btn-bg-1"
                                                 >
                                                     <span className="d-flex align-items-center gap_8">
                                                         <i className="icon-Image"></i>
-                                                        View All Photo
+                                                        Voir toutes les photos
                                                     </span>
                                                     <span className="bg-effect"></span>
                                                 </a>

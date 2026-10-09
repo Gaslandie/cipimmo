@@ -103,7 +103,7 @@ export default function Slide2() {
     };
     return (
         <>
-            <PhotoSwipeGallery>
+            <PhotoSwipeGallery options={{ closeTitle: "Fermer", zoomTitle: "Agrandir ou réduire", arrowPrevTitle: "Photo précédente", arrowNextTitle: "Photo suivante", errorMsg: "Cette photo ne peut pas être affichée.", indexIndicatorSep: " sur " }}>
                 <div className="wrap-thumb">
                     <Swiper
                         modules={[Thumbs, Autoplay, EffectFade, Navigation]}
@@ -128,7 +128,7 @@ export default function Slide2() {
                                             <div className="thumb-main">
                                                 <a
                                                     onClick={open}
-                                                    data-fancybox="gallery"
+                                                    data-fancybox="Galerie du logement"
                                                 >
                                                     <Image
                                                         alt={image.alt}
@@ -150,19 +150,19 @@ export default function Slide2() {
                                                         >
                                                             <span className="d-flex align-items-center gap_8">
                                                                 <i className="icon-PlayCircle"></i>
-                                                                Play Video
+                                                                Découvrir le logement
                                                             </span>
                                                             <span className="bg-effect"></span>
                                                         </a>
                                                     </div>
                                                     <a
                                                         onClick={open}
-                                                        data-fancybox="gallery"
+                                                        data-fancybox="Galerie du logement"
                                                         className="tf-btn btn-bg-1"
                                                     >
                                                         <span className="d-flex align-items-center gap_8">
                                                             <i className="icon-Image"></i>
-                                                            View All Photo
+                                                            Voir toutes les photos
                                                         </span>
                                                         <span className="bg-effect"></span>
                                                     </a>

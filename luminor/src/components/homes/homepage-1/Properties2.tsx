@@ -1,40 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { cipRentals } from "@/data/cipRentals";
 import React, { useState } from "react";
 
-const propertiesData = [
-    {
-        id: "tab1",
-        title: "Casa Lomas de Machali",
-        address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-1.jpg?v=cip-photos-1",
-    },
-    {
-        id: "tab2",
-        title: "Villa Del Mar Retreat",
-        address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-2.jpg?v=cip-photos-1",
-    },
-    {
-        id: "tab3",
-        title: "Rancho Vista Verde",
-        address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-3.jpg?v=cip-photos-1",
-    },
-    {
-        id: "tab4",
-        title: "Sunset Heights Estate",
-        address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-4.jpg?v=cip-photos-1",
-    },
-    {
-        id: "tab5",
-        title: "Coastal Serenity Cottage",
-        address: "72 Sunset Avenue, Los Angeles, California",
-        img: "/assets/images/section/features-properties-5.jpg?v=cip-photos-1",
-    },
-];
+const propertiesData = cipRentals.map((rental, index) => ({ id: `tab${index + 1}`, title: rental.title, address: `${rental.city}, Guinée`, img: rental.imgSrc, slug: rental.slug }));
 
 export default function Properties2() {
     const [activeTab, setActiveTab] = useState("tab1");
@@ -72,7 +42,7 @@ export default function Properties2() {
                                     <div className="content">
                                         <h4 className="title mb_8">
                                             <Link
-                                                href={'/property-details-1/1'}
+                                                href={`/logements/${property.slug}`}
                                                 className="link"
                                             >
                                                 {property.title}
@@ -93,12 +63,12 @@ export default function Properties2() {
                                     activeTab === property.id ? " active" : ""
                                 }`}
                             >
-                                <Link href={'/property-details-1/1'} className="img-style">
+                                <Link href={`/logements/${property.slug}`} className="img-style">
                                     <Image
                                         src={property.img}
                                         width={645}
                                         height={645}
-                                        alt="process"
+                                        alt="Logement CIP IMMO"
                                     />
                                 </Link>
                             </div>

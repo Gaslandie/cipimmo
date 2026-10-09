@@ -54,7 +54,7 @@ export default function Hero() {
                                 src="/assets/images/page-title/page-title-2.jpg?v=cip-photos-1"
                                 width={1920}
                                 height={680}
-                                alt="page-title"
+                                alt="CIP IMMO"
                                 priority
                             />
                         </div>
@@ -66,7 +66,7 @@ export default function Hero() {
                                 src="/assets/images/page-title/page-title-3.jpg?v=cip-photos-1"
                                 width={1920}
                                 height={680}
-                                alt="page-title"
+                                alt="CIP IMMO"
                                 priority
                             />
                         </div>

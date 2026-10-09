@@ -12,7 +12,7 @@ export default function Relatest() {
         <>
             <div className="tf-container sw-layout tf-spacing-1 pt-0">
                 <div className="heading-section mb_48">
-                    <h3>The Most Recent Estate</h3>
+                    <h3>D’autres logements à découvrir</h3>
                 </div>
                 <Swiper
                     className="mySwiper"
@@ -47,19 +47,19 @@ export default function Relatest() {
                                         src={property.imgSrc}
                                         width={410}
                                         height={308}
-                                        alt="home"
+                                        alt="Logement"
                                     />
                                     <div className="wrap-tag d-flex gap_8 mb_12">
                                         <div
                                             className={`tag ${
-                                                property.type === "Sale"
+                                                property.type === "Longue durée"
                                                     ? "sale"
-                                                    : property.type === "Rent"
+                                                    : property.type === "Court séjour"
                                                     ? "rent"
                                                     : property.type
                                             }  text-button-small fw-6 text_primary-color`}
                                         >
-                                            For {property.type}
+                                             {property.type}
                                         </div>
                                         <div className="tag categoreis text-button-small fw-6 text_primary-color">
                                             {property.categories}
@@ -70,14 +70,14 @@ export default function Relatest() {
                                             href="#"
                                             className="tf-btn w-full btn-bg-white quick-view"
                                         >
-                                            <span>Quick View</span>
+                                            <span>Voir le logement</span>
                                             <span className="bg-effect"></span>
                                         </a>
                                         <a
                                             href="#"
                                             className="tf-btn btn-bg-white w-full compare"
                                         >
-                                            <span>Compare</span>
+                                            <span>Comparer</span>
                                             <span className="bg-effect"></span>
                                         </a>
                                     </div>
@@ -89,7 +89,7 @@ export default function Relatest() {
                                         <div className="hover-tooltip tooltip-left box-icon">
                                             <span className="icon icon-Heart"></span>
                                             <span className="tooltip">
-                                                Add to Wishlist
+                                                Ajouter aux favoris
                                             </span>
                                         </div>
                                     </div>
@@ -99,11 +99,11 @@ export default function Relatest() {
                                         className="price mb_12"
                                         suppressHydrationWarning
                                     >
-                                        ${property.price.toLocaleString()}
+                                        {property.price.toLocaleString("fr-FR")} GNF
                                         <span className="text_secondary-color text-body-default">
-                                            {property.type === "Sale"
-                                                ? "/Sqft"
-                                                : "/month"}
+                                            {property.type === "Longue durée"
+                                                ? "/ mois"
+                                                : "/ nuit"}
                                         </span>
                                     </h4>
                                     <Link
@@ -116,11 +116,11 @@ export default function Relatest() {
                                     <ul className="info d-flex">
                                         <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                             <i className="icon-Bed"></i>
-                                            {property.beds} Bed
+                                            {property.beds} ch.
                                         </li>
                                         <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                             <i className="icon-Bathtub"></i>
-                                            {property.baths} Bath
+                                            {property.baths} sdb.
                                         </li>
                                         <li
                                             className="d-flex align-items-center gap_8 text-title text_primary-color fw-6 "
@@ -128,9 +128,9 @@ export default function Relatest() {
                                         >
                                             <i className="icon-Ruler"></i>
                                             {property.sqft
-                                                ? property.sqft.toLocaleString()
+                                                ? property.sqft.toLocaleString("fr-FR")
                                                 : "0"}{" "}
-                                            Sqft
+                                            m²
                                         </li>
                                     </ul>
                                 </div>

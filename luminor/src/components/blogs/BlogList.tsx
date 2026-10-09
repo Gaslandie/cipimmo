@@ -58,7 +58,7 @@ export default function BlogList() {
                                 <div className="article-content">
                                     <div className="meta-post d-flex align-items-center mb_12">
                                         <div className="item text_secondary-color text-caption-1">
-                                            Post By{" "}
+                                            Par{" "}
                                             <Link
                                                 href='#'
                                                 className="link text_primary-color"
@@ -85,7 +85,7 @@ export default function BlogList() {
                                          href={`/blog-post-1/${item.id}`}
                                         className="hover-underline-link text-button text_primary-color"
                                     >
-                                        Read More
+                                        Lire la suite
                                     </Link>
                                 </div>
                             </div>

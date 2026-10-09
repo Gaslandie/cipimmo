@@ -3,7 +3,7 @@
 import { cipRentals } from "@/data/cipRentals";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const emptyFilters = { keyword: "", duration: "", city: "", bedrooms: "", furnished: "", budget: "", minSize: "", maxSize: "" };
 const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
@@ -20,6 +20,21 @@ const budgets = [
 
 export default function Properties3() {
     const [filters, setFilters] = useState(emptyFilters);
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const duration = params.get("duration");
+        const city = params.get("city") || "";
+        const bedrooms = params.get("bedrooms") || "";
+        const budget = params.get("budget") || "";
+        setFilters({ ...emptyFilters,
+            duration: duration === "courte" ? "Court séjour" : duration === "longue" ? "Longue durée" : "",
+            city: cities.includes(city) ? city : "",
+            bedrooms: ["1", "2", "3", "4+"].includes(bedrooms) ? bedrooms : "",
+            keyword: (params.get("keyword") || "").slice(0, 200),
+            budget: budgets.some((item) => item.value === budget) ? budget : "",
+            furnished: params.get("furnished") === "non-meuble" ? "Non meublé" : params.get("furnished") === "meuble" ? "Meublé" : "",
+        });
+    }, []);
     const [sorting, setSorting] = useState("default");
     const [layout, setLayout] = useState<"grid" | "list">("grid");
     const [favorites, setFavorites] = useState<string[]>([]);
