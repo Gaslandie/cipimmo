@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { properties } from "@/data/properties";
+import { cipRentals } from "@/data/cipRentals";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,10 +26,10 @@ export default function Properties() {
             <div className="tf-container">
                 <div className="heading-section justify-content-center text-center mb_46">
                     <span className="sub text-uppercase fw-6 text_secondary-color-2 split-text effect-rotate">
-                        Featured Properties
+                        Nos locations
                     </span>
                     <h3 className="split-text effect-blur-fade">
-                        Find Your Dream Home
+                        Découvrez nos logements
                     </h3>
                 </div>
                 {isMobile ? (
@@ -40,46 +40,40 @@ export default function Properties() {
                         pagination={{ clickable: true, el: ".sw-dots" }}
                         className="tf-sw-mobile bg_1"
                     >
-                        {properties.slice(0, 6).map((property, idx) => (
+                        {cipRentals.map((property, idx) => (
                             <SwiperSlide key={idx}>
                                 <div
-                                    key={property.id}
+                                    key={property.slug}
                                     className="card-house style-default hover-image"
-                                    data-id={property.id}
+                                    data-id={property.slug}
                                 >
                                     <div className="img-style mb_20">
                                         <Image
                                             src={property.imgSrc}
                                             width={410}
                                             height={308}
-                                            alt="home"
+                                            alt={property.imageAlt}
                                         />
                                         <div className="wrap-tag d-flex gap_8 mb_12">
                                             <div
-                                                className={`tag ${
-                                                    property.type === "Sale"
-                                                        ? "sale"
-                                                        : property.type ===
-                                                          "Rent"
-                                                        ? "rent"
-                                                        : property.type
-                                                }  text-button-small fw-6 text_primary-color`}
+                                                className="tag rent text-button-small fw-6 text_primary-color"
                                             >
-                                                For {property.type}
+                                                {property.duration}
                                             </div>
                                             <div className="tag categoreis text-button-small fw-6 text_primary-color">
-                                                {property.categories}
+                                                {property.category}
                                             </div>
                                         </div>
                                         <Link
-                                            href={`/property-details-1/${property.id}`}
+                                            href={`/logements/${property.slug}`}
                                             className="overlay-link"
+                                            aria-label={`Voir le logement : ${property.title}`}
                                         ></Link>
                                         <div className="wishlist">
                                             <div className="hover-tooltip tooltip-left box-icon">
                                                 <span className="icon icon-Heart"></span>
                                                 <span className="tooltip">
-                                                    Add to Wishlist
+                                                    Ajouter aux favoris
                                                 </span>
                                             </div>
                                         </div>
@@ -89,38 +83,33 @@ export default function Properties() {
                                             className="price mb_12"
                                             suppressHydrationWarning
                                         >
-                                            ${property.price.toLocaleString()}
+                                            {property.price.toLocaleString("fr-FR")} GNF
                                             <span className="text_secondary-color text-body-default">
-                                                {property.type === "Sale"
-                                                    ? "/Sqft"
-                                                    : "/month"}
+                                                / {property.period}
                                             </span>
                                         </h4>
                                         <Link
-                                            href={`/property-details-1/${property.id}`}
+                                            href={`/logements/${property.slug}`}
                                             className="title mb_8 h5 link text_primary-color"
                                         >
                                             {property.title}
                                         </Link>
-                                        <p>{property.address}</p>
+                                        <p>{property.city}, Guinée</p>
                                         <ul className="info d-flex">
                                             <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                 <i className="icon-Bed"></i>
-                                                {property.beds} Bed
+                                                {property.beds} ch.
                                             </li>
                                             <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
-                                                <i className="icon-Bathtub"></i>
-                                                {property.baths} Bath
+                                                <i className="icon-HouseLine"></i>
+                                                {property.furnished}
                                             </li>
                                             <li
                                                 className="d-flex align-items-center gap_8 text-title text_primary-color fw-6 "
                                                 suppressHydrationWarning
                                             >
                                                 <i className="icon-Ruler"></i>
-                                                {property.sqft
-                                                    ? property.sqft.toLocaleString()
-                                                    : "0"}{" "}
-                                                Sqft
+                                                {property.area} m²
                                             </li>
                                         </ul>
                                     </div>
@@ -132,46 +121,40 @@ export default function Properties() {
                 ) : (
                     <div className="tf-sw-mobile bg_1">
                         <div className="tf-grid-layout-md lg-col-3 md-col-2">
-                            {properties.slice(0, 6).map((property, idx) => (
+                            {cipRentals.map((property, idx) => (
                                 <div className="swiper-slide" key={idx}>
                                     <div
-                                        key={property.id}
+                                        key={property.slug}
                                         className="card-house style-default hover-image"
-                                        data-id={property.id}
+                                        data-id={property.slug}
                                     >
                                         <div className="img-style mb_20">
                                             <Image
                                                 src={property.imgSrc}
                                                 width={410}
                                                 height={308}
-                                                alt="home"
+                                                alt={property.imageAlt}
                                             />
                                             <div className="wrap-tag d-flex gap_8 mb_12">
                                                 <div
-                                                    className={`tag ${
-                                                        property.type === "Sale"
-                                                            ? "sale"
-                                                            : property.type ===
-                                                              "Rent"
-                                                            ? "rent"
-                                                            : property.type
-                                                    }  text-button-small fw-6 text_primary-color`}
+                                                    className="tag rent text-button-small fw-6 text_primary-color"
                                                 >
-                                                    For {property.type}
+                                                    {property.duration}
                                                 </div>
                                                 <div className="tag categoreis text-button-small fw-6 text_primary-color">
-                                                    {property.categories}
+                                                    {property.category}
                                                 </div>
                                             </div>
                                             <Link
-                                                href={`/property-details-1/${property.id}`}
+                                                href={`/logements/${property.slug}`}
                                                 className="overlay-link"
+                                                aria-label={`Voir le logement : ${property.title}`}
                                             ></Link>
                                             <div className="wishlist">
                                                 <div className="hover-tooltip tooltip-left box-icon">
                                                     <span className="icon icon-Heart"></span>
                                                     <span className="tooltip">
-                                                        Add to Wishlist
+                                                        Ajouter aux favoris
                                                     </span>
                                                 </div>
                                             </div>
@@ -181,39 +164,33 @@ export default function Properties() {
                                                 className="price mb_12"
                                                 suppressHydrationWarning
                                             >
-                                                $
-                                                {property.price.toLocaleString()}
+                                                {property.price.toLocaleString("fr-FR")} GNF
                                                 <span className="text_secondary-color text-body-default">
-                                                    {property.type === "Sale"
-                                                        ? "/Sqft"
-                                                        : "/month"}
+                                                    / {property.period}
                                                 </span>
                                             </h4>
                                             <Link
-                                                href={`/property-details-1/${property.id}`}
+                                                href={`/logements/${property.slug}`}
                                                 className="title mb_8 h5 link text_primary-color"
                                             >
                                                 {property.title}
                                             </Link>
-                                            <p>{property.address}</p>
+                                            <p>{property.city}, Guinée</p>
                                             <ul className="info d-flex">
                                                 <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                     <i className="icon-Bed"></i>
-                                                    {property.beds} Bed
+                                                    {property.beds} ch.
                                                 </li>
                                                 <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
-                                                    <i className="icon-Bathtub"></i>
-                                                    {property.baths} Bath
+                                                    <i className="icon-HouseLine"></i>
+                                                    {property.furnished}
                                                 </li>
                                                 <li
                                                     className="d-flex align-items-center gap_8 text-title text_primary-color fw-6 "
                                                     suppressHydrationWarning
                                                 >
                                                     <i className="icon-Ruler"></i>
-                                                    {property.sqft
-                                                        ? property.sqft.toLocaleString()
-                                                        : "0"}{" "}
-                                                    Sqft
+                                                    {property.area} m²
                                                 </li>
                                             </ul>
                                         </div>
@@ -224,10 +201,10 @@ export default function Properties() {
                     </div>
                 )}
                 <Link
-                    href={'/listing-topmap-grid'}
+                    href={'/listing-left-sidebar'}
                     className="tf-btn btn-bg-1 mx-auto btn-px-32 scrolling-effect effectBottom"
                 >
-                    <span>View All Properties</span>
+                    <span>Voir tous les logements</span>
                     <span className="bg-effect"></span>
                 </Link>
             </div>
