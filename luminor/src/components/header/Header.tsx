@@ -62,7 +62,46 @@ export default function Header() {
                     </div>
                     <div className="offcanvas-body inner-mobile-nav">
                         <div className="mb-body">
-                            <MobileMenu />
+                            <MobileMenu onNavigate={() => setIsMenuOpen(false)} />
+                            <div className="support">
+                                <Link href="/listing-left-sidebar" className="tf-btn" onClick={() => setIsMenuOpen(false)}>
+                                    <span>Trouver un logement</span>
+                                    <span className="bg-effect"></span>
+                                </Link>
+                                <Link href="/contacts" className="text-need" onClick={() => setIsMenuOpen(false)}>
+                                    Besoin d’aide ?
+                                </Link>
+                                <ul className="mb-info">
+                                    <li>
+                                        Téléphone : <a href="tel:+224613585198" className="number">+224 613 58 51 98</a>
+                                    </li>
+                                    <li>
+                                        WhatsApp : <a href="https://wa.me/224623417510" className="link">+224 623 41 75 10</a>
+                                    </li>
+                                    <li>CIP IMMO · Coyah, Guinée</li>
+                                    <li>
+                                        <div className="wrap-social">
+                                            <p>Suivez-nous :</p>
+                                            <ul className="social align-items-center d-flex gap_24">
+                                                {/* Liens à renseigner après réception des profils officiels CIP IMMO. */}
+                                                {[
+                                                    ["Facebook", "icon-FacebookLogo"],
+                                                    ["X", "icon-XLogo"],
+                                                    ["TikTok", "icon-TiktokLogo"],
+                                                    ["Instagram", "icon-InstagramLogo"],
+                                                    ["YouTube", "icon-YoutubeLogo"],
+                                                ].map(([name, icon]) => (
+                                                    <li key={name}>
+                                                        <a role="link" aria-disabled="true" className={icon}
+                                                            aria-label={`${name} — lien à venir`}
+                                                            title={`${name} — lien à venir`} />
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </Offcanvas>

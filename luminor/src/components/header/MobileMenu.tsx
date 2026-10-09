@@ -5,7 +5,7 @@ import { menuItems } from "@/data/menu";
 
 const getCollapseId = (index: number) => `dropdown-menu-${index + 1}`;
 
-export default function MobileMenu() {
+export default function MobileMenu({ onNavigate }: { onNavigate?: () => void }) {
     const pathname = usePathname();
 
     return (
@@ -49,7 +49,7 @@ export default function MobileMenu() {
                                                 className={`menu-item${isActive ? " active" : ""}`}
                                             >
                                                 {link.href ? (
-                                                    <Link href={link.href}>{link.label}</Link>
+                                                    <Link href={link.href} onClick={onNavigate}>{link.label}</Link>
                                                 ) : (
                                                     <span>{link.label}</span>
                                                 )}
@@ -67,7 +67,7 @@ export default function MobileMenu() {
                 return (
                     <li key={item.title} className={`menu-item${isActive ? " active" : ""}`}>
                         {item.href ? (
-                            <Link href={item.href} className="item-menu-mobile">
+                            <Link href={item.href} className="item-menu-mobile" onClick={onNavigate} aria-current={isActive ? "page" : undefined}>
                                 {item.title}
                             </Link>
                         ) : (
