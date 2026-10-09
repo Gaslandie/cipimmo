@@ -50,7 +50,6 @@ export const menuItems: MenuItem[] = [
             { href: "/our-pricing", label: "Our Pricing" },
             { href: "/FAQs", label: "FAQs" },
             { href: "/privacy-policy", label: "Privacy Policy" },
-            { href: "/login", label: "Login/Register" },
         ],
     },
     {

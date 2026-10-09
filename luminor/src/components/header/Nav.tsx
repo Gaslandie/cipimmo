@@ -5,13 +5,6 @@ import { usePathname } from "next/navigation";
 
 export default function Nav() {
     const pathname = usePathname();
-    const getActiveGroup = (path: string) => {
-        const groups = [
-            ["login", "register"],
-        ];
-        return groups.find(group => group.includes(path)) || [path];
-    };
-
     useEffect(() => {
         const preventDefault = () => {
             document.querySelectorAll(".link-no-action").forEach((element) => {
@@ -23,7 +16,7 @@ export default function Nav() {
         preventDefault();
     }, []);
 
-    const currentGroup = getActiveGroup(pathname.split("/")[1]);
+    const currentGroup = [pathname.split("/")[1]];
 
     return (
         <div>

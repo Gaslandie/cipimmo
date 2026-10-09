@@ -1,6 +1,6 @@
 "use client";
 import { footerSections } from "@/data/footer";
-import Image from "next/image";
+import BrandLogo from "../common/BrandLogo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
@@ -136,14 +136,8 @@ export default function Footer1() {
                     <div className="row">
                         <div className="col-lg-4 col-md-6">
                             <div className="footer-about footer-item">
-                                <Link href="/" className="footer-logo mb_17">
-                                    <Image
-                                        src="/assets/images/logo/logo-2.png"
-                                        alt="logo"
-                                        className="main-logo"
-                                        width={222}
-                                        height={48}
-                                    />
+                                <Link href="/" className="footer-logo mb_17" aria-label="CIP IMMO, accueil">
+                                    <BrandLogo />
                                 </Link>
                                 <div className="mb_16">
                                     <p className="mb_4 text_color-1">

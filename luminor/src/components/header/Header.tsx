@@ -1,148 +1,68 @@
 "use client";
-import Image from "next/image";
 import Nav from "./Nav";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import { useState } from "react";
 import Offcanvas from "../common/Offcanvas";
+import BrandLogo from "../common/BrandLogo";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <>
-            <header className={`header style-default header-fixed`}>
+            <header className="header style-default header-fixed">
                 <div className="tf-container w-xxl">
                     <div className="row">
                         <div className="col-12">
                             <div className="header-inner">
-                                <Link href="/" className="site-logo">
-                                    <Image
-                                        src="/assets/images/logo/logo.png"
-                                        alt="logo"
-                                        className="main-logo"
-                                        width={222}
-                                        height={48}
-                                    />
+                                <Link href="/" className="site-logo" aria-label="CIP IMMO, accueil">
+                                    <BrandLogo priority />
                                 </Link>
                                 <Nav />
-                                <div className="header-right d-flex align-items-center gap_20">
-                                    <Link
-                                        href="/login"
-                                        className="link text-button text_primary-color"
-                                    >
-                                        Login/Register
-                                    </Link>
-                                    <Link href="#" className="tf-btn ">
-                                        <span>Submit Property</span>
-                                        <span className="bg-effect"></span>
-                                    </Link>
-                                    <div
-                                        className="mobile-button d-xl-none"
-                                        onClick={() => setIsMenuOpen(true)}
-                                        aria-label="Open menu"
-                                    >
-                                        <div className="burger">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button
+                                    type="button"
+                                    className="mobile-button d-xl-none"
+                                    onClick={() => setIsMenuOpen(true)}
+                                    aria-label="Ouvrir le menu"
+                                    aria-expanded={isMenuOpen}
+                                    aria-controls="cip-immo-mobile-menu"
+                                >
+                                    <span className="burger" aria-hidden="true">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
-
-            {/* Offcanvas menu */}
-            <div className="mobile-nav-wrap">
-                <Offcanvas
-                    isOpen={isMenuOpen}
-                    onClose={() => setIsMenuOpen(false)}
-                >
+            <div className="mobile-nav-wrap" id="cip-immo-mobile-menu">
+                <Offcanvas isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
                     <div className="offcanvas-header top-nav-mobile">
                         <div className="offcanvas-title">
-                            <Link href="/" className="site-logo">
-                                <Image
-                                    src="/assets/images/logo/logo.png"
-                                    alt="logo"
-                                    className="main-logo"
-                                    width={193}
-                                    height={44}
-                                />
+                            <Link
+                                href="/"
+                                className="site-logo"
+                                aria-label="CIP IMMO, accueil"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <BrandLogo />
                             </Link>
                         </div>
-                        <div
-                            className="btn-close-menu"
+                        <button
+                            type="button"
+                            className="btn-close-menu border-0 bg-transparent p-0"
                             onClick={() => setIsMenuOpen(false)}
+                            aria-label="Fermer le menu"
                         >
-                            <i className="icon-times-solid"></i>
-                        </div>
+                            <i className="icon-times-solid" aria-hidden="true"></i>
+                        </button>
                     </div>
                     <div className="offcanvas-body inner-mobile-nav">
                         <div className="mb-body">
                             <MobileMenu />
-                            <div className="support">
-                                <a href="#" className="tf-btn ">
-                                    <span>Submit Property</span>
-                                    <span className="bg-effect"></span>
-                                </a>
-                                <a href="#" className="text-need">
-                                    {" "}
-                                    Need help?
-                                </a>
-                                <ul className="mb-info">
-                                    <li>
-                                        Call Us Now:{" "}
-                                        <span className="number">
-                                            +1 666 8888
-                                        </span>
-                                    </li>
-                                    <li>
-                                        Support 24/7:{" "}
-                                        <a href="#" className="link">
-                                            themesflat@gmail.com
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div className="wrap-social">
-                                            <p>Follow us:</p>
-                                            <ul className="social align-items-center d-flex gap_24">
-                                                <li>
-                                                    <a
-                                                        href="#"
-                                                        className="icon-FacebookLogo"
-                                                    ></a>
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        href="#"
-                                                        className="icon-XLogo"
-                                                    ></a>
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        href="#"
-                                                        className="icon-TiktokLogo"
-                                                    ></a>
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        href="#"
-                                                        className="icon-InstagramLogo"
-                                                    ></a>
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        href="#"
-                                                        className="icon-YoutubeLogo"
-                                                    ></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </Offcanvas>

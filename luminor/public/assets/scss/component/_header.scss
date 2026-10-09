@@ -297,9 +297,12 @@
 }
 
 .mobile-button {
+    border: 0;
+    background: transparent;
     cursor: pointer;
     padding: 24px 0;
     .burger {
+        display: block;
         position: relative;
         width: 25px;
         cursor: pointer;
