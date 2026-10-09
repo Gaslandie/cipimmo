@@ -12,14 +12,9 @@ type MenuItem = {
 
 export const menuItems: MenuItem[] = [
     {
-        title: "Homepages",
-        links: [
-            { href: "/", label: "Homepage 1", isCurrent: true },
-            { href: "/home02", label: "Homepage 2" },
-            { href: "/home03", label: "Homepage 3" },
-            { href: "/home04", label: "Homepage 4" },
-            { href: "/home05", label: "Homepage 5" },
-        ],
+        title: "Home",
+        href: "/",
+        links: [],
         isCurrent: true,
     },
     {

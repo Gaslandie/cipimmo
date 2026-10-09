@@ -37,6 +37,7 @@ export default function Nav() {
                                     ? "has-child"
                                     : ""
                             } ${
+                                item.href === pathname ||
                                 item.links &&
                                 item.links.some((el) => {
                                     if (!el.href) return false;
