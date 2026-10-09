@@ -102,7 +102,7 @@ export default function Properties() {
                                             </li>
                                             <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                 <i className="icon-HouseLine"></i>
-                                                {property.furnished}
+                                                {property.furnished || "Salon"}
                                             </li>
                                             <li
                                                 className="d-flex align-items-center gap_8 text-title text_primary-color fw-6 "
@@ -183,7 +183,7 @@ export default function Properties() {
                                                 </li>
                                                 <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                     <i className="icon-HouseLine"></i>
-                                                    {property.furnished}
+                                                    {property.furnished || "Salon"}
                                                 </li>
                                                 <li
                                                     className="d-flex align-items-center gap_8 text-title text_primary-color fw-6 "

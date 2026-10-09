@@ -50,7 +50,7 @@ export default async function RentalPage({ params }: PageProps) {
                                 <h5 className="properties-title mb_20">Votre logement</h5>
                                 <ul className="info d-flex flex-wrap gap_24">
                                     <li><i className="icon-Bed" aria-hidden="true" /> {rental.beds} {rental.beds === 1 ? "chambre" : "chambres"}</li>
-                                    <li><i className="icon-HouseLine" aria-hidden="true" /> {rental.furnished}</li>
+                                    <li><i className="icon-HouseLine" aria-hidden="true" /> {rental.furnished || "Salon"}</li>
                                     <li><i className="icon-Ruler" aria-hidden="true" /> {rental.area} m²</li>
                                 </ul>
                             </div>
