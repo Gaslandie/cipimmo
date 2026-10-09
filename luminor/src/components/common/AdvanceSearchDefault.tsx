@@ -1,12 +1,16 @@
 import React from "react";
-import {
-    bathroomOptions,
-    garageOptions,
-    minSizeOptions,
-    maxSizeOptions,
-    amenitiesList,
-} from "@/data/optionfilter";
 import DropdownSelect2 from "./DropdownSelect2";
+
+// Critères du bloc de recherche CIP IMMO ; les autres écrans du thème restent indépendants.
+const bathroomOptions = ["Peu importe", "1", "2", "3", "4 et plus"];
+const furnitureOptions = ["Peu importe", "Meublé", "Non meublé"];
+const minSizeOptions = ["Sans minimum", "20 m²", "50 m²", "100 m²", "150 m²", "200 m²"];
+const maxSizeOptions = ["Sans maximum", "50 m²", "100 m²", "150 m²", "200 m²", "300 m²"];
+const amenitiesList = [
+    "Climatisation", "Accès adapté", "Télévision", "Ascenseur", "Interphone",
+    "Sécurité", "Clôture", "Garage", "Parking", "Piscine", "Jardin",
+    "Animaux acceptés", "Wi-Fi",
+];
 
 interface AdvanceSearchProps {
     ddContainer: React.RefObject<HTMLDivElement>;
@@ -24,7 +28,7 @@ export default function AdvanceSearchDefault({
                 <div className="tf-grid-layout sm-col-2">
                     <div className="box-select">
                         <div className="text-button text_primary-color mb_8">
-                            Bathrooms
+                            Salles de bain
                         </div>
                         <DropdownSelect2
                             options={bathroomOptions}
@@ -32,17 +36,17 @@ export default function AdvanceSearchDefault({
                     </div>
                     <div className="box-select">
                         <div className="text-button text_primary-color mb_8">
-                            Garages
+                            Mobilier
                         </div>
                         <DropdownSelect2
-                            options={garageOptions}
+                            options={furnitureOptions}
                         />
                     </div>
                 </div>
                 <div className="tf-grid-layout sm-col-2">
                     <div className="box-select">
                         <div className="text-button text_primary-color mb_8">
-                            Min size
+                            Surface minimale (m²)
                         </div>
                         <DropdownSelect2
                             options={minSizeOptions}
@@ -50,7 +54,7 @@ export default function AdvanceSearchDefault({
                     </div>
                     <div className="box-select">
                         <div className="text-button text_primary-color mb_8">
-                            Max size
+                            Surface maximale (m²)
                         </div>
                         <DropdownSelect2
                             options={maxSizeOptions}
@@ -60,7 +64,7 @@ export default function AdvanceSearchDefault({
             </div>
             <div className="group-checkbox">
                 <div className="text-title text_primary-color mb_12 fw-6">
-                    Amenities:
+                    Équipements :
                 </div>
                 <div className="group-amenities">
                     {amenitiesList.map((amenity) => (

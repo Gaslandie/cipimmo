@@ -1,14 +1,18 @@
 "use client";
-import React, { useRef, useEffect } from "react";
-import {
-    bedroomOptions,
-    budgetOptions,
-    cityOptions,
-} from "@/data/optionfilter";
+import React, { useRef, useEffect, useState } from "react";
 import DropdownSelect2 from "./DropdownSelect2";
 import AdvanceSearchDefault from "./AdvanceSearchDefault";
 
+// Villes reprises de la maquette CIP IMMO ; aucun catalogue de vente dans ce bloc.
+const cityOptions = ["Toutes les villes", "Conakry", "Coyah", "Kankan", "Kindia", "Labé", "Mamou", "Nzérékoré"];
+const bedroomOptions = ["Peu importe", "1", "2", "3", "4 et plus"];
+const rentalBudgets = {
+    "court-sejour": ["Sans maximum", "250 000 GNF", "500 000 GNF", "750 000 GNF", "1 000 000 GNF", "2 000 000 GNF"],
+    "longue-duree": ["Sans maximum", "1 000 000 GNF", "2 000 000 GNF", "3 000 000 GNF", "5 000 000 GNF", "10 000 000 GNF"],
+};
+
 export default function SidebarFilterDefault() {
+    const [duration, setDuration] = useState<keyof typeof rentalBudgets>("court-sejour");
     const ddContainer = useRef<HTMLDivElement>(null);
     const advanceBtnRef = useRef<HTMLDivElement>(null);
 
@@ -39,34 +43,31 @@ export default function SidebarFilterDefault() {
                     className="nav-tab-form style-1 justify-content-center"
                     role="tablist"
                 >
-                    <li
-                        className="nav-tab-item text-title fw-6"
-                        role="presentation"
-                    >
-                        <a
-                            href="#forRent"
-                            className="nav-link-item active"
-                            data-bs-toggle="tab"
-                        >
-                            For Rent
-                        </a>
-                    </li>
-                    <li
-                        className="nav-tab-item text-title fw-6"
-                        role="presentation"
-                    >
-                        <a
-                            href="#forSale"
-                            className="nav-link-item"
-                            data-bs-toggle="tab"
-                        >
-                            For Sale
-                        </a>
-                    </li>
+                    {([
+                        ["court-sejour", "Court séjour"],
+                        ["longue-duree", "Longue durée"],
+                    ] as const).map(([value, label]) => (
+                        <li className="nav-tab-item text-title fw-6" role="presentation" key={value}>
+                            <a
+                                href="#rental-search"
+                                id={`rental-tab-${value}`}
+                                className={`nav-link-item${duration === value ? " active" : ""}`}
+                                role="tab"
+                                aria-selected={duration === value}
+                                aria-controls="rental-search"
+                                onClick={(event) => {
+                                    event.preventDefault();
+                                    setDuration(value);
+                                }}
+                            >
+                                {label}
+                            </a>
+                        </li>
+                    ))}
                 </ul>
 
                 <div className="wg-filter">
-                    <div className="widget-content-inner active">
+                    <div className="widget-content-inner active" id="rental-search" role="tabpanel" aria-labelledby={`rental-tab-${duration}`}>
                         <div className="form-title">
                             <div className="wrap-fill tf-grid-layout lg-col-4 md-col-2">
                                 <form className="w-full">
@@ -74,38 +75,39 @@ export default function SidebarFilterDefault() {
                                         htmlFor="lookingFor"
                                         className="text-button text_primary-color mb_8"
                                     >
-                                        Looking For
+                                        Votre recherche
                                     </label>
                                     <fieldset>
                                         <input
                                             type="text"
-                                            placeholder="Search keyword"
+                                            placeholder="Quartier, type de logement…"
                                             id="lookingFor"
                                         />
                                     </fieldset>
                                 </form>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Location
+                                        Ville
                                     </div>
                                     <DropdownSelect2 options={cityOptions} />
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Bedrooms
+                                        Chambres
                                     </div>
                                     <DropdownSelect2 options={bedroomOptions} />
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Your Budget
+                                        Budget / {duration === "court-sejour" ? "nuit" : "mois"} (GNF)
                                     </div>
-                                    <DropdownSelect2 options={budgetOptions} />
+                                    <DropdownSelect2 key={duration} options={rentalBudgets[duration]} />
                                 </div>
                             </div>
                             <div className="wrap-btn">
                                 <div
                                     className="btn-filter show-form"
+                                    title="Plus de critères"
                                     onClick={() =>
                                         ddContainer.current?.classList.toggle(
                                             "show"
@@ -121,7 +123,7 @@ export default function SidebarFilterDefault() {
                                     type="submit"
                                     className="tf-btn btn-px-28 btn-bg-1"
                                 >
-                                    <span>Search </span>
+                                    <span>Rechercher</span>
                                     <span className="bg-effect"></span>
                                 </button>
                             </div>
