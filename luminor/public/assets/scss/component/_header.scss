@@ -739,5 +739,7 @@
 }
 
 #menu-mobile-menu li.active > a {
-    color: var(--Primary);
+    color: #063569;
+    text-decoration: underline;
+    text-underline-offset: 5px;
 }
