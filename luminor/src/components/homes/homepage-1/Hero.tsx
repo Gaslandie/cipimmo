@@ -14,18 +14,16 @@ export default function Hero() {
             <div className="tf-container w-1830">
                 <div className="content">
                     <h1 className="title split-text split-lines-rotation-x">
-                        Discover Your <br /> Perfect Living Spot
+                        Trouvez votre <br /> logement en Guinée
                     </h1>
                     <div>
                         <p className="h6 text_secondary-color mb_12 split-text split-lines-transform">
-                            This luxurious coastal villa in Malibu boasts
-                            sweeping ocean views, modern open-concept design,
-                            and refined elegance throughout.
+                            Pour un court séjour ou une location longue durée,
+                            découvrez nos appartements à Conakry et dans ses environs.
                         </p>
                         <p className="h6 text_secondary-color mb_24 split-text split-lines-transform">
-                            Relax with an infinity pool, vibrant gardens, and
-                            private beach access for the ultimate seaside
-                            retreat.
+                            Meublé ou non meublé, choisissez le logement qui vous
+                            convient. CIP IMMO vous accompagne à chaque étape.
                         </p>
                         <Link
                             href={"/listing-left-sidebar"}
