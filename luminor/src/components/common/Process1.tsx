@@ -13,23 +13,23 @@ type Tab = {
 const tabs: Tab[] = [
     {
         id: "tab1",
-        title: "Step 1: Discover Your Dream Home",
+        title: "1. Trouvez votre logement",
         content:
-            "Browse through a curated selection of properties tailored to your lifestyle and budget.",
+            "Explorez nos appartements à Coléah, Coyah Km54 et Ansoumaniah. Comparez les surfaces, les chambres et les tarifs selon votre durée de location.",
         image: "/assets/images/section/process-1.jpg?v=cip-photos-1",
     },
     {
         id: "tab2",
-        title: "Step 2: Schedule A Viewing",
+        title: "2. Échangeons sur votre projet",
         content:
-            "Book a tour at your convenience and explore the space in person or virtually.",
+            "Appelez-nous ou écrivez-nous sur WhatsApp avec le logement choisi, vos dates et votre budget. Notre équipe vous renseigne sur les possibilités.",
         image: "/assets/images/section/process-2.jpg?v=cip-photos-1",
     },
     {
         id: "tab3",
-        title: "Step 3: Seal The Deal",
+        title: "3. Préparez votre arrivée",
         content:
-            "Get expert guidance to finalize paperwork and move into your new home with confidence.",
+            "Confirmez avec CIP IMMO la disponibilité et les conditions de location. Nous vous expliquons les démarches et organisons la suite avec vous.",
         image: "/assets/images/section/process-3.jpg?v=cip-photos-1",
     },
 ];
@@ -55,10 +55,10 @@ export default function Process1() {
                     <div className="col-lg-5">
                         <div className="heading-section mb_48">
                             <span className="sub text-uppercase fw-6 text_secondary-color-2">
-                                Our Process
+                                Comment louer
                             </span>
                             <h3 className="split-text effect-blur-fade">
-                                Homebuying Steps
+                                Votre location en trois étapes
                             </h3>
                         </div>
                         {tabs.map((tab) => (
@@ -95,7 +95,7 @@ export default function Process1() {
                                             src={tab.image}
                                             width={690}
                                             height={518}
-                                            alt="process"
+                                            alt="Intérieur d’un appartement proposé par CIP IMMO"
                                         />
                                     </div>
                                 </div>
@@ -106,14 +106,14 @@ export default function Process1() {
 
                 <div>
                     <h3 className="split-text effect-blur-fade">
-                        Trusted By Thousands
+                        CIP IMMO en quelques chiffres
                     </h3>
                     <div className="wrap-counter">
                         {[
-                            { number: 112, label: "Awards Received" },
-                            { number: 85, label: "Satisfied Clients" },
-                            { number: 66, label: "Monthly Traffic" },
-                            { number: 143, label: "Properties Sold" },
+                            { number: 40, label: "Logements proposés" },
+                            { number: 150, label: "Clients accompagnés" },
+                            { number: 7, label: "Villes couvertes" },
+                            { number: 2, label: "Formules de location" },
                         ].map((item, idx) => (
                             <div
                                 className="counter-item style-default"

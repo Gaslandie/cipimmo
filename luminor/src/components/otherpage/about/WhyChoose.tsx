@@ -3,21 +3,21 @@ import React from "react";
 const features = [
     {
         icon: "icon-Lifebuoy",
-        title: "Personalized Support",
+        title: "Un accompagnement à votre écoute",
         description:
-            "Receive tailored assistance from our experienced team to ensure every step fits your specific needs and goals.",
+            "Parlez-nous de vos dates, de votre budget et du quartier souhaité. Nous vous aidons à trouver un logement qui correspond à votre situation.",
     },
     {
         icon: "icon-ClockCountdown",
-        title: "Time-Saving Process",
+        title: "Une recherche plus simple",
         description:
-            "From quick callbacks to streamlined procedures, we value your time and help you move forward without delays.",
+            "Retrouvez les photos, la surface, les chambres et le tarif de chaque logement. Vous disposez des informations utiles pour faire votre choix.",
     },
     {
         icon: "icon-SketchLogo",
-        title: "Trusted Expertise",
+        title: "Une équipe de proximité",
         description:
-            "Work with professionals who bring deep industry knowledge and proven strategies to guide your decisions confidently.",
+            "Échangez directement avec CIP IMMO par téléphone ou sur WhatsApp pour connaître les disponibilités et préparer votre arrivée.",
     },
 ];
 
@@ -27,15 +27,15 @@ export default function WhyChoose() {
             <div className="wrap-heading-section d-flex justify-content-between align-items-center mb_48">
                 <div className="heading-section">
                     <span className="sub text-uppercase fw-6 text_secondary-color-2">
-                        Why Choose Us
+                        Pourquoi CIP IMMO ?
                     </span>
                     <h3 className="text_white split-text effect-blur-fade">
-                        Experience The Difference <br />
-                        With Our Solutions
+                        Votre location, plus simple <br />
+                        à chaque étape
                     </h3>
                 </div>
-                <a href="#" className="tf-btn btn-bg-white btn-px-32">
-                    <span>Contact Us</span>
+                <a href="/contacts" className="tf-btn btn-bg-white btn-px-32">
+                    <span>Nous contacter</span>
                     <span className="bg-effect"></span>
                 </a>
             </div>

@@ -9,6 +9,11 @@ import PageTitle from "@/components/otherpage/about/PageTitle";
 import WhyChoose from "@/components/otherpage/about/WhyChoose";
 
 
+export const metadata = {
+    title: "À propos de CIP IMMO | Location en Guinée",
+    description: "Découvrez CIP IMMO, votre équipe de proximité pour louer un logement meublé ou non meublé en Guinée, en court séjour ou en longue durée.",
+};
+
 export default function Page() {
     return (
         <Layout>
@@ -26,7 +31,7 @@ export default function Page() {
                 <WhyChoose />
             </div>
             <div className="section-testimonials tf-spacing-1">
-                <Testimonial1 />
+                <Testimonial1 cip />
             </div>
             <Banner1 />
             <div className="section-agents tf-spacing-1">

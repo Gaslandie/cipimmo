@@ -11,11 +11,11 @@ export default function Banner1() {
             >
                 <div className="tf-container z-5">
                     <h2 className="text_white mb_20">
-                        Find Your Property, <br />
-                        Start Your Homeownership Journey Today
+                        Trouvez votre logement, <br />
+                        pour quelques jours ou pour longtemps
                     </h2>
                     <p className="text_white text-body-1">
-                        Connect with your Designer in minutes
+                        CIP IMMO vous accompagne pour votre séjour ou votre installation en Guinée.
                     </p>
                 </div>
             </div>

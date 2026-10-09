@@ -4,9 +4,9 @@ export default function AboutUs() {
     return (
         <div className="tf-container section-about">
             <div className="heading-section justify-content-center text-center mb_48">
-                <span className="sub text-uppercase fw-6">About Us</span>
+                <span className="sub text-uppercase fw-6">À propos</span>
                 <h3 className="split-text split-lines-rotation-x">
-                    Your Reliable Partner In Real <br /> Estate Success
+                    Votre partenaire pour louer <br /> en toute simplicité
                 </h3>
             </div>
             <div
@@ -21,41 +21,41 @@ export default function AboutUs() {
                         <div className="tf-box-icon style-1">
                             <div className="heading d-flex justify-content-between mb_19">
                                 <div className="counter-item style-default h2">
-                                    <OdometerCounter value={112} />
+                                    <OdometerCounter value={40} />
                                 </div>
                                 <div className="icon">
                                     <i className="icon-Certificate"></i>
                                 </div>
                             </div>
                             <h6 className="text_secondary-color sub">
-                                Awards Received
+                                Logements proposés
                             </h6>
                         </div>
                         <div className="d-flex gap_12 bot">
                             <div className="tf-box-icon style-1">
                                 <div className="heading d-flex justify-content-between mb_19">
                                     <div className="counter-item style-default h2">
-                                        <OdometerCounter value={85} />
+                                        <OdometerCounter value={150} />
                                     </div>
                                     <div className="icon">
                                         <i className="icon-BuildingOffice"></i>
                                     </div>
                                 </div>
                                 <h6 className="text_secondary-color sub">
-                                    Satisfied Clients
+                                    Clients accompagnés
                                 </h6>
                             </div>
                             <div className="tf-box-icon style-1">
                                 <div className="heading d-flex justify-content-between mb_19">
                                     <div className="counter-item style-default h2">
-                                        <OdometerCounter value={66} />
+                                        <OdometerCounter value={7} />
                                     </div>
                                     <div className="icon">
                                         <i className="icon-ChartDonut"></i>
                                     </div>
                                 </div>
                                 <h6 className="text_secondary-color sub">
-                                    Monthly Traffic
+                                    Villes couvertes
                                 </h6>
                             </div>
                         </div>
@@ -66,35 +66,35 @@ export default function AboutUs() {
                 <div className="box">
                     <h4 className="title d-flex gap_12 align-items-center mb_20">
                         <i className="icon-Crown"></i>
-                        Our Mission
+                        Notre mission
                     </h4>
                     <p className="mb_8">
-                        To simplify the real estate journey by connecting people
-                        with the right properties through trust, transparency,
-                        and technology.
+                        Vous aider à trouver un logement adapté à votre budget,
+                        à votre rythme et à vos envies, pour quelques jours
+                        ou pour vous installer en Guinée.
                     </p>
                     <p>
-                        We are committed to delivering personalized experiences,
-                        whether you&#39;re buying, selling, or renting. We
-                        embrace new technologies and market trends to deliver
-                        smarter, faster, and more efficient property solutions.
+                        Basée à Coyah, CIP IMMO vous accompagne dans la recherche
+                        de logements meublés et non meublés. Nous prenons le temps
+                        de comprendre vos besoins et de vous expliquer les
+                        disponibilités, les tarifs et les conditions de location.
                     </p>
                 </div>
                 <div className="box">
                     <h4 className="title d-flex gap_12 align-items-center mb_20">
                         <i className="icon-Target"></i>
-                        Our Vision
+                        Notre vision
                     </h4>
                     <p className="mb_8">
-                        To become the most trusted real estate partner by
-                        redefining how people discover, evaluate, and engage
-                        with properties.
+                        Faire de la recherche de logement en Guinée une démarche
+                        plus simple, avec des informations claires et une équipe
+                        disponible pour vous orienter.
                     </p>
                     <p>
-                        We envision a future where every individual can find
-                        their ideal home or investment with confidence,
-                        supported by innovation, integrity, and a deep
-                        understanding of market needs.
+                        Nous souhaitons que chacun puisse préparer son séjour
+                        ou son installation avec confiance. Notre approche repose
+                        sur la proximité, l’écoute et un échange direct avec vous,
+                        du premier contact jusqu’à votre arrivée.
                     </p>
                 </div>
             </div>

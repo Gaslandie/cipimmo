@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import AutoRepeatMarquee from "./AutoRepeatMarquee";
 import Image from "next/image";
 
-export default function Testimonial1() {
+export default function Testimonial1({ cip = false }: { cip?: boolean }) {
     const testimonial = [
         {
             id: 1,
@@ -41,6 +41,17 @@ export default function Testimonial1() {
         },
     ];
 
+    // Contenu de présentation de la maquette CIP ; les visuels et le carrousel restent identiques.
+    const cipFeedback = [
+        { text: "« Pour mon séjour à Conakry, j’ai trouvé un appartement à Coléah adapté à mes besoins. Les échanges avec CIP IMMO ont été simples et l’équipe a répondu à mes questions. »", name: "Aïssatou Diallo", position: "Court séjour · Coléah" },
+        { text: "« Nous cherchions un logement pour nous installer en famille. CIP IMMO nous a accompagnés dans notre choix à Ansoumaniah et a pris le temps de nous expliquer les conditions. »", name: "Mamadou Camara", position: "Longue durée · Ansoumaniah" },
+        { text: "« Les photos, la surface et le nombre de chambres m’ont permis de préparer ma recherche. Un échange avec l’équipe a ensuite suffi pour avancer sur ma location à Coyah. »", name: "Fatoumata Bah", position: "Longue durée · Coyah Km54" },
+        { text: "« Une équipe à l’écoute, qui nous a orientés selon notre budget et le quartier souhaité. Nous avons apprécié cet accompagnement pour notre installation. »", name: "Ibrahima Soumah", position: "Longue durée · Ansoumaniah" },
+    ];
+    const displayedTestimonials = cip
+        ? testimonial.map((item, index) => ({ ...item, ...cipFeedback[index] }))
+        : testimonial;
+
     const brands = [
         { src: "/assets/images/logo/brand-1.png?v=cip-photos-1", alt: "brand 1" },
         { src: "/assets/images/logo/brand-2.png?v=cip-photos-1", alt: "brand 2" },
@@ -54,9 +65,9 @@ export default function Testimonial1() {
         <>
             <div className="heading-section justify-content-center text-center mb_40">
                 <span className="sub text-uppercase fw-6 text_secondary-color-2">
-                    Our Testimonials
+                    {cip ? "Vos témoignages" : "Our Testimonials"}
                 </span>
-                <h3 className="split-text effect-blur-fade">What’s People Say’s</h3>
+                <h3 className="split-text effect-blur-fade">{cip ? "Ils ont trouvé leur logement avec nous" : "What’s People Say’s"}</h3>
             </div>
             <div className="tf-container">
                 <Swiper
@@ -83,7 +94,7 @@ export default function Testimonial1() {
                         el: ".sw-pagination-layout",
                     }}
                 >
-                    {testimonial.map((tes) => (
+                    {displayedTestimonials.map((tes) => (
                         <SwiperSlide key={tes.id}>
                             <div className="testimonial-item">
                                 <div>
@@ -104,7 +115,7 @@ export default function Testimonial1() {
                                             src={tes.avatar}
                                             width={60}
                                             height={60}
-                                            alt="avatar"
+                                            alt={cip ? `Témoignage de ${tes.name}` : "avatar"}
                                         />
                                     </div>
                                     <div className="info">
@@ -128,7 +139,7 @@ export default function Testimonial1() {
                     {brands.map((brand, idx) => (
                         <div className="marquee-item" key={idx}>
                             <div className="brand">
-                                <img src={brand.src} alt={brand.alt} />
+                                <img src={brand.src} alt={cip ? "CIP IMMO" : brand.alt} />
                             </div>
                         </div>
                     ))}

@@ -15,7 +15,7 @@ type Agent = {
 const agents: Agent[] = [
   {
     id: 1,
-    name: "Jessica Lane",
+    name: "Accueil et conseil CIP IMMO",
     img: "/assets/images/section/agent-1.jpg?v=cip-photos-1",
     socials: [
       { icon: "icon-FacebookLogo", href: "#" },
@@ -26,7 +26,7 @@ const agents: Agent[] = [
   },
   {
     id: 2,
-    name: "Michael Smith",
+    name: "Accompagnement locatif CIP IMMO",
     img: "/assets/images/section/agent-2.jpg?v=cip-photos-1",
     socials: [
       { icon: "icon-FacebookLogo", href: "#" },
@@ -37,7 +37,7 @@ const agents: Agent[] = [
   },
   {
     id: 3,
-    name: "Jessica Lane",
+    name: "Accueil et conseil CIP IMMO",
     img: "/assets/images/section/agent-1.jpg?v=cip-photos-1",
     socials: [
       { icon: "icon-FacebookLogo", href: "#" },
@@ -48,7 +48,7 @@ const agents: Agent[] = [
   },
   {
     id: 4,
-    name: "Michael Smith",
+    name: "Accompagnement locatif CIP IMMO",
     img: "/assets/images/section/agent-2.jpg?v=cip-photos-1",
     socials: [
       { icon: "icon-FacebookLogo", href: "#" },
@@ -67,22 +67,22 @@ export default function Agents() {
           <div className="box">
             <div className="heading-section mb_32">
               <span className="sub text-uppercase fw-6 text_secondary-color-2">
-                Top Agents
+                Notre équipe
               </span>
-              <h3>Jessica Lane</h3>
+              <h3>L’équipe CIP IMMO</h3>
             </div>
             <div className="content mb_32">
               <h6 className="mb_12">
-                Total Sales Volume: $48M+ in Closed Sales
+                À vos côtés, du premier échange à votre arrivée
               </h6>
               <p className="text-body-2">
-                With over a decade of real estate experience in luxury coastal
-                properties, Jessica is known for her integrity, deep market
-                knowledge.
+                Une question sur un quartier, un tarif ou les conditions de
+                location ? Notre équipe basée à Coyah vous écoute et vous
+                accompagne pour votre court séjour ou votre installation.
               </p>
             </div>
-            <a href="#" className="tf-btn btn-bg-1 btn-px-24">
-              <span>View Agent</span>
+            <a href="/contacts" className="tf-btn btn-bg-1 btn-px-24">
+              <span>Contacter notre équipe</span>
               <span className="bg-effect"></span>
             </a>
           </div>
@@ -119,20 +119,20 @@ export default function Agents() {
             {agents.map((agent) => (
               <SwiperSlide key={agent.id}>
                 <div className="agent-item">
-                  <a href="#" className="img-style">
+                  <a href="/contacts" className="img-style">
                     <img
                       loading="lazy"
                       decoding="async"
                       src={agent.img}
                       width={360}
                       height={360}
-                      alt="agent"
+                      alt={agent.name}
                     />
                   </a>
                   <ul className="social">
                     {agent.socials.map((social, idx) => (
                       <li key={idx}>
-                        <a href={social.href} className={social.icon}></a>
+                        <a className={social.icon} role="link" aria-disabled="true" aria-label={`${social.icon.replace("icon-", "").replace("Logo", "")} CIP IMMO`}></a>
                       </li>
                     ))}
                   </ul>
