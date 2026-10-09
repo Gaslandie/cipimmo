@@ -137,7 +137,7 @@ export default function Footer1() {
                         <div className="col-lg-4 col-md-6">
                             <div className="footer-about footer-item">
                                 <Link href="/" className="footer-logo mb_17" aria-label="CIP IMMO, accueil">
-                                    <BrandLogo />
+                                    <BrandLogo variant="light" />
                                 </Link>
                                 <div className="mb_16">
                                     <p className="mb_4 text_color-1">

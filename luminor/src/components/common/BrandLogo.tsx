@@ -1,11 +1,17 @@
 import Image from "next/image";
 
 // Logo de référence CIP IMMO : horizontal, aplats bleu/jaune, fond transparent.
-// Réutiliser cette version sur le site, sauf demande explicite de changement.
-export default function BrandLogo({ priority = false }: { priority?: boolean }) {
+// Variante claire blanc/jaune pour les fonds sombres, avec les mêmes tracés.
+export default function BrandLogo({
+    priority = false,
+    variant = "default",
+}: {
+    priority?: boolean;
+    variant?: "default" | "light";
+}) {
     return (
         <Image
-            src="/assets/images/logo/cip-immo-horizontal.svg"
+            src={`/assets/images/logo/cip-immo-horizontal${variant === "light" ? "-light" : ""}.svg`}
             alt="CIP IMMO"
             className="main-logo cip-immo-logo"
             width={1000}
