@@ -19,8 +19,8 @@ export default function About() {
                                 one of life’s
                                 biggest
                                 milestones with heart, expertise, and unwavering commitment.</p>
-                            <Link href={'/listing-topmap-grid'} className="tf-btn btn-bg-1 btn-px-32">
-                                <span>View Properties</span>
+                            <Link href={'/listing-left-sidebar'} className="tf-btn btn-bg-1 btn-px-32">
+                                <span>Voir nos logements</span>
                                 <span className="bg-effect"></span>
                             </Link>
                         </div>

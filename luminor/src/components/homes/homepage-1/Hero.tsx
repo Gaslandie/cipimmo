@@ -28,10 +28,10 @@ export default function Hero() {
                             retreat.
                         </p>
                         <Link
-                            href={"/listing-topmap-grid"}
+                            href={"/listing-left-sidebar"}
                             className="tf-btn btn-px-32 btn-bg-1"
                         >
-                            <span>View Properties</span>
+                            <span>Voir nos logements</span>
                             <span className="bg-effect"></span>
                         </Link>
                     </div>
