@@ -55,20 +55,6 @@ export default function BlogStandard() {
                                     ></Link>
                                 </div>
                                 <div className="article-content ">
-                                    <div className="meta-post d-flex align-items-center mb_16">
-                                        <div className="item text_secondary-color text-body-default ">
-                                            Par{" "}
-                                            <Link
-                                                href="#"
-                                                className="link text_primary-color"
-                                            >
-                                                {post.author}
-                                            </Link>
-                                        </div>
-                                        <div className="item text_secondary-color text-body-default ">
-                                            {post.date}
-                                        </div>
-                                    </div>
                                     <h3 className="title mb_17">
                                         <Link
                                             href={`/blog-post-1/${post.id}`}

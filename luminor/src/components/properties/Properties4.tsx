@@ -1,5 +1,6 @@
 "use client";
 import { allProperties } from "@/data/properties";
+import { matchesRentalLocation } from "@/data/cipRentals";
 import Image from "next/image";
 import React, { useEffect, useRef, useState, useReducer } from "react";
 import { initialState, reducer } from "@/context/propertiesFilterReduce";
@@ -61,9 +62,9 @@ export default function Properties4() {
         let filteredList: Property[] = allProperties;
 
         // City filter
-        if (city && city !== "Tous les quartiers") {
+        if (city && city !== "Toutes les villes") {
             filteredList = filteredList.filter(
-                (p) => p.city && p.city === city
+                (p) => matchesRentalLocation(p, city)
             );
         }
 

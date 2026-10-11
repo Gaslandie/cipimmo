@@ -38,7 +38,7 @@ export const initialState: PropertiesFilterState = {
     bedrooms: "Toutes les chambres",
     bathrooms: "Toutes les salles de bain",
     garages: "Tout stationnement",
-    city: "Tous les quartiers",
+    city: "Toutes les villes",
     budget: "Budget maximal",
     type: "Tous les types",
     maxSize: "Surface max. (m²)",

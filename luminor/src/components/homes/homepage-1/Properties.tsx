@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { cipRentals } from "@/data/cipRentals";
+import { cipRentals, rentalLocation } from "@/data/cipRentals";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -94,7 +94,7 @@ export default function Properties() {
                                         >
                                             {property.title}
                                         </Link>
-                                        <p>{property.city}, Guinée</p>
+                                        <p>{rentalLocation(property)}, Guinée</p>
                                         <ul className="info d-flex">
                                             <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                 <i className="icon-Bed"></i>
@@ -175,7 +175,7 @@ export default function Properties() {
                                             >
                                                 {property.title}
                                             </Link>
-                                            <p>{property.city}, Guinée</p>
+                                            <p>{rentalLocation(property)}, Guinée</p>
                                             <ul className="info d-flex">
                                                 <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6">
                                                     <i className="icon-Bed"></i>

@@ -19,7 +19,7 @@ export default function Hero() {
                     <div>
                         <p className="h6 text_secondary-color mb_12 split-text split-lines-transform">
                             Pour un court séjour ou une location longue durée,
-                            découvrez nos appartements à Conakry et dans ses environs.
+                            découvrez nos appartements en Guinée.
                         </p>
                         <p className="h6 text_secondary-color mb_24 split-text split-lines-transform">
                             Meublé ou non meublé, choisissez le logement qui vous

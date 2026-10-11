@@ -6,7 +6,7 @@ const pricingData = [
         subtitle: "Pour un passage de quelques jours.",
         price: "450 000 GNF / nuit",
         buttonClass: "tf-btn btn-border w-full",
-        description: "Choisissez un appartement pour votre séjour à Conakry.",
+        description: "Choisissez un appartement pour votre séjour en Guinée.",
         features: [
             "Un tarif à la nuit",
             "Contact direct avec CIP IMMO",

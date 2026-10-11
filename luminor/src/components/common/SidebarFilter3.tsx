@@ -69,7 +69,7 @@ export default function SidebarFilter3({
                                     <fieldset>
                                         <input
                                             type="text"
-                                            placeholder="Quartier, logement…"
+                                            placeholder="Ville, logement…"
                                             id="lookingFor"
                                             value={searchKeyword}
                                             onChange={(e) =>

@@ -28,7 +28,7 @@ export const footerSections: FooterSection[] = [
             { href: "/about-us", label: "À propos" },
             { href: "/contacts", label: "Nous contacter" },
             { href: "/FAQs", label: "Questions fréquentes" },
-            { href: "/blog-standard", label: "Conseils et actualités" },
+            { href: "/blog-standard", label: "Nos conseils" },
             { href: "/our-pricing", label: "Nos formules" },
         ],
     },

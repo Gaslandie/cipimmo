@@ -61,20 +61,6 @@ export default function NewsInsight() {
                                     ></Link>
                                 </div>
                                 <div className="article-content">
-                                    <div className="meta-post d-flex align-items-center mb_12">
-                                        <div className="item text_secondary-color text-caption-1">
-                                            Par{" "}
-                                            <Link
-                                                href="#"
-                                                className="link text_primary-color"
-                                            >
-                                                {item.author}
-                                            </Link>
-                                        </div>
-                                        <div className="item text_secondary-color text-caption-1">
-                                            {item.date}
-                                        </div>
-                                    </div>
                                     <h5 className="title mb_12">
                                         <Link
                                             href={`/blog-post-1/${item.id}`}

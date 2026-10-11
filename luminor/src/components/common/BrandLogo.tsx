@@ -14,8 +14,8 @@ export default function BrandLogo({
             src={`/assets/images/logo/cip-immo-horizontal${variant === "light" ? "-light" : ""}.svg`}
             alt="CIP IMMO"
             className="main-logo cip-immo-logo"
-            width={1000}
-            height={200}
+            width={860}
+            height={140}
             priority={priority}
             unoptimized
         />

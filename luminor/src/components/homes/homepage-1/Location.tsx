@@ -78,7 +78,7 @@ export default function Location() {
                                     href="/listing-left-sidebar"
                                     className="mb_4 link h5 text_primary-color"
                                 >
-                                    Ansoumaniah
+                                    Ansoumaniah, Conakry
                                 </a>
                                 <p>Appartements non meublés</p>
                             </div>

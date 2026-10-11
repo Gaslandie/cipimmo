@@ -4,8 +4,7 @@ import { useRouter } from "next/navigation";
 import DropdownSelect2 from "./DropdownSelect2";
 import AdvanceSearchDefault from "./AdvanceSearchDefault";
 
-// Villes reprises de la maquette CIP IMMO ; aucun catalogue de vente dans ce bloc.
-const cityOptions = ["Tous les quartiers", "Coléah", "Coyah Km54", "Ansoumaniah"];
+import { cityOptions } from "@/data/optionfilter";
 const bedroomOptions = ["Peu importe", "1", "2", "3", "4 et plus"];
 const rentalBudgets = {
     "court-sejour": ["Sans maximum", "300 000 GNF", "500 000 GNF", "1 000 000 GNF"],
@@ -95,7 +94,7 @@ export default function SidebarFilterDefault() {
                                     <fieldset>
                                         <input
                                             type="text"
-                                            placeholder="Quartier, type de logement…"
+                                            placeholder="Ville, type de logement…"
                                             id="lookingFor"
                                             maxLength={200}
                                             value={keyword}

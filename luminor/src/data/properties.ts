@@ -1,4 +1,4 @@
-import { cipRentals } from "./cipRentals";
+import { cipRentals, rentalLocation } from "./cipRentals";
 
 export type Property = {
     id: number;
@@ -27,6 +27,7 @@ export type Property = {
     garages: number;
     description?: string;
     city: string;
+    municipality: string;
     authorAvatar?: string;
     authorName?: string;
     authorPosition?: string;
@@ -39,7 +40,7 @@ export const properties: Property[] = cipRentals.map((rental, index) => ({
     ...rental,
     id: index + 1,
     alt: rental.imageAlt,
-    address: rental.city + ", Guinée",
+    address: rentalLocation(rental) + ", Guinée",
     categories: rental.category,
     type: rental.duration === "Court séjour" ? "Court séjour" : "Longue durée",
     sqft: rental.area,

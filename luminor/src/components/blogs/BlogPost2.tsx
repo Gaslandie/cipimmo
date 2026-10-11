@@ -1,14 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import FormComments from "../common/FormComments";
 import NewsInsight from "./NewsInsight";
-import Comment from "../common/Comment";
 
 type BlogItem = {
     imgSrc: string;
     alt: string;
-    date: string;
     author: string;
     authorAvatar: string;
     authorDesc: string;
@@ -26,9 +23,11 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                 <div className="thumbs">
                     <Image
                         src={blogItem.imgSrc}
-                        width={1920}
-                        height={800}
-                        alt=""
+                        width={2400}
+                        height={1600}
+                        alt={blogItem.alt}
+                        sizes="100vw"
+                        priority
                     />
                 </div>
             </div>
@@ -44,30 +43,6 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                 {blogItem.category}
                                             </div>
                                             <h3>{blogItem.title}</h3>
-                                            <div className="meta-post d-flex justify-content-center align-items-center mb_16">
-                                                <div className="item author">
-                                                    <div className="avatar">
-                                                        <Image
-                                                            src={
-                                                                blogItem.authorAvatar
-                                                            }
-                                                            width={40}
-                                                            height={40}
-                                                            alt="CIP IMMO"
-                                                        />
-                                                    </div>
-                                                    <Link
-                                                        href="#"
-                                                        className="link text_primary-color fw-6 text-title "
-                                                    >
-                                                        {blogItem.authorName}
-                                                    </Link>
-                                                </div>
-                                                <div className="item text_primary-color text-title fw-6 d-flex align-items-center gap_8 ">
-                                                    <i className="icon-CalendarBlank"></i>{" "}
-                                                    {blogItem.date}
-                                                </div>
-                                            </div>
                                         </div>
                                         <p className="passive text-body-2">
                                             Trouver un logement en Guinée commence par quelques choix simples : le quartier, la durée du séjour, le nombre de chambres et le budget. Prenez le temps de comparer ces critères pour retenir les appartements qui correspondent à votre quotidien.
@@ -108,7 +83,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                 1. Choisissez votre quartier et votre durée
                                             </h5>
                                             <p className="text-body-2">
-                                                Pour un déplacement ou une installation, pensez à la distance avec vos activités, aux transports et aux services du quartier. Coléah, Coyah Km54 et Ansoumaniah offrent différents points de départ pour votre recherche.
+                                                Pour un déplacement ou une installation, pensez à la distance avec vos activités, aux transports et aux services du quartier. Comparez les temps de trajet et les commodités autour de chaque logement pour choisir une localisation adaptée à votre quotidien.
                                             </p>
                                         </div>
                                         <div className="passive mb_40">
@@ -220,69 +195,6 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="box-writter">
-                                        <div className="box-author mb_20">
-                                            <div className="avatar">
-                                                <Image
-                                                    src={blogItem.authorAvatar}
-                                                    width={120}
-                                                    height={120}
-                                                    alt="CIP IMMO"
-                                                />
-                                            </div>
-                                            <div className="content">
-                                                <div className="info">
-                                                    <div className="mb_20">
-                                                        <h5 className="mb_4">
-                                                            {
-                                                                blogItem.authorName
-                                                            }
-                                                        </h5>
-                                                        <p>
-                                                            {
-                                                                blogItem.authorFlow
-                                                            }{" "}
-                                                            Lecteurs
-                                                        </p>
-                                                    </div>
-                                                    <Link
-                                                        href="#"
-                                                        className="tf-btn btn-bg-1 btn-px-12"
-                                                    >
-                                                        <span className="text-button-small">
-                                                            Nous contacter
-                                                        </span>
-                                                        <span className="bg-effect"></span>
-                                                    </Link>
-                                                </div>
-                                                <ul className="tf-social d-flex gap_24">
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="icon-FacebookLogo"
-                                                        ></Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="icon-XLogo"
-                                                        ></Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="icon-InstagramLogo"
-                                                        ></Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <p>{blogItem.authorDesc}</p>
-                                    </div>
-                                    <div className="mb_40">
-                                        <Comment />
-                                    </div>
-                                    <FormComments />
                                 </div>
                             </div>
                         </div>

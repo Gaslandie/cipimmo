@@ -1,15 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import FormComments from "../common/FormComments";
 import SideBar2 from "./SideBar2";
 import NewsInsight from "./NewsInsight";
-import Comment from "../common/Comment";
 
 type BlogItem = {
     imgSrc: string;
     alt: string;
-    date: string;
     author: string;
     authorAvatar: string;
     authorDesc: string;
@@ -27,9 +24,11 @@ export default function BlogPost1({ blogItem }: { blogItem: BlogItem }) {
                 <div className="thumbs">
                     <Image
                         src={blogItem.imgSrc}
-                        width={1920}
-                        height={800}
-                        alt=""
+                        width={2400}
+                        height={1600}
+                        alt={blogItem.alt}
+                        sizes="100vw"
+                        priority
                     />
                 </div>
             </div>
@@ -45,30 +44,6 @@ export default function BlogPost1({ blogItem }: { blogItem: BlogItem }) {
                                             {blogItem.category}
                                         </div>
                                         <h3>{blogItem.title}</h3>
-                                        <div className="meta-post d-flex align-items-center mb_16">
-                                            <div className="item author">
-                                                <div className="avatar">
-                                                    <Image
-                                                        src={
-                                                            blogItem.authorAvatar
-                                                        }
-                                                        width={40}
-                                                        height={40}
-                                                        alt="CIP IMMO"
-                                                    />
-                                                </div>
-                                                <Link
-                                                    href="#"
-                                                    className="link text_primary-color fw-6 text-title "
-                                                >
-                                                    {blogItem.authorName}
-                                                </Link>
-                                            </div>
-                                            <div className="item text_primary-color text-title fw-6 d-flex align-items-center gap_8 ">
-                                                <i className="icon-CalendarBlank"></i>{" "}
-                                                {blogItem.date}
-                                            </div>
-                                        </div>
                                     </div>
                                     <p className="passive text-body-2">
                                         Trouver un logement en Guinée commence par quelques choix simples : le quartier, la durée du séjour, le nombre de chambres et le budget. Prenez le temps de comparer ces critères pour retenir les appartements qui correspondent à votre quotidien.
@@ -109,7 +84,7 @@ export default function BlogPost1({ blogItem }: { blogItem: BlogItem }) {
                                             1. Choisissez votre quartier et votre durée
                                         </h5>
                                         <p className="text-body-2">
-                                            Pour un déplacement ou une installation, pensez à la distance avec vos activités, aux transports et aux services du quartier. Coléah, Coyah Km54 et Ansoumaniah offrent différents points de départ pour votre recherche.
+                                            Pour un déplacement ou une installation, pensez à la distance avec vos activités, aux transports et aux services du quartier. Comparez les temps de trajet et les commodités autour de chaque logement pour choisir une localisation adaptée à votre quotidien.
                                         </p>
                                     </div>
                                     <div className="passive mb_40">
@@ -219,18 +194,9 @@ export default function BlogPost1({ blogItem }: { blogItem: BlogItem }) {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="mb_40">
-                                    <Comment />
-                                </div>
-                                <FormComments />
                             </div>
                             <div className="col-lg-4">
-                                <SideBar2
-                                    authorAvatar={blogItem.authorAvatar}
-                                    authorDesc={blogItem.authorDesc}
-                                    authorName={blogItem.authorName}
-                                    authorFlow={blogItem.authorFlow}
-                                />
+                                <SideBar2 />
                             </div>
                         </div>
                     </div>

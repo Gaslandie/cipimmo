@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { cipRentals } from "@/data/cipRentals";
+import { cipRentals, rentalLocation } from "@/data/cipRentals";
 import React, { useState } from "react";
 
-const propertiesData = cipRentals.map((rental, index) => ({ id: `tab${index + 1}`, title: rental.title, address: `${rental.city}, Guinée`, img: rental.imgSrc, slug: rental.slug }));
+const propertiesData = cipRentals.map((rental, index) => ({ id: `tab${index + 1}`, title: rental.title, address: `${rentalLocation(rental)}, Guinée`, img: rental.imgSrc, slug: rental.slug }));
 
 export default function Properties2() {
     const [activeTab, setActiveTab] = useState("tab1");

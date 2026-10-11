@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Layout from "@/components/layouts/Layout-defaul";
-import { cipRentals } from "@/data/cipRentals";
+import { cipRentals, rentalLocation } from "@/data/cipRentals";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -23,7 +23,7 @@ export default async function RentalPage({ params }: PageProps) {
     const { slug } = await params;
     const rental = cipRentals.find((item) => item.slug === slug);
     if (!rental) notFound();
-    const message = `Bonjour CIP IMMO, je souhaite me renseigner sur « ${rental.title} » à ${rental.city}. Pouvez-vous confirmer la disponibilité et les conditions de location ?`;
+    const message = `Bonjour CIP IMMO, je souhaite me renseigner sur « ${rental.title} » à ${rentalLocation(rental)}. Pouvez-vous confirmer la disponibilité et les conditions de location ?`;
 
     return (
         <Layout>
@@ -37,7 +37,7 @@ export default async function RentalPage({ params }: PageProps) {
                                     <span className="tag categoreis text-button-small fw-6 text_primary-color">{rental.category}</span>
                                 </div>
                                 <h1 className="h4 mb_12">{rental.title}</h1>
-                                <p className="mb_12">{rental.city}, Guinée</p>
+                                <p className="mb_12">{rentalLocation(rental)}, Guinée</p>
                                 <h4 className="price">
                                     {rental.price.toLocaleString("fr-FR")} GNF
                                     <span className="text_secondary-color text-body-default"> / {rental.period}</span>

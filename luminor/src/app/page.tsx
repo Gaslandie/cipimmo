@@ -2,7 +2,6 @@ import About from "@/components/homes/homepage-1/About";
 import Banner from "@/components/homes/homepage-1/Banner";
 import Hero from "@/components/homes/homepage-1/Hero";
 import Location from "@/components/homes/homepage-1/Location";
-import Process from "@/components/homes/homepage-1/Process";
 import Properties from "@/components/homes/homepage-1/Properties";
 import Properties2 from "@/components/homes/homepage-1/Properties2";
 import Testimonials from "@/components/homes/homepage-1/Testimonials";
@@ -18,7 +17,6 @@ export default function Home() {
             <Banner />
             <Properties2 />
             <Location />
-            <Process />
             <Testimonials />
             <LatestNews />
         </Layout>

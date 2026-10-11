@@ -1,11 +1,12 @@
 // Caractéristiques transmises par le client : Coléah, Coyah Km54 et trois appartements à Ansoumaniah.
 // Tarifs, durées et photos conservés pour la maquette ; aucun de ces éléments ne provient du message client.
-// Les suffixes 1 à 3 distinguent les fiches d’Ansoumaniah, sans supposer une numérotation officielle.
+// Les liens distincts conservent une fiche par appartement d’Ansoumaniah, avec le même titre visible.
 export const cipRentals = [
     {
         "slug": "appartement-coleah",
         "title": "Appartement à Coléah",
         "city": "Coléah",
+        "municipality": "Conakry",
         "duration": "Court séjour",
         "furnished": "",
         "price": 450000,
@@ -23,6 +24,7 @@ export const cipRentals = [
         "slug": "appartement-coyah-km54",
         "title": "Appartement à Coyah Km54",
         "city": "Coyah Km54",
+        "municipality": "Coyah",
         "duration": "Longue durée",
         "furnished": "",
         "price": 3500000,
@@ -38,8 +40,9 @@ export const cipRentals = [
     },
     {
         "slug": "appartement-ansoumaniah-1",
-        "title": "Appartement à Ansoumaniah — 1",
+        "title": "Appartement à Ansoumaniah",
         "city": "Ansoumaniah",
+        "municipality": "Conakry",
         "duration": "Longue durée",
         "furnished": "Non meublé",
         "price": 2800000,
@@ -48,15 +51,16 @@ export const cipRentals = [
         "area": 92,
         "imgSrc": "/assets/images/home/cip-apartment-interior.jpg",
         "imageAlt": "Salon lumineux avec cuisine ouverte",
-        "description": "À Ansoumaniah, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
+        "description": "À Ansoumaniah, à Conakry, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
         "category": "Appartement",
         "imgWidth": 977,
         "imgHeight": 733
     },
     {
         "slug": "appartement-ansoumaniah-2",
-        "title": "Appartement à Ansoumaniah — 2",
+        "title": "Appartement à Ansoumaniah",
         "city": "Ansoumaniah",
+        "municipality": "Conakry",
         "duration": "Longue durée",
         "furnished": "Non meublé",
         "price": 2800000,
@@ -65,15 +69,16 @@ export const cipRentals = [
         "area": 92,
         "imgSrc": "/assets/images/home/cip-apartment-interior.jpg",
         "imageAlt": "Salon lumineux avec cuisine ouverte",
-        "description": "À Ansoumaniah, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
+        "description": "À Ansoumaniah, à Conakry, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
         "category": "Appartement",
         "imgWidth": 977,
         "imgHeight": 733
     },
     {
         "slug": "appartement-ansoumaniah-3",
-        "title": "Appartement à Ansoumaniah — 3",
+        "title": "Appartement à Ansoumaniah",
         "city": "Ansoumaniah",
+        "municipality": "Conakry",
         "duration": "Longue durée",
         "furnished": "Non meublé",
         "price": 2800000,
@@ -82,9 +87,22 @@ export const cipRentals = [
         "area": 92,
         "imgSrc": "/assets/images/home/cip-apartment-interior.jpg",
         "imageAlt": "Salon lumineux avec cuisine ouverte",
-        "description": "À Ansoumaniah, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
+        "description": "À Ansoumaniah, à Conakry, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
         "category": "Appartement",
         "imgWidth": 977,
         "imgHeight": 733
     }
 ];
+
+
+type RentalLocation = { city: string; municipality: string };
+
+export function rentalLocation(rental: RentalLocation) {
+    return rental.city === rental.municipality ? rental.city : `${rental.city}, ${rental.municipality}`;
+}
+
+export function matchesRentalLocation(rental: RentalLocation, location: string) {
+    return rental.municipality === location;
+}
+
+export const rentalLocationOptions = [...new Set(cipRentals.map((rental) => rental.municipality))];

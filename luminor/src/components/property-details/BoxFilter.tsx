@@ -118,7 +118,7 @@ export default function BoxFilter() {
                                     <fieldset>
                                         <input
                                             type="text"
-                                            placeholder="Quartier, logement…"
+                                            placeholder="Ville, logement…"
                                             id="lookingFor"
                                         />
                                     </fieldset>

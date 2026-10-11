@@ -6,47 +6,10 @@ import { subscribeNewsletter } from "@/actions/newsletterAction";
 
 
 export default function SideBar() {
-    type Category = {
-        id: number;
-        name: string;
-        count: number;
-    };
     type Tag = {
         id: number;
         name: string;
     };
-    const categories: Category[] = [
-        {
-            id: 1,
-            name: "Vie en Guinée",
-            count: 22,
-        },
-        {
-            id: 2,
-            name: "Préparer son installation",
-            count: 15,
-        },
-        {
-            id: 3,
-            name: "Choisir son logement",
-            count: 16,
-        },
-        {
-            id: 4,
-            name: "Louer simplement",
-            count: 8,
-        },
-        {
-            id: 5,
-            name: "Séjour professionnel",
-            count: 19,
-        },
-        {
-            id: 6,
-            name: "Bien chez soi",
-            count: 21,
-        },
-    ];
 
     const tags: Tag[] = [
         {
@@ -111,22 +74,6 @@ export default function SideBar() {
                     </div>
                 </form>
             </div>
-            <div className="sidebar-item sidebar-categories ">
-                <h5 className="sidebar-title mb_17">Catégories</h5>
-                <ul className="list-categories d-grid gap_8">
-                    {categories.map((category) => (
-                        <li
-                            className="d-flex align-items-center justify-content-between text-body-default "
-                            key={category.id}
-                        >
-                            <Link href="#" className="hover-line-text">
-                                {category.name}
-                            </Link>
-                            <div className="number">({category.count})</div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
             <div className="sidebar-item sidebar-recent-post">
                 <h5 className="sidebar-title mb_17">À lire aussi</h5>
                 <ul>
@@ -147,19 +94,6 @@ export default function SideBar() {
                                 />
                             </Link>
                             <div className="content">
-                                <div className="meta-post d-flex align-items-center mb_7">
-                                    <div className="item text_secondary-color text-caption-2 ">
-                                        <Link
-                                            href="#"
-                                            className="link text_primary-color"
-                                        >
-                                            {post.author}
-                                        </Link>
-                                    </div>
-                                    <div className="item text_secondary-color text-caption-2 ">
-                                        {post.date}
-                                    </div>
-                                </div>
                                 <div className="text-title title text_primary-color fw-6">
                                     <Link
                                         href={`/blog-post-1/${post.id}`}
