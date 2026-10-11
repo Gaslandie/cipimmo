@@ -12,9 +12,9 @@ export default function FormContact() {
             <div className="col-md-6">
                 <div className="box-contact">
                     <div className="heading mb_23">
-                        <h4 className="mb_8">Parlons de votre recherche</h4>
+                        <h4 className="mb_8">Échangeons avec vous</h4>
                         <p>
-                            Une question sur un logement, un quartier ou votre arrivée ? Contactez notre équipe pour préparer votre location en Guinée.
+                            Une question sur nos services ou un projet immobilier en Guinée ? Notre équipe est à votre écoute.
                         </p>
                     </div>
                     <ul className="info d-grid gap_20 mb_36">
@@ -22,7 +22,7 @@ export default function FormContact() {
                             <i className="icon icon-MapPin"></i>
                             <div className="content">
                                 <div className="text-title fw-6 text_primary-color mb_4">
-                                    Notre adresse :
+                                    Localisation de l’entreprise :
                                 </div>
                                 <p>
                                     Coyah, Guinée
@@ -33,7 +33,7 @@ export default function FormContact() {
                             <i className="icon icon-PhoneCall"></i>
                             <div className="content">
                                 <div className="text-title fw-6 text_primary-color mb_4">
-                                    Nous contacter
+                                    Téléphone :
                                 </div>
                                 <p>+224 613 58 51 98</p>
                             </div>
@@ -81,7 +81,7 @@ export default function FormContact() {
                     <div className="heading mb_24">
                         <h4 className="mb_8">Préparez votre message</h4>
                         <p>
-                            Indiquez vos dates, votre budget et le logement qui vous intéresse.
+                            Présentez votre demande. Nous préparerons votre message pour l’envoyer sur WhatsApp.
                         </p>
                     </div>
 

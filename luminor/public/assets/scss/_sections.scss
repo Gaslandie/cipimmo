@@ -1,5 +1,71 @@
 @use "./abstracts/index" as *;
 
+.page-title.style-1.home-search-hero {
+    @include res(md) {
+        isolation: isolate;
+        padding-bottom: 24px;
+
+        > .thumbs {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                background: rgba(0, 0, 0, 0.55);
+                pointer-events: none;
+            }
+
+            .swiper,
+            .swiper-wrapper,
+            .swiper-slide,
+            .slide-inner,
+            img {
+                height: 100%;
+            }
+        }
+        .content {
+            position: relative;
+            padding-top: 24px;
+            margin-bottom: 24px;
+            gap: 0;
+            align-items: center;
+            text-align: center;
+        }
+        .title {
+            font-size: clamp(16px, 4.4vw, 28px);
+            line-height: 1.2;
+            margin: 0;
+            color: #fff;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+        .flat-tab-form {
+            margin-top: 0;
+        }
+    }
+}
+
+.home-rentals {
+    @include res(md) {
+        padding-top: 32px !important;
+
+        .heading-section {
+            margin-bottom: 24px;
+        }
+        .heading-section .sub {
+            color: #555;
+        }
+        .heading-section h3 {
+            font-size: 28px;
+            line-height: 1.2;
+        }
+    }
+}
+
 .page-title {
     position: relative;
     z-index: 99;
@@ -1111,7 +1177,47 @@
     }
 }
 
+.page-title.style-default.contact-page-title {
+    .thumbs img {
+        opacity: 0.35;
+    }
+    .breadcrumb,
+    .breadcrumb a,
+    .breadcrumb li {
+        color: #fff;
+    }
+}
+
 .section-contact {
+    .contact-location-card {
+        display: grid;
+        justify-items: center;
+        gap: 16px;
+        padding: 40px 24px;
+        border: 1px solid #e4e4e4;
+        border-radius: 20px;
+        background: #fafafa;
+        text-align: center;
+
+        h4 { color: #111; }
+        p { color: #444; }
+
+        .contact-location-map {
+            width: 100%;
+
+            iframe {
+                display: block;
+                width: 100%;
+                border: 0;
+                border-radius: 12px;
+            }
+        }
+
+        .tf-btn {
+            max-width: 100%;
+            white-space: normal;
+        }
+    }
     @include res(xl, min) {
         .box-contact {
             max-width: 520px;
@@ -1372,6 +1478,15 @@
 
 // CIP rental catalogue: retain the template layout with consistent photo frames.
 .cip-rentals {
+    @include res(lg) {
+        .rental-filter-panel {
+            display: none;
+
+            &.is-open {
+                display: block;
+            }
+        }
+    }
     select.nice-select {
         float: none;
         cursor: pointer;

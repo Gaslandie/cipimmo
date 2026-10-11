@@ -10,13 +10,13 @@ import Link from "next/link";
 
 export default function Hero() {
     return (
-        <div className="page-title style-1 sw-layout">
+        <div className="page-title style-1 sw-layout home-search-hero">
             <div className="tf-container w-1830">
                 <div className="content">
-                    <h1 className="title split-text split-lines-rotation-x">
-                        Trouvez votre <br /> logement en Guinée
+                    <h1 className="title">
+                        Trouvez votre <br className="d-none d-md-block" /> logement en Guinée
                     </h1>
-                    <div>
+                    <div className="d-none d-md-block">
                         <p className="h6 text_secondary-color mb_12 split-text split-lines-transform">
                             Pour un court séjour ou une location longue durée,
                             découvrez nos appartements en Guinée.
@@ -71,10 +71,10 @@ export default function Hero() {
                             />
                         </div>
                     </SwiperSlide>
-                    <div className="sw-button nav-prev-layout">
+                    <div className="sw-button nav-prev-layout d-none d-md-flex">
                         <i className="icon-CaretLeft"></i>
                     </div>
-                    <div className="sw-button nav-next-layout">
+                    <div className="sw-button nav-next-layout d-none d-md-flex">
                         <i className="icon-CaretRight"></i>
                     </div>
                 </Swiper>

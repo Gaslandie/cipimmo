@@ -4,7 +4,7 @@ import React from 'react'
 export default function About() {
   return (
     <>
-         <div className="section-about-1 tf-spacing-1">
+         <div className="section-about-1 tf-spacing-1 d-none d-md-block">
                 <div className="tf-container">
                     <div className="row">
                         <div className="col-lg-5">

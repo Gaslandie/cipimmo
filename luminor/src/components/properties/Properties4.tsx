@@ -372,14 +372,6 @@ export default function Properties4() {
                                                                     href={`/property-details-1/${property.id}`}
                                                                     className="overlay-link"
                                                                 ></Link>
-                                                                <div className="wishlist">
-                                                                    <div className="hover-tooltip tooltip-left box-icon">
-                                                                        <span className="icon icon-Heart"></span>
-                                                                        <span className="tooltip">
-                                                                            Ajouter aux favoris
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                             <div className="content">
                                                                 <h4
@@ -388,10 +380,7 @@ export default function Properties4() {
                                                                 >
                                                                     {property.price.toLocaleString("fr-FR")} GNF
                                                                     <span className="text_secondary-color text-body-default">
-                                                                        {property.type ===
-                                                                        "Longue durée"
-                                                                            ? "/ mois"
-                                                                            : "/ nuit"}
+                                                                        {`/ ${property.period}`}
                                                                     </span>
                                                                 </h4>
                                                                 <Link
@@ -487,10 +476,7 @@ export default function Properties4() {
                                                                     >
                                                                         {property.price.toLocaleString("fr-FR")} GNF
                                                                         <span className="text_secondary-color text-body-default">
-                                                                            {property.type ===
-                                                                            "Longue durée"
-                                                                                ? "/ mois"
-                                                                                : "/ nuit"}
+                                                                            {`/ ${property.period}`}
                                                                         </span>
                                                                     </h4>
                                                                     <div className="wrap-tag d-flex gap_8">

@@ -1,5 +1,6 @@
-// Caractéristiques transmises par le client : Coléah, Coyah Km54 et trois appartements à Ansoumaniah.
-// Tarifs, durées et photos conservés pour la maquette ; aucun de ces éléments ne provient du message client.
+// Tarifs de Coléah, Coyah et Ansoumaniah confirmés par le client le 11 octobre 2026.
+// Les photos historiques sont celles de la maquette.
+// Kankan : caractéristiques confirmées par le client ; tarifs et photos en attente.
 // Les liens distincts conservent une fiche par appartement d’Ansoumaniah, avec le même titre visible.
 export const cipRentals = [
     {
@@ -9,8 +10,8 @@ export const cipRentals = [
         "municipality": "Conakry",
         "duration": "Court séjour",
         "furnished": "",
-        "price": 450000,
-        "period": "nuit",
+        "price": 1000000,
+        "period": "jour",
         "beds": 2,
         "area": 75,
         "imgSrc": "/assets/images/home/cip-apartment-interior.jpg",
@@ -27,7 +28,7 @@ export const cipRentals = [
         "municipality": "Coyah",
         "duration": "Longue durée",
         "furnished": "",
-        "price": 3500000,
+        "price": 1500000,
         "period": "mois",
         "beds": 2,
         "area": 75,
@@ -45,7 +46,7 @@ export const cipRentals = [
         "municipality": "Conakry",
         "duration": "Longue durée",
         "furnished": "Non meublé",
-        "price": 2800000,
+        "price": 3000000,
         "period": "mois",
         "beds": 3,
         "area": 92,
@@ -63,7 +64,7 @@ export const cipRentals = [
         "municipality": "Conakry",
         "duration": "Longue durée",
         "furnished": "Non meublé",
-        "price": 2800000,
+        "price": 3000000,
         "period": "mois",
         "beds": 3,
         "area": 92,
@@ -81,7 +82,7 @@ export const cipRentals = [
         "municipality": "Conakry",
         "duration": "Longue durée",
         "furnished": "Non meublé",
-        "price": 2800000,
+        "price": 3000000,
         "period": "mois",
         "beds": 3,
         "area": 92,
@@ -91,11 +92,51 @@ export const cipRentals = [
         "category": "Appartement",
         "imgWidth": 977,
         "imgHeight": 733
+    },
+    {
+        "slug": "duplex-kankan-aeroport",
+        "title": "Duplex à Kankan — Aéroport",
+        "city": "Aéroport",
+        "municipality": "Kankan",
+        "duration": "Court séjour",
+        "furnished": "Non meublé",
+        "price": null,
+        "period": "nuit",
+        "beds": 4,
+        "area": 200,
+        "imgSrc": "/assets/images/home/photos-a-venir.svg",
+        "imageAlt": "Photos du duplex à Kankan à venir",
+        "description": "Au quartier Aéroport à Kankan, ce duplex non meublé de 200 m² est proposé pour un court séjour. Il dispose de quatre chambres, d’un salon et d’une cuisine.",
+        "category": "Duplex",
+        "imgWidth": 820,
+        "imgHeight": 616
+    },
+    {
+        "slug": "appartement-kankan-sinkefara",
+        "title": "Appartement à Kankan — Sinkefara",
+        "city": "Sinkefara",
+        "municipality": "Kankan",
+        "duration": "Court séjour",
+        "furnished": "Non meublé",
+        "price": null,
+        "period": "nuit",
+        "beds": 1,
+        "area": 40,
+        "imgSrc": "/assets/images/home/photos-a-venir.svg",
+        "imageAlt": "Photos de l’appartement à Kankan à venir",
+        "description": "Au quartier Sinkefara à Kankan, cet appartement non meublé de 40 m² est proposé pour un court séjour. Il dispose d’une chambre et d’un salon.",
+        "category": "Appartement",
+        "imgWidth": 820,
+        "imgHeight": 616
     }
 ];
 
 
 type RentalLocation = { city: string; municipality: string };
+
+export function rentalPrice(rental: { price: number | null; period: string }) {
+    return rental.price === null ? "Tarif à confirmer" : `${rental.price.toLocaleString("fr-FR")} GNF`;
+}
 
 export function rentalLocation(rental: RentalLocation) {
     return rental.city === rental.municipality ? rental.city : `${rental.city}, ${rental.municipality}`;

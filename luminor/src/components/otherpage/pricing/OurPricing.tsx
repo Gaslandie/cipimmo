@@ -4,11 +4,11 @@ const pricingData = [
     {
         name: "Court séjour",
         subtitle: "Pour un passage de quelques jours.",
-        price: "450 000 GNF / nuit",
+        price: "1 000 000 GNF / jour",
         buttonClass: "tf-btn btn-border w-full",
-        description: "Choisissez un appartement pour votre séjour en Guinée.",
+        description: "Découvrez notre appartement à Coléah, Conakry.",
         features: [
-            "Un tarif à la nuit",
+            "Un tarif par jour",
             "Contact direct avec CIP IMMO",
             "Photos et détails du logement",
             "Dates à convenir avec notre équipe",
@@ -20,9 +20,9 @@ const pricingData = [
     {
         name: "Longue durée",
         subtitle: "Pour vous installer en Guinée.",
-        price: "3 500 000 GNF / mois",
+        price: "1 500 000 GNF / mois",
         buttonClass: "tf-btn btn-bg-1 w-full",
-        description: "Un logement adapté à votre quotidien et à votre budget.",
+        description: "Découvrez notre appartement à Coyah Km54.",
         features: [
             "Un loyer mensuel",
             "Accompagnement de proximité",
@@ -41,7 +41,7 @@ const pricingData = [
     {
         name: "Installation en famille",
         subtitle: "De la place pour toute la famille.",
-        price: "2 800 000 GNF / mois",
+        price: "3 000 000 GNF / mois",
         buttonClass: "tf-btn btn-border w-full",
         description: "Découvrez nos appartements de trois chambres à Ansoumaniah.",
         features: [

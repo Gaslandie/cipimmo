@@ -36,7 +36,9 @@ export type Property = {
 
 
 // Les différentes présentations du thème utilisent le même catalogue CIP.
-export const properties: Property[] = cipRentals.map((rental, index) => ({
+// Les anciens modèles de pages exigent un tarif chiffré. Le catalogue public
+// et les fiches /logements affichent aussi les annonces au tarif en attente.
+export const properties: Property[] = cipRentals.filter((rental): rental is typeof rental & { price: number } => rental.price !== null).map((rental, index) => ({
     ...rental,
     id: index + 1,
     alt: rental.imageAlt,

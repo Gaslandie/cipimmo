@@ -27,6 +27,7 @@ type Property = {
     sqft?: number;
     categories: string;
     type: string;
+    period: string;
     lat?: number;
     long?: number;
     filterOptions?: string[];
@@ -198,7 +199,7 @@ export default function PropertyDetails3({ property }: { property: Property }) {
                                 className="properties-calculator v2 section tf-spacing-9"
                             >
                                 <div className="properties-calculator">
-                                    <Caculator price={property.price} period={property.type === "Court séjour" ? "nuit" : "mois"} />
+                                    <Caculator price={property.price} period={property.period} />
                                 </div>
                             </div>
 

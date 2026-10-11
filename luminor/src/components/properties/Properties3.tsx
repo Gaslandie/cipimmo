@@ -1,6 +1,6 @@
 "use client";
 
-import { cipRentals, rentalLocation, matchesRentalLocation, rentalLocationOptions } from "@/data/cipRentals";
+import { cipRentals, rentalPrice, rentalLocation, matchesRentalLocation, rentalLocationOptions } from "@/data/cipRentals";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,9 +9,9 @@ const emptyFilters = { keyword: "", duration: "", city: "", bedrooms: "", furnis
 const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
 const cities = rentalLocationOptions;
 const budgets = [
-    { value: "300000:nuit", label: "300 000 GNF / nuit" },
-    { value: "500000:nuit", label: "500 000 GNF / nuit" },
-    { value: "1000000:nuit", label: "1 000 000 GNF / nuit" },
+    { value: "300000:jour", label: "300 000 GNF / jour" },
+    { value: "500000:jour", label: "500 000 GNF / jour" },
+    { value: "1000000:jour", label: "1 000 000 GNF / jour" },
     { value: "2000000:mois", label: "2 000 000 GNF / mois" },
     { value: "3000000:mois", label: "3 000 000 GNF / mois" },
     { value: "4000000:mois", label: "4 000 000 GNF / mois" },
@@ -26,7 +26,7 @@ export default function Properties3() {
         const city = params.get("city") || "";
         const legacyRental = cipRentals.find((rental) => rental.city === city);
         const bedrooms = params.get("bedrooms") || "";
-        const budget = params.get("budget") || "";
+        const budget = (params.get("budget") || "").replace(/:nuit$/, ":jour");
         setFilters({ ...emptyFilters,
             duration: duration === "courte" ? "Court séjour" : duration === "longue" ? "Longue durée" : "",
             city: cities.includes(city) ? city : legacyRental ? legacyRental.municipality : "",
@@ -38,7 +38,7 @@ export default function Properties3() {
     }, []);
     const [sorting, setSorting] = useState("default");
     const [layout, setLayout] = useState<"grid" | "list">("grid");
-    const [favorites, setFavorites] = useState<string[]>([]);
+    const [showFilters, setShowFilters] = useState(false);
     const change = (key: keyof typeof emptyFilters, value: string) => setFilters((previous) => ({ ...previous, [key]: value }));
     const reset = () => { setFilters(emptyFilters); setSorting("default"); };
     const [maxBudget, budgetPeriod] = filters.budget.split(":");
@@ -48,16 +48,20 @@ export default function Properties3() {
         (!filters.city || matchesRentalLocation(property, filters.city)) &&
         (!filters.bedrooms || (filters.bedrooms === "4+" ? property.beds >= 4 : property.beds === Number(filters.bedrooms))) &&
         (!filters.furnished || property.furnished === filters.furnished) &&
-        (!filters.budget || (property.period === budgetPeriod && property.price <= Number(maxBudget))) &&
+        (!filters.budget || (property.price !== null && property.period === budgetPeriod && property.price <= Number(maxBudget))) &&
         (!filters.minSize || property.area >= Number(filters.minSize)) &&
         (!filters.maxSize || property.area <= Number(filters.maxSize)) &&
         (!keyword || normalize(`${property.title} ${rentalLocation(property)} ${property.description}`).includes(keyword))
     );
     if (sorting !== "default") {
-        // Keep nightly and monthly prices in separate groups instead of comparing unlike periods.
-        rentals.sort((a, b) => a.period === b.period
-            ? (sorting === "price-asc" ? a.price - b.price : b.price - a.price)
-            : a.period === "nuit" ? -1 : 1);
+        // Keep daily and monthly prices in separate groups instead of comparing unlike periods.
+        rentals.sort((a, b) => {
+            if (a.price === null) return b.price === null ? 0 : 1;
+            if (b.price === null) return -1;
+            return a.period === b.period
+                ? (sorting === "price-asc" ? a.price - b.price : b.price - a.price)
+                : a.period !== "mois" ? -1 : 1;
+        });
     }
     const select = (key: keyof typeof emptyFilters, label: string, placeholder: string, options: { value: string; label: string }[]) => (
         <div>
@@ -68,7 +72,7 @@ export default function Properties3() {
             </select>
         </div>
     );
-    const sizes = [50, 75, 90, 100, 150].map((size) => ({ value: String(size), label: `${size} m²` }));
+    const sizes = [40, 50, 75, 90, 100, 150, 200].map((size) => ({ value: String(size), label: `${size} m²` }));
 
     return (
         <div className="main-content">
@@ -94,8 +98,17 @@ export default function Properties3() {
                             </select>
                         </div>
                     </div>
+                    <button
+                        type="button"
+                        className="tf-btn btn-bg-1 d-lg-none mb_20"
+                        aria-expanded={showFilters}
+                        aria-controls="rental-filter-panel"
+                        onClick={() => setShowFilters((visible) => !visible)}
+                    >
+                        <span>{showFilters ? "Masquer les filtres" : "Modifier ma recherche"}</span>
+                    </button>
                     <div className="row">
-                        <div className="col-lg-4">
+                        <div id="rental-filter-panel" className={`col-lg-4 rental-filter-panel${showFilters ? " is-open" : ""}`}>
                             <form className="tf-filter-sidebar" aria-label="Rechercher un logement" onSubmit={(event) => {
                                 event.preventDefault();
                                 document.getElementById("rental-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -118,7 +131,7 @@ export default function Properties3() {
                                     {select("city", "Localisation", "Toutes les villes", cities.map((city) => ({ value: city, label: city })))}
                                     {select("bedrooms", "Chambres", "Toutes", ["1", "2", "3", "4+"].map((beds) => ({ value: beds, label: beds === "4+" ? "4 chambres ou plus" : `${beds} chambre${beds === "1" ? "" : "s"}` })))}
                                     {select("furnished", "Mobilier", "Tous les logements", ["Meublé", "Non meublé"].map((label) => ({ value: label, label })))}
-                                    {select("budget", "Budget maximal", "Tous les budgets", budgets.filter((budget) => !filters.duration || budget.value.endsWith(filters.duration === "Court séjour" ? ":nuit" : ":mois")))}
+                                    {select("budget", "Budget maximal", "Tous les budgets", budgets.filter((budget) => !filters.duration || budget.value.endsWith(filters.duration === "Court séjour" ? ":jour" : ":mois")))}
                                     <div className="tf-grid-layout sm-col-2 gap_20">
                                         {select("minSize", "Surface min.", "Sans minimum", sizes)}
                                         {select("maxSize", "Surface max.", "Sans maximum", sizes)}
@@ -132,7 +145,7 @@ export default function Properties3() {
                         </div>
                         <div className="col-lg-8" id="rental-results">
                             <p className="mb_20" role="status">{rentals.length} logement{rentals.length > 1 ? "s" : ""}{filters.duration ? ` · ${filters.duration}` : " · Toutes les durées"}</p>
-                            {sorting !== "default" && !filters.duration && <p className="mb_20">Prix triés par durée : à la nuit, puis au mois.</p>}
+                            {sorting !== "default" && !filters.duration && <p className="mb_20">Prix triés par durée : par jour, puis par mois.</p>}
                             {rentals.length === 0 ? (
                                 <div className="tf-filter-sidebar">
                                     <h5 className="mb_12">Aucun logement ne correspond à votre recherche.</h5>
@@ -151,11 +164,10 @@ export default function Properties3() {
                                                         <span className="tag categoreis text-button-small fw-6 text_primary-color">{property.category}</span>
                                                     </div>}
                                                     <Link href={`/logements/${property.slug}`} className="overlay-link" aria-label={`Voir ${property.title}`} />
-                                                    <div className="wishlist"><button type="button" className="box-icon" aria-label={`${favorites.includes(property.slug) ? "Retirer des" : "Ajouter aux"} favoris : ${property.title}`} aria-pressed={favorites.includes(property.slug)} onClick={() => setFavorites((previous) => previous.includes(property.slug) ? previous.filter((slug) => slug !== property.slug) : [...previous, property.slug])}><span className="icon icon-Heart" aria-hidden="true" /></button></div>
                                                 </div>
                                             </div>
                                             <div className="content">
-                                                <h4 className="price mb_12">{property.price.toLocaleString("fr-FR")} GNF<span className="text_secondary-color text-body-default"> / {property.period}</span></h4>
+                                                <h4 className="price mb_12">{rentalPrice(property)}{property.price !== null && <span className="text_secondary-color text-body-default"> / {property.period}</span>}</h4>
                                                 {layout === "list" && <div className="wrap-tag d-flex gap_8 mb_12"><span className="tag rent text-button-small fw-6">{property.duration}</span><span className="tag categoreis text-button-small fw-6">{property.category}</span></div>}
                                                 <Link href={`/logements/${property.slug}`} className="title mb_8 h5 link text_primary-color">{property.title}</Link>
                                                 <p>{rentalLocation(property)}, Guinée</p>

@@ -13,6 +13,7 @@ type Property = {
     sqft?: number;
     categories: string;
     type: string;
+    period: string;
     price: number;
 };
 

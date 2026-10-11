@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function PageTitle() {
     return (
-        <div className="page-title style-default">
+        <div className="page-title style-default contact-page-title">
             <div className="thumbs">
                 <Image
                     src="/assets/images/page-title/page-title-15.jpg?v=cip-photos-1"

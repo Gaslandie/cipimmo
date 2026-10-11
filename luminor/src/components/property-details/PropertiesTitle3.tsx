@@ -11,6 +11,7 @@ type Property = {
     sqft?: number;
     categories: string;
     type: string;
+    period: string;
     price: number;
 };
 export default function PropertiesTitle3({ property }: { property: Property }) {
@@ -42,11 +43,6 @@ export default function PropertiesTitle3({ property }: { property: Property }) {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <span className="icon icon-Heart"></span>
-                        </a>
-                    </li>
-                    <li>
                         {" "}
                         <a href="#" className="">
                             <i className="icon-ShareNetwork"></i>
@@ -59,7 +55,7 @@ export default function PropertiesTitle3({ property }: { property: Property }) {
                 <h2 className="price">
                     {property.price.toLocaleString("fr-FR")} GNF
                     <span className="text_secondary-color text-body-1">
-                        {property.type === "Longue durée" ? "/ mois" : "/ nuit"}
+                        {`/ ${property.period}`}
                     </span>
                 </h2>
             </div>

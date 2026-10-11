@@ -10,7 +10,7 @@ export default function Location() {
                         Nos destinations
                     </span>
                     <h3 className="split-text effect-blur-fade">
-                        Trouvez votre quartier
+                        Trouvez votre ville
                     </h3>
                 </div>
                 <div className="wrap-location">

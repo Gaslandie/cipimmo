@@ -13,18 +13,20 @@ const rentalBudgets = {
 
 export default function SidebarFilterDefault() {
     const [duration, setDuration] = useState<keyof typeof rentalBudgets>("court-sejour");
+    const [durationChosen, setDurationChosen] = useState(false);
     const router = useRouter();
     const [keyword, setKeyword] = useState("");
     const [city, setCity] = useState("");
     const [bedrooms, setBedrooms] = useState("");
     const [budget, setBudget] = useState("");
     const search = () => {
-        const params = new URLSearchParams({ duration: duration === "court-sejour" ? "courte" : "longue" });
+        const params = new URLSearchParams();
         if (keyword.trim()) params.set("keyword", keyword.trim());
         if (city && city !== cityOptions[0]) params.set("city", city);
         if (bedrooms && bedrooms !== bedroomOptions[0]) params.set("bedrooms", bedrooms === "4 et plus" ? "4+" : bedrooms);
-        if (budget && budget !== "Sans maximum") params.set("budget", `${budget.replace(/[^0-9]/g, "")}:${duration === "court-sejour" ? "nuit" : "mois"}`);
-        router.push(`/listing-left-sidebar?${params.toString()}`);
+        if (budget && budget !== "Sans maximum") params.set("budget", `${budget.replace(/[^0-9]/g, "")}:${duration === "court-sejour" ? "jour" : "mois"}`);
+        if (params.size || durationChosen) params.set("duration", duration === "court-sejour" ? "courte" : "longue");
+        router.push(`/listing-left-sidebar${params.size ? `?${params.toString()}` : ""}`);
     };
     const ddContainer = useRef<HTMLDivElement>(null);
     const advanceBtnRef = useRef<HTMLDivElement>(null);
@@ -71,6 +73,7 @@ export default function SidebarFilterDefault() {
                                 onClick={(event) => {
                                     event.preventDefault();
                                     setDuration(value);
+                                    setDurationChosen(true);
                                     setBudget("");
                                 }}
                             >
@@ -116,7 +119,7 @@ export default function SidebarFilterDefault() {
                                 </div>
                                 <div>
                                     <div className="text-button text_primary-color mb_8">
-                                        Budget / {duration === "court-sejour" ? "nuit" : "mois"} (GNF)
+                                        Budget / {duration === "court-sejour" ? "jour" : "mois"} (GNF)
                                     </div>
                                     <DropdownSelect2 key={duration} options={rentalBudgets[duration]} onChange={setBudget} />
                                 </div>

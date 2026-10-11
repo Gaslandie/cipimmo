@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Layout from "@/components/layouts/Layout-defaul";
-import { cipRentals, rentalLocation } from "@/data/cipRentals";
+import { cipRentals, rentalPrice, rentalLocation } from "@/data/cipRentals";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -39,8 +39,8 @@ export default async function RentalPage({ params }: PageProps) {
                                 <h1 className="h4 mb_12">{rental.title}</h1>
                                 <p className="mb_12">{rentalLocation(rental)}, Guinée</p>
                                 <h4 className="price">
-                                    {rental.price.toLocaleString("fr-FR")} GNF
-                                    <span className="text_secondary-color text-body-default"> / {rental.period}</span>
+                                    {rentalPrice(rental)}
+                                    {rental.price !== null && <span className="text_secondary-color text-body-default"> / {rental.period}</span>}
                                 </h4>
                             </div>
                             <div className="img-style mb_30">

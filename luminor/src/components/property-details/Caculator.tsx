@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function Caculator({ price = 2800000, period = "mois", compact = false }: { price?: number; period?: string; compact?: boolean }) {
+export default function Caculator({ price = 3000000, period = "mois", compact = false }: { price?: number; period?: string; compact?: boolean }) {
     const [result, setResult] = useState({ monthly: price, deposit: price, total: price * 2 });
     const format = (value: number) => `${value.toLocaleString("fr-FR")} GNF`;
     return <div>
@@ -17,7 +17,7 @@ export default function Caculator({ price = 2800000, period = "mois", compact = 
                 <div className="tf-grid-layout xl-col-4 md-col-2">
                     <fieldset><label htmlFor="rental-amount" className="text-body-default text_primary-color mb_8">Prix par {period} (GNF)</label><input id="rental-amount" name="rent" type="number" min="0" max="1000000000" step="1" defaultValue={price} required /></fieldset>
                     <fieldset><label htmlFor="rental-charges" className="text-body-default text_primary-color mb_8">Charges par {period} (GNF)</label><input id="rental-charges" name="charges" type="number" min="0" max="1000000000" step="1" defaultValue={0} required /></fieldset>
-                    <fieldset><label htmlFor="rental-duration" className="text-body-default text_primary-color mb_8">Durée ({period === "nuit" ? "nuits" : "mois"})</label><input id="rental-duration" name="duration" type="number" min="1" max="365" step="1" defaultValue={1} required /></fieldset>
+                    <fieldset><label htmlFor="rental-duration" className="text-body-default text_primary-color mb_8">Durée ({period === "jour" ? "jours" : period === "nuit" ? "nuits" : "mois"})</label><input id="rental-duration" name="duration" type="number" min="1" max="365" step="1" defaultValue={1} required /></fieldset>
                     <fieldset><label htmlFor="rental-deposit" className="text-body-default text_primary-color mb_8">Caution (GNF)</label><input id="rental-deposit" name="deposit" type="number" min="0" max="1000000000" step="1" defaultValue={price} required /></fieldset>
                 </div>
                 <button className="tf-btn btn-bg-1 btn-px-28 w-full" type="submit"><span>Calculer mon budget</span><span className="bg-effect" /></button>

@@ -200,7 +200,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                         </div>
                     </div>
                 </div>
-                <NewsInsight />
+                <NewsInsight currentTitle={blogItem.title} />
             </div>
         </>
     );

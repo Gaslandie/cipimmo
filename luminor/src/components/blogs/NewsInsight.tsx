@@ -7,12 +7,13 @@ import Link from "next/link";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import 'swiper/css/pagination';
-export default function NewsInsight() {
+export default function NewsInsight({ currentTitle }: { currentTitle: string }) {
+    const suggestions = blogPostsGrid.filter((item) => item.title !== currentTitle).slice(0, 3);
     return (
         <>
             <div className="tf-container sw-layout tf-spacing-1 pt-0">
                 <div className="heading-section text-center mb_48">
-                    <h3>Nos conseils</h3>
+                    <h3>D’autres conseils</h3>
                 </div>
                 <Swiper
                     className="mySwiper"
@@ -35,7 +36,7 @@ export default function NewsInsight() {
                     modules={[Pagination]}
                     pagination={{ clickable: true, el: ".spb7" }}
                 >
-                    {blogPostsGrid.slice(0, 3).map((item) => (
+                    {suggestions.map((item) => (
                         <SwiperSlide className="swiper-slide" key={item.id}>
                             <div
                                 className="blog-article-item style-default hover-image-translate loadItem"

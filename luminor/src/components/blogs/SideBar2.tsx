@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { subscribeNewsletter } from "@/actions/newsletterAction";
 
-export default function SideBar2() {
+export default function SideBar2({ currentTitle }: { currentTitle: string }) {
     type Tag = {
         id: number;
         name: string;
@@ -25,7 +25,7 @@ export default function SideBar2() {
             <div className="sidebar-item sidebar-recent-post">
                 <h5 className="sidebar-title mb_17">À lire aussi</h5>
                 <ul>
-                    {recentPost.map((post) => (
+                    {recentPost.filter((post) => post.title !== currentTitle).map((post) => (
                         <li
                             className="recent-post hover-image-rotate"
                             key={post.id}

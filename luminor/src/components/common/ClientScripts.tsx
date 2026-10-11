@@ -51,30 +51,6 @@ const animateImgItem = () => {
     return () => observer.disconnect();
 };
 
-// Wishlist toggle
-const wishList = () => {
-    const wishlistElements = document.querySelectorAll<HTMLElement>(
-        ".card-house .wishlist"
-    );
-
-    wishlistElements.forEach((el) => {
-        el.addEventListener("click", function () {
-            this.classList.toggle("addwishlist");
-
-            const icon = this.querySelector<HTMLElement>(".icon");
-            const tooltip = this.querySelector<HTMLElement>(".tooltip");
-
-            if (this.classList.contains("addwishlist")) {
-                icon?.classList.replace("icon-Heart", "icon-trash-alt-solid");
-                if (tooltip) tooltip.textContent = "Retirer des favoris";
-            } else {
-                icon?.classList.replace("icon-trash-alt-solid", "icon-Heart");
-                if (tooltip) tooltip.textContent = "Ajouter aux favoris";
-            }
-        });
-    });
-};
-
 export default function ClientScripts() {
     const pathname = usePathname();
 
@@ -300,7 +276,6 @@ export default function ClientScripts() {
     useEffect(() => {
         const cleanupHeader = headerFixed2();
         animateImgItem();
-        wishList();
 
         return () => {
             cleanupHeader?.();

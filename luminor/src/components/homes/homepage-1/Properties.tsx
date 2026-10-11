@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { cipRentals, rentalLocation } from "@/data/cipRentals";
+import { cipRentals, rentalPrice, rentalLocation } from "@/data/cipRentals";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,13 +22,13 @@ export default function Properties() {
     }, []);
 
     return (
-        <div className="section-features-property-4 tf-spacing-1 pt-0">
+        <div className="section-features-property-4 tf-spacing-1 pt-0 home-rentals">
             <div className="tf-container">
                 <div className="heading-section justify-content-center text-center mb_46">
-                    <span className="sub text-uppercase fw-6 text_secondary-color-2 split-text effect-rotate">
+                    <span className="sub text-uppercase fw-6 text_secondary-color-2">
                         Nos locations
                     </span>
-                    <h3 className="split-text effect-blur-fade">
+                    <h3>
                         Découvrez nos logements
                     </h3>
                 </div>
@@ -69,24 +69,16 @@ export default function Properties() {
                                             className="overlay-link"
                                             aria-label={`Voir le logement : ${property.title}`}
                                         ></Link>
-                                        <div className="wishlist">
-                                            <div className="hover-tooltip tooltip-left box-icon">
-                                                <span className="icon icon-Heart"></span>
-                                                <span className="tooltip">
-                                                    Ajouter aux favoris
-                                                </span>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div className="content">
                                         <h4
                                             className="price mb_12"
                                             suppressHydrationWarning
                                         >
-                                            {property.price.toLocaleString("fr-FR")} GNF
-                                            <span className="text_secondary-color text-body-default">
+                                            {rentalPrice(property)}
+                                            {property.price !== null && <span className="text_secondary-color text-body-default">
                                                 / {property.period}
-                                            </span>
+                                            </span>}
                                         </h4>
                                         <Link
                                             href={`/logements/${property.slug}`}
@@ -150,24 +142,16 @@ export default function Properties() {
                                                 className="overlay-link"
                                                 aria-label={`Voir le logement : ${property.title}`}
                                             ></Link>
-                                            <div className="wishlist">
-                                                <div className="hover-tooltip tooltip-left box-icon">
-                                                    <span className="icon icon-Heart"></span>
-                                                    <span className="tooltip">
-                                                        Ajouter aux favoris
-                                                    </span>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div className="content">
                                             <h4
                                                 className="price mb_12"
                                                 suppressHydrationWarning
                                             >
-                                                {property.price.toLocaleString("fr-FR")} GNF
-                                                <span className="text_secondary-color text-body-default">
+                                                {rentalPrice(property)}
+                                                {property.price !== null && <span className="text_secondary-color text-body-default">
                                                     / {property.period}
-                                                </span>
+                                                </span>}
                                             </h4>
                                             <Link
                                                 href={`/logements/${property.slug}`}

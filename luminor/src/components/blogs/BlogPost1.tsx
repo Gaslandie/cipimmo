@@ -196,13 +196,13 @@ export default function BlogPost1({ blogItem }: { blogItem: BlogItem }) {
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                <SideBar2 />
+                                <SideBar2 currentTitle={blogItem.title} />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <NewsInsight />
+                <NewsInsight currentTitle={blogItem.title} />
             </div>
         </div>
     );
