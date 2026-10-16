@@ -13,6 +13,7 @@ export default function OdometerOnScroll({ value }: Props) {
     const hasAnimatedRef = useRef(false); 
 
     useEffect(() => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         let observer: IntersectionObserver;
         let odoInstance: Odometer;
 
@@ -56,7 +57,8 @@ export default function OdometerOnScroll({ value }: Props) {
 
     return (
         <div className="counter-number">
-            <div ref={odometerRef} className="odometer" />
+            <span className="visually-hidden">{value}</span>
+            <div ref={odometerRef} className="odometer" aria-hidden="true">{value}</div>
         </div>
     );
 }

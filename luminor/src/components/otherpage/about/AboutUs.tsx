@@ -1,5 +1,6 @@
 import React from "react";
 import OdometerCounter from "@/components/common/Odometer";
+import { cipStatistics } from "@/data/cipRentals";
 export default function AboutUs() {
     return (
         <div className="tf-container section-about">
@@ -21,7 +22,7 @@ export default function AboutUs() {
                         <div className="tf-box-icon style-1">
                             <div className="heading d-flex justify-content-between mb_19">
                                 <div className="counter-item style-default h2">
-                                    <OdometerCounter value={40} />
+                                    <OdometerCounter value={cipStatistics.rentals} />
                                 </div>
                                 <div className="icon">
                                     <i className="icon-Certificate"></i>
@@ -35,7 +36,7 @@ export default function AboutUs() {
                             <div className="tf-box-icon style-1">
                                 <div className="heading d-flex justify-content-between mb_19">
                                     <div className="counter-item style-default h2">
-                                        <OdometerCounter value={150} />
+                                        <OdometerCounter value={cipStatistics.accompaniedClients} />
                                     </div>
                                     <div className="icon">
                                         <i className="icon-BuildingOffice"></i>
@@ -48,7 +49,7 @@ export default function AboutUs() {
                             <div className="tf-box-icon style-1">
                                 <div className="heading d-flex justify-content-between mb_19">
                                     <div className="counter-item style-default h2">
-                                        <OdometerCounter value={7} />
+                                        <OdometerCounter value={cipStatistics.cities} />
                                     </div>
                                     <div className="icon">
                                         <i className="icon-ChartDonut"></i>

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState, useCallback } from "react";
 import OdometerCounter from "@/components/common/Odometer";
+import { cipStatistics } from "@/data/cipRentals";
 
 type Tab = {
     id: string;
@@ -110,9 +111,9 @@ export default function Process1() {
                     </h3>
                     <div className="wrap-counter">
                         {[
-                            { number: 40, label: "Logements proposés" },
-                            { number: 150, label: "Clients accompagnés" },
-                            { number: 7, label: "Villes couvertes" },
+                            { number: cipStatistics.rentals, label: "Logements proposés" },
+                            { number: cipStatistics.accompaniedClients, label: "Clients accompagnés" },
+                            { number: cipStatistics.cities, label: "Villes couvertes" },
                             { number: 2, label: "Formules de location" },
                         ].map((item, idx) => (
                             <div

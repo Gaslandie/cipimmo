@@ -168,6 +168,13 @@ export function matchesRentalLocation(rental: RentalLocation, location: string) 
 
 export const rentalLocationOptions = [...new Set(cipRentals.map((rental) => rental.municipality))];
 
+export const cipStatistics = {
+    rentals: cipRentals.length,
+    cities: rentalLocationOptions.length,
+    // Valeur demandée par Gassama le 16 octobre 2026 ; à actualiser sur information du client.
+    accompaniedClients: 20,
+};
+
 export const rentalDistrictOptions = [...new Set(cipRentals.map((rental) => rental.city))];
 export const rentalAvailability = "Contactez-nous pour vérifier la disponibilité";
 

@@ -17,7 +17,7 @@ export default function Properties2() {
                         {propertiesData.map((property) => (
                             <div
                                 key={property.id}
-                                className={`process-item item scrolling-effect effectLeft${
+                                className={`process-item item${
                                     activeTab === property.id ? " active" : ""
                                 }`}
                                 data-tab={property.id}
@@ -53,7 +53,7 @@ export default function Properties2() {
                                     activeTab === property.id ? " active" : ""
                                 }`}
                             >
-                                <Link href={`/logements/${property.slug}`} className="img-style">
+                                <Link href={`/logements/${property.slug}`} className="img-style" aria-label={`Voir : ${property.title}`}>
                                     {property.img ? <Image
                                         src={property.img}
                                         width={645}
