@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { recentPost } from "@/data/blog";
 import Image from "next/image";

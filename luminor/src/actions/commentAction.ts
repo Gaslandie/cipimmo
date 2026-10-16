@@ -1,5 +1,5 @@
-"use server";
-import { redirect } from "next/navigation";
+"use client";
+const redirect = (url: string) => window.location.assign(url);
 
 export async function handleSubmit(formData: FormData) {
     const name = formData.get("name"), email = formData.get("email"), comment = formData.get("comment");

@@ -87,7 +87,7 @@ export default function OurPricing() {
                             <p>{plan.subtitle}</p>
                             <h3>{plan.price}</h3>
                         </div>
-                        <a href="/listing-left-sidebar" className={plan.buttonClass}>
+                        <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`} className={plan.buttonClass}>
                             <span>Découvrir cette formule</span>
                             <span className="bg-effect"></span>
                         </a>

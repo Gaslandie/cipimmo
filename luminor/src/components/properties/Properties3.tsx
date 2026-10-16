@@ -1,58 +1,37 @@
 "use client";
 
-import { cipRentals, rentalPrice, rentalLocation, matchesRentalLocation, rentalLocationOptions } from "@/data/cipRentals";
-import Image from "next/image";
+import { emptyRentalFilters as emptyFilters, rentalLocationOptions, rentalDistrictOptions, rentalBudgets as budgets, rentalSizes as sizes, readRentalFilters, rentalFilterQuery, filterRentals } from "@/data/cipRentals";
+import RentalCard from "../common/RentalCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const emptyFilters = { keyword: "", duration: "", city: "", bedrooms: "", furnished: "", budget: "", minSize: "", maxSize: "" };
-const normalize = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
-const cities = rentalLocationOptions;
-const budgets = [
-    { value: "300000:jour", label: "300 000 GNF / jour" },
-    { value: "500000:jour", label: "500 000 GNF / jour" },
-    { value: "1000000:jour", label: "1 000 000 GNF / jour" },
-    { value: "2000000:mois", label: "2 000 000 GNF / mois" },
-    { value: "3000000:mois", label: "3 000 000 GNF / mois" },
-    { value: "4000000:mois", label: "4 000 000 GNF / mois" },
-    { value: "5000000:mois", label: "5 000 000 GNF / mois" },
-];
+const cities = [...new Set([...rentalLocationOptions, ...rentalDistrictOptions])];
 
 export default function Properties3() {
     const [filters, setFilters] = useState(emptyFilters);
+    const [invalid, setInvalid] = useState(false);
     useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const duration = params.get("duration");
-        const city = params.get("city") || "";
-        const legacyRental = cipRentals.find((rental) => rental.city === city);
-        const bedrooms = params.get("bedrooms") || "";
-        const budget = (params.get("budget") || "").replace(/:nuit$/, ":jour");
-        setFilters({ ...emptyFilters,
-            duration: duration === "courte" ? "Court séjour" : duration === "longue" ? "Longue durée" : "",
-            city: cities.includes(city) ? city : legacyRental ? legacyRental.municipality : "",
-            bedrooms: ["1", "2", "3", "4+"].includes(bedrooms) ? bedrooms : "",
-            keyword: (params.get("keyword") || "").slice(0, 200),
-            budget: budgets.some((item) => item.value === budget) ? budget : "",
-            furnished: params.get("furnished") === "non-meuble" ? "Non meublé" : params.get("furnished") === "meuble" ? "Meublé" : "",
-        });
+        const read = () => {
+            const parsed = readRentalFilters(new URLSearchParams(window.location.search));
+            setFilters(parsed.filters);
+            setInvalid(parsed.invalid);
+        };
+        read();
+        window.addEventListener("popstate", read);
+        return () => window.removeEventListener("popstate", read);
     }, []);
     const [sorting, setSorting] = useState("default");
     const [layout, setLayout] = useState<"grid" | "list">("grid");
     const [showFilters, setShowFilters] = useState(false);
-    const change = (key: keyof typeof emptyFilters, value: string) => setFilters((previous) => ({ ...previous, [key]: value }));
-    const reset = () => { setFilters(emptyFilters); setSorting("default"); };
-    const [maxBudget, budgetPeriod] = filters.budget.split(":");
-    const keyword = normalize(filters.keyword.trim());
-    const rentals = cipRentals.filter((property) =>
-        (!filters.duration || property.duration === filters.duration) &&
-        (!filters.city || matchesRentalLocation(property, filters.city)) &&
-        (!filters.bedrooms || (filters.bedrooms === "4+" ? property.beds >= 4 : property.beds === Number(filters.bedrooms))) &&
-        (!filters.furnished || property.furnished === filters.furnished) &&
-        (!filters.budget || (property.price !== null && property.period === budgetPeriod && property.price <= Number(maxBudget))) &&
-        (!filters.minSize || property.area >= Number(filters.minSize)) &&
-        (!filters.maxSize || property.area <= Number(filters.maxSize)) &&
-        (!keyword || normalize(`${property.title} ${rentalLocation(property)} ${property.description}`).includes(keyword))
-    );
+    const updateFilters = (next: typeof emptyFilters) => {
+        setFilters(next);
+        setInvalid(false);
+        const query = rentalFilterQuery(next);
+        window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
+    };
+    const change = (key: keyof typeof emptyFilters, value: string) => updateFilters({ ...filters, [key]: value });
+    const reset = () => { updateFilters({ ...emptyFilters }); setSorting("default"); };
+    const rentals = invalid ? [] : filterRentals(filters);
     if (sorting !== "default") {
         // Keep daily and monthly prices in separate groups instead of comparing unlike periods.
         rentals.sort((a, b) => {
@@ -60,7 +39,7 @@ export default function Properties3() {
             if (b.price === null) return -1;
             return a.period === b.period
                 ? (sorting === "price-asc" ? a.price - b.price : b.price - a.price)
-                : a.period !== "mois" ? -1 : 1;
+                : ["jour", "nuit", "mois"].indexOf(a.period) - ["jour", "nuit", "mois"].indexOf(b.period);
         });
     }
     const select = (key: keyof typeof emptyFilters, label: string, placeholder: string, options: { value: string; label: string }[]) => (
@@ -72,7 +51,6 @@ export default function Properties3() {
             </select>
         </div>
     );
-    const sizes = [40, 50, 75, 90, 100, 150, 200].map((size) => ({ value: String(size), label: `${size} m²` }));
 
     return (
         <div className="main-content">
@@ -111,14 +89,16 @@ export default function Properties3() {
                         <div id="rental-filter-panel" className={`col-lg-4 rental-filter-panel${showFilters ? " is-open" : ""}`}>
                             <form className="tf-filter-sidebar" aria-label="Rechercher un logement" onSubmit={(event) => {
                                 event.preventDefault();
-                                document.getElementById("rental-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                                const results = document.getElementById("rental-results");
+                                results?.focus({ preventScroll: true });
+                                results?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
                             }}>
                                 <div className="tab-slide mb_14">
                                     <ul className="menu-tab tf-grid-layout tf-col-2 gap_8">
                                         <li className="item-slide-effect" aria-hidden="true" style={{ width: "calc((100% - 8px) / 2)", transform: filters.duration === "Longue durée" ? "translateX(calc(100% + 8px))" : "translateX(0)", opacity: filters.duration ? 1 : 0 }} />
                                         {["Court séjour", "Longue durée"].map((duration) => (
                                             <li key={duration} className={`nav-tab-item ${filters.duration === duration ? "active" : ""}`}>
-                                                <button type="button" className={`text-title tab-link fw-6 ${filters.duration === duration ? "active" : ""}`} aria-pressed={filters.duration === duration} onClick={() => setFilters((previous) => ({ ...previous, duration: previous.duration === duration ? "" : duration, budget: "" }))}>{duration}</button>
+                                                <button type="button" className={`text-title tab-link fw-6 ${filters.duration === duration ? "active" : ""}`} aria-pressed={filters.duration === duration} onClick={() => updateFilters({ ...filters, duration: filters.duration === duration ? "" : duration, budget: "" })}>{duration}</button>
                                             </li>
                                         ))}
                                     </ul>
@@ -128,10 +108,10 @@ export default function Properties3() {
                                         <label htmlFor="rental-keyword" className="text-button text_primary-color mb_8">Votre recherche</label>
                                         <input id="rental-keyword" type="search" placeholder="Ville, logement…" maxLength={200} value={filters.keyword} onChange={(event) => change("keyword", event.target.value)} />
                                     </div>
-                                    {select("city", "Localisation", "Toutes les villes", cities.map((city) => ({ value: city, label: city })))}
+                                    {select("city", "Ville ou quartier", "Tous les lieux", cities.map((city) => ({ value: city, label: city })))}
                                     {select("bedrooms", "Chambres", "Toutes", ["1", "2", "3", "4+"].map((beds) => ({ value: beds, label: beds === "4+" ? "4 chambres ou plus" : `${beds} chambre${beds === "1" ? "" : "s"}` })))}
                                     {select("furnished", "Mobilier", "Tous les logements", ["Meublé", "Non meublé"].map((label) => ({ value: label, label })))}
-                                    {select("budget", "Budget maximal", "Tous les budgets", budgets.filter((budget) => !filters.duration || budget.value.endsWith(filters.duration === "Court séjour" ? ":jour" : ":mois")))}
+                                    {select("budget", "Budget maximal", "Tous les budgets", budgets.filter((budget) => !filters.duration || (filters.duration === "Court séjour" ? !budget.value.endsWith(":mois") : budget.value.endsWith(":mois"))))}
                                     <div className="tf-grid-layout sm-col-2 gap_20">
                                         {select("minSize", "Surface min.", "Sans minimum", sizes)}
                                         {select("maxSize", "Surface max.", "Sans maximum", sizes)}
@@ -143,42 +123,19 @@ export default function Properties3() {
                                 </div></div></div>
                             </form>
                         </div>
-                        <div className="col-lg-8" id="rental-results">
+                        <div className="col-lg-8" id="rental-results" tabIndex={-1} aria-label="Résultats de votre recherche">
+                            {invalid && <p role="alert" className="rental-demo-note mb_20">Certains critères du lien sont invalides. Réinitialisez les filtres pour recommencer.</p>}
                             <p className="mb_20" role="status">{rentals.length} logement{rentals.length > 1 ? "s" : ""}{filters.duration ? ` · ${filters.duration}` : " · Toutes les durées"}</p>
-                            {sorting !== "default" && !filters.duration && <p className="mb_20">Prix triés par durée : par jour, puis par mois.</p>}
+                            {sorting !== "default" && !filters.duration && <p className="mb_20">Prix regroupés par période : les tarifs par jour, par nuit et par mois restent séparés.</p>}
                             {rentals.length === 0 ? (
                                 <div className="tf-filter-sidebar">
-                                    <h5 className="mb_12">Aucun logement ne correspond à votre recherche.</h5>
+                                    <h2 className="h5 mb_12">Aucun logement ne correspond à votre recherche.</h2>
                                     <p className="mb_20">Essayez une autre ville ou élargissez vos critères.</p>
                                     <button type="button" className="tf-btn btn-bg-1" onClick={reset}>Voir tous les logements</button>
                                 </div>
                             ) : (
                                 <div className={`rental-results-layout ${layout === "grid" ? "tf-grid-layout md-col-2" : "d-grid gap_20"}`}>
-                                    {rentals.map((property) => (
-                                        <article key={property.slug} className={`card-house ${layout === "grid" ? "style-default hover-image" : "style-list v3"}`} data-slug={property.slug}>
-                                            <div className={layout === "list" ? "wrap-img" : ""}>
-                                                <div className={`img-style ${layout === "grid" ? "mb_20" : ""}`}>
-                                                    <Image src={property.imgSrc} width={410} height={308} alt={property.imageAlt} sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw" />
-                                                    {layout === "grid" && <div className="wrap-tag d-flex gap_8 mb_12">
-                                                        <span className="tag rent text-button-small fw-6 text_primary-color">{property.duration}</span>
-                                                        <span className="tag categoreis text-button-small fw-6 text_primary-color">{property.category}</span>
-                                                    </div>}
-                                                    <Link href={`/logements/${property.slug}`} className="overlay-link" aria-label={`Voir ${property.title}`} />
-                                                </div>
-                                            </div>
-                                            <div className="content">
-                                                <h4 className="price mb_12">{rentalPrice(property)}{property.price !== null && <span className="text_secondary-color text-body-default"> / {property.period}</span>}</h4>
-                                                {layout === "list" && <div className="wrap-tag d-flex gap_8 mb_12"><span className="tag rent text-button-small fw-6">{property.duration}</span><span className="tag categoreis text-button-small fw-6">{property.category}</span></div>}
-                                                <Link href={`/logements/${property.slug}`} className="title mb_8 h5 link text_primary-color">{property.title}</Link>
-                                                <p>{rentalLocation(property)}, Guinée</p>
-                                                <ul className="info d-flex">
-                                                    <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6"><i className="icon-Bed" aria-hidden="true" />{property.beds} ch.</li>
-                                                    <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6"><i className="icon-HouseLine" aria-hidden="true" />{property.furnished || "Salon"}</li>
-                                                    <li className="d-flex align-items-center gap_8 text-title text_primary-color fw-6"><i className="icon-Ruler" aria-hidden="true" />{property.area} m²</li>
-                                                </ul>
-                                            </div>
-                                        </article>
-                                    ))}
+                                    {rentals.map(rental => <RentalCard key={rental.slug} rental={rental} list={layout === "list"} />)}
                                 </div>
                             )}
                         </div>

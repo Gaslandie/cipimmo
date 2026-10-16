@@ -34,7 +34,7 @@ export default function WhyChoose() {
                         à chaque étape
                     </h3>
                 </div>
-                <a href="/contacts" className="tf-btn btn-bg-white btn-px-32">
+                <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/contacts`} className="tf-btn btn-bg-white btn-px-32">
                     <span>Nous contacter</span>
                     <span className="bg-effect"></span>
                 </a>

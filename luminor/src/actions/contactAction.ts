@@ -1,5 +1,5 @@
-"use server";
-import { redirect } from "next/navigation";
+"use client";
+const redirect = (url: string) => window.location.assign(url);
 
 export async function sendContact(formData: FormData) {
     const fields = ["firstName", "lastName", "email", "phone", "message"].map(key => formData.get(key));

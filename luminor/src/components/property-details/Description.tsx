@@ -11,7 +11,7 @@ export default function Description({ property }: { property: { title: string; c
                 Consultez les caractéristiques et échangez avec notre équipe pour connaître les disponibilités, les conditions et les services du quartier.
             </p>
             <a
-                href="/contacts"
+                href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/contacts`}
                 className="hover-underline-link text_primary-color text-button"
             >
                 En savoir plus

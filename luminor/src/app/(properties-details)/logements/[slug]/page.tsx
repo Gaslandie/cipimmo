@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Layout from "@/components/layouts/Layout-defaul";
-import { cipRentals, rentalPrice, rentalLocation } from "@/data/cipRentals";
+import { cipRentals, rentalPrice, rentalLocation, rentalAvailability, safeRentalMedia } from "@/data/cipRentals";
+
+import RentalContact from "@/components/common/RentalContact";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -23,11 +25,13 @@ export default async function RentalPage({ params }: PageProps) {
     const { slug } = await params;
     const rental = cipRentals.find((item) => item.slug === slug);
     if (!rental) notFound();
-    const message = `Bonjour CIP IMMO, je souhaite me renseigner sur « ${rental.title} » à ${rentalLocation(rental)}. Pouvez-vous confirmer la disponibilité et les conditions de location ?`;
+    const video = rental.video && safeRentalMedia(rental.video.src, "video") && safeRentalMedia(rental.video.poster, "poster") && rental.video.description.trim() ? rental.video : undefined;
+    const showDemo = process.env.NODE_ENV === "development" && !rental.neighbourhood?.length;
+    const amenities = ["Eau", "Électricité", "Climatisation", "Cuisine", "Parking", "Wi-Fi"] as const;
 
     return (
         <Layout>
-            <div className="properties-details">
+            <div className="properties-details rental-detail">
                 <div className="tf-container tf-spacing-7">
                     <div className="row">
                         <div className="col-lg-8">
@@ -38,39 +42,72 @@ export default async function RentalPage({ params }: PageProps) {
                                 </div>
                                 <h1 className="h4 mb_12">{rental.title}</h1>
                                 <p className="mb_12">{rentalLocation(rental)}, Guinée</p>
-                                <h4 className="price">
+                                <p className="price h4">
                                     {rentalPrice(rental)}
                                     {rental.price !== null && <span className="text_secondary-color text-body-default"> / {rental.period}</span>}
-                                </h4>
+                                </p>
+                                <p className="rental-availability mt_16">{rentalAvailability}.</p>
                             </div>
                             <div className="img-style mb_30">
                                 <Image src={rental.imgSrc} alt={rental.imageAlt} width={rental.imgWidth} height={rental.imgHeight} className="w-full" priority />
                             </div>
                             <div className="properties-overview tf-spacing-8">
-                                <h5 className="properties-title mb_20">Votre logement</h5>
+                                <h2 className="h5 properties-title mb_20">Votre logement</h2>
                                 <ul className="info d-flex flex-wrap gap_24">
                                     <li><i className="icon-Bed" aria-hidden="true" /> {rental.beds} {rental.beds === 1 ? "chambre" : "chambres"}</li>
-                                    <li><i className="icon-HouseLine" aria-hidden="true" /> {rental.furnished || "Salon"}</li>
+                                    <li><i className="icon-HouseLine" aria-hidden="true" /> {rental.furnished || "Mobilier : à confirmer"}</li>
                                     <li><i className="icon-Ruler" aria-hidden="true" /> {rental.area} m²</li>
                                 </ul>
                             </div>
                             <div className="properties-description mb_30">
-                                <h5 className="properties-title mb_20">Description</h5>
+                                <h2 className="h5 properties-title mb_20">Description</h2>
                                 <p className="text-body-2">{rental.description}</p>
                             </div>
-                            <Link href="/" className="hover-underline-link text_primary-color text-button">Retour à l’accueil</Link>
+                            <section className="rental-info-section" aria-labelledby="rental-amenities">
+                                <h2 id="rental-amenities" className="h5 mb_20">Équipements et services</h2>
+                                <p className="mb_20">Voici les informations connues. Notre équipe peut vous préciser les éléments à confirmer.</p>
+                                <dl className="rental-facts">
+                                    {amenities.map(name => <div key={name}><dt>{name}</dt><dd>{rental.amenities?.[name] || "À confirmer"}</dd></div>)}
+                                </dl>
+                                <h3 className="h6 mt_24 mb_12">Espaces et services partagés</h3>
+                                {rental.sharedAmenities?.length ? <ul className="rental-info-list">{rental.sharedAmenities.map(item => <li key={item}>{item}</li>)}</ul> : <p>À confirmer auprès de CIP IMMO.</p>}
+                                <h3 className="h6 mt_24 mb_12">Charges et frais</h3>
+                                <dl className="rental-facts">
+                                    <div><dt>Compris dans le prix</dt><dd>{rental.charges ? rental.charges.included.join(", ") || "Aucune charge incluse" : "À confirmer"}</dd></div>
+                                    <div><dt>À payer en plus</dt><dd>{rental.charges ? rental.charges.extra.join(", ") || "Aucun supplément déclaré" : "À confirmer"}</dd></div>
+                                </dl>
+                            </section>
+                            <section className="rental-info-section" aria-labelledby="rental-neighbourhood">
+                                <h2 id="rental-neighbourhood" className="h5 mb_20">Autour du logement</h2>
+                                <p className="mb_12">{rentalLocation(rental)}, Guinée</p>
+                                {rental.neighbourhood?.length ? <ul className="rental-info-list">{rental.neighbourhood.map(item => <li key={item}>{item}</li>)}</ul> : showDemo ? <div className="rental-demo-note">
+                                    <p><strong>Informations de démonstration — exemples fictifs</strong></p>
+                                    <p>Ces exemples servent à préparer la présentation. Ils ne décrivent pas les environs réels de cet appartement.</p>
+                                    <ul className="rental-info-list"><li>Exemple : des commerces à proximité.</li><li>Exemple : un marché dans le quartier.</li><li>Exemple : un accès à une route principale.</li></ul>
+                                </div> : <p>Contactez-nous pour connaître les commerces, transports et repères proches de ce logement.</p>}
+                            </section>
+                            <section className="rental-info-section" aria-labelledby="rental-visit">
+                                <h2 id="rental-visit" className="h5 mb_20">Découvrir le logement à distance</h2>
+                                {video ? <>
+                                    <video controls playsInline preload="none" poster={video.poster} aria-label={`Visite de ${rental.title}`} aria-describedby="rental-video-description">
+                                        <source src={video.src} type={video.src.toLowerCase().endsWith(".webm") ? "video/webm" : "video/mp4"} />
+                                        {video.captions && safeRentalMedia(video.captions, "captions") && <track kind="captions" src={video.captions} srcLang="fr" label="Français" default />}
+                                        Votre navigateur ne peut pas lire cette vidéo.
+                                    </video>
+                                    <p id="rental-video-description" className="mt_16 mb_20">{video.description}</p>
+                                </> : <p className="mb_20">Aucune vidéo n’est encore disponible pour ce logement. Vous pouvez demander des images récentes ou convenir d’une visite avec notre équipe.</p>}
+                                <RentalContact rental={rental} visit />
+                            </section>
+                            <Link href="/listing-left-sidebar" className="hover-underline-link text_primary-color text-button">Voir tous les logements</Link>
                         </div>
                         <div className="col-lg-4">
                             <div className="right sticky-top">
                                 <div className="box-sellers mb_30">
-                                    <h5 className="mb_20">Échangez avec CIP IMMO</h5>
+                                    <h2 className="h5 mb_20">Échangez avec CIP IMMO</h2>
+                                    <p className="mb_12">Référence : <strong className="rental-reference">{rental.slug}</strong></p>
                                     <p className="mb_24">Contactez-nous pour confirmer la disponibilité et connaître les conditions de location. Aucun paiement ne se fait sur le site.</p>
-                                    <a href={`https://wa.me/224623417510?text=${encodeURIComponent(message)}`} className="tf-btn btn-bg-1 mb_12">
-                                        <span>Écrire sur WhatsApp</span><span className="bg-effect" />
-                                    </a>
-                                    <a href="tel:+224613585198" className="tf-btn">
-                                        <span>Appeler CIP IMMO</span><span className="bg-effect" />
-                                    </a>
+                                    <RentalContact rental={rental} />
+                                    <p className="mt_16">Téléphone : +224 613 58 51 98</p>
                                 </div>
                             </div>
                         </div>

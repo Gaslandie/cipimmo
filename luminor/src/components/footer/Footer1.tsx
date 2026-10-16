@@ -125,7 +125,7 @@ export default function Footer1() {
         event.preventDefault();
         const form = event.currentTarget;
         const formData = new FormData(form);
-        // Call the server action
+        // Prepare the WhatsApp message locally; no server submission.
         await subscribeNewsletter(formData);
     };
 
@@ -195,7 +195,7 @@ export default function Footer1() {
                                                         className="text-body-default text_color-1"
                                                     >
                                                         {link.href.includes("?") ? (
-                                                            <a href={link.href} className="link">{link.label}</a>
+                                                            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${link.href}`} className="link">{link.label}</a>
                                                         ) : (
                                                             <Link href={link.href} className="link">{link.label}</Link>
                                                         )}
@@ -283,7 +283,7 @@ export default function Footer1() {
                     </p>
                     <ul className="social d-flex gap_24">
                         <li>
-                            <Link href="#" className="icon-FacebookLogo"></Link>
+                            <a href="https://www.facebook.com/profile.php?id=61595249675572" className="icon-FacebookLogo" aria-label="Facebook de CIP IMMO"></a>
                         </li>
                         <li>
                             <Link href="#" className="icon-XLogo"></Link>

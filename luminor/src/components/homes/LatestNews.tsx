@@ -62,6 +62,7 @@ export default function LatestNews() {
                                     <Link
                                         href={`/blog-post-1/${item.id}`}
                                         className="overlay-link"
+                                        aria-label={`Lire : ${item.title}`}
                                     ></Link>
                                 </div>
                                 <div className="article-content">

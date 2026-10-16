@@ -18,7 +18,7 @@ const agents: Agent[] = [
     name: "Accueil et conseil CIP IMMO",
     img: "/assets/images/section/agent-1.jpg?v=cip-photos-1",
     socials: [
-      { icon: "icon-FacebookLogo", href: "#" },
+      { icon: "icon-FacebookLogo", href: "https://www.facebook.com/profile.php?id=61595249675572" },
       { icon: "icon-XLogo", href: "#" },
       { icon: "icon-InstagramLogo", href: "#" },
       { icon: "icon-YoutubeLogo", href: "#" },
@@ -29,7 +29,7 @@ const agents: Agent[] = [
     name: "Accompagnement locatif CIP IMMO",
     img: "/assets/images/section/agent-2.jpg?v=cip-photos-1",
     socials: [
-      { icon: "icon-FacebookLogo", href: "#" },
+      { icon: "icon-FacebookLogo", href: "https://www.facebook.com/profile.php?id=61595249675572" },
       { icon: "icon-XLogo", href: "#" },
       { icon: "icon-InstagramLogo", href: "#" },
       { icon: "icon-YoutubeLogo", href: "#" },
@@ -40,7 +40,7 @@ const agents: Agent[] = [
     name: "Accueil et conseil CIP IMMO",
     img: "/assets/images/section/agent-1.jpg?v=cip-photos-1",
     socials: [
-      { icon: "icon-FacebookLogo", href: "#" },
+      { icon: "icon-FacebookLogo", href: "https://www.facebook.com/profile.php?id=61595249675572" },
       { icon: "icon-XLogo", href: "#" },
       { icon: "icon-InstagramLogo", href: "#" },
       { icon: "icon-YoutubeLogo", href: "#" },
@@ -51,7 +51,7 @@ const agents: Agent[] = [
     name: "Accompagnement locatif CIP IMMO",
     img: "/assets/images/section/agent-2.jpg?v=cip-photos-1",
     socials: [
-      { icon: "icon-FacebookLogo", href: "#" },
+      { icon: "icon-FacebookLogo", href: "https://www.facebook.com/profile.php?id=61595249675572" },
       { icon: "icon-XLogo", href: "#" },
       { icon: "icon-InstagramLogo", href: "#" },
       { icon: "icon-YoutubeLogo", href: "#" },
@@ -81,7 +81,7 @@ export default function Agents() {
                 accompagne pour votre court séjour ou votre installation.
               </p>
             </div>
-            <a href="/contacts" className="tf-btn btn-bg-1 btn-px-24">
+            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/contacts`} className="tf-btn btn-bg-1 btn-px-24">
               <span>Contacter notre équipe</span>
               <span className="bg-effect"></span>
             </a>
@@ -119,7 +119,7 @@ export default function Agents() {
             {agents.map((agent) => (
               <SwiperSlide key={agent.id}>
                 <div className="agent-item">
-                  <a href="/contacts" className="img-style">
+                  <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/contacts`} className="img-style">
                     <img
                       loading="lazy"
                       decoding="async"
@@ -132,7 +132,7 @@ export default function Agents() {
                   <ul className="social">
                     {agent.socials.map((social, idx) => (
                       <li key={idx}>
-                        <a className={social.icon} role="link" aria-disabled="true" aria-label={`${social.icon.replace("icon-", "").replace("Logo", "")} CIP IMMO`}></a>
+                        <a className={social.icon} href={social.href !== "#" ? social.href : undefined} role="link" aria-disabled={social.href === "#" ? true : undefined} aria-label={`${social.icon.replace("icon-", "").replace("Logo", "")} CIP IMMO`}></a>
                       </li>
                     ))}
                   </ul>

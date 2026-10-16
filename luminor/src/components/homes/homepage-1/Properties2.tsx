@@ -8,17 +8,6 @@ const propertiesData = cipRentals.map((rental, index) => ({ id: `tab${index + 1}
 
 export default function Properties2() {
     const [activeTab, setActiveTab] = useState("tab1");
-    let hoverTimer: ReturnType<typeof setTimeout>;
-
-    const handleMouseEnter = (tabId: string) => {
-        hoverTimer = setTimeout(() => {
-            setActiveTab(tabId);
-        }, 100);
-    };
-
-    const handleMouseLeave = () => {
-        clearTimeout(hoverTimer);
-    };
 
     return (
         <div className="section-features-property tf-spacing-1">
@@ -33,9 +22,9 @@ export default function Properties2() {
                                 }`}
                                 data-tab={property.id}
                                 onMouseEnter={() =>
-                                    handleMouseEnter(property.id)
+                                    setActiveTab(property.id)
                                 }
-                                onMouseLeave={handleMouseLeave}
+                                onFocus={() => setActiveTab(property.id)}
                             >
                                 <div className="property-item">
                                     <div className="dots"></div>
@@ -59,6 +48,7 @@ export default function Properties2() {
                             <div
                                 key={property.id}
                                 id={property.id}
+                                hidden={activeTab !== property.id}
                                 className={`tab-content${
                                     activeTab === property.id ? " active" : ""
                                 }`}
@@ -68,7 +58,7 @@ export default function Properties2() {
                                         src={property.img}
                                         width={645}
                                         height={645}
-                                        alt="Logement CIP IMMO"
+                                        alt={property.title}
                                     />
                                 </Link>
                             </div>

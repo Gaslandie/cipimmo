@@ -1,5 +1,5 @@
-"use server";
-import { redirect } from "next/navigation";
+"use client";
+const redirect = (url: string) => window.location.assign(url);
 
 export async function subscribeNewsletter(formData: FormData) {
     const email = formData.get("email");

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
@@ -37,12 +37,12 @@ export default function Hero() {
             </div>
             <div className="thumbs effect-content-slide">
                 <Swiper
-                    modules={[Navigation, Autoplay]}
+                    modules={[Navigation, A11y]}
+                    a11y={{ prevSlideMessage: "Photo précédente", nextSlideMessage: "Photo suivante", slideLabelMessage: "Photo {{index}} sur {{slidesLength}}" }}
                     navigation={{
                         nextEl: ".nav-next-layout",
                         prevEl: ".nav-prev-layout",
                     }}
-                    autoplay={{ delay: 4000, disableOnInteraction: false }}
                     spaceBetween={10}
                     loop={true}
                     className="swiper"
@@ -71,12 +71,12 @@ export default function Hero() {
                             />
                         </div>
                     </SwiperSlide>
-                    <div className="sw-button nav-prev-layout d-none d-md-flex">
-                        <i className="icon-CaretLeft"></i>
-                    </div>
-                    <div className="sw-button nav-next-layout d-none d-md-flex">
-                        <i className="icon-CaretRight"></i>
-                    </div>
+                    <button type="button" className="sw-button nav-prev-layout d-none d-md-flex" aria-label="Photo précédente">
+                        <i className="icon-CaretLeft" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" className="sw-button nav-next-layout d-none d-md-flex" aria-label="Photo suivante">
+                        <i className="icon-CaretRight" aria-hidden="true"></i>
+                    </button>
                 </Swiper>
             </div>
 

@@ -35,7 +35,7 @@ export default function BoxSeller1() {
                             Nongo Kiroti, Conakry Guinée
                         </p>
                         <a
-                            href="/contacts"
+                            href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/contacts`}
                             className="hover-underline-link text-button fw-7 text_primary-color"
                         >
                             Nous trouver

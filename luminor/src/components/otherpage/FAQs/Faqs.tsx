@@ -1,3 +1,4 @@
+"use client";
 import DropdownSelect2 from "@/components/common/DropdownSelect2";
 import React from "react";
 import { submitFAQQuestion } from "@/actions/faqAction";

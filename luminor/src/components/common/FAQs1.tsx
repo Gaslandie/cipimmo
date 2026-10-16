@@ -52,7 +52,7 @@ export default function FAQs1() {
             <p className="text_white text-body-2 mb_20">
               Une question sur un appartement, les tarifs ou votre arrivée ? Contactez CIP IMMO pour préparer votre court séjour ou votre installation en Guinée.
             </p>
-            <a href="/contacts" className="tf-btn btn-bg-1 btn-px-28">
+            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/contacts`} className="tf-btn btn-bg-1 btn-px-28">
               <span>Contacter notre équipe</span>
               <span className="bg-effect"></span>
             </a>

@@ -102,6 +102,7 @@ export default function ClientScripts() {
 
     // GSAP animations
     useGSAP(() => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         const elements =
             document.querySelectorAll<HTMLElement>(".scrolling-effect");
 
@@ -148,11 +149,15 @@ export default function ClientScripts() {
 
     // Split text animations
     useGSAP(() => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         const elements = document.querySelectorAll<HTMLElement>(".split-text");
 
         elements.forEach((el) => {
             const hasClass = (cls: string) => el.classList.contains(cls);
             const $target = el.querySelector("p, a") ?? el;
+            // SplitText adds an accessible name, which is invalid on generic text.
+            // Keep paragraphs and labels intact for assistive technology.
+            if (!$target.matches("h1, h2, h3, h4, h5, h6, a")) return;
 
             const pxlSplit = new SplitText($target as HTMLElement, {
                 type: "words, chars",

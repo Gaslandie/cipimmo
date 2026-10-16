@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 // Conservée pour compatibilité ; aucun contenu de formulaire n’est journalisé.
 export async function calculateLoan(formData: FormData) {

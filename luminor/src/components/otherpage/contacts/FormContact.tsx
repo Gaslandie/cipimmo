@@ -68,7 +68,7 @@ export default function FormContact() {
                         <h5 className="mb_12">Suivez-nous :</h5>
                         <ul className="tf-social d-flex gap_24">
                             <li>
-                                <a href="#" className="icon-FacebookLogo"></a>
+                                <a href="https://www.facebook.com/profile.php?id=61595249675572" className="icon-FacebookLogo" aria-label="Facebook de CIP IMMO"></a>
                             </li>
                             <li>
                                 <a href="#" className="icon-XLogo"></a>

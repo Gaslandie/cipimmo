@@ -6,7 +6,8 @@
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:pages": "PAGES_EXPORT=1 NEXT_PUBLIC_BASE_PATH=/cipimmo next build && node scripts/prepare-pages.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

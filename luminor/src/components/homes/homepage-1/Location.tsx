@@ -20,7 +20,7 @@ export default function Location() {
                                 className="location-item hover-image scrolling-effect effectFade"
                                 data-delay="0.2"
                             >
-                                <a href="/listing-left-sidebar" className="img-style mb_18">
+                                <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`} className="img-style mb_18">
                                     <Image
                                         width={300}
                                         height={300}
@@ -30,7 +30,7 @@ export default function Location() {
                                 </a>
                                 <div className="content">
                                     <a
-                                        href="/listing-left-sidebar"
+                                        href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`}
                                         className="mb_4 link h5 text_primary-color"
                                     >
                                         Coléah, Conakry
@@ -42,7 +42,7 @@ export default function Location() {
                                 className="location-item hover-image scrolling-effect effectFade"
                                 data-delay="0.3"
                             >
-                                <a href="/listing-left-sidebar" className="img-style mb_18">
+                                <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`} className="img-style mb_18">
                                     <Image
                                         width={300}
                                         height={300}
@@ -52,7 +52,7 @@ export default function Location() {
                                 </a>
                                 <div className="content">
                                     <a
-                                        href="/listing-left-sidebar"
+                                        href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`}
                                         className="mb_4 link h5 text_primary-color"
                                     >
                                         Coyah Km54
@@ -65,7 +65,7 @@ export default function Location() {
                             className="location-item hover-image scrolling-effect effectFade"
                             data-delay="0.4"
                         >
-                            <a href="/listing-left-sidebar" className="img-style mb_18">
+                            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`} className="img-style mb_18">
                                 <Image
                                     width={630}
                                     height={300}
@@ -75,7 +75,7 @@ export default function Location() {
                             </a>
                             <div className="content">
                                 <a
-                                    href="/listing-left-sidebar"
+                                    href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`}
                                     className="mb_4 link h5 text_primary-color"
                                 >
                                     Ansoumaniah, Conakry
@@ -89,7 +89,7 @@ export default function Location() {
                             className="location-item hover-image scrolling-effect effectFade"
                             data-delay="0.4"
                         >
-                            <a href="/listing-left-sidebar" className="img-style mb_18">
+                            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`} className="img-style mb_18">
                                 <Image
                                     width={630}
                                     height={300}
@@ -99,7 +99,7 @@ export default function Location() {
                             </a>
                             <div className="content">
                                 <a
-                                    href="/listing-left-sidebar"
+                                    href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`}
                                     className="mb_4 link h5 text_primary-color"
                                 >
                                     Conakry
@@ -112,7 +112,7 @@ export default function Location() {
                                 className="location-item hover-image scrolling-effect effectFade"
                                 data-delay="0.3"
                             >
-                                <a href="/listing-left-sidebar" className="img-style mb_18">
+                                <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`} className="img-style mb_18">
                                     <Image
                                         width={300}
                                         height={300}
@@ -122,7 +122,7 @@ export default function Location() {
                                 </a>
                                 <div className="content">
                                     <a
-                                        href="/listing-left-sidebar"
+                                        href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`}
                                         className="mb_4 link h5 text_primary-color"
                                     >
                                         Coyah
@@ -134,7 +134,7 @@ export default function Location() {
                                 className="location-item hover-image scrolling-effect effectFade"
                                 data-delay="0.2"
                             >
-                                <a href="/listing-left-sidebar" className="img-style mb_18">
+                                <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`} className="img-style mb_18">
                                     <Image
                                         width={300}
                                         height={300}
@@ -144,7 +144,7 @@ export default function Location() {
                                 </a>
                                 <div className="content">
                                     <a
-                                        href="/listing-left-sidebar"
+                                        href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`}
                                         className="mb_4 link h5 text_primary-color"
                                     >
                                         La Guinée

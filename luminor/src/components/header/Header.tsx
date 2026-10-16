@@ -83,9 +83,9 @@ export default function Header() {
                                         <div className="wrap-social">
                                             <p>Suivez-nous :</p>
                                             <ul className="social align-items-center d-flex gap_24">
-                                                {/* Liens à renseigner après réception des profils officiels CIP IMMO. */}
+                                                <li><a href="https://www.facebook.com/profile.php?id=61595249675572" className="icon-FacebookLogo" aria-label="Facebook de CIP IMMO" /></li>
+                                                {/* Autres profils officiels en attente. */}
                                                 {[
-                                                    ["Facebook", "icon-FacebookLogo"],
                                                     ["X", "icon-XLogo"],
                                                     ["TikTok", "icon-TiktokLogo"],
                                                     ["Instagram", "icon-InstagramLogo"],
