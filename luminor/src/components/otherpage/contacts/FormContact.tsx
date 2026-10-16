@@ -19,13 +19,24 @@ export default function FormContact() {
                     </div>
                     <ul className="info d-grid gap_20 mb_36">
                         <li>
+                            <i className="icon icon-EnvelopeSimple" aria-hidden="true"></i>
+                            <div className="content">
+                                <div className="text-title fw-6 text_primary-color mb_4">
+                                    E-mail :
+                                </div>
+                                <a href="mailto:contact@cipsarlu.com" className="link text_secondary-color text-body-default">
+                                    contact@cipsarlu.com
+                                </a>
+                            </div>
+                        </li>
+                        <li>
                             <i className="icon icon-MapPin"></i>
                             <div className="content">
                                 <div className="text-title fw-6 text_primary-color mb_4">
                                     Localisation de l’entreprise :
                                 </div>
                                 <p>
-                                    Coyah, Guinée
+                                    Nongo Kiroti, Conakry Guinée
                                 </p>
                             </div>
                         </li>

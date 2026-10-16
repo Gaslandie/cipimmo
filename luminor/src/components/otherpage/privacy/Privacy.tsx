@@ -222,13 +222,16 @@ export default function Privacy() {
                                         5. Nous contacter
                                     </h5>
                                     <p className="mb_12">
-                                        CIP IMMO vous accompagne dans votre recherche de location en Guinée, depuis Coyah.
+                                        CIP IMMO vous accompagne dans votre recherche de location en Guinée, depuis Nongo Kiroti, à Conakry.
                                     </p>
                                     <p className="mb_12">
                                         Appelez-nous au +224 613 58 51 98 ou écrivez-nous sur WhatsApp au +224 623 41 75 10. Précisez le quartier ou le logement qui vous intéresse pour faciliter notre échange.
                                     </p>
                                     <p>
                                         Notre équipe peut vous renseigner sur les courts séjours, les locations longue durée et les modalités de votre arrivée.
+                                    </p>
+                                    <p>
+                                        E-mail : <a href="mailto:contact@cipsarlu.com">contact@cipsarlu.com</a>.
                                     </p>
                                 </div>
                             </div>

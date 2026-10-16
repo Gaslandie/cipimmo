@@ -34,7 +34,7 @@ export default function BoxSeller3() {
                             <i className="icon icon-MapPin"></i>
                             <div>
                                 <p className="text_primary-color mb_4">
-                                    CIP IMMO, <br /> Coyah, Guinée
+                                    CIP IMMO, <br /> Nongo Kiroti, Conakry Guinée
                                 </p>
                                 <a
                                     href="/contacts"

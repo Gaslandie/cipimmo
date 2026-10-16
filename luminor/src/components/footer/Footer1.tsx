@@ -144,8 +144,14 @@ export default function Footer1() {
                                         Notre adresse :
                                     </p>
                                     <p className="text_white">
-                                        Coyah, Guinée
+                                        Nongo Kiroti, Conakry Guinée
                                     </p>
+                                </div>
+                                <div className="text-body-default text_secondary-color mb_16">
+                                    <span className="text_color-1">E-mail : </span>
+                                    <a href="mailto:contact@cipsarlu.com" className="text_white link ms_4">
+                                        contact@cipsarlu.com
+                                    </a>
                                 </div>
                                 <div className="text-body-default text_secondary-color mb_16">
                                     <span className="text_color-1">

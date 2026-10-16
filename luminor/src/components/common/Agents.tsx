@@ -77,7 +77,7 @@ export default function Agents() {
               </h6>
               <p className="text-body-2">
                 Une question sur un quartier, un tarif ou les conditions de
-                location ? Notre équipe basée à Coyah vous écoute et vous
+                location ? Notre équipe basée à Nongo Kiroti, à Conakry, vous écoute et vous
                 accompagne pour votre court séjour ou votre installation.
               </p>
             </div>

@@ -74,7 +74,7 @@ export default function AboutUs() {
                         ou pour vous installer en Guinée.
                     </p>
                     <p>
-                        Basée à Coyah, CIP IMMO vous accompagne dans la recherche
+                        Basée à Nongo Kiroti, à Conakry, CIP IMMO vous accompagne dans la recherche
                         de logements meublés et non meublés. Nous prenons le temps
                         de comprendre vos besoins et de vous expliquer les
                         disponibilités, les tarifs et les conditions de location.

@@ -78,7 +78,7 @@ export default function Header() {
                                     <li>
                                         WhatsApp : <a href="https://wa.me/224623417510" className="link">+224 623 41 75 10</a>
                                     </li>
-                                    <li>CIP IMMO · Coyah, Guinée</li>
+                                    <li>CIP IMMO · Nongo Kiroti, Conakry Guinée</li>
                                     <li>
                                         <div className="wrap-social">
                                             <p>Suivez-nous :</p>

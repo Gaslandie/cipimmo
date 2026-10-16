@@ -13,7 +13,7 @@ export default function ContactPage() {
             <div className="tf-container section-contact tf-spacing-1">
                 <section className="contact-location-card" aria-labelledby="contact-locations-title">
                     <h4 id="contact-locations-title">Localisation de CIP IMMO</h4>
-                    <p>Retrouvez notre entreprise à Coyah, en Guinée.</p>
+                    <p>Adresse de notre entreprise : Nongo Kiroti, Conakry Guinée.</p>
                     <button
                         type="button"
                         className="tf-btn btn-bg-1"
@@ -25,10 +25,10 @@ export default function ContactPage() {
                     </button>
                     <div id="contact-location-map" className="contact-location-map" hidden={!showMap}>
                         {showMap && <>
-                            <p className="mb_16">Carte de Coyah, Guinée.</p>
+                            <p className="mb_16">Carte du secteur de Nongo Kiroti, Conakry Guinée. Contactez-nous pour le repère exact du bureau.</p>
                             <iframe
-                                src="https://www.google.com/maps?q=Coyah%2C%20Guin%C3%A9e&output=embed"
-                                title="Carte de Coyah, Guinée — secteur de CIP IMMO"
+                                src="https://www.google.com/maps?q=Nongo%20Kiroti%2C%20Conakry%2C%20Guin%C3%A9e&output=embed"
+                                title="Carte de Nongo Kiroti, Conakry Guinée — secteur de CIP IMMO"
                                 width="100%"
                                 height="400"
                                 loading="lazy"

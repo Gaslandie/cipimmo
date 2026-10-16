@@ -10,7 +10,7 @@ type TimeLine = {
 const history: TimeLine[] = [
     {
         year: "2020",
-        title: "Nos débuts à Coyah",
+        title: "Nos débuts",
         text: "CIP IMMO prend forme autour d’une idée simple : aider chacun à trouver un logement en Guinée avec une équipe proche et à l’écoute.",
     },
     {

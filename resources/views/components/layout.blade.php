@@ -35,7 +35,7 @@
                     @foreach(['conakry' => 'Conakry', 'coyah' => 'Coyah', 'kankan' => 'Kankan'] as $slug => $city)<a href="{{ route('listings.index', ['city' => $slug]) }}">{{ $city }}</a>@endforeach
                 </div></div>
                 <a class="mobile-menu-help" href="{{ route('renting') }}#questions"><x-icon name="chat" :size="20" />Questions fréquentes<x-icon name="arrow" :size="18" /></a>
-                <div class="mobile-menu-contact"><h2>Parlons de votre recherche</h2><x-contact-buttons :contact="$contact" :phone-first="true" :prominent-phone="true" /><p>CIP IMMO · Coyah, Guinée</p></div>
+                <div class="mobile-menu-contact"><h2>Parlons de votre recherche</h2><x-contact-buttons :contact="$contact" :phone-first="true" :prominent-phone="true" /><p>CIP IMMO · Nongo Kiroti, Conakry Guinée</p></div>
             </div>
         </details>
     </div>
@@ -43,7 +43,7 @@
 <main id="contenu">{{ $slot }}</main>
 <footer class="site-footer">
     <div class="site-container footer-main"><div><x-brand /><p>Logements meublés et non meublés en Guinée, pour vos courts séjours et vos locations longue durée.</p></div><nav aria-label="Navigation du pied de page"><a href="{{ route('listings.index') }}" @if(request()->routeIs('listings.*', 'demo.listing')) aria-current="page" @endif>Nos logements</a><a href="{{ route('about') }}" @if(request()->routeIs('about')) aria-current="page" @endif>À propos</a><a href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Contact</a></nav></div>
-    <div class="site-container footer-bottom"><p>© {{ date('Y') }} CIP IMMO. Tous droits réservés.</p></div>
+    <div class="site-container footer-bottom"><p>© {{ date('Y') }} CIP IMMO. Tous droits réservés.</p><a href="mailto:contact@cipsarlu.com">contact@cipsarlu.com</a></div>
 </footer>
 </body>
 </html>

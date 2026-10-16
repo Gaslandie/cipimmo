@@ -32,7 +32,7 @@ export default function BoxSeller1() {
                     <div>
                         <p className="text_primary-color mb_4">
                             CIP IMMO, <br />
-                            Coyah, Guinée
+                            Nongo Kiroti, Conakry Guinée
                         </p>
                         <a
                             href="/contacts"
