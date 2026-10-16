@@ -71,27 +71,25 @@ export default function Pagination({
     return (
         <ul className="wg-pagination">
             {/* Previous button */}
-            <li onClick={handlePreviousClick}>
-                <a className="nav-item">
-                    <i className="icon-CaretLeft" />
-                </a>
+            <li>
+                <button type="button" className="nav-item" aria-label="Page précédente" disabled={currentPage <= 1} onClick={handlePreviousClick}><i className="icon-CaretLeft" aria-hidden="true" /></button>
             </li>
             {/* First page and leading ellipsis */}
             {totalPages > 5 && currentPage > 3 && (
                 <>
                     <li>
-                        <a
+                        <button type="button"
                             className={`nav-item ${
                                 currentPage === 1 ? "active" : ""
                             }`}
                             onClick={handleFirstPageClick}
                         >
                             1
-                        </a>
+                        </button>
                     </li>
                     {currentPage > 4 && (
                         <li>
-                            <a className="nav-item">...</a>
+                            <span className="nav-item">...</span>
                         </li>
                     )}
                 </>
@@ -99,14 +97,14 @@ export default function Pagination({
             {/* Page numbers */}
             {pageNumbers.map((page) => (
                 <li key={page}>
-                    <a
+                    <button type="button"
                         className={`nav-item ${
                             currentPage === page ? "active" : ""
                         }`}
-                        onClick={() => handlePageClick(page)}
+                        aria-current={currentPage === page ? "page" : undefined} aria-label={`Page ${page}`} onClick={() => handlePageClick(page)}
                     >
                         {page}
-                    </a>
+                    </button>
                 </li>
             ))}
             {/* Trailing ellipsis and last page */}
@@ -114,26 +112,24 @@ export default function Pagination({
                 <>
                     {currentPage < totalPages - 3 && (
                         <li>
-                            <a className="nav-item">...</a>
+                            <span className="nav-item">...</span>
                         </li>
                     )}
                     <li>
-                        <a
+                        <button type="button"
                             className={`nav-item ${
                                 currentPage === totalPages ? "active" : ""
                             }`}
                             onClick={handleLastPageClick}
                         >
                             {totalPages}
-                        </a>
+                        </button>
                     </li>
                 </>
             )}
             {/* Next button */}
-            <li onClick={handleNextClick}>
-                <a className="nav-item">
-                    <i className="icon-CaretRight" />
-                </a>
+            <li>
+                <button type="button" className="nav-item" aria-label="Page suivante" disabled={currentPage >= totalPages} onClick={handleNextClick}><i className="icon-CaretRight" aria-hidden="true" /></button>
             </li>
         </ul>
     );

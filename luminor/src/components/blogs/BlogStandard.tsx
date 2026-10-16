@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { blogPostsLarge } from "@/data/blog";
+import { advicePosts as blogPostsLarge } from "@/data/blog";
 import Pagination from "@/components/common/Pagination";
 import SideBar from "./SideBar";
 
@@ -44,14 +44,14 @@ export default function BlogStandard() {
                                         alt={post.alt}
                                     />
                                     <Link
-                                        href="#"
+                                        href={`/blog-grid/?search=${encodeURIComponent(post.category)}`}
                                         className="tag text-label text text_primary-color text-uppercase"
                                     >
                                         {post.category}
                                     </Link>
                                     <Link
                                         href={`/blog-post-1/${post.id}`}
-                                        className="overlay-link"
+                                        aria-label={`Lire : ${post.title}`} className="overlay-link"
                                     ></Link>
                                 </div>
                                 <div className="article-content ">

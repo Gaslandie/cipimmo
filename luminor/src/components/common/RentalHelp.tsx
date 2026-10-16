@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { readRentalFilters, rentalDistrictOptions, rentalLocationOptions } from "@/data/cipRentals";
 
 import RentalBudgetFields from "./RentalBudgetFields";
@@ -9,6 +9,8 @@ export default function RentalHelp() {
     const [duration, setDuration] = useState("");
     const [budgetFields, setBudgetFields] = useState({ amount: "", period: "" });
     const [error, setError] = useState("");
+    const [ready, setReady] = useState(false);
+    useEffect(() => setReady(true), []);
     const errorRef = useRef<HTMLParagraphElement>(null);
 
     function prepareMessage(event: FormEvent<HTMLFormElement>) {
@@ -33,6 +35,7 @@ export default function RentalHelp() {
     return <details className="rental-help">
         <summary>Aidez-moi à trouver un logement</summary>
         <form onSubmit={prepareMessage} aria-label="Demander de l’aide pour trouver un logement">
+            <fieldset disabled={!ready} className="whatsapp-fields">
             <p id="rental-help-description">Vous pouvez laisser ces choix vides si vous hésitez. WhatsApp s’ouvrira avec votre message : vous pourrez le vérifier et l’envoyer vous-même.</p>
             <div className="rental-help-fields">
                 <div>
@@ -57,6 +60,8 @@ export default function RentalHelp() {
                 <button type="submit" className="tf-btn btn-bg-1" aria-describedby="rental-help-description"><span>Continuer sur WhatsApp</span></button>
                 <a href="tel:+224613585198" className="tf-btn" aria-label="Appeler CIP IMMO au +224 613 58 51 98"><span>Appeler CIP IMMO</span></a>
             </div>
+            </fieldset>
+            <noscript><p><a href="https://wa.me/224623417510">Demandez de l’aide sur WhatsApp</a>.</p></noscript>
         </form>
     </details>;
 }

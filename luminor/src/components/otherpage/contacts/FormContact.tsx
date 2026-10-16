@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
-import { useFormStatus } from "react-dom";
+import WhatsAppForm from "@/components/common/WhatsAppForm";
 import { sendContact } from "@/actions/contactAction";
 
 export default function FormContact() {
-    const { pending } = useFormStatus();
 
     return (
         <div className="row tf-spacing-1 pb-0">
@@ -46,7 +45,7 @@ export default function FormContact() {
                                 <div className="text-title fw-6 text_primary-color mb_4">
                                     Téléphone :
                                 </div>
-                                <p>+224 613 58 51 98</p>
+                                <a href="tel:+224613585198">+224 613 58 51 98</a>
                             </div>
                         </li>
                         <li>
@@ -70,25 +69,13 @@ export default function FormContact() {
                             <li>
                                 <a href="https://www.facebook.com/profile.php?id=61595249675572" className="icon-FacebookLogo" aria-label="Facebook de CIP IMMO"></a>
                             </li>
-                            <li>
-                                <a href="#" className="icon-XLogo"></a>
-                            </li>
-                            <li>
-                                <a href="#" className="icon-TiktokLogo"></a>
-                            </li>
-                            <li>
-                                <a href="#" className="icon-InstagramLogo"></a>
-                            </li>
-                            <li>
-                                <a href="#" className="icon-YoutubeLogo"></a>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div className="col-md-6">
-                <form className="form-contact" action={sendContact}>
+                <WhatsAppForm className="form-contact" prepare={sendContact} label="Contacter CIP IMMO">
                     <div className="heading mb_24">
                         <h4 className="mb_8">Préparez votre message</h4>
                         <p>
@@ -109,7 +96,7 @@ export default function FormContact() {
                                     id="firstName"
                                     type="text"
                                     placeholder="Prénom"
-                                    name="firstName" maxLength={80}
+                                    name="firstName" maxLength={80} autoComplete="given-name"
                                     required
                                 />
                             </fieldset>
@@ -124,7 +111,7 @@ export default function FormContact() {
                                     id="lastName"
                                     type="text"
                                     placeholder="Nom"
-                                    name="lastName" maxLength={80}
+                                    name="lastName" maxLength={80} autoComplete="family-name"
                                     required
                                 />
                             </fieldset>
@@ -136,14 +123,13 @@ export default function FormContact() {
                                     htmlFor="email"
                                     className="text-button text_primary-color fw-7 mb_8"
                                 >
-                                    Adresse e-mail
+                                    Adresse e-mail (facultatif)
                                 </label>
                                 <input
                                     id="email"
                                     type="email"
                                     placeholder="Votre adresse e-mail"
-                                    name="email" maxLength={254}
-                                    required
+                                    name="email" maxLength={254} autoComplete="email"
                                 />
                             </fieldset>
                             <fieldset>
@@ -151,13 +137,13 @@ export default function FormContact() {
                                     htmlFor="phone"
                                     className="text-button text_primary-color fw-7 mb_8"
                                 >
-                                    Téléphone
+                                    Téléphone (facultatif)
                                 </label>
                                 <input
                                     id="phone"
                                     type="tel"
                                     placeholder="Votre numéro de téléphone"
-                                    name="phone" maxLength={30}
+                                    name="phone" maxLength={30} autoComplete="tel"
                                 />
                             </fieldset>
                         </div>
@@ -182,12 +168,12 @@ export default function FormContact() {
                     <button
                         className="tf-btn btn-bg-1 btn-px-28 w-full"
                         type="submit"
-                        disabled={pending}
+
                     >
-                        <span>{pending ? "Préparation…" : "Continuer sur WhatsApp"}</span>
+                        <span>Continuer sur WhatsApp</span>
                         <span className="bg-effect"></span>
                     </button>
-                </form>
+                </WhatsAppForm>
             </div>
         </div>
     );

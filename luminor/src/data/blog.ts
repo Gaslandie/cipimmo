@@ -554,3 +554,6 @@ export const mainArticle: BlogPost[] = [
 ];
 
 export const allBlogs = [...new Map([...blogPostsLarge, ...blogPostsGrid, ...blogPostsList, ...recentPost, ...recentPost2, ...latestNews, ...mainArticle].map(post => [post.id, post])).values()];
+
+// Keep old article URLs valid while showing each advice title only once.
+export const advicePosts = blogPostsGrid.filter((post, index, posts) => posts.findIndex(other => other.title === post.title) === index);

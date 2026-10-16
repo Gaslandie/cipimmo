@@ -1,11 +1,12 @@
-"use client";
-const redirect = (url: string) => window.location.assign(url);
+import { textField, validEmail, type WhatsAppResult } from "./whatsapp";
 
-export async function sendContact(formData: FormData) {
-    const fields = ["firstName", "lastName", "email", "phone", "message"].map(key => formData.get(key));
-    if (fields.some(value => value !== null && typeof value !== "string")) return;
-    const [firstName, lastName, email, phone, message] = fields.map(value => String(value ?? "").trim());
-    if (!firstName || !lastName || firstName.length > 80 || lastName.length > 80 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 || phone.length > 30 || message.length < 10 || message.length > 2000) return;
-    const text = `Bonjour CIP IMMO,\nJe suis ${firstName} ${lastName}.\n${message}\nE-mail : ${email}${phone ? `\nTéléphone : ${phone}` : ""}`;
-    redirect(`https://wa.me/224623417510?text=${encodeURIComponent(text)}`);
+export function sendContact(data: FormData): WhatsAppResult {
+    const firstName = textField(data, "firstName", 80), lastName = textField(data, "lastName", 80);
+    const email = textField(data, "email", 254, false), phone = textField(data, "phone", 30, false), message = textField(data, "message", 2000);
+    if (firstName === null) return { error: "Indiquez votre prénom (80 caractères maximum).", field: "firstName" };
+    if (lastName === null) return { error: "Indiquez votre nom (80 caractères maximum).", field: "lastName" };
+    if (email === null || !validEmail(email)) return { error: "Vérifiez votre adresse e-mail, ou laissez ce champ vide.", field: "email" };
+    if (phone === null || (phone && !/^[+0-9 ()-]{6,30}$/.test(phone))) return { error: "Vérifiez votre numéro de téléphone, ou laissez ce champ vide.", field: "phone" };
+    if (message === null || message.length < 10) return { error: "Décrivez votre demande en 10 à 2 000 caractères.", field: "message" };
+    return { message: `Bonjour CIP IMMO,\nJe suis ${firstName} ${lastName}.\n${message}${email ? `\nE-mail : ${email}` : ""}${phone ? `\nTéléphone : ${phone}` : ""}` };
 }

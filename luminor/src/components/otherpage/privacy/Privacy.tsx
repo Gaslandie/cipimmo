@@ -1,109 +1,6 @@
-"use client";
-
-import React, { useEffect } from "react";
-
-function slideBarPrivacy() {
-    const tocItems = document.querySelectorAll<HTMLElement>(".nav_link");
-    const highlightBar = document.querySelector<HTMLElement>(".highlight-bar");
-    const privacyTable = document.querySelector<HTMLElement>(".privacy-table");
-
-    if (!highlightBar || tocItems.length === 0) return;
-
-    let activeIndex = 0;
-
-    const updateHighlightBar = (index: number) => {
-        const activeItem = tocItems[index];
-        if (!activeItem) return;
-
-        const top = activeItem.offsetTop;
-        const height = activeItem.offsetHeight;
-
-        highlightBar.style.top = `${top}px`;
-        highlightBar.style.height = `${height}px`;
-    };
-
-    updateHighlightBar(activeIndex);
-
-    tocItems.forEach((item, index) => {
-        item.addEventListener("click", (e: Event) => {
-            e.preventDefault();
-
-            tocItems[activeIndex].classList.remove("active");
-            item.classList.add("active");
-            activeIndex = index;
-            updateHighlightBar(index);
-
-            const targetId = item.getAttribute("data-target");
-            const targetSection = targetId
-                ? document.getElementById(targetId)
-                : null;
-
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                });
-            }
-        });
-
-        item.addEventListener("mouseenter", () => {
-            updateHighlightBar(index);
-        });
-    });
-
-    privacyTable?.addEventListener("mouseleave", () => {
-        updateHighlightBar(activeIndex);
-    });
-
-    const sectionMap = Array.from(tocItems).map((item) => {
-        const targetId = item.getAttribute("data-target");
-        const targetSection = targetId
-            ? document.getElementById(targetId)
-            : null;
-        return { item, targetSection };
-    });
-
-    const onScroll = () => {
-        let newIndex = activeIndex;
-
-        for (let i = 0; i < sectionMap.length; i++) {
-            const { targetSection } = sectionMap[i];
-            if (!targetSection) continue;
-
-            const rect = targetSection.getBoundingClientRect();
-            if (rect.top <= 100 && rect.bottom >= 100) {
-                newIndex = i;
-                break;
-            }
-        }
-
-        if (newIndex !== activeIndex) {
-            tocItems[activeIndex].classList.remove("active");
-            tocItems[newIndex].classList.add("active");
-            activeIndex = newIndex;
-            updateHighlightBar(activeIndex);
-        }
-    };
-
-    const onResize = () => {
-        updateHighlightBar(activeIndex);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    window.addEventListener("resize", onResize);
-
-    // Cleanup function
-    return () => {
-        window.removeEventListener("scroll", onScroll);
-        window.removeEventListener("resize", onResize);
-    };
-}
+import React from "react";
 
 export default function Privacy() {
-    useEffect(() => {
-        const cleanup = slideBarPrivacy();
-        return cleanup; 
-    }, []);
     return (
         <>
             <div className="tf-spacing-1 section-privacy">
@@ -115,25 +12,26 @@ export default function Privacy() {
                                     className="nav_link text-title fw-6 "
                                     data-target="terms"
                                 >
-                                    <a href="#">1. Utiliser le site</a>
+                                    <a href="#terms">1. Utiliser le site</a>
                                 </li>
                                 <li
                                     className="nav_link text-title fw-6"
                                     data-target="limitations"
                                 >
-                                    <a href="#">2. Votre recherche</a>
+                                    <a href="#limitations">2. Votre recherche</a>
                                 </li>
+                                <li className="nav_link text-title fw-6"><a href="#favorites">Favoris et formulaires</a></li>
                                 <li
                                     className="nav_link text-title fw-6"
                                     data-target="revisions"
                                 >
-                                    <a href="#">3. Vos échanges</a>
+                                    <a href="#revisions">3. Vos échanges</a>
                                 </li>
                                 <li
                                     className="nav_link text-title fw-6"
                                     data-target="modifications"
                                 >
-                                    <a href="#">
+                                    <a href="#modifications">
                                         4. Services externes
                                     </a>
                                 </li>
@@ -141,9 +39,8 @@ export default function Privacy() {
                                     className="nav_link text-title fw-6"
                                     data-target="risks"
                                 >
-                                    <a href="#">5. Nous contacter</a>
+                                    <a href="#risks">5. Nous contacter</a>
                                 </li>
-                                <li className="highlight-bar"></li>
                             </ul>
                         </div>
                         <div className="col-lg-8">
@@ -156,7 +53,7 @@ export default function Privacy() {
                                         1. Utiliser le site{" "}
                                     </h5>
                                     <p className="mb_12">
-                                        Le site CIP IMMO vous permet de consulter des appartements à louer en Guinée. Les annonces présentent les photos, les surfaces, les chambres et les tarifs pour vous aider à préparer votre recherche.
+                                        Le site CIP IMMO vous permet de consulter des appartements à louer en Guinée. Les annonces présentent les informations communiquées sur les surfaces, les chambres et les tarifs. Les photos sont à venir ; les prix non communiqués sont indiqués « À discuter ».
                                     </p>
                                     <p className="mb_12">
                                         Vous pouvez parcourir les logements sans créer de compte. Pour connaître les disponibilités et les conditions applicables à vos dates, contactez directement notre équipe.
@@ -170,7 +67,7 @@ export default function Privacy() {
                                         2. Votre recherche
                                     </h5>
                                     <p className="mb_12">
-                                        Les filtres vous aident à choisir un quartier, une durée, un nombre de chambres et un budget. Les montants à la nuit et au mois correspondent à des durées différentes.
+                                        Les filtres vous aident à choisir un quartier, une durée, un nombre de chambres et un budget. Les montants par jour, par nuit et par mois correspondent à des durées différentes.
                                     </p>
                                     <ul className="mb_12">
                                         <li className="text-body-default">
@@ -187,6 +84,12 @@ export default function Privacy() {
                                         Échangez avec notre équipe sur les dates, les charges et les modalités de votre location avant de vous engager.
                                     </p>
                                 </div>
+                                <section id="favorites" className="pt_32">
+                                    <h2 className="h5 mb_12">Vos favoris et vos formulaires</h2>
+                                    <p className="mb_12">Les favoris sont enregistrés dans ce navigateur, sur cet appareil. Ils contiennent seulement les références des logements sélectionnés. Ils ne sont pas envoyés à CIP IMMO et ne sont pas synchronisés avec un autre téléphone.</p>
+                                    <p className="mb_12">Pour les supprimer, utilisez « Retirer des favoris » ou effacez les données de ce site dans votre navigateur. En navigation privée ou si le stockage est bloqué, ils peuvent disparaître à la fin de la visite.</p>
+                                    <p>Les champs des formulaires servent à préparer un message. Le site ne les enregistre pas dans sa base de données ni dans les favoris. Lorsque vous ouvrez WhatsApp, le texte est transmis à ce service pour préparer le message ; vous choisissez ensuite de l’envoyer à CIP IMMO.</p>
+                                </section>
                                 <div id="revisions" className="pt_32">
                                     <h5 className="title mb_12 text-capitalize">
                                         3. Vos échanges

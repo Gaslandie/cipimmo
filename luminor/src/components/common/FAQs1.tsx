@@ -10,7 +10,7 @@ const faqsData = [
   },
   {
     question: "Que comprend le tarif affiché ?",
-    answer: "Les annonces indiquent un prix à la nuit ou au mois en francs guinéens. Demandez à CIP IMMO les charges, la caution et les conditions applicables au logement choisi.",
+    answer: "Les tarifs communiqués sont indiqués en francs guinéens, avec leur période : par jour ou par mois. Un prix non communiqué est indiqué « À discuter ». Demandez à CIP IMMO les charges, la caution et les conditions applicables au logement choisi.",
     id: "accordion-faq-2",
     expanded: true,
   },
@@ -60,34 +60,19 @@ export default function FAQs1() {
         </div>
         <div className="wrap-accordion">
           <div className="heading-section mb_48">
-            <span className="sub text-uppercase fw-6 text_secondary-color-2">Questions fréquentes</span>
+            <span className="sub text-uppercase fw-6 text_secondary-color">Questions fréquentes</span>
             <h3>Les réponses pour préparer votre location</h3>
           </div>
           <ul className="accordion-wrap" id="accordion-faq">
             {faqsData.map((faq) => (
-              <li className="accordion-item" key={faq.id}>
-                <a
-                  href={`#${faq.id}`}
-                  className={`accordion-title${faq.expanded ? " " : " collapsed"}`}
-                  data-bs-toggle="collapse"
-                  aria-expanded={faq.expanded ? "true" : "false"}
-                  aria-controls={faq.id}
-                >
+              <li className="accordion-item" key={faq.id}><details className="rental-question" open={faq.expanded}><summary className="accordion-title">
                   <div className="heading">
                     <h6 className="title">{faq.question}</h6>
                     <span className="icon icon-CaretDown"></span>
                   </div>
-                </a>
-                <div
-                  id={faq.id}
-                  className={`collapse${faq.expanded ? " show" : ""}`}
-                  data-bs-parent="#accordion-faq"
-                >
-                  <div className="accordion-faqs-content">
+                </summary><div className="accordion-faqs-content">
                     <p className="text-body-1">{faq.answer}</p>
-                  </div>
-                </div>
-              </li>
+                  </div></details></li>
             ))}
           </ul>
         </div>

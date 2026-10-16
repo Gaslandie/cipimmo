@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SideBar from "./SideBar";
 import Pagination from "../common/Pagination";
-import { blogPostsList } from "@/data/blog";
+import { advicePosts as blogPostsList } from "@/data/blog";
 
 export default function BlogList() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -51,8 +51,8 @@ export default function BlogList() {
                                         {item.category}
                                     </Link>
                                     <Link
-                                        href={""}
-                                        className="overlay-link"
+                                        href={`/blog-post-1/${item.id}/`}
+                                        aria-label={`Lire : ${item.title}`} className="overlay-link"
                                     ></Link>
                                 </div>
                                 <div className="article-content">

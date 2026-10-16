@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import NewsInsight from "./NewsInsight";
+import ArticleLinks from "./ArticleLinks";
 
 type BlogItem = {
     imgSrc: string;
@@ -42,7 +43,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                             <div className="tag-heading text-button-small mx-auto text_primary-color">
                                                 {blogItem.category}
                                             </div>
-                                            <h3>{blogItem.title}</h3>
+                                            <h1 className="h3">{blogItem.title}</h1>
                                         </div>
                                         <p className="passive text-body-2">
                                             Trouver un logement en Guinée commence par quelques choix simples : le quartier, la durée du séjour, le nombre de chambres et le budget. Prenez le temps de comparer ces critères pour retenir les appartements qui correspondent à votre quotidien.
@@ -52,7 +53,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                 « Le bon logement est celui qui répond à vos besoins, à votre rythme et à votre budget. »
                                             </p>
                                             <Link
-                                                href="#"
+                                                href="/about-us/"
                                                 className="text-title fw-6 text_primary-color link name"
                                             >
                                                 L’équipe CIP IMMO
@@ -102,98 +103,7 @@ export default function BlogPost2({ blogItem }: { blogItem: BlogItem }) {
                                                 Votre recherche sera plus simple avec des critères précis : quartier, budget, durée et nombre de chambres. Notre équipe vous aide ensuite à vérifier les disponibilités et à préparer la suite.
                                             </p>
                                         </div>
-                                        <div className="tag-share d-flex justify-content-between">
-                                            <div className="tag d-flex align-items-center gap_12">
-                                                <span className="text-button fw-7 text_primary-color">
-                                                    Thèmes :
-                                                </span>
-                                                <ul className="tags-list">
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="tags-item text-caption-1"
-                                                        >
-                                                            Logement
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="tags-item text-caption-1"
-                                                        >
-                                                            Installation
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="tags-item text-caption-1"
-                                                        >
-                                                            Location
-                                                        </Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div className="share d-flex align-items-center gap_16">
-                                                <span className="text-button fw-7 text_primary-color">
-                                                    Partager ce conseil :
-                                                </span>
-                                                <ul className="tf-social d-flex gap_24">
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="icon-FacebookLogo"
-                                                        ></Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="icon-XLogo"
-                                                        ></Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link
-                                                            href="#"
-                                                            className="icon-InstagramLogo"
-                                                        ></Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div className="tf-article-navigation">
-                                            <div className="item prev">
-                                                <Link
-                                                    href="single-post-1.html"
-                                                    className="hover-underline-link text-button text_primary-color fw-7 mb_8"
-                                                >
-                                                    Précédent
-                                                </Link>
-                                                <h5>
-                                                    <Link
-                                                        href="#"
-                                                        className="link line-clamp-2"
-                                                    >
-                                                        Bien choisir son quartier en Guinée
-                                                    </Link>
-                                                </h5>
-                                            </div>
-                                            <div className="item next">
-                                                <Link
-                                                    href="single-post-1.html"
-                                                    className="hover-underline-link text-button text_primary-color fw-7 mb_8"
-                                                >
-                                                    Suivant
-                                                </Link>
-                                                <h5>
-                                                    <Link
-                                                        href="#"
-                                                        className="link line-clamp-2"
-                                                    >
-                                                        Préparer son installation en famille
-                                                    </Link>
-                                                </h5>
-                                            </div>
-                                        </div>
+                                        <ArticleLinks title={blogItem.title} />
                                     </div>
                                 </div>
                             </div>

@@ -84,19 +84,6 @@ export default function Header() {
                                             <p>Suivez-nous :</p>
                                             <ul className="social align-items-center d-flex gap_24">
                                                 <li><a href="https://www.facebook.com/profile.php?id=61595249675572" className="icon-FacebookLogo" aria-label="Facebook de CIP IMMO" /></li>
-                                                {/* Autres profils officiels en attente. */}
-                                                {[
-                                                    ["X", "icon-XLogo"],
-                                                    ["TikTok", "icon-TiktokLogo"],
-                                                    ["Instagram", "icon-InstagramLogo"],
-                                                    ["YouTube", "icon-YoutubeLogo"],
-                                                ].map(([name, icon]) => (
-                                                    <li key={name}>
-                                                        <a role="link" aria-disabled="true" className={icon}
-                                                            aria-label={`${name} — lien à venir`}
-                                                            title={`${name} — lien à venir`} />
-                                                    </li>
-                                                ))}
                                             </ul>
                                         </div>
                                     </li>

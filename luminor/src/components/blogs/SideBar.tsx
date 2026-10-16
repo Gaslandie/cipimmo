@@ -3,7 +3,7 @@ import React from "react";
 import { recentPost } from "@/data/blog";
 import Image from "next/image";
 import Link from "next/link";
-import { subscribeNewsletter } from "@/actions/newsletterAction";
+import OfferRequest from "@/components/common/OfferRequest";
 
 
 export default function SideBar() {
@@ -55,21 +55,21 @@ export default function SideBar() {
         <div className="tf-sidebar">
             <div className="sidebar-item sidebar-search ">
                 <h5 className="sidebar-title mb_14">Rechercher</h5>
-                <form  className="form-search">
+                <form className="form-search" action={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/blog-grid/`} method="get">
                     <fieldset>
                         <input
                             className=""
                             type="text"
                             placeholder="Rechercher…"
-                            name="text"
-                            tabIndex={2}
+                            name="search" maxLength={200} aria-label="Rechercher un conseil"
+
                             defaultValue=""
                             aria-required="true"
                             required
                         />
                     </fieldset>
                     <div className="button-submit">
-                        <button className="" type="submit">
+                        <button className="" type="submit" aria-label="Rechercher les conseils">
                             <i className="icon-MagnifyingGlass"></i>
                         </button>
                     </div>
@@ -110,34 +110,16 @@ export default function SideBar() {
             </div>
             <div className="sidebar-item">
                 <h5 className="sidebar-title mb_15">Recevoir nos offres</h5>
-                <form action={subscribeNewsletter} className="form-newsletter">
-                    <fieldset>
-                        <input
-                            className=""
-                            type="text"
-                            placeholder="Votre adresse e-mail"
-                            name="text"
-                            tabIndex={2}
-                            defaultValue=""
-                            aria-required="true"
-                            required
-                        />
-                    </fieldset>
-                    <div className="button-submit">
-                        <button className="" type="submit">
-                            <i className="icon-PaperPlaneTilt"></i>
-                        </button>
-                    </div>
-                </form>
+                <OfferRequest />
             </div>
             <div className="sidebar-item sidebar-tags ">
                 <h5 className="sidebar-title mb_15">Thèmes</h5>
                 <ul className="tags-list">
                     {tags.map((tag) => (
                         <li key={tag.id}>
-                            <Link href="#" className="tags-item text-caption-1">
+                            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/blog-grid/?search=${encodeURIComponent(tag.name)}`} className="tags-item text-caption-1">
                                 {tag.name}
-                            </Link>
+                            </a>
                         </li>
                     ))}
                 </ul>

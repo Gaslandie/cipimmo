@@ -3,6 +3,7 @@ import React from "react";
 const pricingData = [
     {
         name: "Court séjour",
+        query: "city=Conakry&duration=courte",
         subtitle: "Pour un passage de quelques jours.",
         price: "1 000 000 GNF / jour",
         buttonClass: "tf-btn btn-border w-full",
@@ -19,6 +20,7 @@ const pricingData = [
     },
     {
         name: "Longue durée",
+        query: "city=Coyah&duration=longue",
         subtitle: "Pour vous installer en Guinée.",
         price: "1 500 000 GNF / mois",
         buttonClass: "tf-btn btn-bg-1 w-full",
@@ -40,6 +42,7 @@ const pricingData = [
     },
     {
         name: "Installation en famille",
+        query: "city=Ansoumaniah&bedrooms=3",
         subtitle: "De la place pour toute la famille.",
         price: "3 000 000 GNF / mois",
         buttonClass: "tf-btn btn-border w-full",
@@ -60,7 +63,7 @@ export default function OurPricing() {
     return (
         <div className="tf-container tf-spacing-1">
             <div className="heading-section justify-content-center text-center mb_48">
-                <span className="sub text-label text-uppercase fw-6 text_secondary-color-2">
+                <span className="sub text-label text-uppercase fw-6 text_secondary-color">
                     Nos formules
                 </span>
                 <h3>
@@ -87,7 +90,7 @@ export default function OurPricing() {
                             <p>{plan.subtitle}</p>
                             <h3>{plan.price}</h3>
                         </div>
-                        <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar`} className={plan.buttonClass}>
+                        <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?${plan.query}`} className={plan.buttonClass}>
                             <span>Découvrir cette formule</span>
                             <span className="bg-effect"></span>
                         </a>

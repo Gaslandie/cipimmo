@@ -29,7 +29,7 @@ export default function RentalContact({ rental, visit = false, compact = false, 
         window.location.assign(`https://wa.me/224623417510?text=${encodeURIComponent(message + dates)}`);
     }
     if (withDates) return <form className="rental-stay-form" onSubmit={requestStay} aria-label="Demander la disponibilité de ce logement">
-        <fieldset>
+        <fieldset disabled={!origin}>
             <legend>Vos dates souhaitées (facultatif)</legend>
             <p id={`${id}-help`} className="mb_16">Vous pouvez laisser les dates vides. Elles seront ajoutées à votre message WhatsApp ; CIP IMMO vous confirmera la disponibilité.</p>
             <div><label htmlFor={`${id}-arrival`}>Arrivée souhaitée</label><input id={`${id}-arrival`} name="arrival" type="date" min={today || undefined} value={arrival} onChange={event => setArrival(event.target.value)} aria-describedby={`${id}-help`} /></div>
@@ -37,10 +37,11 @@ export default function RentalContact({ rental, visit = false, compact = false, 
         </fieldset>
         {error && <p ref={errorRef} role="alert" tabIndex={-1}>{error}</p>}
         <div className="rental-contact">
-            <button type="submit" className="tf-btn btn-bg-1"><span>Continuer sur WhatsApp</span></button>
+            <button type="submit" disabled={!origin} className="tf-btn btn-bg-1"><span>Continuer sur WhatsApp</span></button>
             <a href="tel:+224613585198" className="tf-btn" aria-label={`Appeler CIP IMMO pour ${rental.title}`}><span>Appeler</span></a>
         </div>
         <p className="mt_16">Vérifiez le message dans WhatsApp avant de l’envoyer. Cette demande ne réserve pas le logement.</p>
+        <noscript><p><a href={`https://wa.me/224623417510?text=${encodeURIComponent(message)}`}>Demander ce logement sur WhatsApp</a>.</p></noscript>
     </form>;
     return <div className={`rental-contact${compact ? " rental-contact--compact" : ""}`}>
         <a href={`https://wa.me/224623417510?text=${encodeURIComponent(message)}`} className="tf-btn btn-bg-1" aria-label={`${visit ? "Demander une visite" : "Écrire sur WhatsApp"} : ${rental.title}, référence ${rental.slug}`}>

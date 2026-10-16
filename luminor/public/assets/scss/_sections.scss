@@ -1697,3 +1697,37 @@
 @media (prefers-reduced-motion: reduce) {
     #main-content .scrolling-effect { opacity: 1 !important; transform: none !important; }
 }
+
+/* Native controls keep the public journeys usable with a keyboard. */
+.mobile-nav-wrap dialog.rental-menu.offcanvas.offcanvas-end {
+    margin: 0 0 0 auto; padding: 0; border: 0; width: min(400px, 100%); max-width: 100%;
+    height: 100dvh; max-height: 100dvh; transform: none; visibility: visible;
+    &:not([open]) { display: none; }
+    &[open] { display: flex; }
+    &::backdrop { background: rgb(0 0 0 / 50%); }
+}
+.rental-question {
+    summary { cursor: pointer; list-style: none; padding: 16px 0; }
+    summary::-webkit-details-marker { display: none; }
+    &:not([open]) .accordion-title .icon { transform: rotate(0); }
+    &[open] .accordion-title .icon { transform: rotate(180deg); }
+}
+.footer-col-block > summary { cursor: pointer; }
+@media (min-width: 768px) { .footer-col-block > summary { list-style: none; cursor: pointer; } }
+.form-feedback { margin-top: 16px; padding: 12px; border: 1px solid #728191; border-radius: 8px; background: #fff; color: #16324e; }
+.form-feedback a { text-decoration: underline; color: #16324e; }
+.offer-request label { display: block; margin-bottom: 8px; }
+.offer-request p { margin-top: 8px; }
+.offer-request input { width: 100%; }
+.whatsapp-fields { min-width: 0; width: 100%; border: 0; padding: 0; margin: 0; }
+.form-faq > .whatsapp-fields { display: grid; gap: 16px; }
+.footer .offer-request { color: #fff; }
+.footer .offer-request input { color: #16324e; background: #fff; }
+.footer .offer-request .tf-btn { color: #16324e; background: #fff; }
+.footer .offer-request .tf-btn span { color: #16324e; }
+.mobile-nav-wrap .mb-body .support .mb-info li { color: #57616b; }
+[aria-invalid="true"] { outline: 2px solid #a32929; }
+.rental-question summary:focus-visible, .footer-col-block summary:focus-visible { outline: 3px solid #497fc0; outline-offset: 3px; }
+
+.footer-col-block[open] > .footer-heading-mobile::before { opacity: 0; }
+.section-privacy [id] { scroll-margin-top: 110px; }

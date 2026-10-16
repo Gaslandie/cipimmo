@@ -1,5 +1,5 @@
 "use client";
-import { blogPostsGrid } from "@/data/blog";
+import { advicePosts as blogPostsGrid } from "@/data/blog";
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -59,6 +59,7 @@ export default function NewsInsight({ currentTitle }: { currentTitle: string }) 
                                     <Link
                                         href={`/blog-post-1/${item.id}`}
                                         className="overlay-link"
+                                        aria-label={`Lire : ${item.title}`}
                                     ></Link>
                                 </div>
                                 <div className="article-content">

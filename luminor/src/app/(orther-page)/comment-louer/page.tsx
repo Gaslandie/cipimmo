@@ -7,7 +7,7 @@ export const metadata = { title: "Comment louer — CIP IMMO" };
 // Explications reprises de la maquette CIP IMMO, dans les styles existants du thème.
 const steps = [
     ["Trouvez votre logement", "Choisissez une ville et affinez votre recherche selon vos besoins et votre budget."],
-    ["Consultez les détails", "Découvrez les photos, les équipements et le prix du logement."],
+    ["Consultez les détails", "Consultez la surface, les chambres et le tarif communiqué. Les photos sont à venir ; les prix manquants sont à discuter."],
     ["Échangez avec CIP IMMO", "Appelez-nous ou écrivez-nous sur WhatsApp pour confirmer la disponibilité et les conditions."],
 ];
 
@@ -58,19 +58,12 @@ export default function RentingPage() {
                                 <h2 className="mb_18">Les réponses à vos questions</h2>
                                 <ul className="accordion-wrap" id="rental-questions">
                                     {questions.map(([question, answer], index) => (
-                                        <li className="accordion-item" key={question}>
-                                            <a href={`#rental-question-${index}`} className={`accordion-title${index ? " collapsed" : ""}`}
-                                                data-bs-toggle="collapse" aria-expanded={index === 0}
-                                                aria-controls={`rental-question-${index}`}>
+                                        <li className="accordion-item" key={question}><details className="rental-question" open={index === 0}><summary className="accordion-title">
                                                 <div className="heading">
                                                     <div className="title text-title text_primary-color fw-6">{question}</div>
                                                     <span className="icon icon-CaretDown" aria-hidden="true" />
                                                 </div>
-                                            </a>
-                                            <div id={`rental-question-${index}`} className={`collapse${index === 0 ? " show" : ""}`} data-bs-parent="#rental-questions">
-                                                <div className="accordion-faqs-content"><p>{answer}</p></div>
-                                            </div>
-                                        </li>
+                                            </summary><div className="accordion-faqs-content"><p>{answer}</p></div></details></li>
                                     ))}
                                 </ul>
                             </div>

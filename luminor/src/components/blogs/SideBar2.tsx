@@ -3,7 +3,7 @@ import React from "react";
 import { recentPost } from "@/data/blog";
 import Image from "next/image";
 import Link from "next/link";
-import { subscribeNewsletter } from "@/actions/newsletterAction";
+import OfferRequest from "@/components/common/OfferRequest";
 
 export default function SideBar2({ currentTitle }: { currentTitle: string }) {
     type Tag = {
@@ -58,34 +58,16 @@ export default function SideBar2({ currentTitle }: { currentTitle: string }) {
             </div>
             <div className="sidebar-item">
                 <h5 className="sidebar-title mb_15">Recevoir nos offres</h5>
-                <form action={subscribeNewsletter} className="form-newsletter">
-                    <fieldset>
-                        <input
-                            className=""
-                            type="text"
-                            placeholder="Votre adresse e-mail"
-                            name="text"
-                            tabIndex={2}
-                            defaultValue=""
-                            aria-required="true"
-                            required
-                        />
-                    </fieldset>
-                    <div className="button-submit">
-                        <button className="" type="submit">
-                            <i className="icon-PaperPlaneTilt"></i>
-                        </button>
-                    </div>
-                </form>
+                <OfferRequest />
             </div>
             <div className="sidebar-item sidebar-tags ">
                 <h5 className="sidebar-title mb_15">Thèmes</h5>
                 <ul className="tags-list">
                     {tags.map((tag) => (
                         <li key={tag.id}>
-                            <Link href="#" className="tags-item text-caption-1">
+                            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/blog-grid/?search=${encodeURIComponent(tag.name)}`} className="tags-item text-caption-1">
                                 {tag.name}
-                            </Link>
+                            </a>
                         </li>
                     ))}
                 </ul>

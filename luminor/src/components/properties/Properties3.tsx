@@ -3,9 +3,11 @@
 import { emptyRentalFilters as emptyFilters, rentalLocationOptions, rentalDistrictOptions, rentalSizes as sizes, readRentalFilters, rentalFilterQuery, filterRentals } from "@/data/cipRentals";
 import RentalBudgetFields from "../common/RentalBudgetFields";
 import RentalCard from "../common/RentalCard";
+import RentalHelp from "../common/RentalHelp";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const sortOptions = ["default", "price-asc", "price-desc", "area-desc", "beds-desc"];
 const cities = [...new Set([...rentalLocationOptions, ...rentalDistrictOptions])];
 
 export default function Properties3() {
@@ -13,9 +15,12 @@ export default function Properties3() {
     const [invalid, setInvalid] = useState(false);
     useEffect(() => {
         const read = () => {
-            const parsed = readRentalFilters(new URLSearchParams(window.location.search));
-            setFilters(parsed.filters);
-            setInvalid(parsed.invalid);
+            const params = new URLSearchParams(window.location.search);
+            const parsed = readRentalFilters(params);
+            const sort = params.get("sort") || "default", view = params.get("view") || "grid";
+            const invalidView = !sortOptions.includes(sort) || !["grid", "list"].includes(view) || params.getAll("sort").length > 1 || params.getAll("view").length > 1;
+            setFilters(parsed.filters); setSorting(sortOptions.includes(sort) ? sort : "default"); setLayout(view === "list" ? "list" : "grid");
+            setInvalid(parsed.invalid || invalidView);
         };
         read();
         window.addEventListener("popstate", read);
@@ -24,14 +29,20 @@ export default function Properties3() {
     const [sorting, setSorting] = useState("default");
     const [layout, setLayout] = useState<"grid" | "list">("grid");
     const [showFilters, setShowFilters] = useState(false);
+    const saveQuery = (next: typeof emptyFilters, sort = sorting, view = layout) => {
+        const params = new URLSearchParams(rentalFilterQuery(next));
+        if (sort !== "default") params.set("sort", sort);
+        if (view !== "grid") params.set("view", view);
+        const query = params.toString();
+        window.history.replaceState(window.history.state, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
+    };
     const updateFilters = (next: typeof emptyFilters) => {
-        setFilters(next);
-        setInvalid(readRentalFilters(new URLSearchParams(rentalFilterQuery(next))).invalid);
-        const query = rentalFilterQuery(next);
-        window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
+        setFilters(next); setInvalid(readRentalFilters(new URLSearchParams(rentalFilterQuery(next))).invalid); saveQuery(next);
     };
     const change = (key: keyof typeof emptyFilters, value: string) => updateFilters({ ...filters, [key]: value });
-    const reset = () => { updateFilters({ ...emptyFilters }); setSorting("default"); };
+    const changeLayout = (view: "grid" | "list") => { setLayout(view); saveQuery(filters, sorting, view); };
+    const changeSorting = (sort: string) => { if (sortOptions.includes(sort)) { setSorting(sort); saveQuery(filters, sort); } };
+    const reset = () => { setFilters({ ...emptyFilters }); setInvalid(false); setSorting("default"); setLayout("grid"); saveQuery(emptyFilters, "default", "grid"); };
     const rentals = invalid ? [] : filterRentals(filters);
     if (sorting !== "default") {
         // Keep daily and monthly prices in separate groups instead of comparing unlike periods.
@@ -69,10 +80,10 @@ export default function Properties3() {
                         </div>
                         <div className="right d-flex gap_12">
                             <div className="nav-tab-filter align-items-center group-layout d-flex gap_12" aria-label="Affichage des logements">
-                                <button type="button" className={`btn-layout grid nav-link-item ${layout === "grid" ? "active" : ""}`} aria-label="Afficher en grille" aria-pressed={layout === "grid"} onClick={() => setLayout("grid")}><i className="icon-SquaresFour" aria-hidden="true" /></button>
-                                <button type="button" className={`btn-layout list nav-link-item ${layout === "list" ? "active" : ""}`} aria-label="Afficher en liste" aria-pressed={layout === "list"} onClick={() => setLayout("list")}><i className="icon-Rows" aria-hidden="true" /></button>
+                                <button type="button" className={`btn-layout grid nav-link-item ${layout === "grid" ? "active" : ""}`} aria-label="Afficher en grille" aria-pressed={layout === "grid"} onClick={() => changeLayout("grid")}><i className="icon-SquaresFour" aria-hidden="true" /></button>
+                                <button type="button" className={`btn-layout list nav-link-item ${layout === "list" ? "active" : ""}`} aria-label="Afficher en liste" aria-pressed={layout === "list"} onClick={() => changeLayout("list")}><i className="icon-Rows" aria-hidden="true" /></button>
                             </div>
-                            <select className="nice-select list-sort" aria-label="Trier les logements" value={sorting} onChange={(event) => setSorting(event.target.value)}>
+                            <select className="nice-select list-sort" aria-label="Trier les logements" value={sorting} onChange={(event) => changeSorting(event.target.value)}>
                                 <option value="default">Tri par défaut</option>
                                 <option value="price-asc">Prix croissant</option>
                                 <option value="price-desc">Prix décroissant</option>
@@ -138,6 +149,7 @@ export default function Properties3() {
                                     <h2 className="h5 mb_12">Aucun logement ne correspond à votre recherche.</h2>
                                     <p className="mb_20">Essayez une autre ville ou élargissez vos critères.</p>
                                     <button type="button" className="tf-btn btn-bg-1" onClick={reset}>Voir tous les logements</button>
+                                    <RentalHelp />
                                 </div>
                             ) : (
                                 <div className={`rental-results-layout ${layout === "grid" ? "tf-grid-layout md-col-2" : "d-grid gap_20"}`}>

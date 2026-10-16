@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import WhatsAppForm from "./WhatsAppForm";
 import { handleSubmit } from "@/actions/commentAction";
 
 export default function FormComments() {
@@ -9,10 +10,9 @@ export default function FormComments() {
                 <h5 className="mb_8">Partager votre avis</h5>
                 <p>Votre message sera préparé pour notre équipe sur WhatsApp.</p>
             </div>
-            <form
-                id="leaveComment"
+            <WhatsAppForm
                 className="form-leave-comment"
-                action={handleSubmit}
+                prepare={handleSubmit} label="Partager un avis avec CIP IMMO"
             >
                 <div className="wrap mb_20">
                     <div className="tf-grid-layout md-col-2 mb_20">
@@ -36,14 +36,13 @@ export default function FormComments() {
                                 htmlFor="email"
                                 className="text-button text_primary-color fw-7 mb_8"
                             >
-                                Adresse e-mail
+                                Adresse e-mail (facultatif)
                             </label>
                             <input
                                 id="email"
                                 type="email"
                                 placeholder="Votre adresse e-mail*"
                                 name="email" maxLength={254}
-                                required
                             />
                         </fieldset>
                     </div>
@@ -65,17 +64,17 @@ export default function FormComments() {
                 </div>
                 <div className="box-fieldset-item d-flex mb_20">
                     <fieldset>
-                        <input type="checkbox" className="tf-check" id="note" />
+                        <input type="checkbox" className="tf-check" id="note" name="reply" value="yes" />
                     </fieldset>
-                    <p className="text-body-default">
+                    <label htmlFor="note" className="text-body-default">
                         Je souhaite être recontacté au sujet de mon message
-                    </p>
+                    </label>
                 </div>
                 <button className="tf-btn btn-bg-1 btn-px-28" type="submit">
                     <span>Préparer mon message</span>
                     <span className="bg-effect"></span>
                 </button>
-            </form>
+            </WhatsAppForm>
         </div>
     );
 }
