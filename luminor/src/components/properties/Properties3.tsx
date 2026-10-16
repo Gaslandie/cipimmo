@@ -1,6 +1,7 @@
 "use client";
 
-import { emptyRentalFilters as emptyFilters, rentalLocationOptions, rentalDistrictOptions, rentalBudgets as budgets, rentalSizes as sizes, readRentalFilters, rentalFilterQuery, filterRentals } from "@/data/cipRentals";
+import { emptyRentalFilters as emptyFilters, rentalLocationOptions, rentalDistrictOptions, rentalSizes as sizes, readRentalFilters, rentalFilterQuery, filterRentals } from "@/data/cipRentals";
+import RentalBudgetFields from "../common/RentalBudgetFields";
 import RentalCard from "../common/RentalCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -25,7 +26,7 @@ export default function Properties3() {
     const [showFilters, setShowFilters] = useState(false);
     const updateFilters = (next: typeof emptyFilters) => {
         setFilters(next);
-        setInvalid(false);
+        setInvalid(readRentalFilters(new URLSearchParams(rentalFilterQuery(next))).invalid);
         const query = rentalFilterQuery(next);
         window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
     };
@@ -35,6 +36,8 @@ export default function Properties3() {
     if (sorting !== "default") {
         // Keep daily and monthly prices in separate groups instead of comparing unlike periods.
         rentals.sort((a, b) => {
+            if (sorting === "area-desc") return b.area - a.area;
+            if (sorting === "beds-desc") return b.beds - a.beds;
             if (a.price === null) return b.price === null ? 0 : 1;
             if (b.price === null) return -1;
             return a.period === b.period
@@ -73,6 +76,8 @@ export default function Properties3() {
                                 <option value="default">Tri par défaut</option>
                                 <option value="price-asc">Prix croissant</option>
                                 <option value="price-desc">Prix décroissant</option>
+                                <option value="area-desc">Les plus grands d’abord</option>
+                                <option value="beds-desc">Le plus de chambres d’abord</option>
                             </select>
                         </div>
                     </div>
@@ -98,7 +103,7 @@ export default function Properties3() {
                                         <li className="item-slide-effect" aria-hidden="true" style={{ width: "calc((100% - 8px) / 2)", transform: filters.duration === "Longue durée" ? "translateX(calc(100% + 8px))" : "translateX(0)", opacity: filters.duration ? 1 : 0 }} />
                                         {["Court séjour", "Longue durée"].map((duration) => (
                                             <li key={duration} className={`nav-tab-item ${filters.duration === duration ? "active" : ""}`}>
-                                                <button type="button" className={`text-title tab-link fw-6 ${filters.duration === duration ? "active" : ""}`} aria-pressed={filters.duration === duration} onClick={() => updateFilters({ ...filters, duration: filters.duration === duration ? "" : duration, budget: "" })}>{duration}</button>
+                                                <button type="button" className={`text-title tab-link fw-6 ${filters.duration === duration ? "active" : ""}`} aria-pressed={filters.duration === duration} onClick={() => updateFilters({ ...filters, duration: filters.duration === duration ? "" : duration, budget: "", budgetPeriod: "" })}>{duration}</button>
                                             </li>
                                         ))}
                                     </ul>
@@ -111,7 +116,8 @@ export default function Properties3() {
                                     {select("city", "Ville ou quartier", "Tous les lieux", cities.map((city) => ({ value: city, label: city })))}
                                     {select("bedrooms", "Chambres", "Toutes", ["1", "2", "3", "4+"].map((beds) => ({ value: beds, label: beds === "4+" ? "4 chambres ou plus" : `${beds} chambre${beds === "1" ? "" : "s"}` })))}
                                     {select("furnished", "Mobilier", "Tous les logements", ["Meublé", "Non meublé"].map((label) => ({ value: label, label })))}
-                                    {select("budget", "Budget maximal", "Tous les budgets", budgets.filter((budget) => !filters.duration || (filters.duration === "Court séjour" ? !budget.value.endsWith(":mois") : budget.value.endsWith(":mois"))))}
+                                    <RentalBudgetFields id="rental" amount={filters.budget} period={filters.budgetPeriod} duration={filters.duration}
+                                        onChange={(budget, budgetPeriod) => updateFilters({ ...filters, budget, budgetPeriod })} />
                                     <div className="tf-grid-layout sm-col-2 gap_20">
                                         {select("minSize", "Surface min.", "Sans minimum", sizes)}
                                         {select("maxSize", "Surface max.", "Sans maximum", sizes)}
@@ -126,7 +132,7 @@ export default function Properties3() {
                         <div className="col-lg-8" id="rental-results" tabIndex={-1} aria-label="Résultats de votre recherche">
                             {invalid && <p role="alert" className="rental-demo-note mb_20">Certains critères du lien sont invalides. Réinitialisez les filtres pour recommencer.</p>}
                             <p className="mb_20" role="status">{rentals.length} logement{rentals.length > 1 ? "s" : ""}{filters.duration ? ` · ${filters.duration}` : " · Toutes les durées"}</p>
-                            {sorting !== "default" && !filters.duration && <p className="mb_20">Prix regroupés par période : les tarifs par jour, par nuit et par mois restent séparés.</p>}
+                            {sorting.startsWith("price-") && !filters.duration && <p className="mb_20">Prix regroupés par période : les tarifs par jour, par nuit et par mois restent séparés.</p>}
                             {rentals.length === 0 ? (
                                 <div className="tf-filter-sidebar">
                                     <h2 className="h5 mb_12">Aucun logement ne correspond à votre recherche.</h2>

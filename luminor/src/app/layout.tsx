@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../../public/assets/icons/icomoon/style.css";
 import "../../public/assets/scss/app.scss";
+import { RentalFavoritesProvider } from "@/components/common/RentalFavoriteButton";
 import BackToTop from "@/components/common/BackToTop";
 import ClientScripts from "@/components/common/ClientScripts";
 import { Metadata } from "next";
@@ -27,7 +28,7 @@ export default function RootLayout({
     return (
         <html lang="fr">
             <body className={manrope.variable}>
-                <div id="wrapper">{children}</div>
+                <RentalFavoritesProvider><div id="wrapper">{children}</div></RentalFavoritesProvider>
                 <ClientScripts />
                 <BackToTop />
             </body>

@@ -13,6 +13,7 @@ type MenuItem = {
 export const menuItems: MenuItem[] = [
     { title: "Accueil", href: "/", links: [] },
     { title: "Nos logements", href: "/listing-left-sidebar", links: [] },
+    { title: "Mes favoris", href: "/favoris", links: [] },
     { title: "Comment louer", href: "/comment-louer", links: [] },
     { title: "À propos", href: "/about-us", links: [] },
     { title: "Nous contacter", href: "/contacts", links: [] },

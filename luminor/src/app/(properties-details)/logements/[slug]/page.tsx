@@ -1,9 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Layout from "@/components/layouts/Layout-defaul";
-import { cipRentals, rentalPrice, rentalLocation, rentalAvailability, safeRentalMedia } from "@/data/cipRentals";
+import { cipRentals, rentalPrice, rentalLocation, rentalAvailability, safeRentalMedia, similarRentals } from "@/data/cipRentals";
 
+import RentalGallery from "@/components/common/RentalGallery";
+import RentalCard from "@/components/common/RentalCard";
+import { RentalFavoriteButton } from "@/components/common/RentalFavoriteButton";
 import RentalContact from "@/components/common/RentalContact";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -25,6 +27,7 @@ export default async function RentalPage({ params }: PageProps) {
     const { slug } = await params;
     const rental = cipRentals.find((item) => item.slug === slug);
     if (!rental) notFound();
+    const similar = similarRentals(rental);
     const video = rental.video && safeRentalMedia(rental.video.src, "video") && safeRentalMedia(rental.video.poster, "poster") && rental.video.description.trim() ? rental.video : undefined;
     const showDemo = process.env.NODE_ENV === "development" && !rental.neighbourhood?.length;
     const amenities = ["Eau", "Électricité", "Climatisation", "Cuisine", "Parking", "Wi-Fi"] as const;
@@ -48,9 +51,7 @@ export default async function RentalPage({ params }: PageProps) {
                                 </p>
                                 <p className="rental-availability mt_16">{rentalAvailability}.</p>
                             </div>
-                            <div className="img-style mb_30">
-                                <Image src={rental.imgSrc} alt={rental.imageAlt} width={rental.imgWidth} height={rental.imgHeight} className="w-full" priority />
-                            </div>
+                            <RentalGallery key={rental.slug} rental={rental} />
                             <div className="properties-overview tf-spacing-8">
                                 <h2 className="h5 properties-title mb_20">Votre logement</h2>
                                 <ul className="info d-flex flex-wrap gap_24">
@@ -106,12 +107,18 @@ export default async function RentalPage({ params }: PageProps) {
                                     <h2 className="h5 mb_20">Échangez avec CIP IMMO</h2>
                                     <p className="mb_12">Référence : <strong className="rental-reference">{rental.slug}</strong></p>
                                     <p className="mb_24">Contactez-nous pour confirmer la disponibilité et connaître les conditions de location. Aucun paiement ne se fait sur le site.</p>
-                                    <RentalContact rental={rental} />
+                                    <RentalFavoriteButton rental={rental} />
+                                    <RentalContact rental={rental} withDates />
                                     <p className="mt_16">Téléphone : +224 613 58 51 98</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {similar.length > 0 && <section className="rental-similar mt_40" aria-labelledby="similar-title">
+                        <h2 id="similar-title" className="h4 mb_12">D’autres logements à découvrir</h2>
+                        <p className="mb_24">Pour {rental.duration === "Court séjour" ? "un court séjour" : "une location longue durée"}, voici d’autres possibilités. Consultez chaque fiche pour comparer le lieu, les chambres et le tarif.</p>
+                        <div className="tf-grid-layout md-col-2 lg-col-3 rental-card-grid">{similar.map(other => <RentalCard key={other.slug} rental={other} headingLevel={3} />)}</div>
+                    </section>}
                 </div>
             </div>
         </Layout>

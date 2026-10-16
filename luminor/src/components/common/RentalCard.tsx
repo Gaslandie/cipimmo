@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { rentalAvailability, rentalLocation, rentalPrice, type Rental } from "@/data/cipRentals";
+import { RentalFavoriteButton } from "./RentalFavoriteButton";
 import RentalContact from "./RentalContact";
 
 export default function RentalCard({ rental, list = false, headingLevel = 2 }: { rental: Rental; list?: boolean; headingLevel?: 2 | 3 }) {
@@ -22,6 +23,7 @@ export default function RentalCard({ rental, list = false, headingLevel = 2 }: {
             </ul>
             <p className="rental-furnishing">{rental.furnished || "Mobilier : à confirmer"}</p>
             <p className="rental-availability">{rentalAvailability}.</p>
+            <RentalFavoriteButton rental={rental} />
             <RentalContact rental={rental} compact />
         </div>
     </article>;

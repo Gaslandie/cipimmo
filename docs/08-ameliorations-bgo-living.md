@@ -146,3 +146,49 @@ Tout risque confirmé qui expose des données doit être corrigé avant la livra
 - Les formulaires Luminor préparent uniquement un message WhatsApp. Cette préparation se fait désormais dans le navigateur, avec les mêmes validations ; aucune donnée n’est écrite sur un serveur. Les protections et la base Laravel restent inchangées.
 - Les profils Facebook utilisent le lien fourni par Gassama : https://www.facebook.com/profile.php?id=61595249675572.
 - Quatre préparations de formulaire testées avec entrées valides et refusées, sans requête externe. Les futurs droits de modification et de disponibilité du back-office restent à réaliser côté serveur.
+
+
+## Précisions et adaptations Pincher Creek — 16 octobre 2026
+
+Décision de Gassama : le visiteur consulte les logements puis contacte CIP IMMO par appel ou WhatsApp. Aucun compte visiteur ni espace locataire n'est prévu. Le futur back-office sera réservé à l'administrateur de CIP IMMO ; les mentions précédentes du « client » gérant les disponibilités désignent cet administrateur, pas un visiteur.
+
+Comparaison revérifiée le 16 octobre 2026 sur https://www.pinchercreekrealtors.com/ : zones desservies nommées, accès au contact et présentation de l'accompagnement visibles dans l'accueil. Le catalogue intégré n'a pas pu être inspecté lors de la comparaison initiale. Adaptation au site existant : liens des destinations filtrés par lieu, aide à la recherche avec préparation volontaire d'un message WhatsApp, trois étapes visibles aussi sur téléphone. Les choix de budget distinguent jour, nuit et mois. Aucun message n'est envoyé automatiquement.
+
+Les témoignages sont retirés des pages publiques pour le moment. La présentation de l'équipe reste inchangée et l'ajout d'une sélection de logements mise en avant n'est pas engagé. Le statut de disponibilité et les droits d'administration restent un travail futur, comme convenu.
+
+
+Vérifications locales de cette adaptation : compilation Pages réussie, analyse ESLint des fichiers modifiés réussie ; les six liens de destination affichent respectivement 1, 1, 3, 4, 1 et 7 logements, y compris après rechargement. Trois étapes visibles à 320, 390 et 1440 pixels, ouverture de l'aide au clavier et aucun débordement horizontal. Axe ne détecte aucune violation WCAG A/AA dans la partie modifiée à ces trois largeurs ; cela ne remplace pas un lecteur d'écran ni un téléphone physique. Messages WhatsApp préparés avec et sans critères, puis interceptés avant toute requête ; valeurs injectées, champs répétés et budget incompatible refusés, avec focus sur l'erreur. Aucun témoignage n'est présent dans les pages et scripts exportés. Cette adaptation a été vérifiée localement.
+
+
+## Adaptations Rentola — 16 octobre 2026
+
+Points 1, 2 et 3 acceptés par Gassama. Références revérifiées le 16 octobre 2026 : [accueil Rentola](https://rentola.ch/en), avec compteurs par ville et exemples de recherche ; [catalogue Rentola](https://rentola.ch/en/for-rent), avec saisie des bornes de prix. La comparaison porte sur le contenu accessible, sans validation des interactions Rentola ni de sa fiche individuelle inaccessible lors de la comparaison.
+
+- Les compteurs des villes et des destinations sont calculés depuis les mêmes annonces que le catalogue. Ils indiquent des logements proposés, sans promettre leur disponibilité. Les liens par ville incluent Kankan.
+- Trois raccourcis de recherche : court séjour à Conakry, trois chambres à Ansoumaniah, longue durée à Coyah. Ils utilisent les filtres existants.
+- Budget maximal libre en GNF sur l'accueil, dans le catalogue et dans l'aide WhatsApp. Montant entier positif de 12 chiffres maximum, facultatif ; période explicite par jour, nuit ou mois. Les durées et périodes incompatibles sont refusées ; changer la durée efface le budget (aucun maximum).
+- Les anciens liens avec un budget sous la forme `3000000:mois` restent reconnus. Les nouveaux liens gardent le montant et sa période séparément. Les paramètres répétés, montants invalides et périodes inconnues sont refusés.
+- Le visiteur conserve le parcours sans compte : consultation, appel ou WhatsApp. Les catégories et le badge « Nouveau » ne font pas partie de cette réalisation. Le futur espace de gestion reste réservé à l'administrateur.
+
+
+Vérifications locales Rentola : compilation Pages et ESLint ciblé réussis. Compteurs vérifiés depuis les données ; dix recherches valides avec conservation des critères dans les liens et quinze cas invalides/refusés contrôlés. Chrome : liens des villes et trois raccourcis, budget libre, rechargement, réinitialisation, anciens liens, séparation jour/nuit/mois et exclusion des tarifs inconnus lorsqu'un plafond est fixé. Aide WhatsApp testée avec budget libre et sans budget, requêtes interceptées avant envoi ; période répétée refusée. Affichage sans débordement et clavier contrôlés à 320, 390 et 1440 pixels. Axe : aucune violation A/AA détectée dans les parties modifiées à ces tailles. Pas de test sur téléphone physique ou lecteur d'écran. Ces modifications ont été validées en local.
+
+
+## Adaptations Les Grillons, Wetag et Cap Ferret — 16 octobre 2026
+
+Gassama accepte les points 1, 2, 4, 5 et 6 ; le point 3 (références courtes) est refusé. Les références et liens actuels sont conservés.
+
+Références revérifiées le 16 octobre 2026 : [catalogue Les Grillons](https://www.lesgrillons.ch/a-louer), tris par surface et pièces ; [favoris Wetag](https://www.wetag.ch/en/favorite/), sélection de logements ; [fiche Cap Ferret](https://www.agence-cap-ferret.fr/bien/villa-contemporaine-ferret-lhorizon/), demande de dates, autres biens et galerie. Observation du contenu accessible, sans test de leurs interactions.
+
+- Catalogue : tri « Les plus grands d’abord » et « Le plus de chambres d’abord », combinables avec les filtres existants.
+- Favoris sans compte : bouton sur les cartes et les fiches, page « Mes favoris » dans le menu. Seules les références d'annonces connues sont conservées dans le navigateur. Les valeurs inconnues, les doublons et les données illisibles sont ignorés ; les onglets se synchronisent. Si l'enregistrement est bloqué, la sélection reste temporaire pendant la visite et un message l'explique. Les dates ne sont pas stockées dans les favoris.
+- Dates facultatives sur la fiche : arrivée et départ souhaités dans le message WhatsApp. L'arrivée seule est possible ; un départ sans arrivée, un départ avant ou le jour de l'arrivée, une arrivée passée, une date invalide ou des champs répétés sont refusés. Référence et lien du logement conservés. Aucun envoi ni réservation automatique.
+- Suggestions : jusqu'à trois autres annonces de même durée, classées par proximité de lieu, de nombre de chambres et de type. Le logement ouvert est exclu. Les prix par nuit, jour ou mois ne sont pas comparés entre eux.
+- Galerie : champs facultatifs `photos` (chemin local, description, largeur, hauteur), boutons précédent/suivant et miniatures. Chemins externes, chemins remontant les dossiers, doublons et dimensions invalides sont écartés. La galerie revient à la première image en changeant de logement. Les fichiers supplémentaires restent à recevoir ; aucune photo d'un autre bien n'est ajoutée. La photo actuelle reste affichée en attendant. Lors de la réception, vérifier l'appartenance des photos au logement et mettre aussi à jour sa photo principale.
+
+Vérifications locales : compilation Pages et ESLint ciblé réussis. Chrome : tris avec filtre, favoris après rechargement, changement de page et d'onglet, suppression, données locales incorrectes et stockage bloqué. Messages avec dates valides ou sans dates interceptés avant toute requête ; dates refusées et doublons testés. À 320, 390 et 1440 pixels, pas de débordement ; aucune violation Axe A/AA détectée dans le contenu principal du catalogue, des favoris et d'une fiche. Galerie à plusieurs photos testée au clavier avec deux images de test dans un montage temporaire hors du site ; boutons, limites et miniatures validés, contrôle Axe réussi. Les fichiers de test ne sont pas publiés. Les photos réelles restent à réceptionner et vérifier ; aucun essai sur téléphone physique ou lecteur d'écran. Ces adaptations ont été validées en local.
+
+
+## Livraison de l’ensemble des adaptations — 16 octobre 2026
+
+Gassama demande le commit, le push et la mise à jour de GitHub Pages pour les adaptations Pincher Creek, Rentola, Les Grillons, Wetag et Cap Ferret acceptées ci-dessus. Publication du seul export statique validé sur la branche `gh-pages`, à https://gaslandie.github.io/cipimmo/. Les références restent inchangées. Le back-office et la réception des photos réelles restent des travaux futurs.
