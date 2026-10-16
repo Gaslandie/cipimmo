@@ -9,7 +9,7 @@ export default function RentalGallery({ rental }: { rental: Rental }) {
     const [index, setIndex] = useState(0);
     const photo = photos[Math.min(index, photos.length - 1)];
     return <section className="rental-gallery mb_30" aria-label={`Photos de ${rental.title}`}>
-        <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} className="rental-gallery-main" sizes="(max-width: 991px) 100vw, 66vw" priority />
+        {photo ? <Image src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} className="rental-gallery-main" sizes="(max-width: 991px) 100vw, 66vw" priority /> : <p className="rental-image-placeholder">À venir</p>}
         {photos.length > 1 && <>
             <div className="rental-gallery-controls">
                 <button type="button" className="tf-btn" disabled={index === 0} onClick={() => setIndex(index - 1)} aria-label="Photo précédente">← Précédente</button>

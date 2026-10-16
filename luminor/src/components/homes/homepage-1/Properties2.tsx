@@ -54,12 +54,12 @@ export default function Properties2() {
                                 }`}
                             >
                                 <Link href={`/logements/${property.slug}`} className="img-style">
-                                    <Image
+                                    {property.img ? <Image
                                         src={property.img}
                                         width={645}
                                         height={645}
                                         alt={property.title}
-                                    />
+                                    /> : <span className="rental-image-placeholder">À venir</span>}
                                 </Link>
                             </div>
                         ))}

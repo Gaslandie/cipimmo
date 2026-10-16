@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { rentalAvailability, rentalLocation, rentalPrice, type Rental } from "@/data/cipRentals";
+import { rentalAvailability, rentalLocation, rentalPhotos, rentalPrice, type Rental } from "@/data/cipRentals";
 import { RentalFavoriteButton } from "./RentalFavoriteButton";
 import RentalContact from "./RentalContact";
 
 export default function RentalCard({ rental, list = false, headingLevel = 2 }: { rental: Rental; list?: boolean; headingLevel?: 2 | 3 }) {
     const Heading = headingLevel === 3 ? "h3" : "h2";
+    const photo = rentalPhotos(rental)[0];
     return <article className={`card-house rental-card ${list ? "style-list v3" : "style-default hover-image"}`} data-slug={rental.slug}>
         <div className={list ? "wrap-img" : ""}>
             <Link href={`/logements/${rental.slug}`} className={`img-style${list ? "" : " mb_20"}`} aria-label={`Voir ${rental.title}, référence ${rental.slug}`}>
-                <Image src={rental.imgSrc} width={410} height={308} alt={rental.imageAlt} sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw" />
+                <div className="rental-image-placeholder">{photo ? <Image src={photo.src} width={410} height={308} alt={photo.alt} sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw" /> : <span>À venir</span>}</div>
             </Link>
         </div>
         <div className="content">

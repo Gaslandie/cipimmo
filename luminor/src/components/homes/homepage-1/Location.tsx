@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { rentalCountLabel, rentalLocationOptions } from "@/data/cipRentals";
 
@@ -28,12 +27,7 @@ export default function Location() {
                                 data-delay="0.2"
                             >
                                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Coléah")}`} className="img-style mb_18">
-                                    <Image
-                                        width={300}
-                                        height={300}
-                                        src="/assets/images/section/location-1.jpg?v=cip-photos-1"
-                                        alt="Voir les logements : Coléah"
-                                    />
+                                    <span className="rental-image-placeholder" aria-label="Voir les logements : Coléah — photos à venir">À venir</span>
                                 </a>
                                 <div className="content">
                                     <a
@@ -50,12 +44,7 @@ export default function Location() {
                                 data-delay="0.3"
                             >
                                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Coyah Km54")}`} className="img-style mb_18">
-                                    <Image
-                                        width={300}
-                                        height={300}
-                                        src="/assets/images/section/location-2.jpg?v=cip-photos-1"
-                                        alt="Voir les logements : Coyah Km54"
-                                    />
+                                    <span className="rental-image-placeholder" aria-label="Voir les logements : Coyah Km54 — photos à venir">À venir</span>
                                 </a>
                                 <div className="content">
                                     <a
@@ -73,12 +62,7 @@ export default function Location() {
                             data-delay="0.4"
                         >
                             <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Ansoumaniah")}`} className="img-style mb_18">
-                                <Image
-                                    width={630}
-                                    height={300}
-                                    src="/assets/images/section/location-3.jpg?v=cip-photos-1"
-                                    alt="Voir les logements : Ansoumaniah"
-                                />
+                                <span className="rental-image-placeholder" aria-label="Voir les logements : Ansoumaniah — photos à venir">À venir</span>
                             </a>
                             <div className="content">
                                 <a
@@ -97,12 +81,7 @@ export default function Location() {
                             data-delay="0.4"
                         >
                             <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Conakry")}`} className="img-style mb_18">
-                                <Image
-                                    width={630}
-                                    height={300}
-                                    src="/assets/images/section/location-4.jpg?v=cip-photos-1"
-                                    alt="Voir les logements : Conakry"
-                                />
+                                <span className="rental-image-placeholder" aria-label="Voir les logements : Conakry — photos à venir">À venir</span>
                             </a>
                             <div className="content">
                                 <a
@@ -120,12 +99,7 @@ export default function Location() {
                                 data-delay="0.3"
                             >
                                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Coyah")}`} className="img-style mb_18">
-                                    <Image
-                                        width={300}
-                                        height={300}
-                                        src="/assets/images/section/location-5.jpg?v=cip-photos-1"
-                                        alt="Voir les logements : Coyah"
-                                    />
+                                    <span className="rental-image-placeholder" aria-label="Voir les logements : Coyah — photos à venir">À venir</span>
                                 </a>
                                 <div className="content">
                                     <a
@@ -142,12 +116,7 @@ export default function Location() {
                                 data-delay="0.2"
                             >
                                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/`} className="img-style mb_18">
-                                    <Image
-                                        width={300}
-                                        height={300}
-                                        src="/assets/images/section/location-6.jpg?v=cip-photos-1"
-                                        alt="Voir les logements : Guinée"
-                                    />
+                                    <span className="rental-image-placeholder" aria-label="Voir les logements : Guinée — photos à venir">À venir</span>
                                 </a>
                                 <div className="content">
                                     <a

@@ -1,6 +1,6 @@
-// Tarifs de Coléah, Coyah et Ansoumaniah confirmés par le client le 11 octobre 2026.
-// Les photos historiques sont celles de la maquette.
-// Kankan : caractéristiques confirmées par le client ; tarifs et photos en attente.
+// Inventaire transmis les 9 et 11 octobre 2026 : sept logements, sans ajout de démonstration.
+// Tarifs de Coléah, Coyah et Ansoumaniah reçus le 11 octobre ; jour/mois conservés.
+// Aucune photo authentifiée reçue. Kankan : tarif et unité de facturation non communiqués.
 // Les liens distincts conservent une fiche par appartement d’Ansoumaniah, avec le même titre visible.
 export type RentalPhoto = { src: string; alt: string; width: number; height: number };
 export type Rental = {
@@ -29,13 +29,13 @@ export const cipRentals: Rental[] = [
         "period": "jour",
         "beds": 2,
         "area": 75,
-        "imgSrc": "/assets/images/home/cip-apartment-interior.jpg",
-        "imageAlt": "Salon lumineux avec cuisine ouverte",
+        "imgSrc": "",
+        "imageAlt": "",
         "description": "À Coléah, cet appartement de 75 m² dispose de deux chambres, d’un salon et d’une cuisine.",
         "amenities": { "Cuisine": "Présente dans le logement" },
         "category": "Appartement",
-        "imgWidth": 977,
-        "imgHeight": 733
+        "imgWidth": 820,
+        "imgHeight": 616
     },
     {
         "slug": "appartement-coyah-km54",
@@ -48,12 +48,12 @@ export const cipRentals: Rental[] = [
         "period": "mois",
         "beds": 2,
         "area": 75,
-        "imgSrc": "/assets/images/home/cip-hero-interior.jpg",
-        "imageAlt": "Salon contemporain avec escalier et grandes fenêtres",
+        "imgSrc": "",
+        "imageAlt": "",
         "description": "À Coyah Km54, cet appartement de 75 m² dispose de deux chambres et d’un salon.",
         "category": "Appartement",
-        "imgWidth": 800,
-        "imgHeight": 1200
+        "imgWidth": 820,
+        "imgHeight": 616
     },
     {
         "slug": "appartement-ansoumaniah-1",
@@ -66,13 +66,13 @@ export const cipRentals: Rental[] = [
         "period": "mois",
         "beds": 3,
         "area": 92,
-        "imgSrc": "/assets/images/home/cip-apartment-interior.jpg",
-        "imageAlt": "Salon lumineux avec cuisine ouverte",
+        "imgSrc": "",
+        "imageAlt": "",
         "description": "À Ansoumaniah, à Conakry, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
         "amenities": { "Cuisine": "Présente dans le logement" },
         "category": "Appartement",
-        "imgWidth": 977,
-        "imgHeight": 733
+        "imgWidth": 820,
+        "imgHeight": 616
     },
     {
         "slug": "appartement-ansoumaniah-2",
@@ -85,13 +85,13 @@ export const cipRentals: Rental[] = [
         "period": "mois",
         "beds": 3,
         "area": 92,
-        "imgSrc": "/assets/images/home/cip-apartment-interior.jpg",
-        "imageAlt": "Salon lumineux avec cuisine ouverte",
+        "imgSrc": "",
+        "imageAlt": "",
         "description": "À Ansoumaniah, à Conakry, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
         "amenities": { "Cuisine": "Présente dans le logement" },
         "category": "Appartement",
-        "imgWidth": 977,
-        "imgHeight": 733
+        "imgWidth": 820,
+        "imgHeight": 616
     },
     {
         "slug": "appartement-ansoumaniah-3",
@@ -104,13 +104,13 @@ export const cipRentals: Rental[] = [
         "period": "mois",
         "beds": 3,
         "area": 92,
-        "imgSrc": "/assets/images/home/cip-apartment-interior.jpg",
-        "imageAlt": "Salon lumineux avec cuisine ouverte",
+        "imgSrc": "",
+        "imageAlt": "",
         "description": "À Ansoumaniah, à Conakry, cet appartement non meublé de 92 m² dispose de trois chambres, d’un salon et d’une cuisine.",
         "amenities": { "Cuisine": "Présente dans le logement" },
         "category": "Appartement",
-        "imgWidth": 977,
-        "imgHeight": 733
+        "imgWidth": 820,
+        "imgHeight": 616
     },
     {
         "slug": "duplex-kankan-aeroport",
@@ -120,11 +120,11 @@ export const cipRentals: Rental[] = [
         "duration": "Court séjour",
         "furnished": "Non meublé",
         "price": null,
-        "period": "nuit",
+        "period": "",
         "beds": 4,
         "area": 200,
-        "imgSrc": "/assets/images/home/photos-a-venir.svg",
-        "imageAlt": "Photos du duplex à Kankan à venir",
+        "imgSrc": "",
+        "imageAlt": "",
         "description": "Au quartier Aéroport à Kankan, ce duplex non meublé de 200 m² est proposé pour un court séjour. Il dispose de quatre chambres, d’un salon et d’une cuisine.",
         "amenities": { "Cuisine": "Présente dans le logement" },
         "category": "Duplex",
@@ -139,11 +139,11 @@ export const cipRentals: Rental[] = [
         "duration": "Court séjour",
         "furnished": "Non meublé",
         "price": null,
-        "period": "nuit",
+        "period": "",
         "beds": 1,
         "area": 40,
-        "imgSrc": "/assets/images/home/photos-a-venir.svg",
-        "imageAlt": "Photos de l’appartement à Kankan à venir",
+        "imgSrc": "",
+        "imageAlt": "",
         "description": "Au quartier Sinkefara à Kankan, cet appartement non meublé de 40 m² est proposé pour un court séjour. Il dispose d’une chambre et d’un salon.",
         "category": "Appartement",
         "imgWidth": 820,
@@ -155,7 +155,7 @@ export const cipRentals: Rental[] = [
 type RentalLocation = { city: string; municipality: string };
 
 export function rentalPrice(rental: { price: number | null; period: string }) {
-    return rental.price === null ? "Tarif à confirmer" : `${rental.price.toLocaleString("fr-FR")} GNF`;
+    return rental.price === null ? "À discuter" : `${rental.price.toLocaleString("fr-FR")} GNF`;
 }
 
 export function rentalLocation(rental: RentalLocation) {
@@ -187,7 +187,9 @@ export function rentalPhotos(rental: Rental): RentalPhoto[] {
         seen.add(photo.src);
         return true;
     }).slice(0, 20);
-    return photos.length ? photos : [{ src: rental.imgSrc, alt: rental.imageAlt, width: rental.imgWidth, height: rental.imgHeight }];
+    if (photos.length) return photos;
+    return rental.imgSrc && safeRentalMedia(rental.imgSrc, "poster") && rental.imageAlt.trim()
+        ? [{ src: rental.imgSrc, alt: rental.imageAlt, width: rental.imgWidth, height: rental.imgHeight }] : [];
 }
 
 export function similarRentals(rental: Rental) {

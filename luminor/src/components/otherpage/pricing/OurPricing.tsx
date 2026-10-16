@@ -10,7 +10,7 @@ const pricingData = [
         features: [
             "Un tarif par jour",
             "Contact direct avec CIP IMMO",
-            "Photos et détails du logement",
+            "Caractéristiques du logement",
             "Dates à convenir avec notre équipe",
         ],
         featureGap: "gap_6",

@@ -10,7 +10,7 @@ Le site concerné est le dossier `luminor/`. La version Laravel et sa base de do
 
 La disponibilité reste à confirmer sur le site public. Le client la gérera lui-même dans le futur back-office. Aucun statut réel n'a été inventé.
 
-Les exemples fictifs de quartier ne s'affichent qu'en mode développement et sont signalés. La version compilée pour la production les remplace par une invitation à demander les repères à CIP IMMO. Les équipements connus proviennent des descriptions existantes ; les autres sont indiqués « À confirmer ».
+La dernière demande de Gassama, le 16 octobre 2026, remplace l'autorisation d'utiliser des exemples : seules les informations transmises par le client restent dans les annonces. Les exemples de quartier sont retirés, y compris en développement. Les équipements, espaces partagés, charges et repères ne s'affichent que lorsque leurs informations sont renseignées.
 
 Aucune vidéo réelle n'a été fournie. L'emplacement est prêt et propose actuellement une demande de visite ou de vidéo. Lors de l'ajout d'une vidéo, fournir une image d'aperçu, une description textuelle et des sous-titres si elle contient des paroles utiles. Le lecteur accepte uniquement des chemins locaux de médias, avec lecture volontaire.
 
@@ -42,7 +42,7 @@ But : permettre au visiteur de dire rapidement où il veut habiter et ce qu'il p
 But : voir les différences entre deux appartements sans ouvrir toutes les fiches.
 
 - [x] Présenter les informations dans le même ordre sur chaque carte : photo, nom, quartier ou ville, prix et période, chambres, meublé ou non meublé.
-- [x] Réutiliser les photos existantes et garder un accès simple à la fiche complète. Les images historiques de la maquette sont conservées ; leur authenticité reste à valider avec le client.
+- [x] Garder un accès simple à la fiche complète. Les photos de maquette sont retirées des annonces et des aperçus par destination ; le texte « À venir » est affiché sans charger aucune image.
 - [x] Afficher les mêmes informations sur la carte et sur la fiche du logement.
 - [x] Ne pas inventer les prix, surfaces ou caractéristiques manquantes.
 
@@ -66,13 +66,13 @@ Le clic sur WhatsApp ne réserve pas le logement et ne change pas son statut. Au
 
 But : aider le visiteur à imaginer sa vie autour du logement.
 
-**Gassama autorise des informations fictives pour préparer cette partie pour le moment.**
+**L'autorisation initiale d'utiliser des informations fictives est annulée par la demande du 16 octobre 2026 : ne garder que les informations du client.**
 
 - [x] Ajouter une partie « Autour du logement » : commerces, marché, transports, route principale ou autres repères utiles.
-- [x] Préparer des exemples fictifs pour essayer la présentation, en les signalant clairement comme « Informations de démonstration ».
-- [x] Distinguer ces exemples des renseignements réels dans les données pour éviter leur publication comme des faits.
+- [x] Retirer les exemples fictifs, conformément à la dernière demande.
+- [x] Afficher cette partie seulement lorsque le client a communiqué des repères.
 - [ ] Faire confirmer les lieux, distances et temps de trajet par le client avant la publication commerciale.
-- [ ] Remplacer les exemples par les informations validées ou retirer celles qui restent inconnues.
+- [x] Retirer les informations qui restent inconnues.
 
 ## 5. Expliquer les équipements et les charges
 
@@ -84,7 +84,7 @@ But : montrer exactement ce que le logement propose et ce que le prix comprend.
 - [ ] Prévoir la saisie et la modification de ces renseignements dans le back-office.
 - [x] Pour une information inconnue, utiliser « À confirmer » plutôt que d'annoncer que le service existe ou qu'il est absent.
 
-L'autorisation d'utiliser des informations fictives au point 4 concerne les quartiers ; elle ne vaut pas confirmation des équipements ou des charges.
+Aucun équipement, service ou frais n'est déduit d'une photo ou ajouté pour remplir la présentation.
 
 ## 6. Montrer les logements à distance
 
@@ -192,3 +192,22 @@ Vérifications locales : compilation Pages et ESLint ciblé réussis. Chrome : t
 ## Livraison de l’ensemble des adaptations — 16 octobre 2026
 
 Gassama demande le commit, le push et la mise à jour de GitHub Pages pour les adaptations Pincher Creek, Rentola, Les Grillons, Wetag et Cap Ferret acceptées ci-dessus. Publication du seul export statique validé sur la branche `gh-pages`, à https://gaslandie.github.io/cipimmo/. Les références restent inchangées. Le back-office et la réception des photos réelles restent des travaux futurs.
+
+
+## Catalogue limité aux informations du client — 16 octobre 2026
+
+Messages d'origine retrouvés dans les échanges des 9 et 11 octobre 2026, puis comparés au catalogue. Les sept logements sont réels dans le périmètre communiqué ; aucune annonce supplémentaire n'est ajoutée.
+
+| Logement | Informations reçues | Tarif reçu |
+| --- | --- | --- |
+| Coléah, Conakry | Un appartement, 75 m², 2 chambres, salon, cuisine | 1 000 000 GNF / jour |
+| Coyah Km54 | Un appartement, 75 m², 2 chambres, salon | 1 500 000 GNF / mois |
+| Ansoumaniah, Conakry | Trois appartements, chacun de 92 m², 3 chambres, salon, cuisine, non meublés | 3 000 000 GNF / mois |
+| Kankan, Aéroport | Un duplex non meublé, 200 m², 4 chambres, salon, cuisine, courte durée | À discuter |
+| Kankan, Sinkefara | Un appartement non meublé, 40 m², 1 chambre, salon, courte durée | À discuter |
+
+Les tarifs et périodes de Coléah, Coyah et Ansoumaniah proviennent du message du 11 octobre. Les catégories court séjour/longue durée suivent ces unités jour/mois ; aucune durée minimale n'est annoncée. Pour Kankan, l'unité « nuit » non fournie est retirée. Le mobilier de Coléah et Coyah reste inconnu. Aucune photo de logement authentifiée n'a été retrouvée. À la demande de Gassama, les emplacements montrent uniquement « À venir », sans aucune image. Les tarifs manquants affichent « À discuter ».
+
+Les anciennes variantes de catalogue et les URL numériques de fiches affichent maintenant les mêmes composants vérifiés que le catalogue principal. Elles ne présentent plus les salles de bain, garages, coordonnées géographiques, équipements ou plans inventés du thème. Les liens historiques restent consultables ; un identifiant inconnu ne doit pas ouvrir une autre fiche.
+
+Comparaison revue le 16 octobre 2026 : [Agence du Cap Ferret](https://www.agence-cap-ferret.fr/) présente lieu, chambres, surface et parfois « Nous consulter » pour le prix ; [Les Grillons](https://www.lesgrillons.ch/fr) sépare l'accès aux locations de la présentation de l'agence. Adaptation limitée au contenu : conserver les faits disponibles, utiliser « À discuter », comme demandé par Gassama, lorsque le prix manque, sans reprendre les caractéristiques de ces sites. Leurs interactions n'ont pas été testées pendant cette vérification.

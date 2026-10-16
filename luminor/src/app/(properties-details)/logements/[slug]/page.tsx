@@ -29,8 +29,7 @@ export default async function RentalPage({ params }: PageProps) {
     if (!rental) notFound();
     const similar = similarRentals(rental);
     const video = rental.video && safeRentalMedia(rental.video.src, "video") && safeRentalMedia(rental.video.poster, "poster") && rental.video.description.trim() ? rental.video : undefined;
-    const showDemo = process.env.NODE_ENV === "development" && !rental.neighbourhood?.length;
-    const amenities = ["Eau", "Électricité", "Climatisation", "Cuisine", "Parking", "Wi-Fi"] as const;
+    const amenities = Object.entries(rental.amenities || {}).filter(([, value]) => value?.trim());
 
     return (
         <Layout>
@@ -64,29 +63,28 @@ export default async function RentalPage({ params }: PageProps) {
                                 <h2 className="h5 properties-title mb_20">Description</h2>
                                 <p className="text-body-2">{rental.description}</p>
                             </div>
-                            <section className="rental-info-section" aria-labelledby="rental-amenities">
+                            {(amenities.length > 0 || rental.sharedAmenities?.length || rental.charges) && <section className="rental-info-section" aria-labelledby="rental-amenities">
                                 <h2 id="rental-amenities" className="h5 mb_20">Équipements et services</h2>
-                                <p className="mb_20">Voici les informations connues. Notre équipe peut vous préciser les éléments à confirmer.</p>
-                                <dl className="rental-facts">
-                                    {amenities.map(name => <div key={name}><dt>{name}</dt><dd>{rental.amenities?.[name] || "À confirmer"}</dd></div>)}
-                                </dl>
-                                <h3 className="h6 mt_24 mb_12">Espaces et services partagés</h3>
-                                {rental.sharedAmenities?.length ? <ul className="rental-info-list">{rental.sharedAmenities.map(item => <li key={item}>{item}</li>)}</ul> : <p>À confirmer auprès de CIP IMMO.</p>}
-                                <h3 className="h6 mt_24 mb_12">Charges et frais</h3>
-                                <dl className="rental-facts">
-                                    <div><dt>Compris dans le prix</dt><dd>{rental.charges ? rental.charges.included.join(", ") || "Aucune charge incluse" : "À confirmer"}</dd></div>
-                                    <div><dt>À payer en plus</dt><dd>{rental.charges ? rental.charges.extra.join(", ") || "Aucun supplément déclaré" : "À confirmer"}</dd></div>
-                                </dl>
-                            </section>
-                            <section className="rental-info-section" aria-labelledby="rental-neighbourhood">
+                                {amenities.length > 0 && <dl className="rental-facts">
+                                    {amenities.map(([name, value]) => <div key={name}><dt>{name}</dt><dd>{value}</dd></div>)}
+                                </dl>}
+                                {!!rental.sharedAmenities?.length && <>
+                                    <h3 className="h6 mt_24 mb_12">Espaces et services partagés</h3>
+                                    <ul className="rental-info-list">{rental.sharedAmenities.map(item => <li key={item}>{item}</li>)}</ul>
+                                </>}
+                                {rental.charges && <>
+                                    <h3 className="h6 mt_24 mb_12">Charges et frais</h3>
+                                    <dl className="rental-facts">
+                                        <div><dt>Compris dans le prix</dt><dd>{rental.charges.included.join(", ") || "À confirmer"}</dd></div>
+                                        <div><dt>À payer en plus</dt><dd>{rental.charges.extra.join(", ") || "À confirmer"}</dd></div>
+                                    </dl>
+                                </>}
+                            </section>}
+                            {!!rental.neighbourhood?.length && <section className="rental-info-section" aria-labelledby="rental-neighbourhood">
                                 <h2 id="rental-neighbourhood" className="h5 mb_20">Autour du logement</h2>
                                 <p className="mb_12">{rentalLocation(rental)}, Guinée</p>
-                                {rental.neighbourhood?.length ? <ul className="rental-info-list">{rental.neighbourhood.map(item => <li key={item}>{item}</li>)}</ul> : showDemo ? <div className="rental-demo-note">
-                                    <p><strong>Informations de démonstration — exemples fictifs</strong></p>
-                                    <p>Ces exemples servent à préparer la présentation. Ils ne décrivent pas les environs réels de cet appartement.</p>
-                                    <ul className="rental-info-list"><li>Exemple : des commerces à proximité.</li><li>Exemple : un marché dans le quartier.</li><li>Exemple : un accès à une route principale.</li></ul>
-                                </div> : <p>Contactez-nous pour connaître les commerces, transports et repères proches de ce logement.</p>}
-                            </section>
+                                <ul className="rental-info-list">{rental.neighbourhood.map(item => <li key={item}>{item}</li>)}</ul>
+                            </section>}
                             <section className="rental-info-section" aria-labelledby="rental-visit">
                                 <h2 id="rental-visit" className="h5 mb_20">Découvrir le logement à distance</h2>
                                 {video ? <>
