@@ -14,13 +14,14 @@ export default function RentalCard({ rental, list = false, headingLevel = 2 }: {
             </Link>
         </div>
         <div className="content">
-            <div className="wrap-tag d-flex gap_8 mb_12"><span className="tag rent">{rental.duration}</span><span className="tag categoreis">{rental.category}</span></div>
+            {photo?.caption && <p className="text-body-small mb_12">Photo retouchée</p>}
+            <div className="wrap-tag d-flex gap_8 mb_12"><span className="tag rent">{rental.duration || "Durée : à confirmer"}</span><span className="tag categoreis">{rental.category}</span></div>
             <Heading className="h5 mb_8"><Link href={`/logements/${rental.slug}`} className="link text_primary-color">{rental.title}</Link></Heading>
             <p className="mb_12">{rentalLocation(rental)}, Guinée</p>
             <p className="price h5 mb_12">{rentalPrice(rental)}{rental.price !== null && <span className="text-body-default"> / {rental.period}</span>}</p>
             <ul className="info d-flex flex-wrap">
-                <li><i className="icon-Bed" aria-hidden="true" /> {rental.beds} chambre{rental.beds > 1 ? "s" : ""}</li>
-                <li><i className="icon-Ruler" aria-hidden="true" /> {rental.area} m²</li>
+                <li><i className="icon-Bed" aria-hidden="true" /> {rental.beds === null ? "Chambres : à confirmer" : `${rental.beds} chambre${rental.beds > 1 ? "s" : ""}`}</li>
+                <li><i className="icon-Ruler" aria-hidden="true" /> {rental.area === null ? "Surface : à confirmer" : `${rental.area} m²`}</li>
             </ul>
             <p className="rental-furnishing">{rental.furnished || "Mobilier : à confirmer"}</p>
             <p className="rental-availability">{rentalAvailability}.</p>

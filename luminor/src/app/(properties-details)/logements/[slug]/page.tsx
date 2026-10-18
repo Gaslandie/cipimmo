@@ -39,7 +39,7 @@ export default async function RentalPage({ params }: PageProps) {
                         <div className="col-lg-8">
                             <div className="properties-title mb_30">
                                 <div className="wrap-tag d-flex gap_8 mb_12">
-                                    <span className="tag rent text-button-small fw-6 text_primary-color">{rental.duration}</span>
+                                    <span className="tag rent text-button-small fw-6 text_primary-color">{rental.duration || "Durée : à confirmer"}</span>
                                     <span className="tag categoreis text-button-small fw-6 text_primary-color">{rental.category}</span>
                                 </div>
                                 <h1 className="h4 mb_12">{rental.title}</h1>
@@ -54,9 +54,9 @@ export default async function RentalPage({ params }: PageProps) {
                             <div className="properties-overview tf-spacing-8">
                                 <h2 className="h5 properties-title mb_20">Votre logement</h2>
                                 <ul className="info d-flex flex-wrap gap_24">
-                                    <li><i className="icon-Bed" aria-hidden="true" /> {rental.beds} {rental.beds === 1 ? "chambre" : "chambres"}</li>
+                                    <li><i className="icon-Bed" aria-hidden="true" /> {rental.beds === null ? "Chambres : à confirmer" : `${rental.beds} ${rental.beds === 1 ? "chambre" : "chambres"}`}</li>
                                     <li><i className="icon-HouseLine" aria-hidden="true" /> {rental.furnished || "Mobilier : à confirmer"}</li>
-                                    <li><i className="icon-Ruler" aria-hidden="true" /> {rental.area} m²</li>
+                                    <li><i className="icon-Ruler" aria-hidden="true" /> {rental.area === null ? "Surface : à confirmer" : `${rental.area} m²`}</li>
                                 </ul>
                             </div>
                             <div className="properties-description mb_30">

@@ -41,11 +41,12 @@ export type Property = {
 export const properties: Property[] = cipRentals.filter((rental): rental is typeof rental & { price: number } => rental.price !== null).map((rental, index) => ({
     ...rental,
     id: index + 1,
+    beds: rental.beds ?? undefined,
     alt: rental.imageAlt,
     address: rentalLocation(rental) + ", Guinée",
     categories: rental.category,
     type: rental.duration === "Court séjour" ? "Court séjour" : "Longue durée",
-    sqft: rental.area,
+    sqft: rental.area ?? undefined,
     baths: 1,
     garages: 0,
     lat: 9.7,

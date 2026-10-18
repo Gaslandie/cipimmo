@@ -47,8 +47,8 @@ export default function Properties3() {
     if (sorting !== "default") {
         // Keep daily and monthly prices in separate groups instead of comparing unlike periods.
         rentals.sort((a, b) => {
-            if (sorting === "area-desc") return b.area - a.area;
-            if (sorting === "beds-desc") return b.beds - a.beds;
+            if (sorting === "area-desc") return (b.area ?? -1) - (a.area ?? -1);
+            if (sorting === "beds-desc") return (b.beds ?? -1) - (a.beds ?? -1);
             if (a.price === null) return b.price === null ? 0 : 1;
             if (b.price === null) return -1;
             return a.period === b.period
