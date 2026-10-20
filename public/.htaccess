@@ -50,6 +50,18 @@ DirectoryIndex index.html index.php
     SetEnvIf Request_URI "^/_next/static/" CIP_VERSIONED_ASSET=1
 </IfModule>
 <IfModule mod_headers.c>
+    # Add defaults to static pages and error responses without replacing the
+    # stricter policies returned by the private administration through PHP.
+    Header always setifempty X-Content-Type-Options "nosniff"
+    Header always setifempty X-Frame-Options "DENY"
+    Header always setifempty Referrer-Policy "strict-origin-when-cross-origin"
+    Header always setifempty Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    # Next's static export needs inline hydration scripts and styles. External
+    # resources stay restricted to this site and the existing map/video frames.
+    Header always setifempty Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob:; connect-src 'self'; frame-src https://www.google.com https://maps.google.com https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    # HTTPS applies to this domain only: other Bluehost subdomains are separate.
+    Header always setifempty Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on'"
+
     # Store public files but validate them before reuse. A 304 response avoids
     # downloading unchanged content while keeping catalogue updates visible.
     # PHP responses, including the private administration, are excluded.
