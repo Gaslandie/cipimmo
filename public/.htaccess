@@ -12,6 +12,20 @@ DirectoryIndex index.html index.php
     RewriteCond %{HTTP_HOST} !^cipimmo\.com$ [NC]
     RewriteRule ^ https://cipimmo.com%{REQUEST_URI} [R=301,L]
 
+    # Keep historical links while consolidating each page onto its canonical URL.
+    RewriteRule ^contact/?$ /contacts/ [R=301,L]
+    RewriteRule ^a-propos/?$ /about-us/ [R=301,L]
+    RewriteRule ^logements/?$ /listing-left-sidebar/ [R=301,L]
+    RewriteRule ^faqs/?$ /FAQs/ [R=301,L]
+    RewriteRule ^listing-(?:half-map-(?:grid|list)|right-sidebar|topmap-(?:grid|list))/?$ /listing-left-sidebar/ [R=301,L]
+    RewriteRule ^property-details-[1-4]/1/?$ /logements/appartement-coleah/ [R=301,L]
+    RewriteRule ^property-details-[1-4]/2/?$ /logements/appartement-coyah-km54/ [R=301,L]
+    RewriteRule ^property-details-[1-4]/3/?$ /logements/appartement-ansoumaniah-1/ [R=301,L]
+    RewriteRule ^property-details-[1-4]/4/?$ /logements/appartement-ansoumaniah-2/ [R=301,L]
+    RewriteRule ^property-details-[1-4]/5/?$ /logements/appartement-ansoumaniah-3/ [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+index\.html(?:[\s?]) [NC]
+    RewriteRule ^index\.html$ / [R=301,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -39,7 +53,7 @@ DirectoryIndex index.html index.php
     # Store public files but validate them before reuse. A 304 response avoids
     # downloading unchanged content while keeping catalogue updates visible.
     # PHP responses, including the private administration, are excluded.
-    <FilesMatch "\.(?:html?|txt|json|css|js|mjs|svg|ico|jpe?g|png|gif|webp|avif|woff2?|ttf|eot|mp4|webm)$">
+    <FilesMatch "\.(?:html?|txt|json|xml|css|js|mjs|svg|ico|jpe?g|png|gif|webp|avif|woff2?|ttf|eot|mp4|webm)$">
         Header set Cache-Control "no-cache"
         Header set Cache-Control "public, max-age=31536000, immutable" env=CIP_VERSIONED_ASSET
     </FilesMatch>

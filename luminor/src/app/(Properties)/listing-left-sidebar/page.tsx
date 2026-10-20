@@ -1,8 +1,8 @@
+import { pageMetadata } from "@/data/seo";
 import Layout from "@/components/layouts/Layout-defaul";
 import Properties3 from "@/components/properties/Properties3";
 import React from "react";
 
-export const metadata = { title: "Nos logements à louer | CIP IMMO", description: "Découvrez nos appartements à louer à Coléah, Coyah Km54, Ansoumaniah et Kankan, pour un court séjour ou une longue durée." };
 
 export default function page() {
     return (
@@ -11,3 +11,5 @@ export default function page() {
         </Layout>
     );
 }
+
+export const metadata = pageMetadata("Appartements à louer en Guinée | CIP IMMO", "Comparez nos logements à Conakry, Coyah et Kankan : photos, chambres et tarifs disponibles. Contactez CIP IMMO pour confirmer les disponibilités.", "/listing-left-sidebar/");

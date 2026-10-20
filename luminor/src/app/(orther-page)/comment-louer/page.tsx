@@ -1,8 +1,8 @@
+import { pageMetadata } from "@/data/seo";
 import Image from "next/image";
 import Link from "next/link";
 import Layout from "@/components/layouts/Layout-defaul";
 
-export const metadata = { title: "Comment louer — CIP IMMO" };
 
 const steps = [
     ["Trouvez votre logement", "Choisissez une ville et affinez votre recherche selon vos besoins et votre budget."],
@@ -73,3 +73,5 @@ export default function RentingPage() {
         </Layout>
     );
 }
+
+export const metadata = pageMetadata("Comment louer un appartement en Guinée | CIP IMMO", "Choisissez un logement, contactez CIP IMMO et confirmez les conditions de location avec notre équipe. Découvrez les étapes pour préparer votre séjour.", "/comment-louer/");

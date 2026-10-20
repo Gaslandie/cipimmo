@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/data/seo";
 import FAQs1 from "@/components/common/FAQs1";
 import Layout from "@/components/layouts/Layout-defaul";
 import OurPricing from "@/components/otherpage/pricing/OurPricing";
@@ -15,3 +16,5 @@ export default function page() {
         </Layout>
     );
 }
+
+export const metadata = pageMetadata("Formules de location et tarifs | CIP IMMO", "Découvrez nos formules de location pour un court séjour ou une longue durée en Guinée. Consultez les logements et confirmez les conditions avec CIP IMMO.", "/our-pricing/");

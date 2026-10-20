@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/data/seo";
 import Banner from "@/components/homes/homepage-1/Banner";
 import Hero from "@/components/homes/homepage-1/Hero";
 import Location from "@/components/homes/homepage-1/Location";
@@ -16,3 +17,5 @@ export default function Home() {
         </Layout>
     );
 }
+
+export const metadata = pageMetadata("Location d’appartements en Guinée | CIP IMMO", "Découvrez les appartements à louer de CIP IMMO à Conakry, Coyah et Kankan. Courts séjours et locations longue durée, avec contact direct.", "/");

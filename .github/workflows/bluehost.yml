@@ -59,6 +59,7 @@ jobs:
           node ../tests/rental-photos.cjs
           npm audit --omit=dev --audit-level=high
           npm run build:bluehost
+          node ../tests/seo-export.cjs
       - name: Préparer uniquement les fichiers de production
         run: |
           composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader

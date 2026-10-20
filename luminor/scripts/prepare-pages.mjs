@@ -30,7 +30,7 @@ if (!base) {
     }
 }
 
-await writeFile(new URL('robots.txt', root), base ? 'User-agent: *\nDisallow: /\n' : 'User-agent: *\nAllow: /\nDisallow: /admin\n');
+await writeFile(new URL('robots.txt', root), base ? 'User-agent: *\nDisallow: /\n' : 'User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: https://cipimmo.com/sitemap.xml\n');
 // Preserve the public entry points of the previous Laravel preview.
 for (const [oldPath, newPath] of Object.entries({ contact: 'contacts', 'a-propos': 'about-us', logements: 'listing-left-sidebar' })) {
     const dir = new URL(`${oldPath}/`, root);

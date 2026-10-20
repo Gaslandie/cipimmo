@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/data/seo";
 import { notFound } from "next/navigation";
 import { cipRentals } from "@/data/cipRentals";
 import RentalPage from "../../logements/[slug]/page";
@@ -21,7 +22,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
     const rental = await rentalFromParams(params);
-    return { title: `${rental.title} — CIP IMMO`, robots: { index: false, follow: false } };
+    return pageMetadata(`${rental.title} | CIP IMMO`, rental.description, `/logements/${rental.slug}/`, false);
 }
 
 export default async function Page({ params }: PageProps) {

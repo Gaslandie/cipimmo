@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/data/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Layout from "@/components/layouts/Layout-defaul";
@@ -20,7 +21,17 @@ export async function generateMetadata({ params }: PageProps) {
     const { slug } = await params;
     const rental = cipRentals.find((item) => item.slug === slug);
     if (!rental) notFound();
-    return { title: `${rental.title} — CIP IMMO`, robots: { index: false, follow: false } };
+    const matchingTitles = cipRentals.filter((item) => item.title === rental.title);
+    const sharedTitle = matchingTitles.length > 1;
+    const shortReference = rental.slug.split("-").at(-1);
+    const uniqueReference = matchingTitles.filter((item) => item.slug.split("-").at(-1) === shortReference).length === 1;
+    const reference = sharedTitle ? ` — réf. ${uniqueReference ? shortReference : rental.slug}` : "";
+    const locality = rental.title.toLocaleLowerCase("fr").includes(rental.municipality.toLocaleLowerCase("fr")) ? "" : `, ${rental.municipality}`;
+    const closing = ` Disponibilités auprès de CIP IMMO.${sharedTitle ? ` Réf. ${rental.slug}.` : ""}`;
+    const summary = (rental.description || `${rental.title}, ${rentalLocation(rental)}.`).trim().replace(/\s+/g, " ");
+    const limit = 160 - closing.length;
+    const snippet = summary.length <= limit ? summary : `${summary.slice(0, limit - 1).replace(/\s+\S*$/, "")}…`;
+    return pageMetadata(`${rental.title}${locality}${reference} | CIP IMMO`, `${snippet}${closing}`, `/logements/${rental.slug}/`);
 }
 
 export default async function RentalPage({ params }: PageProps) {

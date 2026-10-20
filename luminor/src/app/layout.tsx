@@ -15,7 +15,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-    title: "CIP IMMO",
+    metadataBase: new URL("https://cipimmo.com"),
+    title: "Location d’appartements en Guinée | CIP IMMO",
     description: "Logements meublés et non meublés en Guinée. CIP IMMO vous accompagne pour vos courts séjours et vos locations longue durée.",
 };
 

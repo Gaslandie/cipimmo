@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/data/seo";
 import Agents from "@/components/common/Agents";
 import Banner1 from "@/components/common/Banner1";
 import Process1 from "@/components/common/Process1";
@@ -7,10 +8,6 @@ import PageTitle from "@/components/otherpage/about/PageTitle";
 import WhyChoose from "@/components/otherpage/about/WhyChoose";
 
 
-export const metadata = {
-    title: "À propos de CIP IMMO | Location en Guinée",
-    description: "Découvrez CIP IMMO, votre équipe de proximité pour louer un logement meublé ou non meublé en Guinée, en court séjour ou en longue durée.",
-};
 
 export default function Page() {
     return (
@@ -32,3 +29,5 @@ export default function Page() {
         </Layout>
     );
 }
+
+export const metadata = pageMetadata("À propos de CIP IMMO | Location en Guinée", "Découvrez CIP IMMO, votre équipe de proximité à Nongo Kiroti, Conakry, pour louer un logement en Guinée en court séjour ou en longue durée.", "/about-us/");
