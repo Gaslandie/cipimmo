@@ -31,10 +31,16 @@ DirectoryIndex index.html index.php
     RewriteRule ^ index.php [L]
 </IfModule>
 
-# Next fingerprints these public files. Admin and catalogue responses stay fresh.
+# Next fingerprints these public files, so their URLs change with their content.
 <IfModule mod_setenvif.c>
     SetEnvIf Request_URI "^/_next/static/" CIP_VERSIONED_ASSET=1
 </IfModule>
 <IfModule mod_headers.c>
-    Header set Cache-Control "public, max-age=31536000, immutable" env=CIP_VERSIONED_ASSET
+    # Store public files but validate them before reuse. A 304 response avoids
+    # downloading unchanged content while keeping catalogue updates visible.
+    # PHP responses, including the private administration, are excluded.
+    <FilesMatch "\.(?:html?|txt|json|css|js|mjs|svg|ico|jpe?g|png|gif|webp|avif|woff2?|ttf|eot|mp4|webm)$">
+        Header set Cache-Control "no-cache"
+        Header set Cache-Control "public, max-age=31536000, immutable" env=CIP_VERSIONED_ASSET
+    </FilesMatch>
 </IfModule>
