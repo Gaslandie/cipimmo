@@ -30,6 +30,7 @@ jobs:
       - name: Installer et tester le serveur PHP
         run: |
           composer install --no-interaction --prefer-dist
+          composer audit --locked --no-interaction
           cp .env.example .env
           php artisan key:generate --force
           npm ci

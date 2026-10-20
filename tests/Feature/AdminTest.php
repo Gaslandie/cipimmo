@@ -232,6 +232,128 @@ class AdminTest extends TestCase
         $this->postJson('/admin/api/photos', ['file' => $fake, 'alt' => 'Faux fichier'])->assertUnprocessable();
     }
 
+    public function test_login_lockout_resists_case_changes_and_forwarded_ip_spoofing_and_expires(): void
+    {
+        $this->freezeTime();
+        $user = $this->admin();
+        $user->password = Hash::make('Login-protection-test-2026!');
+        $user->save();
+        for ($attempt = 0; $attempt < 8; $attempt++) {
+            $email = $attempt % 2 ? strtoupper($user->email) : $user->email;
+            $this->postJson('/admin/api/login', ['username' => $email, 'password' => 'incorrect'])->assertUnauthorized();
+        }
+        $this->withHeader('X-Forwarded-For', '203.0.113.55')
+            ->postJson('/admin/api/login', ['username' => $user->email, 'password' => 'Login-protection-test-2026!'])
+            ->assertTooManyRequests()->assertJsonPath('message', 'Trop de tentatives. Réessayez dans 15 minutes.');
+        $this->assertGuest();
+        $this->travel(901)->seconds();
+        $this->postJson('/admin/api/login', ['username' => $user->email, 'password' => 'Login-protection-test-2026!'])->assertOk();
+        $this->assertAuthenticatedAs($user);
+        $this->postJson('/admin/api/logout')->assertOk();
+        $this->postJson('/admin/api/login', ['username' => $user->email, 'password' => 'incorrect'])->assertUnauthorized();
+    }
+
+    public function test_rotating_account_names_does_not_bypass_the_login_ip_limit(): void
+    {
+        $this->freezeTime();
+        $users = User::factory()->count(31)->create(['is_admin' => true, 'active' => true]);
+        foreach ($users->take(30) as $user) {
+            $this->postJson('/admin/api/login', ['username' => $user->email, 'password' => 'incorrect'])->assertUnauthorized();
+        }
+        $credentials = ['username' => $users->last()->email, 'password' => 'password'];
+        $this->postJson('/admin/api/login', $credentials)->assertTooManyRequests()->assertHeader('Retry-After');
+        $this->assertGuest();
+        $this->travel(61)->seconds();
+        $this->postJson('/admin/api/login', $credentials)->assertOk();
+        $this->assertAuthenticatedAs($users->last());
+    }
+
+    public function test_repeated_upload_requests_are_limited_and_recover_after_the_delay(): void
+    {
+        $this->freezeTime();
+        $this->actingAs($this->admin())->withSession(['admin_version' => 1]);
+        for ($attempt = 0; $attempt < 30; $attempt++) {
+            $this->postJson('/admin/api/photos', [])->assertUnprocessable();
+        }
+        $this->postJson('/admin/api/photos', [])->assertTooManyRequests()->assertHeader('Retry-After');
+        $this->travel(61)->seconds();
+        $this->postJson('/admin/api/photos', [])->assertUnprocessable();
+    }
+
+    public static function untrustedWriteOrigins(): iterable
+    {
+        yield 'foreign origin' => ['https://external.example', 'same-origin'];
+        yield 'missing origin' => ['', 'same-origin'];
+        yield 'cross-site request' => ['http://localhost', 'cross-site'];
+    }
+
+    #[DataProvider('untrustedWriteOrigins')]
+    public function test_untrusted_writes_are_refused_even_with_an_admin_session(string $origin, string $fetchSite): void
+    {
+        $this->actingAs($this->admin())->withSession(['admin_version' => 1]);
+        $this->withHeaders(['Origin' => $origin, 'Sec-Fetch-Site' => $fetchSite])->postJson('/admin/api/logout')->assertForbidden();
+        $this->getJson('/admin/api/session')->assertOk();
+    }
+
+    public function test_sql_text_in_a_login_cannot_select_an_admin_account(): void
+    {
+        $this->admin();
+        $this->postJson('/admin/api/login', ['username' => "' OR 1=1 --", 'password' => 'password'])
+            ->assertUnauthorized()->assertJsonPath('message', 'Identifiant ou mot de passe incorrect.')->assertJsonMissingPath('csrf');
+        $this->assertGuest();
+    }
+
+    public function test_oversized_catalogue_requests_are_refused_without_changes(): void
+    {
+        $this->seedCatalogue();
+        $before = DB::table('managed_rentals')->orderBy('id')->get()->toJson();
+        $this->actingAs($this->admin())->withSession(['admin_version' => 1]);
+        $rental = app(ManagedCatalogue::class)->items()[0]['rental'];
+        $rental['description'] = str_repeat('x', 140000);
+        $this->patchJson('/admin/api/rentals/'.$rental['slug'], ['rental' => $rental, 'revision' => 1])->assertStatus(413);
+        $this->assertSame($before, DB::table('managed_rentals')->orderBy('id')->get()->toJson());
+        $this->assertDatabaseCount('rental_history', 0);
+    }
+
+    public static function unsafePhotoKinds(): iterable
+    {
+        yield 'active SVG' => ['svg'];
+        yield 'oversized file' => ['size'];
+        yield 'excessive dimensions' => ['dimensions'];
+    }
+
+    #[DataProvider('unsafePhotoKinds')]
+    public function test_unsafe_uploads_are_rejected_without_creating_a_public_file(string $kind): void
+    {
+        Storage::fake('attack-photos');
+        $disk = Storage::disk('attack-photos');
+        config(['admin.photo_root' => $disk->path(''), 'admin.upload_root' => null]);
+        $this->actingAs($this->admin())->withSession(['admin_version' => 1]);
+        $file = match ($kind) {
+            'svg' => UploadedFile::fake()->createWithContent('photo.jpg', '<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"></svg>'),
+            'size' => UploadedFile::fake()->create('photo.jpg', 8193, 'image/jpeg'),
+            'dimensions' => UploadedFile::fake()->image('wide.jpg', 12001, 1),
+        };
+        $this->postJson('/admin/api/photos', ['file' => $file, 'alt' => 'Photo de test'])->assertUnprocessable();
+        $this->assertSame([], $disk->allFiles());
+    }
+
+    public function test_reencoding_removes_executable_content_and_never_reuses_the_upload_name(): void
+    {
+        Storage::fake('reencoded-photos');
+        $disk = Storage::disk('reencoded-photos');
+        config(['admin.photo_root' => $disk->path(''), 'admin.upload_root' => null]);
+        $this->actingAs($this->admin())->withSession(['admin_version' => 1]);
+        $file = UploadedFile::fake()->image('attack.php.jpg', 40, 30);
+        file_put_contents($file->getRealPath(), '<?php echo "executable-canary"; ?>', FILE_APPEND);
+        $response = $this->postJson('/admin/api/photos', ['file' => $file, 'alt' => 'Photo de test'])->assertCreated();
+        $name = basename($response->json('src'));
+        $this->assertMatchesRegularExpression('/^[a-f0-9-]+\.webp$/', $name);
+        $bytes = $disk->get('admin/'.$name);
+        $this->assertStringNotContainsString('executable-canary', $bytes);
+        $this->assertSame('image/webp', getimagesizefromstring($bytes)['mime']);
+    }
+
     public function test_compilation_catalogue_excludes_hidden_records_and_private_data(): void
     {
         $this->seedCatalogue();
