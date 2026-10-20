@@ -19,17 +19,17 @@ Route::get('/demo/logements/{slug}', [HomeController::class, 'show'])
 
 Route::prefix('admin')->middleware(AdminSecurity::class)->group(function () {
     Route::view('/', 'admin')->name('admin');
-    Route::post('/api/login', [AdminController::class, 'login'])->middleware('throttle:30,1');
+    Route::post('/api/login', [AdminController::class, 'login'])->middleware('throttle:30,1,cip-admin-login:');
     Route::middleware(AdminAccess::class)->group(function () {
         $controller = AdminController::class;
         Route::get('/api/session', [$controller, 'session']);
         Route::post('/api/logout', [$controller, 'logout']);
         Route::get('/api/rentals', [$controller, 'index']);
-        Route::post('/api/rentals', [$controller, 'save'])->middleware('throttle:120,1');
-        Route::patch('/api/rentals/{slug}', [$controller, 'save'])->where('slug', '[a-z0-9-]{1,100}')->middleware('throttle:120,1');
-        Route::post('/api/photos', [$controller, 'photo'])->middleware('throttle:30,1');
+        Route::post('/api/rentals', [$controller, 'save'])->middleware('throttle:120,1,cip-admin-rentals:');
+        Route::patch('/api/rentals/{slug}', [$controller, 'save'])->where('slug', '[a-z0-9-]{1,100}')->middleware('throttle:120,1,cip-admin-rentals:');
+        Route::post('/api/photos', [$controller, 'photo'])->middleware('throttle:30,1,cip-admin-photos:');
         Route::get('/api/media', [$controller, 'media']);
-        Route::post('/api/publish', [PublicationController::class, 'store'])->middleware('throttle:2,1');
+        Route::post('/api/publish', [PublicationController::class, 'store'])->middleware('throttle:2,1,cip-admin-publish:');
         Route::get('/api/export', [$controller, 'export']);
     });
 });

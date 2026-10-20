@@ -73,7 +73,7 @@ export function rentalPhotos(rental: Rental): RentalPhoto[] {
             !Number.isInteger(photo.width) || !Number.isInteger(photo.height) || photo.width < 1 || photo.height < 1 || photo.width > 20000 || photo.height > 20000) return false;
         seen.add(photo.src);
         return true;
-    }).slice(0, 20);
+    }).slice(0, 30);
     if (photos.length) return photos;
     return rental.imgSrc && safeRentalMedia(rental.imgSrc, "poster") && rental.imageAlt.trim()
         ? [{ src: rental.imgSrc, alt: rental.imageAlt, width: rental.imgWidth, height: rental.imgHeight }] : [];

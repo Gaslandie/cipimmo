@@ -56,6 +56,7 @@ jobs:
         working-directory: luminor
         run: |
           npm ci
+          node ../tests/rental-photos.cjs
           npm audit --omit=dev --audit-level=high
           npm run build:bluehost
       - name: Préparer uniquement les fichiers de production

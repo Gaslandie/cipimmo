@@ -116,6 +116,31 @@ class AdminTest extends TestCase
         $this->postJson('/admin/api/publish')->assertStatus(503)->assertDontSee('private response');
     }
 
+    public function test_edits_and_photo_uploads_do_not_consume_the_publication_limit(): void
+    {
+        $this->freezeTime();
+        $this->seedCatalogue();
+        Http::preventStrayRequests();
+        config(['admin.github_token' => 'test-private-token']);
+        Http::fake(['https://api.github.com/repos/Gaslandie/cipimmo/actions/workflows/bluehost.yml/dispatches' => Http::response('', 204)]);
+        $this->actingAs($this->admin())->withSession(['admin_version' => 1]);
+        $item = $this->getJson('/admin/api/rentals')->json('items.0');
+        for ($revision = 1; $revision <= 3; $revision++) {
+            $item['rental']['description'] = 'Description confirmée, version '.$revision;
+            $this->patchJson('/admin/api/rentals/'.$item['rental']['slug'], ['rental' => $item['rental'], 'revision' => $revision])
+                ->assertOk()->assertJsonPath('revision', $revision + 1);
+            $this->postJson('/admin/api/photos', [])->assertUnprocessable();
+        }
+        $this->postJson('/admin/api/publish')->assertOk();
+        $this->postJson('/admin/api/publish')->assertOk();
+        $this->postJson('/admin/api/publish')->assertTooManyRequests()->assertHeader('Retry-After');
+        Http::assertSentCount(2);
+
+        $this->actingAs($this->admin())->withSession(['admin_version' => 1]);
+        $this->postJson('/admin/api/publish')->assertOk();
+        Http::assertSentCount(3);
+    }
+
     public function test_photo_is_reencoded_and_false_images_are_refused(): void
     {
         if (! function_exists('imagewebp')) {
