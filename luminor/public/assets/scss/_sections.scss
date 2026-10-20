@@ -1744,7 +1744,7 @@
     .page-title.style-1.home-search-hero .title { white-space: normal; font-size: clamp(26px, 7vw, 34px); line-height: 1.2; }
 }
 .rental-card .tag { color: #16324e; }
-.cip-rentals .breadcrumb li { color: #475569; }
+.cip-rentals .breadcrumb li, .rental-detail .breadcrumb li { color: #475569; }
 #main-content :is(.section-location, .section-about-1, .section-features-property-4, .section-testimonials, .sw-layout) .text_secondary-color-2 { color: #526171; }
 .section-features-property .property-item :is(.title, p) { color: #d1dae2; }
 .section-features-property .tab-content[hidden] { display: none; }

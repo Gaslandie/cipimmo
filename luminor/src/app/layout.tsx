@@ -8,6 +8,8 @@ import { RentalFavoritesProvider } from "@/components/common/RentalFavoriteButto
 import BackToTop from "@/components/common/BackToTop";
 import ClientScripts from "@/components/common/ClientScripts";
 import { Metadata } from "next";
+import StructuredData from "@/components/common/StructuredData";
+import { siteStructuredData } from "@/data/structuredData";
 
 const manrope = Manrope({
     variable: "--font-manrope",
@@ -35,6 +37,7 @@ export default function RootLayout({
     return (
         <html lang="fr">
             <body className={manrope.variable}>
+                <StructuredData id="cip-site-data" data={siteStructuredData()} />
                 <RentalFavoritesProvider><div id="wrapper">{children}</div></RentalFavoritesProvider>
                 <ClientScripts />
                 <BackToTop />

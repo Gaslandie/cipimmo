@@ -8,6 +8,8 @@ import RentalGallery from "@/components/common/RentalGallery";
 import RentalCard from "@/components/common/RentalCard";
 import { RentalFavoriteButton } from "@/components/common/RentalFavoriteButton";
 import RentalContact from "@/components/common/RentalContact";
+import StructuredData from "@/components/common/StructuredData";
+import { breadcrumbStructuredData, rentalStructuredData } from "@/data/structuredData";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -44,11 +46,20 @@ export default async function RentalPage({ params }: PageProps) {
 
     return (
         <Layout>
+            <StructuredData id="cip-rental-data" data={rentalStructuredData(rental)} />
+            <StructuredData id="cip-breadcrumb-data" data={breadcrumbStructuredData([{ name: "Accueil", path: "/" }, { name: "Nos logements", path: "/listing-left-sidebar/" }, { name: rental.title, path: `/logements/${rental.slug}/` }])} />
             <div className="properties-details rental-detail">
                 <div className="tf-container tf-spacing-7">
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="properties-title mb_30">
+                                <nav aria-label="Fil d’Ariane">
+                                    <ol className="breadcrumb style-1 text-button fw-4 mb_16">
+                                        <li><Link href="/">Accueil</Link></li>
+                                        <li><Link href="/listing-left-sidebar">Nos logements</Link></li>
+                                        <li aria-current="page">{rental.title}</li>
+                                    </ol>
+                                </nav>
                                 <div className="wrap-tag d-flex gap_8 mb_12">
                                     <span className="tag rent text-button-small fw-6 text_primary-color">{rental.duration || "Durée : à confirmer"}</span>
                                     <span className="tag categoreis text-button-small fw-6 text_primary-color">{rental.category}</span>
