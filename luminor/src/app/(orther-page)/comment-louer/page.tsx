@@ -4,10 +4,9 @@ import Layout from "@/components/layouts/Layout-defaul";
 
 export const metadata = { title: "Comment louer — CIP IMMO" };
 
-// Explications reprises de la maquette CIP IMMO, dans les styles existants du thème.
 const steps = [
     ["Trouvez votre logement", "Choisissez une ville et affinez votre recherche selon vos besoins et votre budget."],
-    ["Consultez les détails", "Consultez la surface, les chambres et le tarif communiqué. Les photos sont à venir ; les prix manquants sont à discuter."],
+    ["Consultez les détails", "Découvrez les photos disponibles, les équipements et les caractéristiques du logement. Consultez le tarif et sa période : par jour, par nuit ou par mois. Un prix non communiqué est indiqué « À discuter »."],
     ["Échangez avec CIP IMMO", "Appelez-nous ou écrivez-nous sur WhatsApp pour confirmer la disponibilité et les conditions."],
 ];
 

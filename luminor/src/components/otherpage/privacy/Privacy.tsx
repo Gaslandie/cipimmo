@@ -53,7 +53,7 @@ export default function Privacy() {
                                         1. Utiliser le site{" "}
                                     </h5>
                                     <p className="mb_12">
-                                        Le site CIP IMMO vous permet de consulter des appartements à louer en Guinée. Les annonces présentent les informations communiquées sur les surfaces, les chambres et les tarifs. Les photos sont à venir ; les prix non communiqués sont indiqués « À discuter ».
+                                        Le site CIP IMMO vous permet de consulter des logements à louer en Guinée. Les annonces présentent les photos disponibles et les informations communiquées sur les surfaces, les chambres et les tarifs. Les prix non communiqués sont indiqués « À discuter ». La période du tarif est précisée sur chaque fiche lorsqu’un prix est renseigné.
                                     </p>
                                     <p className="mb_12">
                                         Vous pouvez parcourir les logements sans créer de compte. Pour connaître les disponibilités et les conditions applicables à vos dates, contactez directement notre équipe.

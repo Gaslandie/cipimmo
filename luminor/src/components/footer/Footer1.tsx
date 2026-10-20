@@ -28,7 +28,7 @@ export default function Footer1() {
                                         Notre adresse :
                                     </p>
                                     <p className="text_white">
-                                        Nongo Kiroti, Conakry Guinée
+                                        Nongo Kiroti, Conakry, Guinée
                                     </p>
                                 </div>
                                 <div className="text-body-default text_secondary-color mb_16">
@@ -92,14 +92,14 @@ export default function Footer1() {
                         <div className="col-lg-4">
                             <div className="footer-newsletter footer-item">
                                 <div className="footer-heading text-title fw-6 text_white mb_16">
-                                    Recevoir nos offres
+                                    Demander nos offres
                                 </div>
                                 <p className="text_color-1 mb_20">
-                                    Indiquez votre adresse pour demander à notre équipe les offres adaptées à votre recherche.
+                                    Demandez les offres de location à notre équipe sur WhatsApp. Votre adresse e-mail sera ajoutée à votre message.
                                 </p>
                                 <OfferRequest />
                                 <p className="text_color-1">
-                                    Votre demande se poursuit sur WhatsApp. Consultez nos
+                                    Consultez nos{" "}
                                     <Link
                                         href="/privacy-policy#terms"
                                         className="hover-underline-link link"

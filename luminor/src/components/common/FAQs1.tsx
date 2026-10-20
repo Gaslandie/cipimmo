@@ -10,7 +10,7 @@ const faqsData = [
   },
   {
     question: "Que comprend le tarif affiché ?",
-    answer: "Les tarifs communiqués sont indiqués en francs guinéens, avec leur période : par jour ou par mois. Un prix non communiqué est indiqué « À discuter ». Demandez à CIP IMMO les charges, la caution et les conditions applicables au logement choisi.",
+    answer: "Chaque tarif communiqué est indiqué en francs guinéens, avec sa période : par jour, par nuit ou par mois. Un prix non communiqué est indiqué « À discuter ». Demandez à CIP IMMO les charges, la caution et les conditions applicables au logement choisi.",
     id: "accordion-faq-2",
     expanded: true,
   },

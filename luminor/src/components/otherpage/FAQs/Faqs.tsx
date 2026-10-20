@@ -40,7 +40,7 @@ export default function Faqs() {
                                             </div>
                                         </summary><div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Le tarif dépend du logement et de la durée. Les prix communiqués sont indiqués en francs guinéens, par jour ou par mois selon le logement. Un prix non communiqué est indiqué « À discuter ».
+                                                    Le tarif dépend du logement et de la durée. Les prix communiqués sont indiqués en francs guinéens, avec la période correspondante : par jour, par nuit ou par mois. Un prix non communiqué est indiqué « À discuter ».
                                                 </p>
                                                 <p>
                                                     Précisez vos dates et demandez à notre équipe les charges éventuelles, la caution et les autres conditions avant de confirmer votre location.
@@ -55,7 +55,7 @@ export default function Faqs() {
                                             </div>
                                         </summary><div className="accordion-faqs-content">
                                                 <p className="mb_12">
-                                                    Vous pouvez parcourir les annonces et les caractéristiques communiquées librement, sans créer de compte. Les photos des logements sont à venir.
+                                                    Vous pouvez consulter librement les annonces, les photos disponibles et les caractéristiques communiquées, sans créer de compte. Contactez notre équipe pour confirmer la disponibilité du logement à vos dates.
                                                 </p>
                                                 <p>
                                                     Pour avancer sur votre recherche, échangez directement avec notre équipe en indiquant le logement et les dates souhaités.

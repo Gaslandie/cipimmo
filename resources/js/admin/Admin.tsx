@@ -129,7 +129,7 @@ export default function Admin() {
         </>}
         {tab === 'settings' && <div className="settings-grid"><section className="card card-body"><h2>Publier les modifications</h2><p>Vérifiez vos logements et leurs photos, puis lancez la publication. Le site reste disponible pendant sa préparation.</p><button className="btn btn-primary align-self-start" disabled={busy} onClick={async () => { setBusy(true); setError(''); setNotice(''); try { const result = await api('publish', { method: 'POST' }); setNotice(result.message); } catch (e) { setError((e as Error).message); } finally { setBusy(false); } }}>{busy ? 'Demande en cours…' : 'Publier sur le site'}</button><a className="btn btn-outline-primary align-self-start mt-3" href="/admin/api/export" download>Télécharger une copie du catalogue</a><p className="small mt-3 mb-0">Une demande de publication ne signifie pas que la mise en ligne est terminée. Vérifiez ensuite les logements sur le site.</p></section><section className="card card-body"><h2>Accès et sauvegardes</h2><p>Compte connecté : <strong>{auth.username}</strong>.</p><p>Les anciennes versions des logements sont conservées. Les mises à jour du code doivent préserver vos données et vos photos.</p><p className="mb-0">L’administration reste réservée à CIP IMMO. Aucune réservation ni aucun paiement ne sont effectués ici.</p></section></div>}
       </>}
-      <footer className="admin-footer">CIP IMMO · Administration privée · Base visuelle Lahomes adaptée</footer>
+      <footer className="admin-footer">CIP IMMO · Administration privée</footer>
     </div></main>
   </div>;
 }

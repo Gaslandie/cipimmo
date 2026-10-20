@@ -35,7 +35,7 @@ export default function FormContact() {
                                     Localisation de l’entreprise :
                                 </div>
                                 <p>
-                                    Nongo Kiroti, Conakry Guinée
+                                    Nongo Kiroti, Conakry, Guinée
                                 </p>
                             </div>
                         </li>

@@ -19,9 +19,6 @@ const agents: Agent[] = [
     img: "/assets/images/section/agent-1.jpg?v=cip-photos-1",
     socials: [
       { icon: "icon-FacebookLogo", href: "https://www.facebook.com/profile.php?id=61595249675572" },
-      { icon: "icon-XLogo", href: "#" },
-      { icon: "icon-InstagramLogo", href: "#" },
-      { icon: "icon-YoutubeLogo", href: "#" },
     ],
   },
   {
@@ -30,9 +27,6 @@ const agents: Agent[] = [
     img: "/assets/images/section/agent-2.jpg?v=cip-photos-1",
     socials: [
       { icon: "icon-FacebookLogo", href: "https://www.facebook.com/profile.php?id=61595249675572" },
-      { icon: "icon-XLogo", href: "#" },
-      { icon: "icon-InstagramLogo", href: "#" },
-      { icon: "icon-YoutubeLogo", href: "#" },
     ],
   },
   {
@@ -41,9 +35,6 @@ const agents: Agent[] = [
     img: "/assets/images/section/agent-1.jpg?v=cip-photos-1",
     socials: [
       { icon: "icon-FacebookLogo", href: "https://www.facebook.com/profile.php?id=61595249675572" },
-      { icon: "icon-XLogo", href: "#" },
-      { icon: "icon-InstagramLogo", href: "#" },
-      { icon: "icon-YoutubeLogo", href: "#" },
     ],
   },
   {
@@ -52,9 +43,6 @@ const agents: Agent[] = [
     img: "/assets/images/section/agent-2.jpg?v=cip-photos-1",
     socials: [
       { icon: "icon-FacebookLogo", href: "https://www.facebook.com/profile.php?id=61595249675572" },
-      { icon: "icon-XLogo", href: "#" },
-      { icon: "icon-InstagramLogo", href: "#" },
-      { icon: "icon-YoutubeLogo", href: "#" },
     ],
   },
 ];
@@ -132,7 +120,7 @@ export default function Agents() {
                   <ul className="social">
                     {agent.socials.map((social, idx) => (
                       <li key={idx}>
-                        <a className={social.icon} href={social.href !== "#" ? social.href : undefined} role="link" aria-disabled={social.href === "#" ? true : undefined} aria-label={`${social.icon.replace("icon-", "").replace("Logo", "")} CIP IMMO`}></a>
+                        <a className={social.icon} href={social.href} aria-label={`${social.icon.replace("icon-", "").replace("Logo", "")} CIP IMMO`}></a>
                       </li>
                     ))}
                   </ul>
