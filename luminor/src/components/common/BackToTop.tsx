@@ -41,6 +41,7 @@ const BackToTop = () => {
     const handleClick = (e: MouseEvent) => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      document.getElementById("main-content")?.focus({ preventScroll: true });
     };
 
     // Lần đầu khởi tạo

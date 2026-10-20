@@ -66,10 +66,10 @@ export default function OurPricing() {
                 <span className="sub text-label text-uppercase fw-6 text_secondary-color">
                     Nos formules
                 </span>
-                <h3>
+                <h2 className="h3">
                     Une location adaptée <br />
                     à votre rythme
-                </h3>
+                </h2>
             </div>
             <div className="tf-grid-layout lg-col-3">
                 {pricingData.map((plan, idx) => (
@@ -86,9 +86,9 @@ export default function OurPricing() {
                             </div>
                         )}
                         <div className="heading d-grid gap_8 mb_24">
-                            <h5>{plan.name}</h5>
+                            <h3 className="h5">{plan.name}</h3>
                             <p>{plan.subtitle}</p>
-                            <h3>{plan.price}</h3>
+                            <p className="h3">{plan.price}</p>
                         </div>
                         <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?${plan.query}`} className={plan.buttonClass}>
                             <span>Découvrir cette formule</span>

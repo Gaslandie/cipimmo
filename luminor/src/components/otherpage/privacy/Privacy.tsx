@@ -45,13 +45,13 @@ export default function Privacy() {
                         </div>
                         <div className="col-lg-8">
                             <div className="content">
-                                <h4 className="mb_32 heading-title">
+                                <h2 className="h4 mb_32 heading-title">
                                     Utilisation du site
-                                </h4>
+                                </h2>
                                 <div id="terms">
-                                    <h5 className="title mb_12 text-capitalize">
+                                    <h2 className="h5 title mb_12 text-capitalize">
                                         1. Utiliser le site{" "}
-                                    </h5>
+                                    </h2>
                                     <p className="mb_12">
                                         Le site CIP IMMO vous permet de consulter des logements à louer en Guinée. Les annonces présentent les photos disponibles et les informations communiquées sur les surfaces, les chambres et les tarifs. Les prix non communiqués sont indiqués « À discuter ». La période du tarif est précisée sur chaque fiche lorsqu’un prix est renseigné.
                                     </p>
@@ -63,9 +63,9 @@ export default function Privacy() {
                                     </p>
                                 </div>
                                 <div id="limitations" className="pt_32">
-                                    <h5 className="title mb_12 text-capitalize">
+                                    <h2 className="h5 title mb_12 text-capitalize">
                                         2. Votre recherche
-                                    </h5>
+                                    </h2>
                                     <p className="mb_12">
                                         Les filtres vous aident à choisir un quartier, une durée, un nombre de chambres et un budget. Les montants par jour, par nuit et par mois correspondent à des durées différentes.
                                     </p>
@@ -91,9 +91,9 @@ export default function Privacy() {
                                     <p>Les champs des formulaires servent à préparer un message. Le site ne les enregistre pas dans sa base de données ni dans les favoris. Lorsque vous ouvrez WhatsApp, le texte est transmis à ce service pour préparer le message ; vous choisissez ensuite de l’envoyer à CIP IMMO.</p>
                                 </section>
                                 <div id="revisions" className="pt_32">
-                                    <h5 className="title mb_12 text-capitalize">
+                                    <h2 className="h5 title mb_12 text-capitalize">
                                         3. Vos échanges
-                                    </h5>
+                                    </h2>
                                     <p className="mb_12">
                                         Les coordonnées et le message saisis servent à préparer votre demande de logement. Vous choisissez les informations que vous souhaitez partager avec CIP IMMO.
                                     </p>
@@ -105,9 +105,9 @@ export default function Privacy() {
                                     </p>
                                 </div>
                                 <div id="modifications" className="pt_32">
-                                    <h5 className="title mb_12 text-capitalize">
+                                    <h2 className="h5 title mb_12 text-capitalize">
                                         4. Services externes
-                                    </h5>
+                                    </h2>
                                     <p className="mb_12">
                                         Certains liens ouvrent un service extérieur au site CIP IMMO, comme WhatsApp pour nous écrire ou Google Maps pour consulter un secteur.
                                     </p>
@@ -121,9 +121,9 @@ export default function Privacy() {
                                     </p>
                                 </div>
                                 <div id="risks" className="pt_32">
-                                    <h5 className="title mb_12 text-capitalize">
+                                    <h2 className="h5 title mb_12 text-capitalize">
                                         5. Nous contacter
-                                    </h5>
+                                    </h2>
                                     <p className="mb_12">
                                         CIP IMMO vous accompagne dans votre recherche de location en Guinée, depuis Nongo Kiroti, à Conakry.
                                     </p>

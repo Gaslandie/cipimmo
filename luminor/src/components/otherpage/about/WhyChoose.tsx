@@ -29,10 +29,10 @@ export default function WhyChoose() {
                     <span className="sub text-uppercase fw-6 text_secondary-color-2">
                         Pourquoi CIP IMMO ?
                     </span>
-                    <h3 className="text_white split-text effect-blur-fade">
+                    <h2 className="h3 text_white split-text effect-blur-fade">
                         Votre location, plus simple <br />
                         à chaque étape
-                    </h3>
+                    </h2>
                 </div>
                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/contacts`} className="tf-btn btn-bg-white btn-px-32">
                     <span>Nous contacter</span>
@@ -46,7 +46,7 @@ export default function WhyChoose() {
                             <i className={item.icon}></i>
                         </div>
                         <div className="content">
-                            <h5 className="text_white mb_8">{item.title}</h5>
+                            <h3 className="h5 text_white mb_8">{item.title}</h3>
                             <p className="text_secondary-color-2">
                                 {item.description}
                             </p>

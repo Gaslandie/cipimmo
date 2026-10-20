@@ -44,7 +44,7 @@ export default function RentingPage() {
                                 <p className="mb_24">Du choix du logement à la confirmation, notre équipe vous renseigne sur chaque étape.</p>
                                 {steps.map(([title, description], index) => (
                                     <div key={title} className="mb_24">
-                                        <h4 className="mb_12">0{index + 1}. {title}</h4>
+                                        <h3 className="h4 mb_12">0{index + 1}. {title}</h3>
                                         <p>{description}</p>
                                     </div>
                                 ))}

@@ -57,12 +57,12 @@ export default function Agents() {
               <span className="sub text-uppercase fw-6 text_secondary-color-2">
                 Notre équipe
               </span>
-              <h3>L’équipe CIP IMMO</h3>
+              <h2 className="h3">L’équipe CIP IMMO</h2>
             </div>
             <div className="content mb_32">
-              <h6 className="mb_12">
+              <p className="h6 mb_12">
                 À vos côtés, du premier échange à votre arrivée
-              </h6>
+              </p>
               <p className="text-body-2">
                 Une question sur un quartier, un tarif ou les conditions de
                 location ? Notre équipe basée à Nongo Kiroti, à Conakry, vous écoute et vous

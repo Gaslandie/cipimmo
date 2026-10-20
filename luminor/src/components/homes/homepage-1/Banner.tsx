@@ -21,9 +21,9 @@ export default function Banner() {
                                     <i className="icon-Certificate"></i>
                                 </div>
                             </div>
-                            <h6 className="text_secondary-color sub">
+                            <p className="h6 text_secondary-color sub">
                                 Logements proposés
-                            </h6>
+                            </p>
                         </div>
                         <div className="d-flex gap_12 bot">
                             <div className="tf-box-icon style-1">
@@ -35,9 +35,9 @@ export default function Banner() {
                                         <i className="icon-BuildingOffice"></i>
                                     </div>
                                 </div>
-                                <h6 className="text_secondary-color sub">
+                                <p className="h6 text_secondary-color sub">
                                     Clients accompagnés
-                                </h6>
+                                </p>
                             </div>
                             <div className="tf-box-icon style-1">
                                 <div className="heading d-flex justify-content-between mb_19">
@@ -48,9 +48,9 @@ export default function Banner() {
                                         <i className="icon-ChartDonut"></i>
                                     </div>
                                 </div>
-                                <h6 className="text_secondary-color sub">
+                                <p className="h6 text_secondary-color sub">
                                     Villes couvertes
-                                </h6>
+                                </p>
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,7 @@ export default function ContactPage() {
             <PageTitle />
             <div className="tf-container section-contact tf-spacing-1">
                 <section className="contact-location-card" aria-labelledby="contact-locations-title">
-                    <h4 id="contact-locations-title">Localisation de CIP IMMO</h4>
+                    <h2 className="h4" id="contact-locations-title">Localisation de CIP IMMO</h2>
                     <p>Adresse de notre entreprise : Nongo Kiroti, Conakry, Guinée.</p>
                     <button
                         type="button"

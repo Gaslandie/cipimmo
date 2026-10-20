@@ -11,7 +11,7 @@ export default function Faqs() {
                     <div className="row">
                         <div className="col-lg-8">
                             <div className="faq-item">
-                                <h4 className="mb_18">Trouver son logement</h4>
+                                <h2 className="h4 mb_18">Trouver son logement</h2>
                                 <ul
                                     className="accordion-wrap"
                                     id="accordion-faq"
@@ -94,9 +94,9 @@ export default function Faqs() {
                                 </ul>
                             </div>
                             <div className="faq-item">
-                                <h4 className="mb_18">
+                                <h2 className="h4 mb_18">
                                     Préparer son séjour
-                                </h4>
+                                </h2>
                                 <ul
                                     className="accordion-wrap"
                                     id="accordion-faq1"
@@ -179,9 +179,9 @@ export default function Faqs() {
                                 </ul>
                             </div>
                             <div className="faq-item">
-                                <h4 className="mb_15">
+                                <h2 className="h4 mb_15">
                                     Pendant votre location
-                                </h4>
+                                </h2>
                                 <ul
                                     className="accordion-wrap"
                                     id="accordion-faq2"
@@ -271,9 +271,9 @@ export default function Faqs() {
                                     prepare={submitFAQQuestion} label="Poser une question à CIP IMMO"
                                 >
                                     <div className="heading">
-                                        <h5 className="mb_8">
+                                        <h2 className="h5 mb_8">
                                             Posez votre question
-                                        </h5>
+                                        </h2>
                                         <p>
                                             Notre équipe est à votre écoute
                                         </p>

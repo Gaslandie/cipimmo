@@ -58,9 +58,9 @@ export default function Process1() {
                             <span className="sub text-uppercase fw-6 text_secondary-color-2">
                                 Comment louer
                             </span>
-                            <h3 className="split-text effect-blur-fade">
+                            <h2 className="h3 split-text effect-blur-fade">
                                 Votre location en trois étapes
-                            </h3>
+                            </h2>
                         </div>
                         {tabs.map((tab) => (
                             <div
@@ -70,10 +70,11 @@ export default function Process1() {
                                 }`}
                                 onMouseEnter={() => handleMouseEnter(tab.id)}
                                 onMouseLeave={handleMouseLeave}
+                                onFocus={() => setActiveTab(tab.id)}
                             >
                                 <span className="line"></span>
                                 <div className="content">
-                                    <h5 className="title mb_8">{tab.title}</h5>
+                                    <h3 className="h5 title mb_8"><button type="button" className="process-select" aria-pressed={activeTab === tab.id} aria-controls={`process-${tab.id}`} onClick={() => setActiveTab(tab.id)}>{tab.title}</button></h3>
                                     <p>{tab.content}</p>
                                 </div>
                             </div>
@@ -85,7 +86,8 @@ export default function Process1() {
                             {tabs.map((tab) => (
                                 <div
                                     key={tab.id}
-                                    id={tab.id}
+                                    id={`process-${tab.id}`}
+                                    hidden={activeTab !== tab.id}
                                     className={`tab-content ${
                                         activeTab === tab.id ? "active" : ""
                                     }`}
@@ -106,9 +108,9 @@ export default function Process1() {
                 </div>
 
                 <div>
-                    <h3 className="split-text effect-blur-fade">
+                    <h2 className="h3 split-text effect-blur-fade">
                         CIP IMMO en quelques chiffres
-                    </h3>
+                    </h2>
                     <div className="wrap-counter">
                         {[
                             { number: cipStatistics.rentals, label: "Logements proposés" },
@@ -123,9 +125,9 @@ export default function Process1() {
                                 <div className="counter-number h1">
                                     <OdometerCounter value={item.number} />
                                 </div>
-                                <h6 className="text_secondary-color">
+                                <p className="h6 text_secondary-color">
                                     {item.label}
-                                </h6>
+                                </p>
                             </div>
                         ))}
                     </div>

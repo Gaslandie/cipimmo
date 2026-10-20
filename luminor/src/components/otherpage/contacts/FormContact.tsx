@@ -11,7 +11,7 @@ export default function FormContact() {
             <div className="col-md-6">
                 <div className="box-contact">
                     <div className="heading mb_23">
-                        <h4 className="mb_8">Échangeons avec vous</h4>
+                        <h2 className="h4 mb_8">Échangeons avec vous</h2>
                         <p>
                             Une question sur nos services ou un projet immobilier en Guinée ? Notre équipe est à votre écoute.
                         </p>
@@ -64,7 +64,7 @@ export default function FormContact() {
                         </li>
                     </ul>
                     <div>
-                        <h5 className="mb_12">Suivez-nous :</h5>
+                        <h3 className="h5 mb_12">Suivez-nous :</h3>
                         <ul className="tf-social d-flex gap_24">
                             <li>
                                 <a href="https://www.facebook.com/profile.php?id=61595249675572" className="icon-FacebookLogo" aria-label="Facebook de CIP IMMO"></a>
@@ -77,7 +77,7 @@ export default function FormContact() {
             <div className="col-md-6">
                 <WhatsAppForm className="form-contact" prepare={sendContact} label="Contacter CIP IMMO">
                     <div className="heading mb_24">
-                        <h4 className="mb_8">Préparez votre message</h4>
+                        <h2 className="h4 mb_8">Préparez votre message</h2>
                         <p>
                             Présentez votre demande. Nous préparerons votre message pour l’envoyer sur WhatsApp.
                         </p>

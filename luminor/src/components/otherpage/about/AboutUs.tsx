@@ -6,9 +6,9 @@ export default function AboutUs() {
         <div className="tf-container section-about">
             <div className="heading-section justify-content-center text-center mb_48">
                 <span className="sub text-uppercase fw-6">À propos</span>
-                <h3 className="split-text split-lines-rotation-x">
+                <h2 className="h3 split-text split-lines-rotation-x">
                     Votre partenaire pour louer <br /> en toute simplicité
-                </h3>
+                </h2>
             </div>
             <div
                 className="parallaxie"
@@ -28,9 +28,9 @@ export default function AboutUs() {
                                     <i className="icon-Certificate"></i>
                                 </div>
                             </div>
-                            <h6 className="text_secondary-color sub">
+                            <p className="h6 text_secondary-color sub">
                                 Logements proposés
-                            </h6>
+                            </p>
                         </div>
                         <div className="d-flex gap_12 bot">
                             <div className="tf-box-icon style-1">
@@ -42,9 +42,9 @@ export default function AboutUs() {
                                         <i className="icon-BuildingOffice"></i>
                                     </div>
                                 </div>
-                                <h6 className="text_secondary-color sub">
+                                <p className="h6 text_secondary-color sub">
                                     Clients accompagnés
-                                </h6>
+                                </p>
                             </div>
                             <div className="tf-box-icon style-1">
                                 <div className="heading d-flex justify-content-between mb_19">
@@ -55,9 +55,9 @@ export default function AboutUs() {
                                         <i className="icon-ChartDonut"></i>
                                     </div>
                                 </div>
-                                <h6 className="text_secondary-color sub">
+                                <p className="h6 text_secondary-color sub">
                                     Villes couvertes
-                                </h6>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -65,10 +65,10 @@ export default function AboutUs() {
             </div>
             <div className="tf-grid-layout md-col-2">
                 <div className="box">
-                    <h4 className="title d-flex gap_12 align-items-center mb_20">
+                    <h3 className="h4 title d-flex gap_12 align-items-center mb_20">
                         <i className="icon-Crown"></i>
                         Notre mission
-                    </h4>
+                    </h3>
                     <p className="mb_8">
                         Vous aider à trouver un logement adapté à votre budget,
                         à votre rythme et à vos envies, pour quelques jours
@@ -82,10 +82,10 @@ export default function AboutUs() {
                     </p>
                 </div>
                 <div className="box">
-                    <h4 className="title d-flex gap_12 align-items-center mb_20">
+                    <h3 className="h4 title d-flex gap_12 align-items-center mb_20">
                         <i className="icon-Target"></i>
                         Notre vision
-                    </h4>
+                    </h3>
                     <p className="mb_8">
                         Faire de la recherche de logement en Guinée une démarche
                         plus simple, avec des informations claires et une équipe

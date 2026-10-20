@@ -9,9 +9,9 @@ export default function Location() {
                     <span className="sub text-uppercase fw-6 text_secondary-color-2 split-text effect-rotate">
                         Nos destinations
                     </span>
-                    <h3 className="split-text effect-blur-fade">
+                    <h2 className="h3 split-text effect-blur-fade">
                         Choisissez une ville ou un quartier
-                    </h3>
+                    </h2>
                 </div>
                 <nav className="rental-destination-counts" aria-label="Logements proposés par ville">
                     {rentalLocationOptions.map(city => <a key={city} href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent(city)}`}>
@@ -22,7 +22,7 @@ export default function Location() {
                 <p className="destination-scroll-hint">Faites glisser les petites cartes pour découvrir les autres destinations.</p>
                 <div className="wrap-location">
                     <div className="tf-grid-layout lg-col-2 destination-row">
-                        <div className="destination-strip" tabIndex={0} role="region" aria-label="Destinations à faire défiler">
+                        <div className="destination-strip" tabIndex={0} role="region" aria-label="Destinations à faire défiler : Coléah et Coyah Km54">
                             <div
                                 className="location-item hover-image"
                                 data-delay="0.2"
@@ -94,7 +94,7 @@ export default function Location() {
                                 <p>{rentalCountLabel("Conakry")}</p>
                             </div>
                         </div>
-                        <div className="destination-strip" tabIndex={0} role="region" aria-label="Destinations à faire défiler">
+                        <div className="destination-strip" tabIndex={0} role="region" aria-label="Destinations à faire défiler : Coyah et la Guinée">
                             <div
                                 className="location-item hover-image"
                                 data-delay="0.3"

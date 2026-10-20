@@ -48,7 +48,7 @@ export default function FAQs1() {
             />
           </div>
           <div className="content">
-            <h3 className="title text_white mb_12">Parlons de votre logement</h3>
+            <h2 className="h3 title text_white mb_12">Parlons de votre logement</h2>
             <p className="text_white text-body-2 mb_20">
               Une question sur un appartement, les tarifs ou votre arrivée ? Contactez CIP IMMO pour préparer votre court séjour ou votre installation en Guinée.
             </p>
@@ -61,13 +61,13 @@ export default function FAQs1() {
         <div className="wrap-accordion">
           <div className="heading-section mb_48">
             <span className="sub text-uppercase fw-6 text_secondary-color">Questions fréquentes</span>
-            <h3>Les réponses pour préparer votre location</h3>
+            <h2 className="h3">Les réponses pour préparer votre location</h2>
           </div>
           <ul className="accordion-wrap" id="accordion-faq">
             {faqsData.map((faq) => (
               <li className="accordion-item" key={faq.id}><details className="rental-question" open={faq.expanded}><summary className="accordion-title">
                   <div className="heading">
-                    <h6 className="title">{faq.question}</h6>
+                    <h3 className="h6 title">{faq.question}</h3>
                     <span className="icon icon-CaretDown"></span>
                   </div>
                 </summary><div className="accordion-faqs-content">

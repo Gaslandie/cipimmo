@@ -44,7 +44,7 @@ export default function RentalContact({ rental, visit = false, compact = false, 
         <noscript><p><a href={`https://wa.me/224623417510?text=${encodeURIComponent(message)}`}>Demander ce logement sur WhatsApp</a>.</p></noscript>
     </form>;
     return <div className={`rental-contact${compact ? " rental-contact--compact" : ""}`}>
-        <a href={`https://wa.me/224623417510?text=${encodeURIComponent(message)}`} className="tf-btn btn-bg-1" aria-label={`${visit ? "Demander une visite" : "Écrire sur WhatsApp"} : ${rental.title}, référence ${rental.slug}`}>
+        <a href={`https://wa.me/224623417510?text=${encodeURIComponent(message)}`} className="tf-btn btn-bg-1" aria-label={`${visit ? "Demander une visite ou une vidéo" : "Écrire sur WhatsApp"} : ${rental.title}, référence ${rental.slug}`}>
             {compact && <svg className="rental-action-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.3A8.5 8.5 0 1 1 20 11.5Z"/><path d="M8 7.5c0 4 3.5 7.5 7.5 7.5l1-2.5-2.5-1-1 1c-1.5-.7-2.3-1.5-3-3l1-1-1-2.5Z"/></svg>}
             <span className="rental-action-label">{visit ? "Demander une visite ou une vidéo" : "WhatsApp"}</span>
         </a>

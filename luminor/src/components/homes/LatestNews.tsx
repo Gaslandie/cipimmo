@@ -20,9 +20,9 @@ export default function LatestNews() {
                     <span className="sub text-uppercase fw-6 text_secondary-color-2 split-text effect-rotate">
                         Nos conseils
                     </span>
-                    <h3 className="split-text effect-blur-fade">
+                    <h2 className="h3 split-text effect-blur-fade">
                         Bien louer avec CIP IMMO
-                    </h3>
+                    </h2>
                 </div>
                 <Swiper
                     className="mySwiper"
@@ -73,14 +73,14 @@ export default function LatestNews() {
                                     ></Link>
                                 </div>
                                 <div className="article-content">
-                                    <h5 className="title mb_12">
+                                    <h3 className="h5 title mb_12">
                                         <Link
                                             href={item.href}
                                             className="hover-line-text"
                                         >
                                             {item.title}
                                         </Link>
-                                    </h5>
+                                    </h3>
                                 </div>
                             </div>
                         </SwiperSlide>
