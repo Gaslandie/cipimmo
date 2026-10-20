@@ -51,6 +51,7 @@ export const cipStatistics = {
 };
 
 export const rentalDistrictOptions = [...new Set(cipRentals.map((rental) => rental.city))];
+export const rentalDistrictsForCity = (city: string) => [...new Set(cipRentals.filter(rental => rental.municipality === city).map(rental => rental.city))];
 export function rentalAvailability(rental: Rental) {
     return rental.availability === 'Disponible' ? 'Disponible — à confirmer avec CIP IMMO pour vos dates'
         : rental.availability === 'Indisponible' ? 'Actuellement indisponible'
@@ -102,7 +103,7 @@ export function rentalStayError(arrival: string, departure: string, today = rent
     return "";
 }
 
-export const emptyRentalFilters = { keyword: "", duration: "", city: "", bedrooms: "", furnished: "", budget: "", budgetPeriod: "", minSize: "", maxSize: "" };
+export const emptyRentalFilters = { keyword: "", duration: "", city: "", district: "", bedrooms: "", furnished: "", budget: "", budgetPeriod: "", minSize: "", maxSize: "" };
 export type RentalFilters = typeof emptyRentalFilters;
 export function rentalBudgetPeriods(duration: string) {
     return ["courte", "Court séjour"].includes(duration) ? ["jour", "nuit"] : ["longue", "Longue durée"].includes(duration) ? ["mois"] : ["mois", "jour", "nuit"];
@@ -130,6 +131,7 @@ export function readRentalFilters(params: URLSearchParams): { filters: RentalFil
     }
     const allowed: Record<string, string[]> = {
         duration: ["courte", "longue"], city: [...rentalLocationOptions, ...rentalDistrictOptions],
+        district: rentalDistrictOptions,
         bedrooms: ["1", "2", "3", "4+"], furnished: ["meuble", "non-meuble"],
         budgetPeriod: ["jour", "nuit", "mois"], minSize: rentalSizes.map(s => s.value), maxSize: rentalSizes.map(s => s.value),
     };
@@ -139,6 +141,16 @@ export function readRentalFilters(params: URLSearchParams): { filters: RentalFil
         if (values.length > 1 || (key === "keyword" ? value.length > 200 : value && (key === "budget" ? !validRentalBudget(value) : !allowed[key].includes(value)))) invalid = true;
         else filters[key] = value;
     }
+    // Existing destination links used city for both cities and districts.
+    if (filters.city && !rentalLocationOptions.includes(filters.city)) {
+        const municipalities = [...new Set(cipRentals.filter(rental => rental.city === filters.city).map(rental => rental.municipality))];
+        if (municipalities.length !== 1 || (filters.district && filters.district !== filters.city)) invalid = true;
+        else {
+            filters.district = filters.city;
+            filters.city = municipalities[0];
+        }
+    }
+    if (filters.district && !rentalDistrictsForCity(filters.city).includes(filters.district)) invalid = true;
     filters.duration = filters.duration === "courte" ? "Court séjour" : filters.duration === "longue" ? "Longue durée" : "";
     filters.furnished = filters.furnished === "meuble" ? "Meublé" : filters.furnished === "non-meuble" ? "Non meublé" : "";
     if (filters.budget && !rentalBudgetPeriods(filters.duration).includes(filters.budgetPeriod)) invalid = true;
@@ -157,7 +169,8 @@ export function filterRentals(filters: RentalFilters) {
     const keyword = normalizeRentalSearch(filters.keyword.trim());
     return cipRentals.filter(rental =>
         (!filters.duration || rental.duration === filters.duration) &&
-        (!filters.city || matchesRentalLocation(rental, filters.city)) &&
+        (!filters.city || rental.municipality === filters.city) &&
+        (!filters.district || rental.city === filters.district) &&
         (!filters.bedrooms || (rental.beds !== null && (filters.bedrooms === "4+" ? rental.beds >= 4 : rental.beds === Number(filters.bedrooms)))) &&
         (!filters.furnished || rental.furnished === filters.furnished) &&
         (!filters.budget || (validRentalBudget(filters.budget) && rentalBudgetPeriods(filters.duration).includes(filters.budgetPeriod) && rental.price !== null && rental.period === filters.budgetPeriod && rental.price <= Number(filters.budget))) &&

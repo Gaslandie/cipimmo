@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { rentalLocationOptions, rentalDistrictOptions } from "@/data/cipRentals";
+import { rentalLocationOptions, rentalDistrictsForCity } from "@/data/cipRentals";
 
 import RentalBudgetFields from "./RentalBudgetFields";
 
 export default function SidebarFilterDefault() {
+    const [city, setCity] = useState("");
+    const [district, setDistrict] = useState("");
     const [duration, setDuration] = useState("");
     const [budget, setBudget] = useState({ amount: "", period: "" });
     return <div className="flat-tab flat-tab-form">
@@ -13,11 +15,17 @@ export default function SidebarFilterDefault() {
             <form action={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/`} method="get" className="wg-filter rental-home-search" aria-label="Trouver un logement">
                 <div className="rental-search-fields">
                     <div>
-                        <label htmlFor="home-location">Ville ou quartier</label>
-                        <select id="home-location" name="city" defaultValue="">
-                            <option value="">Tous les lieux</option>
-                            <optgroup label="Villes">{rentalLocationOptions.map(city => <option key={city}>{city}</option>)}</optgroup>
-                            <optgroup label="Quartiers">{rentalDistrictOptions.map(city => <option key={city}>{city}</option>)}</optgroup>
+                        <label htmlFor="home-location">Ville</label>
+                        <select id="home-location" name="city" value={city} onChange={event => { setCity(event.target.value); setDistrict(""); }}>
+                            <option value="">Toutes les villes</option>
+                            {rentalLocationOptions.map(city => <option key={city}>{city}</option>)}
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="home-district">Quartier</label>
+                        <select id="home-district" name="district" value={district} disabled={!city} onChange={event => setDistrict(event.target.value)}>
+                            <option value="">{city ? "Tous les quartiers" : "Choisissez d’abord une ville"}</option>
+                            {rentalDistrictsForCity(city).map(district => <option key={district}>{district}</option>)}
                         </select>
                     </div>
                     <div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { emptyRentalFilters as emptyFilters, rentalLocationOptions, rentalDistrictOptions, rentalSizes as sizes, readRentalFilters, rentalFilterQuery, filterRentals } from "@/data/cipRentals";
+import { emptyRentalFilters as emptyFilters, rentalLocationOptions, rentalDistrictsForCity, rentalSizes as sizes, readRentalFilters, rentalFilterQuery, filterRentals } from "@/data/cipRentals";
 import RentalBudgetFields from "../common/RentalBudgetFields";
 import RentalCard from "../common/RentalCard";
 import RentalHelp from "../common/RentalHelp";
@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const sortOptions = ["default", "price-asc", "price-desc", "area-desc", "beds-desc"];
-const cities = [...new Set([...rentalLocationOptions, ...rentalDistrictOptions])];
+const cities = rentalLocationOptions;
 
 export default function Properties3() {
     const [filters, setFilters] = useState(emptyFilters);
@@ -39,7 +39,7 @@ export default function Properties3() {
     const updateFilters = (next: typeof emptyFilters) => {
         setFilters(next); setInvalid(readRentalFilters(new URLSearchParams(rentalFilterQuery(next))).invalid); saveQuery(next);
     };
-    const change = (key: keyof typeof emptyFilters, value: string) => updateFilters({ ...filters, [key]: value });
+    const change = (key: keyof typeof emptyFilters, value: string) => updateFilters({ ...filters, [key]: value, ...(key === "city" ? { district: "" } : {}) });
     const changeLayout = (view: "grid" | "list") => { setLayout(view); saveQuery(filters, sorting, view); };
     const changeSorting = (sort: string) => { if (sortOptions.includes(sort)) { setSorting(sort); saveQuery(filters, sort); } };
     const reset = () => { setFilters({ ...emptyFilters }); setInvalid(false); setSorting("default"); setLayout("grid"); saveQuery(emptyFilters, "default", "grid"); };
@@ -59,7 +59,7 @@ export default function Properties3() {
     const select = (key: keyof typeof emptyFilters, label: string, placeholder: string, options: { value: string; label: string }[]) => (
         <div>
             <label htmlFor={`rental-${key}`} className="text-button text_primary-color mb_8">{label}</label>
-            <select id={`rental-${key}`} className="nice-select w-full" value={filters[key]} onChange={(event) => change(key, event.target.value)}>
+            <select id={`rental-${key}`} className="nice-select w-full" value={filters[key]} disabled={key === "district" && !filters.city} onChange={(event) => change(key, event.target.value)}>
                 <option value="">{placeholder}</option>
                 {options.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
             </select>
@@ -124,7 +124,8 @@ export default function Properties3() {
                                         <label htmlFor="rental-keyword" className="text-button text_primary-color mb_8">Votre recherche</label>
                                         <input id="rental-keyword" type="search" placeholder="Ville, logement…" maxLength={200} value={filters.keyword} onChange={(event) => change("keyword", event.target.value)} />
                                     </div>
-                                    {select("city", "Ville ou quartier", "Tous les lieux", cities.map((city) => ({ value: city, label: city })))}
+                                    {select("city", "Ville", "Toutes les villes", cities.map((city) => ({ value: city, label: city })))}
+                                    {select("district", "Quartier", filters.city ? "Tous les quartiers" : "Choisissez d’abord une ville", rentalDistrictsForCity(filters.city).map(district => ({ value: district, label: district })))}
                                     {select("bedrooms", "Chambres", "Toutes", ["1", "2", "3", "4+"].map((beds) => ({ value: beds, label: beds === "4+" ? "4 chambres ou plus" : `${beds} chambre${beds === "1" ? "" : "s"}` })))}
                                     {select("furnished", "Mobilier", "Tous les logements", ["Meublé", "Non meublé"].map((label) => ({ value: label, label })))}
                                     <RentalBudgetFields id="rental" amount={filters.budget} period={filters.budgetPeriod} duration={filters.duration}

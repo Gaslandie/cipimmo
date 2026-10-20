@@ -28,7 +28,7 @@ export default function RentalHelp() {
         }
         setError("");
         const budget = filters.budget ? `${Number(filters.budget).toLocaleString("fr-FR")} GNF / ${filters.budgetPeriod}` : "À préciser";
-        const message = `Bonjour CIP IMMO, aidez-moi à trouver un logement.\nVille ou quartier : ${filters.city || "À préciser"}.\nDurée de location : ${filters.duration || "À préciser"}.\nBudget maximal : ${budget}.\nQuels logements pouvez-vous me proposer et à quelles conditions ?`;
+        const message = `Bonjour CIP IMMO, aidez-moi à trouver un logement.\nVille ou quartier : ${[filters.district, filters.city].filter(Boolean).join(", ") || "À préciser"}.\nDurée de location : ${filters.duration || "À préciser"}.\nBudget maximal : ${budget}.\nQuels logements pouvez-vous me proposer et à quelles conditions ?`;
         window.location.assign(`https://wa.me/224623417510?text=${encodeURIComponent(message)}`);
     }
 
