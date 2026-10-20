@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const BackToTop = () => {
   const pathname = usePathname();
-  const progressWrapRef = useRef<HTMLDivElement>(null);
+  const progressWrapRef = useRef<HTMLButtonElement>(null);
   const progressPathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
@@ -40,11 +40,11 @@ const BackToTop = () => {
 
     const handleClick = (e: MouseEvent) => {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     };
 
     // Lần đầu khởi tạo
-    updateProgress();
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     progressWrap.addEventListener("click", handleClick);
@@ -56,11 +56,11 @@ const BackToTop = () => {
   }, [pathname]);
 
   return (
-    <div className="progress-wrap" ref={progressWrapRef}>
-      <svg className="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+    <button type="button" className="progress-wrap" ref={progressWrapRef} aria-label="Retour en haut de page">
+      <svg aria-hidden="true" className="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
         <path ref={progressPathRef} d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
       </svg>
-    </div>
+    </button>
   );
 };
 

@@ -1,10 +1,16 @@
 "use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { A11y, Pagination } from "swiper/modules";
 import Image from "next/image";
 import { latestNews } from "@/data/blog";
 import Link from "next/link";
+
+const guides = [
+    { ...latestNews[0], title: "Comment louer un logement", href: "/comment-louer" },
+    { ...latestNews[1], title: "Vos questions avant de louer", href: "/FAQs" },
+    { ...latestNews[2], title: "Comparer les logements", href: "/listing-left-sidebar" },
+];
 
 export default function LatestNews() {
     return (
@@ -36,10 +42,11 @@ export default function LatestNews() {
                             spaceBetween: 30,
                         },
                     }}
-                    modules={[Pagination]}
+                    modules={[Pagination, A11y]}
+                    a11y={{ paginationBulletMessage: "Afficher le conseil {{index}}" }}
                     pagination={{ clickable: true, el: ".spb7" }}
                 >
-                    {latestNews.slice(0, 3).map((item, ind) => (
+                    {guides.map((item, ind) => (
                         <SwiperSlide className="swiper-slide" key={ind}>
                             <div
                                 className="blog-article-item style-default hover-image-translate loadItem"
@@ -54,21 +61,21 @@ export default function LatestNews() {
                                         alt={item.alt}
                                     />
                                     <Link
-                                        href={`/blog-post-1/${item.id}`}
+                                        href={item.href}
                                         className="tag text-label text text_primary-color text-uppercase"
                                     >
                                         {item.category}
                                     </Link>
                                     <Link
-                                        href={`/blog-post-1/${item.id}`}
+                                        href={item.href}
                                         className="overlay-link"
-                                        aria-label={`Lire : ${item.title}`}
+                                        aria-label={item.title}
                                     ></Link>
                                 </div>
                                 <div className="article-content">
                                     <h5 className="title mb_12">
                                         <Link
-                                            href={`/blog-post-1/${item.id}`}
+                                            href={item.href}
                                             className="hover-line-text"
                                         >
                                             {item.title}

@@ -1594,6 +1594,9 @@ a {
 
 .progress-wrap {
     position: fixed;
+    border: 0;
+    padding: 0;
+    &:focus-visible { outline: 3px solid #063569; outline-offset: 4px; }
     bottom: 40px;
     right: 40px;
     height: 48px;
@@ -1617,8 +1620,8 @@ a {
 
     &::after {
         position: absolute;
-        content: "\e900";
-        font-family: $fontIcon;
+        content: "↑";
+        font-family: inherit;
         text-align: center;
         line-height: 40px;
         font-size: 24px;
@@ -1652,8 +1655,8 @@ a {
     @include res(md) {
         bottom: 15px;
         right: 15px;
-        height: 40px;
-        width: 40px;
+        height: 44px;
+        width: 44px;
         &::after {
             font-size: 20px;
         }
