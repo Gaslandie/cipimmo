@@ -32,11 +32,11 @@ jobs:
           composer install --no-interaction --prefer-dist
           cp .env.example .env
           php artisan key:generate --force
-          vendor/bin/phpunit
-          python3 -m unittest discover -s tests -p test_bluehost_deployment.py
           npm ci
           npm audit --audit-level=high
           npm run build
+          vendor/bin/phpunit
+          python3 -m unittest discover -s tests -p test_bluehost_deployment.py
       - name: Préparer la connexion dédiée
         env:
           CIP_SSH_KEY: ${{ secrets.CIP_SSH_KEY }}
