@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Nav() {
-    const pathname = usePathname();
+    const pathname = usePathname().replace(/\/$/, "") || "/";
     useEffect(() => {
         const preventDefault = () => {
             document.querySelectorAll(".link-no-action").forEach((element) => {
@@ -45,6 +45,7 @@ export default function Nav() {
                                 <Link
                                     href={item.href}
                                     className="splitting toggle"
+                                    aria-current={item.href === pathname ? "page" : undefined}
                                 >
                                     <span className="text" data-splitting>
                                         {item.title}

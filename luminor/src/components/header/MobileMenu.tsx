@@ -6,7 +6,7 @@ import { menuItems } from "@/data/menu";
 const getCollapseId = (index: number) => `dropdown-menu-${index + 1}`;
 
 export default function MobileMenu({ onNavigate }: { onNavigate?: () => void }) {
-    const pathname = usePathname();
+    const pathname = usePathname().replace(/\/$/, "") || "/";
 
     return (
         <ul id="menu-mobile-menu" className="style-1">

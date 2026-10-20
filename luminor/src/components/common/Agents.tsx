@@ -127,12 +127,12 @@ export default function Agents() {
                 </div>
               </SwiperSlide>
             ))}
-            <div className="sw-button nav-prev-layout">
-              <i className="icon-CaretLeft"></i>
-            </div>
-            <div className="sw-button nav-next-layout">
-              <i className="icon-CaretRight"></i>
-            </div>
+            <button type="button" className="sw-button nav-prev-layout" aria-label="Photo précédente de l’équipe">
+              <i className="icon-CaretLeft" aria-hidden="true"></i>
+            </button>
+            <button type="button" className="sw-button nav-next-layout" aria-label="Photo suivante de l’équipe">
+              <i className="icon-CaretRight" aria-hidden="true"></i>
+            </button>
           </Swiper>
         </div>
       </div>
