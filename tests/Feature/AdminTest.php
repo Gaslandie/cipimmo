@@ -3,12 +3,14 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Support\ManagedCatalogue;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class AdminTest extends TestCase
@@ -52,6 +54,79 @@ class AdminTest extends TestCase
         $user->session_version = 2;
         $user->save();
         $this->getJson('/admin/api/rentals')->assertUnauthorized();
+    }
+
+    public static function restrictedAdminRequests(): iterable
+    {
+        foreach (['anonymous' => 401, 'non-admin' => 403, 'inactive' => 403, 'revoked' => 401, 'missing-version' => 401] as $account => $status) {
+            foreach (['session' => 'GET', 'rentals' => 'GET', 'export' => 'GET', 'media' => 'GET', 'create' => 'POST', 'edit' => 'PATCH', 'photos' => 'POST', 'publish' => 'POST'] as $operation => $method) {
+                yield $account.' '.$operation => [$account, $status, $operation, $method];
+            }
+        }
+    }
+
+    #[DataProvider('restrictedAdminRequests')]
+    public function test_every_private_operation_refuses_insufficient_rights_without_side_effects(string $account, int $status, string $operation, string $method): void
+    {
+        $this->seedCatalogue();
+        $before = DB::table('managed_rentals')->orderBy('id')->get()->toJson();
+        $rental = app(ManagedCatalogue::class)->items()[0]['rental'];
+        Http::preventStrayRequests();
+        config(['admin.github_token' => 'permission-test-token']);
+        Http::fake(['https://api.github.com/repos/Gaslandie/cipimmo/actions/workflows/bluehost.yml/dispatches' => Http::response('', 204)]);
+        if ($account !== 'anonymous') {
+            $user = $this->admin();
+            $user->is_admin = $account !== 'non-admin';
+            $user->active = $account !== 'inactive';
+            $user->session_version = $account === 'revoked' ? 2 : 1;
+            $user->save();
+            $this->actingAs($user)->withSession($account === 'missing-version' ? [] : ['admin_version' => 1]);
+        }
+        $path = match ($operation) {
+            'create' => 'rentals',
+            'edit' => 'rentals/'.$rental['slug'],
+            'media' => 'media?path='.urlencode($rental['imgSrc']),
+            default => $operation,
+        };
+        if ($operation === 'create') {
+            $rental['slug'] = 'permission-test-new-rental';
+        }
+        $this->json($method, '/admin/api/'.$path, ['rental' => $rental, 'revision' => $operation === 'create' ? 0 : 1, 'is_admin' => true])
+            ->assertStatus($status)->assertJsonStructure(['message'])->assertJsonMissingPath('items')->assertJsonMissingPath('csrf');
+        $this->assertSame($before, DB::table('managed_rentals')->orderBy('id')->get()->toJson());
+        $this->assertDatabaseCount('rental_history', 0);
+        Http::assertNothingSent();
+    }
+
+    public function test_a_correct_password_cannot_grant_admin_rights_to_a_regular_or_inactive_account(): void
+    {
+        foreach (['non-admin', 'inactive'] as $state) {
+            $user = $this->admin();
+            $user->is_admin = $state !== 'non-admin';
+            $user->active = $state !== 'inactive';
+            $user->password = Hash::make('Permission-test-password-2026!');
+            $user->save();
+            $this->postJson('/admin/api/login', ['username' => $user->email, 'password' => 'Permission-test-password-2026!', 'is_admin' => true])
+                ->assertUnauthorized()->assertJsonPath('message', 'Identifiant ou mot de passe incorrect.')->assertJsonMissingPath('csrf');
+            $this->assertGuest();
+        }
+    }
+
+    public function test_private_media_cannot_escape_its_directory_even_with_a_symlink(): void
+    {
+        Storage::fake('permission-media');
+        $disk = Storage::disk('permission-media');
+        $disk->makeDirectory('photos');
+        $disk->put('private.txt', 'private-file-canary');
+        $disk->put('photos/allowed.webp', 'allowed-photo-canary');
+        symlink($disk->path('private.txt'), $disk->path('photos/escape.webp'));
+        config(['admin.photo_root' => $disk->path('photos')]);
+        $this->actingAs($this->admin())->withSession(['admin_version' => 1]);
+        $this->get('/admin/api/media?path='.urlencode('/assets/images/properties/allowed.webp'))
+            ->assertOk()->assertHeader('Cache-Control', 'no-store, private');
+        foreach (['/assets/images/properties/escape.webp' => 404, '/assets/images/properties/../private.txt' => 422] as $path => $status) {
+            $this->getJson('/admin/api/media?path='.urlencode($path))->assertStatus($status)->assertDontSee('private-file-canary');
+        }
     }
 
     public function test_login_validates_password_and_origin_and_logout_invalidates_access(): void
