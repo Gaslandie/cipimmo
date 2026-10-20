@@ -49,7 +49,7 @@ export default function Nav() {
                                     <span className="text" data-splitting>
                                         {item.title}
                                     </span>
-                                    <span className="text" data-splitting>
+                                    <span className="text" data-splitting aria-hidden="true">
                                         {item.title}
                                     </span>
                                 </Link>
@@ -61,7 +61,7 @@ export default function Nav() {
                                     <span className="text" data-splitting>
                                         {item.title}
                                     </span>
-                                    <span className="text" data-splitting>
+                                    <span className="text" data-splitting aria-hidden="true">
                                         {item.title}
                                     </span>
                                 </Link>

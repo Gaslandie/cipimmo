@@ -56,12 +56,19 @@ export default function ClientScripts() {
 
     // Splitting text library
     useEffect(() => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        let active = true;
         import("splitting").then((Splitting) => {
+            if (!active) return;
             const splittingElements = document.querySelectorAll(".splitting");
             if (splittingElements.length > 0) {
                 Splitting.default();
             }
+        }).catch(() => {
+            // This optional animation must leave the plain navigation usable
+            // when its download fails or is cancelled during navigation.
         });
+        return () => { active = false; };
     }, []);
 
     // Button hover effect
