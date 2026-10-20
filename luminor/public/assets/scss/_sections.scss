@@ -1644,7 +1644,7 @@
 .rental-gallery {
     .rental-gallery-main { display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain; border-radius: 12px; background: #f4f7fa; }
     .rental-gallery-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
-    .tf-btn { min-height: 44px; padding: 10px 14px; &:disabled { opacity: .5; cursor: default; } }
+    .tf-btn { min-height: 44px; padding: 10px 14px; }
     .rental-gallery-thumbnails { display: flex; flex-wrap: wrap; gap: 10px; }
     .rental-gallery-thumbnails button { padding: 4px; border: 2px solid transparent; border-radius: 6px; background: #f4f7fa; &[aria-pressed="true"] { border-color: #16324e; } }
     .rental-gallery-thumbnails img { width: 88px; height: 66px; object-fit: cover; border-radius: 3px; }
