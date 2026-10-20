@@ -14,6 +14,7 @@ export default function ContactPage() {
                 <section className="contact-location-card" aria-labelledby="contact-locations-title">
                     <h2 className="h4" id="contact-locations-title">Localisation de CIP IMMO</h2>
                     <p>Adresse de notre entreprise : Nongo Kiroti, Conakry, Guinée.</p>
+                    <p>La carte est fournie par Google. Elle ne se charge que si vous demandez son affichage, ce qui transmet alors des données de connexion à Google.</p>
                     <button
                         type="button"
                         className="tf-btn btn-bg-1"

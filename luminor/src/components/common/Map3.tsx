@@ -6,6 +6,7 @@ export default function Map3() {
     const [showMap, setShowMap] = useState(false);
     return <div className="map-container">
         <p>Nongo Kiroti, Conakry, Guinée</p>
+        <p>La carte est fournie par Google. Son affichage transmet des données de connexion à ce service.</p>
         <button type="button" className="tf-btn btn-bg-1" aria-expanded={showMap} aria-controls="office-sector-map" onClick={() => setShowMap((visible) => !visible)}>
             {showMap ? "Fermer la carte" : "Voir le secteur sur la carte"}
         </button>

@@ -30,6 +30,8 @@ export const footerSections: FooterSection[] = [
             { href: "/FAQs", label: "Questions fréquentes" },
             { href: "/comment-louer", label: "Conseils pour louer" },
             { href: "/our-pricing", label: "Nos formules" },
+            { href: "/privacy-policy#legal", label: "Mentions légales" },
+            { href: "/privacy-policy", label: "Confidentialité et utilisation" },
         ],
     },
 ];

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import Link from "next/link";
 import { rentalLocation, rentalStayError, rentalToday, type Rental } from "@/data/cipRentals";
 
 export default function RentalContact({ rental, visit = false, compact = false, withDates = false }: { rental: Rental; visit?: boolean; compact?: boolean; withDates?: boolean }) {
@@ -41,6 +42,7 @@ export default function RentalContact({ rental, visit = false, compact = false, 
             <a href="tel:+224613585198" className="tf-btn" aria-label={`Appeler CIP IMMO pour ${rental.title}`}><span>Appeler</span></a>
         </div>
         <p className="mt_16">Vérifiez le message dans WhatsApp avant de l’envoyer. Cette demande ne réserve pas le logement.</p>
+        <p><Link href="/privacy-policy#rights">Confidentialité et droits sur vos données</Link>.</p>
         <noscript><p><a href={`https://wa.me/224623417510?text=${encodeURIComponent(message)}`}>Demander ce logement sur WhatsApp</a>.</p></noscript>
     </form>;
     return <div className={`rental-contact${compact ? " rental-contact--compact" : ""}`}>

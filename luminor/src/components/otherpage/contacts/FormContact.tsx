@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import WhatsAppForm from "@/components/common/WhatsAppForm";
 import { sendContact } from "@/actions/contactAction";
 
@@ -173,6 +174,7 @@ export default function FormContact() {
                         <span>Continuer sur WhatsApp</span>
                         <span className="bg-effect"></span>
                     </button>
+                    <p className="mt_16">Le texte saisi est transmis à WhatsApp pour préparer votre message. Vous choisissez ensuite de l’envoyer. <Link href="/privacy-policy#rights">Confidentialité et droits sur vos données</Link>.</p>
                 </WhatsAppForm>
             </div>
         </div>

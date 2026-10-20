@@ -13,4 +13,4 @@ export default function page() {
     );
 }
 
-export const metadata = pageMetadata("Confidentialité et utilisation du site | CIP IMMO", "Consultez les conditions d’utilisation du site CIP IMMO : annonces, favoris, formulaires, échanges avec notre équipe et services externes.", "/privacy-policy/");
+export const metadata = pageMetadata("Mentions légales et confidentialité | CIP IMMO", "Identité de CIP SARLU, hébergement de CIP IMMO, cookies, favoris, formulaires WhatsApp et droits sur vos données personnelles.", "/privacy-policy/");

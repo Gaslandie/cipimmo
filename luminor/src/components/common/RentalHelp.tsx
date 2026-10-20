@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import Link from "next/link";
 import { readRentalFilters, rentalDistrictOptions, rentalLocationOptions } from "@/data/cipRentals";
 
 import RentalBudgetFields from "./RentalBudgetFields";
@@ -60,6 +61,7 @@ export default function RentalHelp() {
                 <button type="submit" className="tf-btn btn-bg-1" aria-describedby="rental-help-description"><span>Continuer sur WhatsApp</span></button>
                 <a href="tel:+224613585198" className="tf-btn" aria-label="Appeler CIP IMMO au +224 613 58 51 98"><span>Appeler CIP IMMO</span></a>
             </div>
+            <p className="mt_16">Vos critères sont transmis à WhatsApp pour préparer le message. <Link href="/privacy-policy#rights">Confidentialité et droits sur vos données</Link>.</p>
             </fieldset>
             <noscript><p><a href="https://wa.me/224623417510">Demandez de l’aide sur WhatsApp</a>.</p></noscript>
         </form>
