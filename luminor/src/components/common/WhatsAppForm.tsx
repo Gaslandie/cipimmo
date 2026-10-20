@@ -25,7 +25,10 @@ export default function WhatsAppForm({ prepare, children, className, label }: {
             setUrl(""); setError(result.error);
             const field = form.elements.namedItem(result.field);
             if (field instanceof HTMLElement) { field.setAttribute("aria-invalid", "true"); field.setAttribute("aria-describedby", `${field.getAttribute("aria-describedby") || ""} ${id}`.trim()); }
-            requestAnimationFrame(() => errorRef.current?.focus());
+            requestAnimationFrame(() => {
+                if (field instanceof HTMLElement) field.focus();
+                else errorRef.current?.focus();
+            });
             return;
         }
         setError("");

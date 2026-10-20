@@ -1792,6 +1792,15 @@
 .form-faq > .whatsapp-fields { display: grid; gap: 16px; }
 .footer .offer-request { color: #fff; }
 .footer .offer-request input { color: #16324e; background: #fff; }
+.offer-request input:focus-visible { outline: 3px solid #497fc0; outline-offset: 3px; }
+.footer .offer-request .form-feedback[role="alert"] {
+    padding: 8px 0 8px 12px;
+    border: 0;
+    border-left: 3px solid #ffb4ab;
+    border-radius: 0;
+    background: transparent;
+    color: #ffb4ab;
+}
 .footer .offer-request .tf-btn { color: #16324e; background: #fff; }
 .footer .offer-request .tf-btn span { color: #16324e; }
 .mobile-nav-wrap .mb-body .support .mb-info li { color: #57616b; }
