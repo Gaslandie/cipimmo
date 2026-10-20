@@ -2,13 +2,6 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-
-gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
-
 // Sticky header
 const headerFixed2 = () => {
     const header = document.querySelector<HTMLElement>(".header-fixed");
@@ -22,21 +15,24 @@ const headerFixed2 = () => {
         }
     };
 
-    window.addEventListener("scroll", onScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
 };
 
 // Animate elements when visible
 const animateImgItem = () => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     const delayAttr = entry.target.getAttribute("data-delay");
                     const delay = parseFloat(delayAttr ?? "0") || 0;
-                    setTimeout(() => {
+                    observer.unobserve(entry.target);
+                    timers.push(setTimeout(() => {
                         entry.target.classList.add("active-animate");
-                    }, delay * 1000);
+                    }, Math.min(delay, 5) * 1000));
                 }
             });
         },
@@ -48,37 +44,22 @@ const animateImgItem = () => {
     );
     elements.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); timers.forEach(clearTimeout); };
 };
 
 export default function ClientScripts() {
     const pathname = usePathname();
 
-    // Splitting text library
-    useEffect(() => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        let active = true;
-        import("splitting").then((Splitting) => {
-            if (!active) return;
-            const splittingElements = document.querySelectorAll(".splitting");
-            if (splittingElements.length > 0) {
-                Splitting.default();
-            }
-        }).catch(() => {
-            // This optional animation must leave the plain navigation usable
-            // when its download fails or is cancelled during navigation.
-        });
-        return () => { active = false; };
-    }, []);
-
     // Button hover effect
     useEffect(() => {
-        const buttons = document.querySelectorAll(".tf-btn");
+        if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+        const buttons = Array.from(document.querySelectorAll<HTMLElement>(".tf-btn"));
+        const widths = buttons.map((button) => button.offsetWidth);
         const listeners: (() => void)[] = [];
 
-        buttons.forEach((button) => {
+        buttons.forEach((button, index) => {
             const btn = button as HTMLElement;
-            const buttonWidth = btn.offsetWidth;
+            const buttonWidth = widths[index];
             btn.style.setProperty("--button-width", buttonWidth + "px");
 
             const bgEffect = btn.querySelector(".bg-effect");
@@ -107,190 +88,41 @@ export default function ClientScripts() {
         };
     }, [pathname]);
 
-    // GSAP animations
-    useGSAP(() => {
+    // Native entrance effects avoid downloading animation libraries on every page.
+    // Visible text stays readable immediately, including if JavaScript fails.
+    useEffect(() => {
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        const elements =
-            document.querySelectorAll<HTMLElement>(".scrolling-effect");
-
-        elements.forEach((el) => {
-            const delayAttr = el.getAttribute("data-delay");
-            const delay = delayAttr ? parseFloat(delayAttr) : 0;
-            const hasClass = (cls: string) => el.classList.contains(cls);
-
-            const settings: gsap.TweenVars = {
-                scrollTrigger: {
-                    trigger: el,
-                    scrub: 3,
-                    toggleActions: "play none none reverse",
-                    start: "30px bottom",
-                    end: "bottom bottom",
-                    once: true,
-                },
-                duration: 0.8,
-                ease: "power3.out",
-                delay: delay,
-            };
-
-            if (hasClass("effectRight")) settings.x = 80;
-            if (hasClass("effectLeft")) settings.x = -80;
-            if (hasClass("effectBottom")) settings.y = "20%";
-            if (hasClass("effectTop")) settings.y = -80;
-            if (hasClass("effectZoomIn")) settings.scale = 0.4;
-
-            if (
-                hasClass("effectRight") ||
-                hasClass("effectLeft") ||
-                hasClass("effectBottom") ||
-                hasClass("effectTop") ||
-                hasClass("effectZoomIn")
-            ) {
-                settings.opacity = 0;
+        const animations: Animation[] = [];
+        const observer = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                observer.unobserve(entry.target);
+                const element = entry.target as HTMLElement;
+                const transform = element.classList.contains("effectLeft") ? "translateX(-32px)"
+                    : element.classList.contains("effectRight") ? "translateX(32px)"
+                    : "translateY(20px)";
+                animations.push(element.animate([
+                    { opacity: 0, transform }, { opacity: 1, transform: "none" },
+                ], { duration: 500, easing: "ease-out" }));
             }
-
-            gsap.from(el, settings);
+        }, { threshold: 0.1 });
+        document.querySelectorAll<HTMLElement>(".scrolling-effect").forEach((element) => {
+            if (element.getBoundingClientRect().top >= window.innerHeight) observer.observe(element);
         });
-
-        ScrollTrigger.refresh();
-    }, [pathname]);
-
-    // Split text animations
-    useGSAP(() => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        const elements = document.querySelectorAll<HTMLElement>(".split-text");
-
-        elements.forEach((el) => {
-            const hasClass = (cls: string) => el.classList.contains(cls);
-            const $target = el.querySelector("p, a") ?? el;
-            // SplitText adds an accessible name, which is invalid on generic text.
-            // Keep paragraphs and labels intact for assistive technology.
-            if (!$target.matches("h1, h2, h3, h4, h5, h6, a")) return;
-
-            const pxlSplit = new SplitText($target as HTMLElement, {
-                type: "words, chars",
-                lineThreshold: 0.5,
-                linesClass: "split-line",
-            });
-
-            let splitTypeSet: HTMLElement[] = Array.from(pxlSplit.chars).filter(
-                (c): c is HTMLElement => c instanceof HTMLElement
-            );
-
-            gsap.set($target, { perspective: 400 });
-
-            const settings: gsap.TweenVars = {
-                scrollTrigger: {
-                    trigger: $target,
-                    start: "top 86%",
-                    once: true,
-                },
-                duration: 0.9,
-                stagger: 0.02,
-                ease: "power3.out",
-            };
-
-            if (hasClass("effect-fade")) settings.opacity = 0;
-
-            if (
-                hasClass("split-lines-transform") ||
-                hasClass("split-lines-rotation-x")
-            ) {
-                pxlSplit.split({
-                    type: "lines",
-                    lineThreshold: 0.5,
-                    linesClass: "split-line",
-                });
-                splitTypeSet = Array.from(pxlSplit.lines).filter(
-                    (l): l is HTMLElement => l instanceof HTMLElement
-                );
-                settings.opacity = 0;
-                settings.stagger = 0.5;
-
-                if (hasClass("split-lines-rotation-x")) {
-                    settings.rotationX = -120;
-                    settings.transformOrigin = "top center -50";
-                } else {
-                    settings.yPercent = 100;
-                    settings.autoAlpha = 0;
-                }
-            }
-
-            if (hasClass("split-words-scale")) {
-                pxlSplit.split({ type: "words" });
-                splitTypeSet = Array.from(pxlSplit.words).filter(
-                    (w): w is HTMLElement => w instanceof HTMLElement
-                );
-
-                splitTypeSet.forEach((elw, index) => {
-                    gsap.set(elw, {
-                        opacity: 0,
-                        scale: index % 2 === 0 ? 0 : 2,
-                        force3D: true,
-                    });
-                });
-
-                gsap.to(splitTypeSet, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 86%",
-                        once: true,
-                    },
-                    scale: 1,
-                    rotateX: 0,
-                    opacity: 1,
-                    duration: 0.9,
-                    stagger: 0.02,
-                    ease: "power3.out",
-                });
-
-                return;
-            }
-
-            if (hasClass("effect-blur-fade")) {
-                pxlSplit.split({ type: "words" });
-                splitTypeSet = Array.from(pxlSplit.words).filter(
-                    (w): w is HTMLElement => w instanceof HTMLElement
-                );
-
-                gsap.fromTo(
-                    splitTypeSet,
-                    {
-                        opacity: 0,
-                        filter: "blur(10px)",
-                        y: 20,
-                    },
-                    {
-                        opacity: 1,
-                        filter: "blur(0px)",
-                        y: 0,
-                        duration: 1,
-                        stagger: 0.1,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: $target,
-                            start: "top 86%",
-                            once: true,
-                            toggleActions: "play none none reverse",
-                        },
-                    }
-                );
-
-                return;
-            }
-
-            gsap.from(splitTypeSet, settings);
-        });
-
-        ScrollTrigger.refresh();
+        return () => {
+            observer.disconnect();
+            animations.forEach((animation) => animation.cancel());
+        };
     }, [pathname]);
 
     // Init animations on mount
     useEffect(() => {
         const cleanupHeader = headerFixed2();
-        animateImgItem();
+        const cleanupImages = animateImgItem();
 
         return () => {
             cleanupHeader?.();
+            cleanupImages();
         };
     }, [pathname]);
 

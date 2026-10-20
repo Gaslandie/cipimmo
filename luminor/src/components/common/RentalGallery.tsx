@@ -25,7 +25,7 @@ export default function RentalGallery({ rental }: { rental: Rental }) {
             </div>
             <div className="rental-gallery-thumbnails">
                 {photos.map((item, i) => <button key={item.src} type="button" aria-label={`Voir la photo ${i + 1} : ${item.alt}`} aria-pressed={i === index} onClick={() => setIndex(i)}>
-                    <Image src={item.src} alt="" width={88} height={66} />
+                    <Image src={item.src} alt="" width={88} height={66} sizes="88px" />
                 </button>)}
             </div>
         </>}

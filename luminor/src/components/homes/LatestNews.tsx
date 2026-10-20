@@ -56,6 +56,7 @@ export default function LatestNews() {
                                     <Image
                                         loading="lazy"
                                         src={item.imgSrc}
+                                        sizes="(max-width: 767px) 90vw, (max-width: 1199px) 50vw, 33vw"
                                         width={850}
                                         height={478}
                                         alt={item.alt}

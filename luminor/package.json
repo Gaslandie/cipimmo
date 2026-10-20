@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --hostname 127.0.0.1",
-    "build": "next build",
+    "dev": "node scripts/optimize-images.mjs && next dev --hostname 127.0.0.1",
+    "build": "node scripts/optimize-images.mjs && next build",
     "start": "next start --hostname 127.0.0.1",
     "lint": "next lint",
-    "build:pages": "PAGES_EXPORT=1 NEXT_PUBLIC_BASE_PATH=/cipimmo next build && node scripts/prepare-pages.mjs",
-    "build:bluehost": "PAGES_EXPORT=1 NEXT_PUBLIC_BASE_PATH= next build && EXPORT_BASE_PATH= node scripts/prepare-pages.mjs"
+    "build:pages": "node scripts/optimize-images.mjs && PAGES_EXPORT=1 NEXT_PUBLIC_BASE_PATH=/cipimmo next build && node scripts/prepare-pages.mjs",
+    "build:bluehost": "node scripts/optimize-images.mjs && PAGES_EXPORT=1 NEXT_PUBLIC_BASE_PATH= next build && EXPORT_BASE_PATH= node scripts/prepare-pages.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

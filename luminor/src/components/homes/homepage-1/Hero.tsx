@@ -55,6 +55,7 @@ export default function Hero() {
                                 width={1920}
                                 height={680}
                                 alt="CIP IMMO"
+                                sizes="(max-width: 991px) 1920px, 100vw"
                                 priority
                             />
                         </div>
@@ -67,7 +68,7 @@ export default function Hero() {
                                 width={1920}
                                 height={680}
                                 alt="CIP IMMO"
-                                priority
+                                sizes="(max-width: 991px) 1920px, 100vw"
                             />
                         </div>
                     </SwiperSlide>

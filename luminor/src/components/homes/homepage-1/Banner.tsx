@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import OdometerCounter from "@/components/common/Odometer";
 import { cipStatistics } from "@/data/cipRentals";
 export default function Banner() {
@@ -6,11 +7,9 @@ export default function Banner() {
         <div className="banner-2">
             <div
                 className="parallaxie"
-                style={{
-                    background: 'url("/assets/images/section/banner-2.jpg?v=cip-photos-1") center / cover no-repeat',
-                }}
             >
-                <div className="content">
+                <Image src="/assets/images/section/banner-2.jpg?v=cip-photos-1" alt="" fill sizes="100vw" style={{ objectFit: "cover" }} />
+                <div className="content" style={{ position: "relative" }}>
                     <div className="wrap d-flex flex-column">
                         <div className="tf-box-icon style-1">
                             <div className="heading d-flex justify-content-between mb_19">

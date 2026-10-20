@@ -1,6 +1,5 @@
 import { Manrope } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "photoswipe/dist/photoswipe.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../public/assets/icons/icomoon/style.css";
