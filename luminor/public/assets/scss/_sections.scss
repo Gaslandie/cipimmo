@@ -1099,6 +1099,39 @@
     }
 }
 
+.rental-destinations {
+    .wrap-location, .destination-row, .destination-strip, .location-item {
+        min-width: 0;
+        max-width: 100%;
+    }
+    .destination-strip {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+    }
+    .location-item .content { overflow-wrap: anywhere; }
+    .location-item .img-style { display: block; width: 100%; }
+    .destination-scroll-hint { display: none; }
+
+    @media (max-width: 767px) {
+        .destination-row { grid-template-columns: minmax(0, 1fr); }
+        .destination-scroll-hint { display: block; margin-bottom: 16px; }
+        .destination-strip {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x proximity;
+            padding: 4px 0 12px;
+            .location-item {
+                flex: 0 0 82%;
+                width: 82%;
+                scroll-snap-align: start;
+            }
+        }
+    }
+}
+
 .section-location-1 {
     background-color: var(--Text-primary);
 }

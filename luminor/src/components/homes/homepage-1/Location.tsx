@@ -3,7 +3,7 @@ import { rentalCountLabel, rentalLocationOptions } from "@/data/cipRentals";
 
 export default function Location() {
     return (
-        <div className="section-location tf-spacing-1">
+        <div className="section-location rental-destinations tf-spacing-1">
             <div className="tf-container">
                 <div className="heading-section justify-content-center text-center mb_48">
                     <span className="sub text-uppercase fw-6 text_secondary-color-2 split-text effect-rotate">
@@ -19,11 +19,12 @@ export default function Location() {
                     </a>)}
                 </nav>
                 <p className="rental-destination-note">La disponibilité de chaque logement reste à confirmer avec CIP IMMO.</p>
+                <p className="destination-scroll-hint">Faites glisser les petites cartes pour découvrir les autres destinations.</p>
                 <div className="wrap-location">
-                    <div className="tf-grid-layout lg-col-2">
-                        <div className="d-flex gap_30">
+                    <div className="tf-grid-layout lg-col-2 destination-row">
+                        <div className="destination-strip" tabIndex={0} role="region" aria-label="Destinations à faire défiler">
                             <div
-                                className="location-item hover-image scrolling-effect effectFade"
+                                className="location-item hover-image"
                                 data-delay="0.2"
                             >
                                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Coléah")}`} className="img-style mb_18">
@@ -40,7 +41,7 @@ export default function Location() {
                                 </div>
                             </div>
                             <div
-                                className="location-item hover-image scrolling-effect effectFade"
+                                className="location-item hover-image"
                                 data-delay="0.3"
                             >
                                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Coyah Km54")}`} className="img-style mb_18">
@@ -58,7 +59,7 @@ export default function Location() {
                             </div>
                         </div>
                         <div
-                            className="location-item hover-image scrolling-effect effectFade"
+                            className="location-item hover-image"
                             data-delay="0.4"
                         >
                             <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Ansoumaniah")}`} className="img-style mb_18">
@@ -75,9 +76,9 @@ export default function Location() {
                             </div>
                         </div>
                     </div>
-                    <div className="tf-grid-layout lg-col-2">
+                    <div className="tf-grid-layout lg-col-2 destination-row">
                         <div
-                            className="location-item hover-image scrolling-effect effectFade"
+                            className="location-item hover-image"
                             data-delay="0.4"
                         >
                             <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Conakry")}`} className="img-style mb_18">
@@ -93,9 +94,9 @@ export default function Location() {
                                 <p>{rentalCountLabel("Conakry")}</p>
                             </div>
                         </div>
-                        <div className="d-flex gap_30">
+                        <div className="destination-strip" tabIndex={0} role="region" aria-label="Destinations à faire défiler">
                             <div
-                                className="location-item hover-image scrolling-effect effectFade"
+                                className="location-item hover-image"
                                 data-delay="0.3"
                             >
                                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/?city=${encodeURIComponent("Coyah")}`} className="img-style mb_18">
@@ -112,7 +113,7 @@ export default function Location() {
                                 </div>
                             </div>
                             <div
-                                className="location-item hover-image scrolling-effect effectFade"
+                                className="location-item hover-image"
                                 data-delay="0.2"
                             >
                                 <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/listing-left-sidebar/`} className="img-style mb_18">
