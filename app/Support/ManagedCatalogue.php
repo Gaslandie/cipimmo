@@ -66,13 +66,26 @@ class ManagedCatalogue
         }
         $data['published'] = (bool) $data['published'];
 
-        return $data;
+        return $this->currentWording($data);
+    }
+
+    private function currentWording(array $rental): array
+    {
+        if (isset($rental['photoNotice']) && is_string($rental['photoNotice'])) {
+            $rental['photoNotice'] = str_replace(
+                'Ces photos sont utilisées temporairement pour les trois appartements de cet immeuble à Ansoumaniah.',
+                'Ces photos présentent l’immeuble et sont communes aux trois appartements à Ansoumaniah.',
+                $rental['photoNotice'],
+            );
+        }
+
+        return $rental;
     }
 
     public function items(): array
     {
         return DB::table('managed_rentals')->orderBy('id')->get()->map(fn ($row) => [
-            'rental' => json_decode($row->content, true, flags: JSON_THROW_ON_ERROR),
+            'rental' => $this->currentWording(json_decode($row->content, true, flags: JSON_THROW_ON_ERROR)),
             'revision' => (int) $row->revision, 'updated' => $row->updated_at,
         ])->all();
     }
