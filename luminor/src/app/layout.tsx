@@ -16,6 +16,13 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://cipimmo.com"),
+    icons: {
+        icon: [
+            { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+            { url: "/icon.svg", sizes: "any", type: "image/svg+xml" },
+        ],
+        apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    },
     title: "Location d’appartements en Guinée | CIP IMMO",
     description: "Logements meublés et non meublés en Guinée. CIP IMMO vous accompagne pour vos courts séjours et vos locations longue durée.",
 };

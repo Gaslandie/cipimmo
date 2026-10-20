@@ -49,3 +49,32 @@ test('favorites and historical property aliases stay out of search results', () 
         }
     }
 });
+
+test('public pages expose a readable sharing image and browser and Apple icons', async () => {
+    const sharp = require('../luminor/node_modules/sharp');
+    const imageUrl = `${origin}/assets/social/cip-immo-share-v1.jpg`;
+    for (const url of urls) {
+        const content = html(new URL(url).pathname);
+        assert.equal(content.match(/<meta property="og:image" content="([^"]+)"/)?.[1], imageUrl, url);
+        assert.match(content, /<meta property="og:image:alt" content="[^"]+"/);
+        assert.equal(meta(content, 'twitter:image'), imageUrl, url);
+        assert.equal(meta(content, 'twitter:card'), 'summary_large_image', url);
+        assert.match(content, /rel="icon"[^>]*href="\/favicon-96x96\.png"|href="\/favicon-96x96\.png"[^>]*rel="icon"/);
+        assert.match(content, /rel="apple-touch-icon"/);
+    }
+    const image = await sharp(path.join(root, 'assets/social/cip-immo-share-v1.jpg')).metadata();
+    assert.equal(image.format, 'jpeg');
+    assert.equal(image.width, 1200);
+    assert.equal(image.height, 630);
+    assert(fs.statSync(path.join(root, 'assets/social/cip-immo-share-v1.jpg')).size < 1024 * 1024);
+    for (const [name, size] of [['favicon-96x96.png', 96], ['apple-icon.png', 180]]) {
+        const icon = await sharp(path.join(root, name)).metadata();
+        assert.equal(icon.format, 'png');
+        assert.equal(icon.width, size);
+        assert.equal(icon.height, size);
+    }
+    const favicon = fs.readFileSync(path.join(root, 'favicon.ico'));
+    assert.equal(favicon.readUInt16LE(0), 0);
+    assert.equal(favicon.readUInt16LE(2), 1);
+    assert(favicon.readUInt16LE(4) > 0);
+});
