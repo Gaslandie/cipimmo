@@ -49,6 +49,9 @@ export default async function RentalPage({ params }: PageProps) {
                                     {rental.price !== null && <span className="text_secondary-color text-body-default"> / {rental.period}</span>}
                                 </p>
                                 <p className="rental-availability mt_16">{rentalAvailability(rental)}.</p>
+                                <div className="mt_16">
+                                    <RentalContact rental={rental} />
+                                </div>
                             </div>
                             <RentalGallery key={rental.slug} rental={rental} />
                             <div className="properties-overview tf-spacing-8">
