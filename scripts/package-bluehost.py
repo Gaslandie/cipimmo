@@ -1,5 +1,7 @@
 """Package only the application and its public builds, never local data or keys."""
 import pathlib
+import io
+import secrets
 import sys
 import tarfile
 
@@ -30,8 +32,20 @@ for source, target in [('public/build', 'public/build'), ('luminor/.next-pages',
 if not (root / 'luminor/.next-pages/index.html').is_file():
     raise RuntimeError('Public build missing')
 with tarfile.open(destination, 'w:gz') as archive:
+    # A unique front controller prevents shared-host PHP realpath caches from
+    # booting a previous release after the atomic public-directory switch.
+    controller = 'index-' + secrets.token_hex(12) + '.php'
+    htaccess = (root / 'public/.htaccess').read_text().replace('index.php', controller)
+    htaccess = htaccess.replace('RewriteEngine On', 'RewriteEngine On\n    RewriteRule ^index\\.php$ ' + controller + ' [L]')
     for relative, file in sorted(entries.items()):
         if file.suffix in ['.sqlite', '.pem', '.key'] or relative.endswith('.map'):
             raise RuntimeError('Private file in package: ' + relative)
+        if relative == 'public/.htaccess':
+            continue
         archive.add(file, arcname=relative, recursive=False)
+    for relative, data in [('public/.htaccess', htaccess.encode()), ('public/' + controller, (root / 'public/index.php').read_bytes())]:
+        member = tarfile.TarInfo(relative)
+        member.size = len(data)
+        member.mode = 0o644
+        archive.addfile(member, io.BytesIO(data))
 print(f'Production package: {len(entries)} files')
