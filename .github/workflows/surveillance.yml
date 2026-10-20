@@ -1,0 +1,30 @@
+name: CIP IMMO — Surveillance
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+  workflow_run:
+    workflows: [CIP IMMO — Bluehost]
+    types: [completed]
+permissions:
+  contents: read
+concurrency:
+  group: cipimmo-surveillance
+  cancel-in-progress: true
+jobs:
+  verifier:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Vérifier le site sans modifier ses données
+        run: python3 scripts/monitor-site.py
+      - name: Signaler une anomalie
+        if: failure()
+        run: |
+          echo '::error::Un contrôle CIP IMMO a échoué. Consulter les résultats ci-dessus. Les notifications GitHub Actions dépendent des préférences du compte.'
+          echo '## Anomalie détectée sur CIP IMMO' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Consulter les contrôles ci-dessus et vérifier https://cipimmo.com/. Aucune donnée du site n’a été modifiée.' >> "$GITHUB_STEP_SUMMARY"
