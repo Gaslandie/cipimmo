@@ -1,4 +1,3 @@
-import About from "@/components/homes/homepage-1/About";
 import Banner from "@/components/homes/homepage-1/Banner";
 import Hero from "@/components/homes/homepage-1/Hero";
 import Location from "@/components/homes/homepage-1/Location";
@@ -11,7 +10,6 @@ export default function Home() {
     return (
         <Layout>
             <Hero />
-            <About />
             <Properties />
             <Banner />
             <Properties2 />
