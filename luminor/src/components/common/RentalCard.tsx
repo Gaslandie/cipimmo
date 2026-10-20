@@ -25,8 +25,10 @@ export default function RentalCard({ rental, list = false, headingLevel = 2 }: {
             </ul>
             <p className="rental-furnishing">{rental.furnished || "Mobilier : à confirmer"}</p>
             <p className="rental-availability">{rentalAvailability(rental)}.</p>
-            <RentalFavoriteButton rental={rental} />
-            <RentalContact rental={rental} compact />
+            <div className="rental-card-actions">
+                <RentalFavoriteButton rental={rental} />
+                <RentalContact rental={rental} compact />
+            </div>
         </div>
     </article>;
 }

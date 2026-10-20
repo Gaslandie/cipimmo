@@ -61,7 +61,8 @@ export function RentalFavoriteButton({ rental }: { rental: Rental }) {
     return <button type="button" className="rental-favorite-button" aria-pressed={selected} disabled={!ready}
         aria-label={`${selected ? "Retirer des favoris" : "Garder dans mes favoris"} : ${rental.title}, référence ${rental.slug}`}
         onClick={() => toggle(rental.slug)}>
-        <span aria-hidden="true">{selected ? "♥" : "♡"}</span> {selected ? "Retirer des favoris" : "Garder dans mes favoris"}
+        <span aria-hidden="true">{selected ? "♥" : "♡"}</span>
+        <span className="rental-action-label">{selected ? "Retirer des favoris" : "Garder dans mes favoris"}</span>
     </button>;
 }
 
