@@ -50,6 +50,9 @@
 }
 
 .home-rentals {
+    @include res(md, min) {
+        padding-top: 48px !important;
+    }
     @include res(md) {
         padding-top: 32px !important;
 
