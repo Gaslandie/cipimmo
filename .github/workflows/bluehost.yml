@@ -1,0 +1,76 @@
+name: CIP IMMO — Bluehost
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cipimmo-bluehost
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: vars.CIP_BLUEHOST_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: cipimmo-production
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - name: Installer PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962
+        with:
+          php-version: '8.5'
+          extensions: mbstring, dom, pdo_sqlite, gd
+          coverage: none
+      - name: Installer et tester le serveur PHP
+        run: |
+          composer install --no-interaction --prefer-dist
+          cp .env.example .env
+          php artisan key:generate --force
+          vendor/bin/phpunit
+          python3 -m unittest discover -s tests -p test_bluehost_deployment.py
+          npm ci
+          npm audit --audit-level=high
+          npm run build
+      - name: Préparer la connexion dédiée
+        env:
+          CIP_SSH_KEY: ${{ secrets.CIP_SSH_KEY }}
+          CIP_SSH_KNOWN_HOSTS: ${{ secrets.CIP_SSH_KNOWN_HOSTS }}
+        run: |
+          umask 077
+          mkdir -p "$RUNNER_TEMP/cip-ssh"
+          test -n "$CIP_SSH_KEY"
+          test -n "$CIP_SSH_KNOWN_HOSTS"
+          printf '%s\n' "$CIP_SSH_KEY" > "$RUNNER_TEMP/cip-ssh/key"
+          printf '%s\n' "$CIP_SSH_KNOWN_HOSTS" > "$RUNNER_TEMP/cip-ssh/known_hosts"
+      - name: Lire le catalogue enregistré chez Bluehost
+        run: |
+          ssh -F /dev/null -i "$RUNNER_TEMP/cip-ssh/key" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$RUNNER_TEMP/cip-ssh/known_hosts" fnksrwmy@box4100.bluehost.com export > "$RUNNER_TEMP/catalogue.json"
+          php artisan cip:catalogue-import "$RUNNER_TEMP/catalogue.json"
+      - name: Compiler le site pour cipimmo.com
+        working-directory: luminor
+        run: |
+          npm ci
+          npm audit --omit=dev --audit-level=high
+          npm run build:bluehost
+      - name: Préparer uniquement les fichiers de production
+        run: |
+          composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+          python3 scripts/package-bluehost.py "$RUNNER_TEMP/cip-release.tar.gz"
+      - name: Installer la version et préserver les données
+        run: |
+          digest="$(sha256sum "$RUNNER_TEMP/cip-release.tar.gz" | cut -d ' ' -f1)"
+          ssh -F /dev/null -i "$RUNNER_TEMP/cip-ssh/key" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$RUNNER_TEMP/cip-ssh/known_hosts" fnksrwmy@box4100.bluehost.com "deploy $digest" < "$RUNNER_TEMP/cip-release.tar.gz"
+      - name: Vérifier le site public
+        run: |
+          curl --fail --silent --show-error --max-time 30 https://cipimmo.com/ -o "$RUNNER_TEMP/home.html"
+          grep -q 'CIP IMMO' "$RUNNER_TEMP/home.html"
+          curl --fail --silent --show-error --max-time 30 https://cipimmo.com/admin -o /dev/null
+      - name: Nettoyer les clés temporaires
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/cip-ssh"

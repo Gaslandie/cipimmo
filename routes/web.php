@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PublicationController;
+use App\Http\Middleware\AdminAccess;
+use App\Http\Middleware\AdminSecurity;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -12,3 +16,20 @@ Route::get('/logements/{slug}', [HomeController::class, 'show'])
     ->where('slug', '[a-z0-9-]{1,80}')->name('listings.show');
 Route::get('/demo/logements/{slug}', [HomeController::class, 'show'])
     ->where('slug', '[a-z0-9-]{1,80}')->name('demo.listing');
+
+Route::prefix('admin')->middleware(AdminSecurity::class)->group(function () {
+    Route::view('/', 'admin')->name('admin');
+    Route::post('/api/login', [AdminController::class, 'login'])->middleware('throttle:30,1');
+    Route::middleware(AdminAccess::class)->group(function () {
+        $controller = AdminController::class;
+        Route::get('/api/session', [$controller, 'session']);
+        Route::post('/api/logout', [$controller, 'logout']);
+        Route::get('/api/rentals', [$controller, 'index']);
+        Route::post('/api/rentals', [$controller, 'save'])->middleware('throttle:120,1');
+        Route::patch('/api/rentals/{slug}', [$controller, 'save'])->where('slug', '[a-z0-9-]{1,100}')->middleware('throttle:120,1');
+        Route::post('/api/photos', [$controller, 'photo'])->middleware('throttle:30,1');
+        Route::get('/api/media', [$controller, 'media']);
+        Route::post('/api/publish', [PublicationController::class, 'store'])->middleware('throttle:2,1');
+        Route::get('/api/export', [$controller, 'export']);
+    });
+});

@@ -4,7 +4,7 @@ import { readdir, readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = new URL('../.next-pages/', import.meta.url);
-const base = '/cipimmo';
+const base = process.env.EXPORT_BASE_PATH ?? '/cipimmo';
 async function prepare(dir) {
     for (const entry of await readdir(dir, { withFileTypes: true })) {
         const path = join(dir, entry.name);
@@ -22,7 +22,15 @@ async function prepare(dir) {
 await prepare(fileURLToPath(root));
 await rm(new URL('assets/scss/', root), { recursive: true, force: true });
 await writeFile(new URL('.nojekyll', root), '');
-await writeFile(new URL('robots.txt', root), 'User-agent: *\nDisallow: /\n');
+// The theme's sample articles are not CIP IMMO content.
+if (!base) {
+    for (const route of ['blog-grid', 'blog-list', 'blog-standard', 'blog-post-1', 'blog-post-2']) {
+        await rm(new URL(`${route}/`, root), { recursive: true, force: true });
+        await rm(new URL(`${route}.txt`, root), { force: true });
+    }
+}
+
+await writeFile(new URL('robots.txt', root), base ? 'User-agent: *\nDisallow: /\n' : 'User-agent: *\nAllow: /\nDisallow: /admin\n');
 // Preserve the public entry points of the previous Laravel preview.
 for (const [oldPath, newPath] of Object.entries({ contact: 'contacts', 'a-propos': 'about-us', logements: 'listing-left-sidebar' })) {
     const dir = new URL(`${oldPath}/`, root);

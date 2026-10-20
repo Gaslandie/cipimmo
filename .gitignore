@@ -36,3 +36,13 @@ Thumbs.db
 /database/*.sqlite*
 .env.*
 !.env.example
+
+# Back-office commercial : conserver localement jusqu’au choix d’un dépôt privé.
+/backoffice/
+
+# Configuration locale de Boost et caches Python.
+/.claude/
+/.mcp.json
+/boost.json
+__pycache__/
+*.pyc

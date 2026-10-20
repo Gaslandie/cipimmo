@@ -4,18 +4,19 @@ import RentalPage from "../../logements/[slug]/page";
 
 export const dynamicParams = false;
 type PageProps = { params: Promise<{ id: string }> };
-// Historical numeric URLs refer to the five listings whose prices were provided.
-const legacyRentals = cipRentals.filter(rental => rental.price !== null);
+// Références historiques fixes : masquer un logement ne doit pas décaler les autres liens.
+const legacySlugs = ['appartement-coleah', 'appartement-coyah-km54', 'appartement-ansoumaniah-1', 'appartement-ansoumaniah-2', 'appartement-ansoumaniah-3'];
 
 async function rentalFromParams(params: PageProps["params"]) {
     const { id } = await params;
-    const rental = legacyRentals.find((_, index) => String(index + 1) === id);
+    const slug = legacySlugs.find((_, index) => String(index + 1) === id);
+    const rental = cipRentals.find(rental => rental.slug === slug);
     if (!rental) notFound();
     return rental;
 }
 
 export function generateStaticParams() {
-    return legacyRentals.map((_, index) => ({ id: String(index + 1) }));
+    return legacySlugs.flatMap((slug, index) => cipRentals.some(rental => rental.slug === slug) ? [{ id: String(index + 1) }] : []);
 }
 
 export async function generateMetadata({ params }: PageProps) {

@@ -24,7 +24,7 @@ export default function RentalCard({ rental, list = false, headingLevel = 2 }: {
                 <li><i className="icon-Ruler" aria-hidden="true" /> {rental.area === null ? "Surface : à confirmer" : `${rental.area} m²`}</li>
             </ul>
             <p className="rental-furnishing">{rental.furnished || "Mobilier : à confirmer"}</p>
-            <p className="rental-availability">{rentalAvailability}.</p>
+            <p className="rental-availability">{rentalAvailability(rental)}.</p>
             <RentalFavoriteButton rental={rental} />
             <RentalContact rental={rental} compact />
         </div>
