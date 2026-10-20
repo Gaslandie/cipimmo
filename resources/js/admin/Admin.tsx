@@ -107,7 +107,7 @@ export default function Admin() {
       <div className="logo-box"><img src="/admin-logo.svg" width="190" height="60" alt="CIP IMMO — Administration" /></div>
       <div className="menu-title">GESTION IMMOBILIÈRE</div>
       <nav className="navbar-nav">{(['dashboard','rentals','settings'] as Tab[]).map(key => <div className="nav-item" key={key}><button type="button" className={`nav-link w-100 ${tab === key ? 'active' : ''}`} aria-current={tab === key ? 'page' : undefined} onClick={() => navigate(key)}><span className="nav-icon"><Icon name={key}/></span><span className="nav-text">{key === 'dashboard' ? 'Tableau de bord' : key === 'rentals' ? 'Logements' : 'Paramètres'}</span></button></div>)}</nav>
-      <div className="sidebar-note"><span className="local-dot"/>Version locale privée<br/><small>Rien n’est publié automatiquement.</small></div>
+      <div className="sidebar-note"><span className="local-dot"/>Administration privée<br/><small>Publiez vos modifications depuis les paramètres.</small></div>
     </aside>
     <header className="topbar"><div className="topbar-inner"><span>Administration <strong>CIP IMMO</strong></span><div className="user-area"><span className="avatar-letter">{auth.username[0].toUpperCase()}</span><span>{auth.username}</span><button className="btn btn-outline-secondary btn-sm" type="button" onClick={signout} disabled={busy}><Icon name="logout"/><span>Se déconnecter</span></button></div></div></header>
     <main id="main-content" className="page-content"><div className="container-fluid">
