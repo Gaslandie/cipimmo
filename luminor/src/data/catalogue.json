@@ -137,12 +137,71 @@
     "period": "mois",
     "beds": 2,
     "area": 75,
-    "imgSrc": "",
-    "imageAlt": "",
+    "imgSrc": "/assets/images/properties/coyah-km54/facade-retouche.webp",
+    "imageAlt": "Façade et entrée du logement à Coyah Km54",
     "description": "À Coyah Km54, cet appartement de 75 m² dispose de deux chambres et d’un salon.",
     "category": "Appartement",
-    "imgWidth": 820,
-    "imgHeight": 616
+    "imgWidth": 1448,
+    "imgHeight": 1086,
+    "photoNotice": "Photos reçues le 27 octobre 2026 et retouchées pour retirer des objets de chantier et améliorer la lumière. Consultez les originaux pour comparer. Les finitions et l’état actuel du logement et de la cour sont à confirmer lors de la visite.",
+    "photos": [
+      {
+        "src": "/assets/images/properties/coyah-km54/facade-retouche.webp",
+        "alt": "Façade et entrée du logement à Coyah Km54",
+        "width": 1448,
+        "height": 1086,
+        "caption": "Photo retouchée : Personne dans l’entrée, déchets et objets de chantier retirés ; lumière ajustée.",
+        "originalSrc": "/assets/images/properties/coyah-km54/facade-original.jpeg"
+      },
+      {
+        "src": "/assets/images/properties/coyah-km54/salon-retouche.webp",
+        "alt": "Salon vide avec carrelage veiné, fenêtres et éclairage au plafond",
+        "width": 1448,
+        "height": 1086,
+        "caption": "Photo retouchée : Seaux, bidon, outils, câble posé au sol et brouette retirés ; lumière ajustée.",
+        "originalSrc": "/assets/images/properties/coyah-km54/salon-original.jpeg"
+      },
+      {
+        "src": "/assets/images/properties/coyah-km54/salon-entree-retouche.webp",
+        "alt": "Salon vu depuis l’entrée, avec fils électriques apparents",
+        "width": 1448,
+        "height": 1086,
+        "caption": "Photo retouchée : Seaux, bidon et outils au sol retirés ; lumière ajustée.",
+        "originalSrc": "/assets/images/properties/coyah-km54/salon-entree-original.jpeg"
+      },
+      {
+        "src": "/assets/images/properties/coyah-km54/salle-eau-retouche.webp",
+        "alt": "Salle d’eau avec douche noire, lavabo, miroir et toilettes",
+        "width": 1086,
+        "height": 1448,
+        "caption": "Photo retouchée : Cartons, emballages et objets au sol retirés ; reflet d’une personne retiré et lumière ajustée.",
+        "originalSrc": "/assets/images/properties/coyah-km54/salle-eau-original.jpeg"
+      },
+      {
+        "src": "/assets/images/properties/coyah-km54/terrasse-cour-retouche.webp",
+        "alt": "Terrasse couverte donnant sur la cour arborée et la cuve d’eau",
+        "width": 1448,
+        "height": 1086,
+        "caption": "Photo retouchée : Déchets, tuyaux posés au sol, planches et linge retirés ; lumière ajustée.",
+        "originalSrc": "/assets/images/properties/coyah-km54/terrasse-cour-original.jpeg"
+      },
+      {
+        "src": "/assets/images/properties/coyah-km54/facade-droite-retouche.webp",
+        "alt": "Façade du logement avec fenêtres à grilles blanches",
+        "width": 1448,
+        "height": 1086,
+        "caption": "Photo retouchée : Échelle, récipient de chantier, gravats et objets au sol retirés ; lumière ajustée.",
+        "originalSrc": "/assets/images/properties/coyah-km54/facade-droite-original.jpeg"
+      },
+      {
+        "src": "/assets/images/properties/coyah-km54/facade-angle-retouche.webp",
+        "alt": "Façade et côté du logement avec cour en terre",
+        "width": 1448,
+        "height": 1086,
+        "caption": "Photo retouchée : Échelle, récipient de chantier, seau, tuyau au sol et objets épars retirés ; lumière ajustée.",
+        "originalSrc": "/assets/images/properties/coyah-km54/facade-angle-original.jpeg"
+      }
+    ]
   },
   {
     "slug": "appartement-ansoumaniah-1",
